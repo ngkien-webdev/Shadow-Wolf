@@ -156,6 +156,49 @@ body {
     gap: 20px;
 }
 
+.game-crest-wrapper {
+    position: relative;
+    width: 82px;
+    height: 82px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(255, 212, 59, 0.45), 0 6px 16px rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--gold-border-bright);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #111827;
+}
+
+.game-crest-wrapper:hover {
+    transform: scale(1.06) rotate(1deg);
+    box-shadow: 0 0 35px rgba(255, 212, 59, 0.75), 0 8px 24px rgba(238, 39, 55, 0.5);
+}
+
+.game-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.login-logo-wrapper {
+    width: 104px;
+    height: 104px;
+    margin: 0 auto 16px auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 2.5px solid var(--gold-border-bright);
+    box-shadow: 0 0 32px rgba(255, 212, 59, 0.55), 0 8px 24px rgba(0, 0, 0, 0.8);
+    background: #0f172a;
+}
+
+.login-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .game-crest {
     position: relative;
     width: 82px;
@@ -2102,9 +2145,13 @@ body {
     .main-title {
         font-size: 1.65rem;
     }
+    .game-crest-wrapper {
+        width: 64px;
+        height: 64px;
+    }
     .game-crest {
-        width: 65px;
-        height: 65px;
+        width: 64px;
+        height: 64px;
     }
     .crest-icon-meow {
         font-size: 32px;
@@ -2167,9 +2214,8 @@ body {
         <div class="container header-content">
             <!-- Brand & Game Logo -->
             <div class="header-brand">
-                <div class="game-crest" title="Miêu Chủ Tam Quốc">
-                    <div class="crest-shield"></div>
-                    <span class="crest-icon-meow">🐱⚔️</span>
+                <div class="game-crest-wrapper" title="Miêu Chủ Tam Quốc – Bang Hội Shadow Wolf">
+                    <img src="images/logo.png" alt="Logo Miêu Chủ Tam Quốc" class="game-logo-img">
                 </div>
                 <div class="title-tagline">
                     <div class="game-subheading">
@@ -2476,10 +2522,6 @@ body {
                             Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Chỉ Quản Trị Viên mới có quyền tải lên hoặc cập nhật ảnh trong Trang Quản Trị.
                         </div>
                     </div>
-                </div>
-
-                <div class="formation-footer-hint">
-                    <i class="fa-solid fa-circle-info"></i> Ảnh chụp màn hình từ giao diện "Thông tin cá nhân" trong game Miêu Chủ Tam Quốc
                 </div>
             </div>
             <div class="modal-footer">
