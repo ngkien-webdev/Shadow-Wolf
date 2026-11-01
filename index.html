@@ -61,67 +61,63 @@
         </div>
     </header>
 
-    <!-- 2. THỐNG KÊ TỔNG QUAN (5 THẺ STATS) -->
+    <!-- 2. THỐNG KÊ TỔNG QUAN (4 THẺ STATS GỌN ĐẸP) -->
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <!-- Thẻ 1: Tổng thành viên Top 15 -->
+                <!-- Thẻ 1: Quy mô bảng đấu -->
                 <div class="stat-card card-members">
-                    <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-users-viewfinder"></i>
+                    <div class="stat-card-header">
+                        <span class="stat-label">BẢNG CAO THỦ</span>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
                     </div>
-                    <div class="stat-info">
-                        <span class="stat-label">Top Cao Thủ</span>
-                        <span class="stat-value" id="stat-total-members">15</span>
-                        <span class="stat-subtext">Top 15 Chiến Lực Cao Nhất Bang</span>
+                    <div class="stat-value" id="stat-total-members">TOP 15</div>
+                    <div class="stat-subtext">
+                        <i class="fa-solid fa-shield-halved"></i> 15 Tinh Anh Đỉnh Phong
                     </div>
                 </div>
 
                 <!-- Thẻ 2: Tổng chiến lực bang hội Top 15 -->
                 <div class="stat-card card-total-power">
-                    <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-fire-flame-curved"></i>
+                    <div class="stat-card-header">
+                        <span class="stat-label">TỔNG CHIẾN LỰC</span>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-fire-flame-curved"></i>
+                        </div>
                     </div>
-                    <div class="stat-info">
-                        <span class="stat-label">Tổng Chiến Lực Top 15</span>
-                        <span class="stat-value gold" id="stat-total-power">~6.25T+</span>
-                        <span class="stat-subtext">Đỉnh Phong Chiến Lực Shadow Wolf</span>
+                    <div class="stat-value gold" id="stat-total-power">~6.30T+</div>
+                    <div class="stat-subtext">
+                        <i class="fa-solid fa-bolt"></i> Sức Mạnh Toàn Quân
                     </div>
                 </div>
 
                 <!-- Thẻ 3: Chúa công đứng đầu (Top 1) -->
                 <div class="stat-card card-top-power">
-                    <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-crown"></i>
+                    <div class="stat-card-header">
+                        <span class="stat-label">QUÁN QUÂN TOP 1</span>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
                     </div>
-                    <div class="stat-info">
-                        <span class="stat-label">Bang Chủ Tối Cao (Top 1)</span>
-                        <span class="stat-value" id="stat-top-power">1.664T</span>
-                        <span class="stat-subtext" id="stat-top-name">SW ⚜️ Apex 🇻🇳</span>
+                    <div class="stat-value" id="stat-top-power">1.664T</div>
+                    <div class="stat-subtext" id="stat-top-name">
+                        <i class="fa-solid fa-crown"></i> SW ⚜️ Apex 🇻🇳
                     </div>
                 </div>
 
                 <!-- Thẻ 4: Chiến lực trung bình -->
                 <div class="stat-card card-avg-power">
-                    <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-chart-line"></i>
+                    <div class="stat-card-header">
+                        <span class="stat-label">LỰC CHIẾN BÌNH QUÂN</span>
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
                     </div>
-                    <div class="stat-info">
-                        <span class="stat-label">Lực Chiến Trung Bình Top 15</span>
-                        <span class="stat-value" id="stat-avg-power">~416B</span>
-                        <span class="stat-subtext">Sức mạnh bình quân Top 15</span>
-                    </div>
-                </div>
-
-                <!-- Thẻ 5: Tiến độ nộp ảnh đội hình -->
-                <div class="stat-card card-formation">
-                    <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-paw"></i>
-                    </div>
-                    <div class="stat-info">
-                        <span class="stat-label">Đội Hình Top 15 Đã Có</span>
-                        <span class="stat-value" id="stat-formation-count">12/15</span>
-                        <span class="stat-subtext">Tiến độ cập nhật: 80%</span>
+                    <div class="stat-value" id="stat-avg-power">~420B</div>
+                    <div class="stat-subtext">
+                        <i class="fa-solid fa-scale-balanced"></i> Trung Bình Mỗi Tướng
                     </div>
                 </div>
             </div>
@@ -193,13 +189,6 @@
                             <option value="tier-60-100">Dũng Mãnh Tiên Phong (60B - 100B)</option>
                             <option value="tier-below-60">Tân Binh Tiềm Năng (&lt; 60B)</option>
                         </select>
-
-                        <!-- Lọc theo trạng thái nộp ảnh đội hình -->
-                        <select id="filter-formation" class="filter-select">
-                            <option value="all">Tất cả Đội Hình</option>
-                            <option value="has-image">Đã có ảnh đội hình (35)</option>
-                            <option value="no-image">Chưa cập nhật đội hình (6)</option>
-                        </select>
                     </div>
                 </div>
 
@@ -223,7 +212,7 @@
 
                     <div class="controls-meta-wrap">
                         <span class="filter-counter">
-                            Kết quả: <strong id="filtered-count-badge">41/41</strong>
+                            Kết quả: <strong id="filtered-count-badge">15/15</strong>
                         </span>
                         <button class="btn-reset-filters" id="btn-reset-filters">
                             <i class="fa-solid fa-arrow-rotate-right"></i> Đặt lại bộ lọc
@@ -243,10 +232,10 @@
                         <thead>
                             <tr>
                                 <th class="th-center" style="width: 80px;">STT</th>
-                                <th>TÊN THÀNH VIÊN & TRẬN HÌNH</th>
+                                <th>TÊN TƯỚNG IN-GAME</th>
                                 <th>LỰC CHIẾN</th>
                                 <th>DANH HIỆU</th>
-                                <th>GHI CHÚ</th>
+                                <th>CHỨC VỤ</th>
                                 <th class="th-center" style="width: 140px;">ĐỘI HÌNH</th>
                             </tr>
                         </thead>
@@ -256,7 +245,7 @@
                     </table>
 
                     <div class="table-empty-state" id="table-empty-state">
-                        <div class="empty-icon"><i class="fa-solid fa-shield-cat"></i></div>
+                        <div class="empty-icon"><i class="fa-solid fa-paw"></i></div>
                         <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
                         <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh sách.</p>
                     </div>
@@ -265,17 +254,15 @@
                 <!-- Phân trang -->
                 <div class="table-footer">
                     <div class="pagination-info" id="pagination-info">
-                        Hiển thị 1 - 20 trên tổng 41 thành viên
+                        Hiển thị Top 15 cao thủ bang hội
                     </div>
 
                     <div class="pagination-right-wrap">
                         <div class="page-size-selector">
                             <span>Hiển thị mỗi trang:</span>
                             <select id="page-size-select">
+                                <option value="15" selected>15 người (Toàn bộ Top 15)</option>
                                 <option value="10">10 người</option>
-                                <option value="20" selected>20 người</option>
-                                <option value="50">50 người</option>
-                                <option value="9999">Tất cả</option>
                             </select>
                         </div>
 
@@ -303,14 +290,14 @@
         <div class="modal-container modal-formation-wide">
             <div class="modal-header">
                 <h3 class="modal-title">
-                    <i class="fa-solid fa-shield-cat"></i> Trận Hình & Đội Hình Tướng Lĩnh
+                    <i class="fa-solid fa-paw"></i> Trận Hình & Đội Hình Tướng Lĩnh
                 </h3>
                 <button class="modal-close-btn" onclick="closeModal('modal-formation-view')">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="formation-member-header">
                     <div class="fm-header-left">
-                        <div class="fm-name" id="formation-member-name">•SW• Apex (Hhh)</div>
+                        <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
                         <div class="fm-tags">
                             <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
                             <span class="fm-server-pill" id="formation-member-server">Server: S 645</span>
@@ -320,7 +307,7 @@
                     </div>
                     <div class="fm-power-large">
                         <i class="fa-solid fa-bolt"></i>
-                        <span id="formation-member-power">>1T2</span>
+                        <span id="formation-member-power">1.664T</span>
                     </div>
                 </div>
 

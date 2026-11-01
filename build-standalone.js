@@ -10,8 +10,9 @@ const css = fs.readFileSync(path.join(dir, 'style.css'), 'utf-8');
 const js = fs.readFileSync(path.join(dir, 'script.js'), 'utf-8');
 const adminJs = fs.readFileSync(path.join(dir, 'admin.js'), 'utf-8');
 
-// Base64 favicon for 100% portable display in browser tab
+// Base64 favicon & logo for 100% portable display in browser tab
 const faviconBase64 = 'data:image/png;base64,' + fs.readFileSync(path.join(dir, 'images/favicon.png')).toString('base64');
+const logoBase64 = 'data:image/png;base64,' + fs.readFileSync(path.join(dir, 'images/logo.png')).toString('base64');
 
 // 1. Build standalone.html (Public Leaderboard)
 // IMPORTANT: Use function replacers (() => content) so JavaScript does NOT treat $& as special pattern
@@ -20,6 +21,7 @@ standalone = standalone.replace('<script src="script.js"></script>', () => `<scr
 standalone = standalone.replace(/href="images\/favicon\.png"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="images\/favicon\.ico"/g, () => `href="${faviconBase64}"`);
+standalone = standalone.replace(/images\/logo\.png/g, () => logoBase64);
 
 fs.writeFileSync(path.join(dir, 'standalone.html'), standalone, 'utf-8');
 console.log('standalone.html successfully built! Size:', fs.statSync(path.join(dir, 'standalone.html')).size, 'bytes');
@@ -31,6 +33,7 @@ standaloneAdmin = standaloneAdmin.replace('<script src="admin.js"></script>', ()
 standaloneAdmin = standaloneAdmin.replace(/href="images\/favicon\.png"/g, () => `href="${faviconBase64}"`);
 standaloneAdmin = standaloneAdmin.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standaloneAdmin = standaloneAdmin.replace(/href="images\/favicon\.ico"/g, () => `href="${faviconBase64}"`);
+standaloneAdmin = standaloneAdmin.replace(/images\/logo\.png/g, () => logoBase64);
 
 fs.writeFileSync(path.join(dir, 'standalone-admin.html'), standaloneAdmin, 'utf-8');
 console.log('standalone-admin.html successfully built! Size:', fs.statSync(path.join(dir, 'standalone-admin.html')).size, 'bytes');
