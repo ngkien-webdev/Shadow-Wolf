@@ -10,7 +10,7 @@ const DEFAULT_MEMBERS = [
     { stt: 3, name: "SW ⚜️ Ây Ya 🇻🇳", power: "680B", powerVal: 680, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
     { stt: 4, name: "SW ⚜️ LTD 🇻🇳", power: "369.8B", powerVal: 369.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "369.8B", server: "S 643" },
     { stt: 5, name: "SW • Alinx •", power: "358.3B", powerVal: 358.3, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.3B", server: "S 645" },
-    { stt: 6, name: "SW ⚜️ NTTP 🇻🇳", power: "271.1B", powerVal: 271.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "271.1B", server: "S 657" },
+    { stt: 6, name: "SW ⚜️ NTTP 🇻🇳", power: "271.1B", powerVal: 271.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "271.1B", server: "S 657" },
     { stt: 7, name: "SW ⚜️ 1701 🇻🇳", power: "258.5B", powerVal: 258.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "258.5B", server: "S 645" },
     { stt: 8, name: "SW ⚜️ Bi Tiên", power: "254.5B", powerVal: 254.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-bitien.jpg", ingamePower: "254.5B", server: "S 658" },
     { stt: 9, name: "SW ⭐️ Haruki", power: "233.1B", powerVal: 233.1, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "233.1B", server: "S 656" },
@@ -49,7 +49,7 @@ const DEFAULT_MEMBERS = [
 ];
 
 // Khóa LocalStorage
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v10';
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v11';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Trạng thái ứng dụng
@@ -163,6 +163,33 @@ function loadMembersData() {
                 if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
                 if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
                 if (m.stt === 3) m.name = 'SW ⚜️ Ây Ya 🇻🇳';
+                if (m.stt === 6) {
+                    m.name = 'SW ⚜️ NTTP 🇻🇳';
+                    m.power = '271.1B';
+                    m.powerVal = 271.1;
+                    m.ingamePower = '271.1B';
+                    m.title = 'Thái phó';
+                    m.image = 'images/dh/member-nttp.jpg';
+                    m.server = 'S 657';
+                }
+                if (m.stt === 7) {
+                    m.name = 'SW ⚜️ 1701 🇻🇳';
+                    m.power = '258.5B';
+                    m.powerVal = 258.5;
+                    m.ingamePower = '258.5B';
+                    m.title = 'Thái phó';
+                    m.image = 'images/dh/member-6.jpg';
+                    m.server = 'S 645';
+                }
+                if (m.stt === 8) {
+                    m.name = 'SW ⚜️ Bi Tiên';
+                    m.power = '254.5B';
+                    m.powerVal = 254.5;
+                    m.ingamePower = '254.5B';
+                    m.title = 'Thái phó';
+                    m.image = 'images/dh/member-bitien.jpg';
+                    m.server = 'S 658';
+                }
 
                 const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
                 if (defaultItem) {
@@ -308,18 +335,22 @@ function renderPodium() {
     }
 
     podiumContainer.innerHTML = `
-        <!-- TOP 2: Á QUÂN (BẠC) -->
+        <!-- TOP 2: Á QUÂN (BẠCH NGÂN LANG TƯỚNG) -->
         ${top2 ? `
         <div class="podium-card rank-2 animate-fade-in" onclick="openFormationModal(${top2.stt})">
             <div class="podium-pillar">
-                <div class="podium-avatar-wrapper">
+                <div class="podium-avatar-wrapper wrapper-silver">
                     <div class="podium-crown-badge silver">
-                        <i class="fa-solid fa-medal"></i>
+                        <i class="fa-solid fa-shield-halved"></i>
                     </div>
-                    <div class="podium-avatar silver-glow">
-                        <img src="images/logo.png" alt="Shadow Wolf" class="podium-avatar-img wolf-avatar-emblem">
+                    <div class="podium-avatar silver-glow wolf-podium-silver">
+                        <div class="wolf-aura-burst aura-silver"></div>
+                        <img src="images/logo.png" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver">
                     </div>
-                    <div class="podium-rank-tag silver">HẠNG 2 • Á QUÂN</div>
+                </div>
+                <div class="podium-rank-badge-wrap">
+                    <div class="podium-rank-tag silver"><i class="fa-solid fa-medal"></i> HẠNG 2 • Á QUÂN</div>
+                    <div class="podium-wolf-tier silver-tier">BẠCH NGÂN LANG TƯỚNG</div>
                 </div>
                 <div class="podium-info">
                     ${top2.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top2.server)}</span>` : ''}
@@ -337,20 +368,24 @@ function renderPodium() {
         </div>
         ` : ''}
 
-        <!-- TOP 1: QUÁN QUÂN (VÀNG KIM - TRUNG TÂM) -->
+        <!-- TOP 1: QUÁN QUÂN (HOÀNG KIM LANG VƯƠNG) -->
         <div class="podium-card rank-1 animate-fade-in" onclick="openFormationModal(${top1.stt})">
             <div class="podium-dragon-crest">
                 <i class="fa-solid fa-crown dragon-crown"></i>
             </div>
             <div class="podium-pillar gold-pillar">
-                <div class="podium-avatar-wrapper">
+                <div class="podium-avatar-wrapper wrapper-gold">
                     <div class="podium-crown-badge gold">
                         <i class="fa-solid fa-crown"></i>
                     </div>
-                    <div class="podium-avatar gold-glow">
-                        <img src="images/logo.png" alt="Shadow Wolf" class="podium-avatar-img wolf-avatar-emblem">
+                    <div class="podium-avatar gold-glow wolf-podium-gold">
+                        <div class="wolf-aura-burst aura-gold"></div>
+                        <img src="images/logo.png" alt="Hoàng Kim Lang Vương" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
                     </div>
-                    <div class="podium-rank-tag gold">QUÁN QUÂN • TOP 1</div>
+                </div>
+                <div class="podium-rank-badge-wrap">
+                    <div class="podium-rank-tag gold"><i class="fa-solid fa-crown"></i> QUÁN QUÂN • TOP 1</div>
+                    <div class="podium-wolf-tier gold-tier">HOÀNG KIM LANG VƯƠNG</div>
                 </div>
                 <div class="podium-info">
                     ${top1.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top1.server)}</span>` : ''}
@@ -367,18 +402,22 @@ function renderPodium() {
             </div>
         </div>
 
-        <!-- TOP 3: QUÝ QUÂN (ĐỒNG) -->
+        <!-- TOP 3: QUÝ QUÂN (XÍCH ĐỒNG LANG TƯỚNG) -->
         ${top3 ? `
         <div class="podium-card rank-3 animate-fade-in" onclick="openFormationModal(${top3.stt})">
             <div class="podium-pillar">
-                <div class="podium-avatar-wrapper">
+                <div class="podium-avatar-wrapper wrapper-bronze">
                     <div class="podium-crown-badge bronze">
                         <i class="fa-solid fa-award"></i>
                     </div>
-                    <div class="podium-avatar bronze-glow">
-                        <img src="images/logo.png" alt="Shadow Wolf" class="podium-avatar-img wolf-avatar-emblem">
+                    <div class="podium-avatar bronze-glow wolf-podium-bronze">
+                        <div class="wolf-aura-burst aura-bronze"></div>
+                        <img src="images/logo.png" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
                     </div>
-                    <div class="podium-rank-tag bronze">HẠNG 3 • QUÝ QUÂN</div>
+                </div>
+                <div class="podium-rank-badge-wrap">
+                    <div class="podium-rank-tag bronze"><i class="fa-solid fa-trophy"></i> HẠNG 3 • QUÝ QUÂN</div>
+                    <div class="podium-wolf-tier bronze-tier">XÍCH ĐỒNG LANG TƯỚNG</div>
                 </div>
                 <div class="podium-info">
                     ${top3.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top3.server)}</span>` : ''}
@@ -558,6 +597,39 @@ function renderTable() {
         const titleClass = TITLE_CLASSES[m.title] || 'title-default';
         const noteClass = NOTE_CLASSES[m.note] || 'note-default';
 
+        let avatarBlock = '';
+        if (rank === 1) {
+            avatarBlock = `
+                <div class="member-avatar avatar-rank-1" title="Top 1: Hoàng Kim Lang Vương">
+                    <span class="rank-mini-crown gold"><i class="fa-solid fa-crown"></i></span>
+                    <span class="wolf-avatar-icon wolf-icon-gold">🐺</span>
+                    <span class="avatar-ring-glow ring-gold"></span>
+                </div>
+            `;
+        } else if (rank === 2) {
+            avatarBlock = `
+                <div class="member-avatar avatar-rank-2" title="Top 2: Bạch Ngân Lang Tướng">
+                    <span class="rank-mini-crown silver"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="wolf-avatar-icon wolf-icon-silver">🐺</span>
+                    <span class="avatar-ring-glow ring-silver"></span>
+                </div>
+            `;
+        } else if (rank === 3) {
+            avatarBlock = `
+                <div class="member-avatar avatar-rank-3" title="Top 3: Xích Đồng Lang Tướng">
+                    <span class="rank-mini-crown bronze"><i class="fa-solid fa-award"></i></span>
+                    <span class="wolf-avatar-icon wolf-icon-bronze">🐺</span>
+                    <span class="avatar-ring-glow ring-bronze"></span>
+                </div>
+            `;
+        } else {
+            avatarBlock = `
+                <div class="member-avatar avatar-normal">
+                    <span class="wolf-avatar-icon">🐺</span>
+                </div>
+            `;
+        }
+
         html += `
             <tr class="${rowClass}" style="--row-idx: ${idx};" data-stt="${m.stt}" onclick="handleRowClick(event, ${m.stt})">
                 <!-- CỘT 1: STT -->
@@ -570,9 +642,7 @@ function renderTable() {
                 <!-- CỘT 2: TÊN TƯỚNG IN-GAME -->
                 <td class="col-name">
                     <div class="member-identity">
-                        <div class="member-avatar ${rank <= 3 ? 'avatar-top' : ''}">
-                            <span class="wolf-avatar-icon">🐺</span>
-                        </div>
+                        ${avatarBlock}
                         <div class="member-name-block">
                             <span class="member-name-text">${highlightMatch(m.name)}</span>
                             ${m.server ? `<span class="member-server-sub"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(m.server)}</span>` : ''}

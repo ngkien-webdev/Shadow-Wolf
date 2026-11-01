@@ -77,6 +77,66 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    position: relative;
+}
+
+/* Ambient Cyber Glow Mesh Background */
+.ambient-glow-mesh {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0.16;
+    will-change: transform;
+}
+
+.orb-gold {
+    top: -10%;
+    right: 15%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, #f59e0b 0%, #ffd43b 50%, transparent 70%);
+    animation: orbDrift1 20s ease-in-out infinite alternate;
+}
+
+.orb-blue {
+    top: 35%;
+    left: -10%;
+    width: 650px;
+    height: 650px;
+    background: radial-gradient(circle, #38bdf8 0%, #1d4ed8 50%, transparent 70%);
+    animation: orbDrift2 24s ease-in-out infinite alternate;
+}
+
+.orb-purple {
+    bottom: -15%;
+    right: 5%;
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, #a855f7 0%, #6d28d9 50%, transparent 70%);
+    animation: orbDrift3 22s ease-in-out infinite alternate;
+}
+
+@keyframes orbDrift1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-60px, 80px) scale(1.15); }
+}
+
+@keyframes orbDrift2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(80px, -60px) scale(1.2); }
+}
+
+@keyframes orbDrift3 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-50px, -70px) scale(1.1); }
 }
 
 /* Custom Gaming Scrollbar */
@@ -654,6 +714,43 @@ body {
     padding-top: 34px;
     padding-bottom: 30px;
     animation: goldAuraPulse 3.5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Border Beam Effect - Vệt sáng hoàng kim chạy quanh viền Rank 1 */
+.podium-card.rank-1::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent 0deg, transparent 290deg, rgba(255, 212, 59, 0.9) 340deg, #fff7a1 355deg, transparent 360deg);
+    animation: borderBeamRotate 6s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.85;
+}
+
+.podium-card.rank-1::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: linear-gradient(180deg, rgba(32, 44, 76, 0.97) 0%, rgba(16, 22, 40, 0.99) 100%);
+    border-radius: calc(var(--radius-lg) - 2px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.podium-card.rank-1 > * {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes borderBeamRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 @keyframes goldAuraPulse {
@@ -661,37 +758,60 @@ body {
         box-shadow: 0 16px 45px rgba(0, 0, 0, 0.85), 0 0 28px rgba(255, 212, 59, 0.35);
     }
     50% {
-        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.9), 0 0 48px rgba(255, 212, 59, 0.6);
+        box-shadow: 0 18px 55px rgba(0, 0, 0, 0.9), 0 0 48px rgba(255, 212, 59, 0.65);
     }
 }
 
 .podium-card.rank-1:hover {
     transform: scale(1.1) translateY(-8px);
-    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.92), 0 0 55px rgba(255, 212, 59, 0.75);
+    box-shadow: 0 22px 60px rgba(0, 0, 0, 0.92), 0 0 55px rgba(255, 212, 59, 0.8);
 }
 
 .podium-card.rank-2 {
     order: 1;
-    border-color: rgba(226, 232, 240, 0.5);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(226, 232, 240, 0.25);
+    border-color: rgba(226, 232, 240, 0.55);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(56, 189, 248, 0.25);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.podium-card.rank-2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.5);
 }
 
 .podium-card.rank-3 {
     order: 3;
-    border-color: rgba(249, 115, 22, 0.5);
+    border-color: rgba(249, 115, 22, 0.55);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(249, 115, 22, 0.25);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.podium-card.rank-3:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.8), 0 0 30px rgba(249, 115, 22, 0.5);
+}
+
+.podium-pillar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .podium-avatar-wrapper {
     position: relative;
-    width: 95px;
-    height: 95px;
-    margin: 0 auto 16px auto;
+    width: 98px;
+    height: 98px;
+    margin: 8px auto 14px auto;
+    flex-shrink: 0;
 }
 
 .podium-card.rank-1 .podium-avatar-wrapper {
-    width: 110px;
-    height: 110px;
+    width: 122px;
+    height: 122px;
+    margin: 12px auto 16px auto;
 }
 
 .podium-avatar {
@@ -705,27 +825,123 @@ body {
     background: #1a233a;
     border: 3px solid #475569;
     overflow: hidden;
+    position: relative;
+}
+
+/* AVATAR CẤP BẬC SÓI CHO TOP 1, TOP 2, TOP 3 TRÊN BỤC TAM KIỆT */
+
+/* Top 1: Hoàng Kim Lang Vương (Vàng Kim Bá Khí) */
+.wolf-podium-gold {
+    border: 3.5px solid #ffd43b !important;
+    background: radial-gradient(circle at 50% 35%, #5a3a03 0%, #1f1300 100%) !important;
+    box-shadow: 0 0 35px rgba(255, 212, 59, 0.75), inset 0 0 18px rgba(255, 212, 59, 0.5) !important;
+}
+
+.wolf-img-gold {
+    filter: drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 22px #ff9800) brightness(1.22) contrast(1.15) !important;
+}
+
+/* Top 2: Bạch Ngân Lang Tướng (Băng Lam Bạch Ngân) */
+.wolf-podium-silver {
+    border: 3.5px solid #cbd5e1 !important;
+    background: radial-gradient(circle at 50% 35%, #1e293b 0%, #090f1d 100%) !important;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.65), inset 0 0 16px rgba(226, 232, 240, 0.4) !important;
+}
+
+.wolf-img-silver {
+    filter: brightness(1.25) contrast(1.2) hue-rotate(185deg) drop-shadow(0 0 10px #38bdf8) drop-shadow(0 0 20px #94a3b8) !important;
+}
+
+/* Top 3: Xích Đồng Lang Tướng (Hỏa Viêm Xích Đồng) */
+.wolf-podium-bronze {
+    border: 3.5px solid #f97316 !important;
+    background: radial-gradient(circle at 50% 35%, #431b07 0%, #1a0802 100%) !important;
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.7), inset 0 0 16px rgba(234, 88, 12, 0.45) !important;
+}
+
+.wolf-img-bronze {
+    filter: brightness(1.15) sepia(0.7) saturate(2.3) hue-rotate(-22deg) drop-shadow(0 0 10px #f97316) drop-shadow(0 0 20px #dc2626) !important;
+}
+
+/* Wolf Aura Burst Pulse */
+.wolf-aura-burst {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+    animation: wolfPulse 3s ease-in-out infinite;
+}
+
+@keyframes wolfPulse {
+    0%, 100% { transform: scale(1); opacity: 0.45; }
+    50% { transform: scale(1.08); opacity: 0.8; }
+}
+
+.aura-gold {
+    background: radial-gradient(circle, rgba(255, 212, 59, 0.45) 0%, transparent 72%);
+}
+
+.aura-silver {
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, transparent 72%);
+}
+
+.aura-bronze {
+    background: radial-gradient(circle, rgba(249, 115, 22, 0.4) 0%, transparent 72%);
+}
+
+/* Badge Wrap - Gom Cụm Rank Tag & Wolf Tier Tự Nhiên, Rõ Ràng & Không Bị Chồng Đè */
+.podium-rank-badge-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+/* Danh xưng cấp bậc sói hiển thị dưới rank tag */
+.podium-wolf-tier {
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.2;
+}
+.gold-tier {
+    color: #fde047;
+    text-shadow: 0 0 10px rgba(253, 224, 71, 0.75);
+}
+.silver-tier {
+    color: #7dd3fc;
+    text-shadow: 0 0 10px rgba(125, 211, 252, 0.75);
+}
+.bronze-tier {
+    color: #fdba74;
+    text-shadow: 0 0 10px rgba(253, 186, 116, 0.75);
 }
 
 .podium-avatar-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 8%;
+    object-position: center center;
     border-radius: 50%;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .podium-avatar-img.wolf-avatar-emblem {
     object-fit: cover;
     object-position: center center;
-    background: radial-gradient(circle, #2a1b24 0%, #0d111a 100%);
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
 .podium-card:hover .podium-avatar-img {
-    transform: scale(1.1);
+    transform: scale(1.12);
 }
 
 .podium-server-tag {
@@ -817,31 +1033,46 @@ body {
 }
 
 .podium-rank-tag {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 3px 14px;
+    position: static !important;
+    transform: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 4px 16px;
     border-radius: var(--radius-full);
-    font-size: 0.72rem;
+    font-size: 0.74rem;
     font-weight: 800;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     white-space: nowrap;
     text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
 .podium-rank-tag.gold {
     background: var(--gold-gradient);
     color: #2b1800;
-    box-shadow: 0 2px 14px rgba(255, 212, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 4px 18px rgba(255, 212, 59, 0.6);
 }
 .podium-rank-tag.silver {
     background: var(--silver-gradient);
-    color: #121624;
+    color: #0b1329;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    box-shadow: 0 4px 18px rgba(56, 189, 248, 0.45);
 }
 .podium-rank-tag.bronze {
     background: var(--bronze-gradient);
     color: #fff;
+    border: 1px solid rgba(255, 237, 213, 0.6);
+    box-shadow: 0 4px 18px rgba(249, 115, 22, 0.45);
+}
+
+.podium-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .podium-name {
@@ -1352,11 +1583,69 @@ body {
     justify-content: center;
     font-size: 24px;
     flex-shrink: 0;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.member-avatar.avatar-top {
-    border-color: var(--gold-300);
-    box-shadow: 0 0 12px rgba(255, 212, 59, 0.5);
+/* AVATAR CẤP BẬC SÓI TRONG BẢNG XẾP HẠNG */
+.member-avatar.avatar-rank-1 {
+    background: radial-gradient(circle, #452b04 0%, #1a1000 100%);
+    border: 2px solid #ffd43b;
+    box-shadow: 0 0 16px rgba(255, 212, 59, 0.65), inset 0 0 8px rgba(255, 212, 59, 0.4);
+}
+
+.member-avatar.avatar-rank-2 {
+    background: radial-gradient(circle, #1a2538 0%, #0d1527 100%);
+    border: 2px solid #94a3b8;
+    box-shadow: 0 0 14px rgba(56, 189, 248, 0.55), inset 0 0 8px rgba(203, 213, 225, 0.3);
+}
+
+.member-avatar.avatar-rank-3 {
+    background: radial-gradient(circle, #381a0b 0%, #1c0c05 100%);
+    border: 2px solid #f97316;
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.6), inset 0 0 8px rgba(234, 88, 12, 0.4);
+}
+
+.wolf-icon-gold {
+    filter: drop-shadow(0 0 8px #ffd700) drop-shadow(0 0 14px #ff9800) brightness(1.25) saturate(1.4);
+}
+
+.wolf-icon-silver {
+    filter: drop-shadow(0 0 8px #38bdf8) drop-shadow(0 0 12px #e2e8f0) brightness(1.3) contrast(1.15) hue-rotate(185deg);
+}
+
+.wolf-icon-bronze {
+    filter: drop-shadow(0 0 8px #f97316) drop-shadow(0 0 12px #ef4444) brightness(1.2) sepia(0.8) hue-rotate(-25deg);
+}
+
+.rank-mini-crown {
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    font-size: 11px;
+    line-height: 1;
+    z-index: 2;
+}
+
+.rank-mini-crown.gold {
+    color: #ffd700;
+    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.95));
+    animation: miniCrownFloat 2.5s ease-in-out infinite;
+}
+
+.rank-mini-crown.silver {
+    color: #38bdf8;
+    filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.95));
+}
+
+.rank-mini-crown.bronze {
+    color: #fb923c;
+    filter: drop-shadow(0 0 6px rgba(249, 115, 22, 0.95));
+}
+
+@keyframes miniCrownFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2.5px); }
 }
 
 .wolf-avatar-icon {
@@ -1368,7 +1657,7 @@ body {
 }
 
 .member-row:hover .wolf-avatar-icon {
-    transform: scale(1.22);
+    transform: scale(1.25);
 }
 
 .member-name-block {
@@ -1488,9 +1777,31 @@ body {
 
 .power-bar-fill {
     height: 100%;
-    background: var(--gold-gradient);
+    background: linear-gradient(90deg, #f59e0b 0%, #ffd43b 30%, #fff7a1 50%, #ffd43b 70%, #f59e0b 100%);
+    background-size: 200% 100%;
+    animation: powerGaugeFlow 2.8s linear infinite;
     border-radius: var(--radius-full);
-    box-shadow: 0 0 8px rgba(255, 212, 59, 0.7);
+    box-shadow: 0 0 10px rgba(255, 212, 59, 0.65);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes powerGaugeFlow {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
+.power-bar-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+    animation: barShineSweep 2.2s ease-in-out infinite;
+}
+
+@keyframes barShineSweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 /* ==========================================================================
