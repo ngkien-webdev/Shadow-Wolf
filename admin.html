@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUẢN TRỊ BANG HỘI – MIÊU CHỦ TAM QUỐC</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-page-body">
+
+    <!-- ==========================================================================
+         0. LOGIN GATE OVERLAY (BẮT BUỘC ĐĂNG NHẬP: apex / 123)
+         ========================================================================== -->
+    <div class="admin-login-overlay" id="admin-login-overlay">
+        <div class="admin-login-box">
+            <div class="login-crest-icon">🛡️👑</div>
+            <h2 class="login-title">ĐĂNG NHẬP TRANG QUẢN TRỊ</h2>
+            <p class="login-desc">Hệ thống điều hành & phê duyệt Bang Hội Miêu Chủ Tam Quốc</p>
+            
+            <div class="login-error-msg" id="admin-login-error">
+                <i class="fa-solid fa-circle-exclamation"></i> Tài khoản hoặc mật khẩu không chính xác!
+            </div>
+
+            <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+                <div class="form-group" style="text-align: left; margin-bottom: 14px;">
+                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-user"></i> Tài khoản quản trị:</label>
+                    <input type="text" id="admin-login-user" class="form-input" placeholder="Nhập tài khoản (apex)" value="apex" required autocomplete="username">
+                </div>
+                <div class="form-group" style="text-align: left; margin-bottom: 18px;">
+                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-key"></i> Mật khẩu:</label>
+                    <input type="password" id="admin-login-pass" class="form-input" placeholder="Nhập mật khẩu (123)" value="123" required autocomplete="current-password">
+                </div>
+                <div style="background: rgba(255, 212, 59, 0.1); border: 1px dashed var(--gold-border); border-radius: var(--radius-sm); padding: 8px 12px; margin-bottom: 18px; font-size: 0.82rem; color: var(--gold-200);">
+                    <i class="fa-solid fa-shield-halved"></i> Thông tin truy cập: <strong>apex</strong> / <strong>123</strong>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px; font-size: 1rem;">
+                        <i class="fa-solid fa-right-to-bracket"></i> ĐĂNG NHẬP HỆ THỐNG
+                    </button>
+                    <a href="index.html" class="btn btn-outline" style="width: 100%; text-decoration: none;">
+                        <i class="fa-solid fa-arrow-left"></i> Quay Lại Bảng Xếp Hạng
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- WRAPPER NỘI DUNG QUẢN TRỊ (CHỈ HIỂN THỊ KHI ĐÃ ĐĂNG NHẬP) -->
+    <div id="admin-main-wrapper" style="display: none;">
+
+        <!-- 1. ADMIN HEADER -->
+        <header class="site-header" style="border-bottom-color: rgba(214, 34, 56, 0.4);">
+            <div class="container header-content">
+                <div class="header-brand">
+                    <div class="game-crest" title="Quản Trị Miêu Chủ Tam Quốc">
+                        <div class="crest-shield" style="border-color: #ff4d6d; box-shadow: 0 0 20px rgba(214, 34, 56, 0.4);"></div>
+                        <span class="crest-icon-meow">🛡️👑</span>
+                    </div>
+                    <div class="title-tagline">
+                        <div class="game-subheading" style="color: #ff8597;">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>TRUNG TÂM ĐIỀU HÀNH BANG HỘI</span>
+                            <span class="admin-badge-indicator">ADMIN PANEL</span>
+                        </div>
+                        <h1 class="main-title" style="background: linear-gradient(135deg, #fff 0%, #ff9aa8 50%, #e6a100 100%); -webkit-background-clip: text;">
+                            QUẢN TRỊ BẢNG XẾP HẠNG & TƯỚNG LĨNH
+                        </h1>
+                        <div class="main-desc">
+                            <span>CẬP NHẬT CHIẾN LỰC – QUẢN LÝ ĐỘI HÌNH – PHONG TƯỚC BAN DANH BANG HỘI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-actions">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <span class="badge-logged-user" style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;">
+                            <i class="fa-solid fa-user-check"></i> apex (Quản Trị Viên)
+                        </span>
+                        <button class="btn btn-outline" onclick="adminLogout()" style="padding: 6px 12px; font-size: 0.82rem; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;" title="Đăng xuất khỏi hệ thống quản trị">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất
+                        </button>
+                    </div>
+                    <div class="btn-group-header">
+                        <!-- Nút quay lại trang chủ -->
+                        <a href="index.html" class="btn btn-gold" title="Xem trang bảng xếp hạng công khai">
+                            <i class="fa-solid fa-trophy"></i> Xem Bảng Xếp Hạng
+                        </a>
+                        <button class="btn btn-crimson" id="admin-btn-add" onclick="openAdminAddModal()">
+                            <i class="fa-solid fa-user-plus"></i> Thêm Tướng Mới
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 2. ADMIN KPI CARDS -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="admin-kpi-grid">
+                    <!-- KPI 1: Tổng Thành Viên -->
+                    <div class="stat-card card-members">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Tổng Hùng Tướng</span>
+                            <span class="stat-value" id="kpi-total">41</span>
+                            <span class="stat-subtext">Danh sách bang hội hiện tại</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI 2: Đã Cập Nhật Đội Hình -->
+                    <div class="stat-card card-avg-power">
+                        <div class="stat-icon-wrapper" style="color: #10b981;">
+                            <i class="fa-solid fa-camera-retro"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Đã Có Đội Hình</span>
+                            <span class="stat-value" id="kpi-has-img" style="color: #34d399;">35</span>
+                            <span class="stat-subtext" id="kpi-has-img-pct">Tỷ lệ: 85.4%</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI 3: Chưa Cập Nhật Đội Hình -->
+                    <div class="stat-card card-top-power">
+                        <div class="stat-icon-wrapper" style="color: #ef4444;">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Chưa Có Đội Hình</span>
+                            <span class="stat-value" id="kpi-missing-img" style="color: #f87171;">6</span>
+                            <span class="stat-subtext">Cần nộp ảnh bổ sung</span>
+                        </div>
+                    </div>
+
+                    <!-- KPI 4: Tổng Lực Chiến -->
+                    <div class="stat-card card-total-power">
+                        <div class="stat-icon-wrapper">
+                            <i class="fa-solid fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-label">Tổng Lực Chiến Bang</span>
+                            <span class="stat-value gold" id="kpi-total-power">~7.72T+</span>
+                            <span class="stat-subtext">Chiến lực toàn bang hội</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ACTION TOOLBAR -->
+        <section class="controls-section" style="padding-top: 0;">
+            <div class="container">
+                <div class="admin-toolbar-card">
+                    <div style="display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--gold-200);">
+                        <i class="fa-solid fa-toolbox"></i>
+                        <span>Công Cụ Thao Tác Nhanh:</span>
+                    </div>
+                    <div class="admin-btn-cluster">
+                        <button class="btn btn-gold" onclick="autoRankByPower()">
+                            <i class="fa-solid fa-arrow-down-9-1"></i> Tự Động Xếp STT Theo Lực Chiến
+                        </button>
+                        <button class="btn btn-outline" onclick="exportToCSV()">
+                            <i class="fa-solid fa-file-excel"></i> Xuất Excel/CSV
+                        </button>
+                        <button class="btn btn-outline" onclick="openModal('modal-import-csv')">
+                            <i class="fa-solid fa-file-import"></i> Nhập CSV
+                        </button>
+                        <button class="btn btn-outline" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;" onclick="confirmResetDefaultData()">
+                            <i class="fa-solid fa-rotate-left"></i> Khôi Phục Gốc (41 Người)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SEARCH & FILTERS FOR ADMIN -->
+                <div class="controls-card">
+                    <div class="controls-top-row">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" id="admin-search-input" class="search-input" placeholder="Tìm kiếm nhanh tướng lĩnh cần quản lý...">
+                            <button class="clear-search-btn" id="admin-clear-search">&times;</button>
+                        </div>
+
+                        <div class="filter-dropdown-group">
+                            <select id="admin-filter-dh" class="filter-select">
+                                <option value="all">Tất cả Trạng Thái Đội Hình</option>
+                                <option value="has-img">Đã Có Ảnh Đội Hình</option>
+                                <option value="missing-img">Chưa Cập Nhật Đội Hình</option>
+                            </select>
+
+                            <select id="admin-filter-title" class="filter-select">
+                                <option value="all">Tất cả Danh Hiệu</option>
+                                <option value="Thần Vương">Thần Vương</option>
+                                <option value="Đại Tướng Quân">Đại Tướng Quân</option>
+                                <option value="Phiêu kỵ TQ">Phiêu kỵ TQ</option>
+                                <option value="Thái phó">Thái phó</option>
+                                <option value="Thái úy">Thái úy</option>
+                                <option value="Xa kỵ TQ">Xa kỵ TQ</option>
+                                <option value="Vệ TQ">Vệ TQ</option>
+                                <option value="Tư đồ">Tư đồ</option>
+                                <option value="Trung Lang T">Trung Lang T</option>
+                                <option value="Tư không">Tư không</option>
+                                <option value="Ngự Sử đại phu">Ngự Sử đại phu</option>
+                            </select>
+
+                            <select id="admin-filter-note" class="filter-select">
+                                <option value="all">Tất cả Chức Vụ</option>
+                                <option value="Bang Chủ">Bang Chủ</option>
+                                <option value="Bang phó">Bang phó</option>
+                                <option value="Tinh anh">Tinh anh</option>
+                                <option value="Thành viên">Thành viên</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="controls-bottom-row">
+                        <span class="filter-counter">
+                            Hiển thị: <strong id="admin-member-count">41/41</strong> tướng lĩnh
+                        </span>
+                        <button class="btn-reset-filters" onclick="resetAdminFilters()">
+                            <i class="fa-solid fa-arrow-rotate-right"></i> Đặt lại bộ lọc
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ADMIN MEMBERS TABLE -->
+        <section class="table-section">
+            <div class="container">
+                <div class="table-card-wrapper">
+                    <div class="table-responsive">
+                        <table class="rankings-table">
+                            <thead>
+                                <tr>
+                                    <th class="th-center" style="width: 100px;">STT / HẠNG</th>
+                                    <th style="width: 140px;">ẢNH ĐỘI HÌNH</th>
+                                    <th>TÊN NHÂN VẬT & SERVER</th>
+                                    <th>LỰC CHIẾN</th>
+                                    <th>DANH HIỆU</th>
+                                    <th>CHỨC VỤ</th>
+                                    <th class="th-center" style="width: 150px;">THAO TÁC</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-table-body">
+                                <!-- Rendered by admin.js -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="table-footer">
+                        <div class="pagination-info" id="admin-pagination-info">
+                            Hiển thị 41 thành viên
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <div class="container footer-content">
+                <div class="footer-logo-text">MIÊU CHỦ TAM QUỐC – QUẢN TRỊ BANG HỘI</div>
+                <p>Mọi thay đổi trên trang này được đồng bộ tức thời với Bảng Xếp Hạng công khai</p>
+            </div>
+        </footer>
+
+    </div> <!-- END admin-main-wrapper -->
+
+    <!-- ==========================================================================
+         5. MODALS QUẢN TRỊ
+         ========================================================================== -->
+
+    <!-- MODAL THÊM / SỬA THÀNH VIÊN -->
+    <div class="modal-backdrop" id="modal-admin-member">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title" id="admin-modal-title">
+                    <i class="fa-solid fa-user-pen"></i> Chỉnh Sửa Hùng Tướng
+                </h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-admin-member')">&times;</button>
+            </div>
+            <form id="admin-member-form" onsubmit="handleAdminFormSubmit(event)">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Thứ Hạng (STT) *</label>
+                            <input type="number" id="admin-form-stt" class="form-input" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Biểu tượng / Avatar</label>
+                            <input type="text" id="admin-form-avatar" class="form-input" value="⚔️">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Tên Nhân Vật Trong Game *</label>
+                        <input type="text" id="admin-form-name" class="form-input" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Lực Chiến Bảng Xếp Hạng *</label>
+                            <input type="text" id="admin-form-power" class="form-input" placeholder="VD: >1T2, 800-1T, 200-400B..." required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Server In-Game (nếu biết)</label>
+                            <input type="text" id="admin-form-server" class="form-input" placeholder="VD: S 645, S 657...">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Danh Hiệu *</label>
+                            <select id="admin-form-title" class="form-select" required>
+                                <option value="Thần Vương">Thần Vương</option>
+                                <option value="Đại Tướng Quân">Đại Tướng Quân</option>
+                                <option value="Phiêu kỵ TQ">Phiêu kỵ TQ</option>
+                                <option value="Thái phó">Thái phó</option>
+                                <option value="Thái úy">Thái úy</option>
+                                <option value="Xa kỵ TQ">Xa kỵ TQ</option>
+                                <option value="Vệ TQ">Vệ TQ</option>
+                                <option value="Tư đồ">Tư đồ</option>
+                                <option value="Trung Lang T">Trung Lang T</option>
+                                <option value="Tư không">Tư không</option>
+                                <option value="Ngự Sử đại phu">Ngự Sử đại phu</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Chức Vụ *</label>
+                            <select id="admin-form-note" class="form-select" required>
+                                <option value="Bang Chủ">Bang Chủ</option>
+                                <option value="Bang phó">Bang phó</option>
+                                <option value="Tinh anh">Tinh anh</option>
+                                <option value="Thành viên">Thành viên</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Upload ảnh đội hình trực tiếp trong form -->
+                    <div class="form-group" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08);">
+                        <label class="form-label">
+                            <i class="fa-solid fa-camera"></i> Ảnh Chụp Đội Hình Tướng
+                        </label>
+                        <div style="display: flex; align-items: center; gap: 14px;">
+                            <img id="admin-form-img-preview" src="" alt="Preview" style="width: 50px; height: 70px; border-radius: 4px; object-fit: cover; border: 1px solid var(--gold-border); display: none;">
+                            <input type="file" id="admin-form-img-file" accept="image/*" class="form-input" style="flex: 1;" onchange="handleAdminFormImgChange(event)">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="closeModal('modal-admin-member')">Hủy bỏ</button>
+                    <button type="submit" class="btn btn-gold">
+                        <i class="fa-solid fa-floppy-disk"></i> Lưu Thay Đổi
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL XÓA THÀNH VIÊN -->
+    <div class="modal-backdrop" id="modal-delete-confirm">
+        <div class="modal-container" style="max-width: 480px;">
+            <div class="modal-header">
+                <h3 class="modal-title" style="color: #ff4d6d;">
+                    <i class="fa-solid fa-triangle-exclamation"></i> Xác Nhận Xóa
+                </h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-delete-confirm')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Bạn có chắc muốn xóa <span id="admin-delete-name" style="color: var(--gold-200); font-weight: bold;"></span> khỏi bang hội?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('modal-delete-confirm')">Hủy</button>
+                <button type="button" class="btn btn-crimson" onclick="executeDeleteMember()">
+                    <i class="fa-solid fa-trash-can"></i> Xóa Ngay
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL NHẬP CSV -->
+    <div class="modal-backdrop" id="modal-import-csv">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title"><i class="fa-solid fa-file-import"></i> Nhập File CSV</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-import-csv')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p style="margin-bottom: 15px; font-size: 0.9rem; color: var(--text-secondary);">
+                    Chọn file CSV chứa danh sách thành viên bang hội. Cấu trúc file gồm các cột:
+                    <br><code style="color: var(--gold-300);">STT, TÊN THÀNH VIÊN, LỰC CHIẾN, DANH HIỆU, GHI CHÚ</code>
+                </p>
+                <input type="file" id="admin-csv-input" accept=".csv,text/csv" class="form-input" onchange="handleCSVFileUpload(event)">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeModal('modal-import-csv')">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL XEM ẢNH ĐỘI HÌNH LỚN -->
+    <div class="modal-backdrop" id="modal-preview-image">
+        <div class="modal-container modal-formation-wide" style="max-width: 650px;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="preview-image-title">Ảnh Đội Hình</h3>
+                <button class="modal-close-btn" onclick="closeModal('modal-preview-image')">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center; padding: 15px;">
+                <img id="preview-image-large" src="" alt="Đội hình" style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
