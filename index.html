@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIÊU CHỦ TAM QUỐC – BẢNG XẾP HẠNG BANG HỘI</title>
     
+    <!-- Game Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    
     <!-- Google Fonts: Cinzel & Be Vietnam Pro -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,16 +33,16 @@
                 </div>
                 <div class="title-tagline">
                     <div class="game-subheading">
-                        <i class="fa-solid fa-dragon"></i>
+                        <i class="fa-solid fa-paw"></i>
                         <span>CHIẾN TRƯỜNG TRANH BÁ</span>
                         <span class="badge-server">SERVER BANG HỘI</span>
                     </div>
-                    <h1 class="main-title">BẢNG XẾP HẠNG BANG HỘI</h1>
+                    <h1 class="main-title">BẢNG XẾP HẠNG TOP 15 CAO THỦ</h1>
                     <div class="main-desc">
-                        <span>THỐNG KÊ CHIẾN LỰC – VINH DANH TƯỚNG TÀI</span>
+                        <span>THỐNG KÊ CHIẾN LỰC CHUẨN XÁC – VINH DANH TƯỚNG TÀI</span>
                         <span>•</span>
                         <span class="guild-indicator">
-                            <i class="fa-solid fa-flag"></i> <span id="guild-name-display">BANG HỘI SHADOW WOLF</span>
+                            <i class="fa-solid fa-paw"></i> <span id="guild-name-display">BANG HỘI SHADOW WOLF</span>
                         </span>
                     </div>
                 </div>
@@ -60,27 +65,27 @@
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <!-- Thẻ 1: Tổng thành viên -->
+                <!-- Thẻ 1: Tổng thành viên Top 15 -->
                 <div class="stat-card card-members">
                     <div class="stat-icon-wrapper">
                         <i class="fa-solid fa-users-viewfinder"></i>
                     </div>
                     <div class="stat-info">
-                        <span class="stat-label">Tổng Thành Viên Bang</span>
-                        <span class="stat-value" id="stat-total-members">41</span>
-                        <span class="stat-subtext">Hùng tướng sẵn sàng xuất chiến</span>
+                        <span class="stat-label">Top Cao Thủ</span>
+                        <span class="stat-value" id="stat-total-members">15</span>
+                        <span class="stat-subtext">Top 15 Chiến Lực Cao Nhất Bang</span>
                     </div>
                 </div>
 
-                <!-- Thẻ 2: Tổng chiến lực bang hội -->
+                <!-- Thẻ 2: Tổng chiến lực bang hội Top 15 -->
                 <div class="stat-card card-total-power">
                     <div class="stat-icon-wrapper">
                         <i class="fa-solid fa-fire-flame-curved"></i>
                     </div>
                     <div class="stat-info">
-                        <span class="stat-label">Tổng Lực Chiến Bang Hội</span>
-                        <span class="stat-value gold" id="stat-total-power">~7.72T+</span>
-                        <span class="stat-subtext">Uy trấn thiên hạ - Đỉnh phong Tam Quốc</span>
+                        <span class="stat-label">Tổng Chiến Lực Top 15</span>
+                        <span class="stat-value gold" id="stat-total-power">~6.25T+</span>
+                        <span class="stat-subtext">Đỉnh Phong Chiến Lực Shadow Wolf</span>
                     </div>
                 </div>
 
@@ -91,8 +96,8 @@
                     </div>
                     <div class="stat-info">
                         <span class="stat-label">Bang Chủ Tối Cao (Top 1)</span>
-                        <span class="stat-value" id="stat-top-power">>1T2</span>
-                        <span class="stat-subtext" id="stat-top-name">•SW• Apex (Hhh)</span>
+                        <span class="stat-value" id="stat-top-power">1.664T</span>
+                        <span class="stat-subtext" id="stat-top-name">SW ⚜️ Apex 🇻🇳</span>
                     </div>
                 </div>
 
@@ -102,21 +107,21 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <div class="stat-info">
-                        <span class="stat-label">Lực Chiến Trung Bình</span>
-                        <span class="stat-value" id="stat-avg-power">~188B</span>
-                        <span class="stat-subtext">Sức mạnh đồng đều toàn quân</span>
+                        <span class="stat-label">Lực Chiến Trung Bình Top 15</span>
+                        <span class="stat-value" id="stat-avg-power">~416B</span>
+                        <span class="stat-subtext">Sức mạnh bình quân Top 15</span>
                     </div>
                 </div>
 
                 <!-- Thẻ 5: Tiến độ nộp ảnh đội hình -->
                 <div class="stat-card card-formation">
                     <div class="stat-icon-wrapper">
-                        <i class="fa-solid fa-shield-cat"></i>
+                        <i class="fa-solid fa-paw"></i>
                     </div>
                     <div class="stat-info">
-                        <span class="stat-label">Đã Có Đội Hình</span>
-                        <span class="stat-value" id="stat-formation-count">35/41</span>
-                        <span class="stat-subtext">Tiến độ cập nhật: 85.4%</span>
+                        <span class="stat-label">Đội Hình Top 15 Đã Có</span>
+                        <span class="stat-value" id="stat-formation-count">12/15</span>
+                        <span class="stat-subtext">Tiến độ cập nhật: 80%</span>
                     </div>
                 </div>
             </div>
@@ -128,7 +133,7 @@
         <div class="container">
             <div class="section-title-wrap">
                 <span class="section-badge"><i class="fa-solid fa-trophy"></i> BẢNG VÀNG DANH VỌNG</span>
-                <h2 class="section-title">TAM ĐẠI THỐNG SOÁI BANG HỘI</h2>
+                <h2 class="section-title">TAM ĐẠI THỐNG LĨNH BANG HỘI</h2>
             </div>
             
             <div class="podium-container" id="top-podium-container">

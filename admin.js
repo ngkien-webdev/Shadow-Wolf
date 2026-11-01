@@ -137,6 +137,7 @@ function updateAdminKPIs() {
 function applyAdminFilters() {
     const searchVal = (document.getElementById('admin-search-input')?.value || '').trim();
     const dhFilter = document.getElementById('admin-filter-dh')?.value || 'all';
+    const scopeFilter = document.getElementById('admin-filter-scope')?.value || 'all';
     const titleFilter = document.getElementById('admin-filter-title')?.value || 'all';
     const noteFilter = document.getElementById('admin-filter-note')?.value || 'all';
 
@@ -144,9 +145,14 @@ function applyAdminFilters() {
         if (searchVal) {
             const normSearch = removeVietnameseTones(searchVal.toLowerCase());
             const normName = removeVietnameseTones(m.name.toLowerCase());
+            const normIngame = m.ingameName ? removeVietnameseTones(m.ingameName.toLowerCase()) : '';
             const normTitle = removeVietnameseTones(m.title.toLowerCase());
-            if (!normName.includes(normSearch) && !normTitle.includes(normSearch)) return false;
+            if (!normName.includes(normSearch) && !normIngame.includes(normSearch) && !normTitle.includes(normSearch)) return false;
         }
+
+        // Lọc theo phạm vi hiển thị (Top 15 công khai vs Nội bộ)
+        if (scopeFilter === 'top15' && (Number(m.stt) || 999) > 15) return false;
+        if (scopeFilter === 'internal' && (Number(m.stt) || 999) <= 15) return false;
 
         if (dhFilter === 'has-img' && !m.image) return false;
         if (dhFilter === 'missing-img' && m.image) return false;
@@ -185,6 +191,10 @@ function renderAdminTable() {
     adminFilteredMembers.forEach(m => {
         const titleClass = TITLE_CLASSES[m.title] || 'title-default';
         const noteClass = NOTE_CLASSES[m.note] || 'note-default';
+        const isPublicTop15 = (Number(m.stt) || 999) <= 15;
+        const scopeBadge = isPublicTop15 ? 
+            `<span class="scope-tag scope-public" title="Hiển thị công khai trên Bảng Xếp Hạng"><i class="fa-solid fa-eye"></i> Top 15 (Công khai)</span>` : 
+            `<span class="scope-tag scope-internal" title="Bảo mật nội bộ – Chỉ hiển thị trong Quản Trị"><i class="fa-solid fa-lock"></i> Nội bộ (#${m.stt})</span>`;
 
         // Cột ảnh đội hình
         const imgCell = m.image ? `
@@ -201,15 +211,18 @@ function renderAdminTable() {
         `;
 
         html += `
-            <tr class="member-row">
-                <!-- 1. STT & NÚT ĐIỀU CHỈNH THỨ TỰ -->
+            <tr class="member-row ${isPublicTop15 ? 'row-is-top15' : 'row-is-internal'}">
+                <!-- 1. STT, PHẠM VI & NÚT ĐIỀU CHỈNH THỨ TỰ -->
                 <td class="col-stt">
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
-                        <span style="font-weight: 800; font-family: var(--font-heading); color: var(--gold-200); width: 25px; text-align: center;">${m.stt}</span>
-                        <div style="display: flex; flex-direction: column; gap: 2px;">
-                            <button class="rank-adjust-btn" onclick="moveMemberRank(${m.stt}, -1)" title="Nâng lên 1 hạng">▲</button>
-                            <button class="rank-adjust-btn" onclick="moveMemberRank(${m.stt}, 1)" title="Hạ xuống 1 hạng">▼</button>
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;">
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 6px;">
+                            <span style="font-weight: 800; font-family: var(--font-heading); color: ${isPublicTop15 ? 'var(--gold-200)' : '#94a3b8'}; width: 25px; text-align: center; font-size: 1.05rem;">${m.stt}</span>
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <button class="rank-adjust-btn" onclick="moveMemberRank(${m.stt}, -1)" title="Nâng lên 1 hạng">▲</button>
+                                <button class="rank-adjust-btn" onclick="moveMemberRank(${m.stt}, 1)" title="Hạ xuống 1 hạng">▼</button>
+                            </div>
                         </div>
+                        ${scopeBadge}
                     </div>
                 </td>
 
@@ -227,7 +240,7 @@ function renderAdminTable() {
                 <!-- 4. LỰC CHIẾN -->
                 <td>
                     <div style="display: flex; flex-direction: column;">
-                        <span style="color: var(--gold-200); font-family: var(--font-heading); font-weight: 700;">
+                        <span style="color: var(--gold-200); font-family: var(--font-heading); font-weight: 700; font-size: 1rem;">
                             <i class="fa-solid fa-bolt" style="color: #ffb703;"></i> ${escapeHtml(m.power)}
                         </span>
                         ${m.ingamePower ? `<span style="font-size: 0.72rem; color: var(--text-muted);">In-game: ${m.ingamePower}</span>` : ''}
@@ -338,7 +351,7 @@ function previewLargeImage(imgSrc, name) {
     const titleEl = document.getElementById('preview-image-title');
 
     if (imgEl) imgEl.src = imgSrc;
-    if (titleEl) titleEl.innerHTML = `<i class="fa-solid fa-shield-cat"></i> Đội Hình: ${name}`;
+    if (titleEl) titleEl.innerHTML = `<i class="fa-solid fa-paw"></i> Đội Hình: ${name}`;
     openModal('modal-preview-image');
 }
 
@@ -532,7 +545,7 @@ function setupAdminEventListeners() {
         });
     }
 
-    ['admin-filter-dh', 'admin-filter-title', 'admin-filter-note'].forEach(id => {
+    ['admin-filter-dh', 'admin-filter-scope', 'admin-filter-title', 'admin-filter-note'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('change', () => applyAdminFilters());
     });
@@ -541,7 +554,7 @@ function setupAdminEventListeners() {
 function resetAdminFilters() {
     const search = document.getElementById('admin-search-input');
     if (search) search.value = '';
-    ['admin-filter-dh', 'admin-filter-title', 'admin-filter-note'].forEach(id => {
+    ['admin-filter-dh', 'admin-filter-scope', 'admin-filter-title', 'admin-filter-note'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = 'all';
     });

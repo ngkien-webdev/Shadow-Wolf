@@ -46,8 +46,9 @@
     --card-shadow: 0 14px 40px -5px rgba(0, 0, 0, 0.65);
 
     /* Typography */
-    --font-heading: 'Cinzel', 'Cinzel Decorative', 'Be Vietnam Pro', serif;
+    --font-heading: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-body: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-cinzel: 'Cinzel', 'Cinzel Decorative', serif;
 
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -527,22 +528,27 @@ body {
 
 .section-title {
     font-family: var(--font-heading);
-    font-size: 1.9rem;
-    font-weight: 800;
-    color: #ffffff;
+    font-size: 2.1rem;
+    font-weight: 900;
     letter-spacing: 1.5px;
+    text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #fff7cc 45%, #ffd43b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 14px rgba(255, 212, 59, 0.4));
 }
 
 .section-title::before, .section-title::after {
     content: '';
-    width: 70px;
-    height: 2px;
+    width: 80px;
+    height: 3px;
     background: var(--gold-gradient);
-    opacity: 0.85;
+    border-radius: var(--radius-full);
+    box-shadow: 0 0 12px rgba(255, 212, 59, 0.8);
 }
 
 .podium-container {
@@ -624,6 +630,46 @@ body {
     font-size: 48px;
     background: #1a233a;
     border: 3px solid #475569;
+    overflow: hidden;
+}
+
+.podium-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 8%;
+    border-radius: 50%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.podium-card:hover .podium-avatar-img {
+    transform: scale(1.1);
+}
+
+.podium-server-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #94a3b8;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 3px 12px;
+    border-radius: var(--radius-full);
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.podium-server-tag i {
+    color: var(--gold-400);
+}
+
+.in-game-power-sub {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    font-weight: 600;
+    margin-left: 6px;
 }
 
 .podium-card.rank-1 .podium-avatar {
