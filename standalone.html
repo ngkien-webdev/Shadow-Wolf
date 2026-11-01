@@ -1839,6 +1839,13 @@ body {
     box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
 }
 
+.title-thai-su {
+    background: linear-gradient(135deg, rgba(225, 29, 72, 0.4) 0%, rgba(159, 18, 57, 0.65) 100%);
+    border-color: #fb7185;
+    color: #fff1f2;
+    box-shadow: 0 0 16px rgba(244, 63, 94, 0.45);
+}
+
 .title-phieu-ky-tq {
     background: linear-gradient(135deg, rgba(249, 115, 22, 0.35) 0%, rgba(194, 65, 12, 0.55) 100%);
     border-color: #fb923c;
@@ -2896,6 +2903,7 @@ body {
                             <option value="all">Tất cả Danh Hiệu</option>
                             <option value="Thần Vương">Thần Vương (Vàng kim)</option>
                             <option value="Đại Tướng Quân">Đại Tướng Quân (Tím)</option>
+                            <option value="Thái Sư">Thái Sư (Hồng ngọc)</option>
                             <option value="Phiêu Kỵ Tướng Quân">Phiêu Kỵ Tướng Quân (Cam vàng)</option>
                             <option value="Thái phó">Thái phó (Đỏ)</option>
                             <option value="Thái úy">Thái úy (Đỏ nâu)</option>
@@ -3086,7 +3094,7 @@ body {
 const DEFAULT_MEMBERS = [
     { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.664T", powerVal: 1664, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.664T", server: "S 645" },
     { stt: 2, name: "SW • YUDAI", power: "1.062T", powerVal: 1062, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.062T", server: "S 657" },
-    { stt: 3, name: "SW ⚜️ Ây Ya 🇻🇳", power: "680B", powerVal: 680, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
+    { stt: 3, name: "SW ⚜️ Ây Ya 🇻🇳", power: "680B", powerVal: 680, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
     { stt: 4, name: "SW ⚜️ LTD 🇻🇳", power: "369.8B", powerVal: 369.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "369.8B", server: "S 643" },
     { stt: 5, name: "SW • Alinx •", power: "358.3B", powerVal: 358.3, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.3B", server: "S 645" },
     { stt: 6, name: "SW ⚜️ NTTP 🇻🇳", power: "271.1B", powerVal: 271.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "271.1B", server: "S 657" },
@@ -3128,7 +3136,7 @@ const DEFAULT_MEMBERS = [
 ];
 
 // Khóa LocalStorage
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v11';
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v12';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Trạng thái ứng dụng
@@ -3146,6 +3154,8 @@ let activeFormationMember = null;
 const TITLE_CLASSES = {
     'Thần Vương': 'title-than-vuong',
     'Đại Tướng Quân': 'title-dai-tuong-quan',
+    'Thái Sư': 'title-thai-su',
+    'Thái sư': 'title-thai-su',
     'Phiêu Kỵ Tướng Quân': 'title-phieu-ky-tq',
     'Phiêu kỵ TQ': 'title-phieu-ky-tq',
     'Phiêu Kỵ Tướng': 'title-phieu-ky-tq',
@@ -3241,7 +3251,13 @@ function loadMembersData() {
                 if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
                 if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
                 if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
-                if (m.stt === 3) m.name = 'SW ⚜️ Ây Ya 🇻🇳';
+                if (m.stt === 3) {
+                    m.name = 'SW ⚜️ Ây Ya 🇻🇳';
+                    m.title = 'Thái Sư';
+                    m.power = '680B';
+                    m.powerVal = 680;
+                    m.ingamePower = '680B';
+                }
                 if (m.stt === 6) {
                     m.name = 'SW ⚜️ NTTP 🇻🇳';
                     m.power = '271.1B';
@@ -4284,7 +4300,7 @@ function parseCSVLine(text) {
 }
 
 function downloadSampleCSV() {
-    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\r\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\r\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\r\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Phiêu Kỵ Tướng Quân,Tinh anh\r\n';
+    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\r\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\r\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\r\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Thái Sư,Tinh anh\r\n';
     const blob = new Blob([sample], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
