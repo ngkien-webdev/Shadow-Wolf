@@ -110,6 +110,7 @@ function initApp() {
     renderPodium();
     applyFilterAndSort();
     initLastUpdated();
+    preloadMemberImages();
 
     // Hỗ trợ mở nhanh modal qua URL (VD: ?modal=2)
     const urlParams = new URLSearchParams(window.location.search);
@@ -117,6 +118,34 @@ function initApp() {
     if (openStt) {
         setTimeout(() => openFormationModal(parseInt(openStt, 10)), 300);
     }
+}
+
+/**
+ * Tải trước (Preload) toàn bộ ảnh trận hình vào bộ nhớ RAM trình duyệt
+ * Giúp người dùng click xem đội hình là hiện NGAY LẬP TỨC 0ms không phải chờ load
+ */
+function preloadMemberImages() {
+    if (!members || !members.length) return;
+    
+    // Tải trước Top 15 cao thủ ngay lập tức với mức ưu tiên cao nhất
+    const priorityMembers = members.slice(0, 15);
+    priorityMembers.forEach(m => {
+        if (m.image) {
+            const preImg = new Image();
+            preImg.src = m.image;
+        }
+    });
+
+    // Tải nền các thành viên còn lại khi trình duyệt rảnh rỗi (idle)
+    const idleRun = window.requestIdleCallback || ((cb) => setTimeout(cb, 1000));
+    idleRun(() => {
+        members.slice(15).forEach(m => {
+            if (m.image) {
+                const preImg = new Image();
+                preImg.src = m.image;
+            }
+        });
+    });
 }
 
 /**
@@ -490,7 +519,7 @@ function renderTable() {
     const maxPowerInAll = Math.max(...members.map(m => m.powerVal || calculateNumericPower(m.power)), 1250);
 
     let html = '';
-    pageItems.forEach(m => {
+    pageItems.forEach((m, idx) => {
         const rank = m.stt;
         const powerVal = m.powerVal || calculateNumericPower(m.power);
         const powerPercent = Math.min(Math.round((powerVal / maxPowerInAll) * 100), 100);
@@ -530,7 +559,7 @@ function renderTable() {
         const noteClass = NOTE_CLASSES[m.note] || 'note-default';
 
         html += `
-            <tr class="${rowClass}" data-stt="${m.stt}" onclick="handleRowClick(event, ${m.stt})">
+            <tr class="${rowClass}" style="--row-idx: ${idx};" data-stt="${m.stt}" onclick="handleRowClick(event, ${m.stt})">
                 <!-- CỘT 1: STT -->
                 <td class="col-stt">
                     <div class="stt-cell-content">
@@ -1209,16 +1238,44 @@ function openFormationModal(stt) {
     const screenshotImg = document.getElementById('formation-screenshot-preview');
     const screenshotPlaceholder = document.getElementById('formation-screenshot-placeholder');
     const screenshotContainer = document.getElementById('formation-screenshot-container');
+    const screenshotLoader = document.getElementById('formation-screenshot-loader');
 
     if (member.image) {
-        if (screenshotImg) {
-            screenshotImg.src = member.image;
-            screenshotImg.style.display = 'block';
-        }
         if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'none';
         if (screenshotContainer) screenshotContainer.classList.add('has-active-image');
+
+        if (screenshotImg) {
+            // Đặt trạng thái chuẩn bị để fade-in trơn tru
+            screenshotImg.classList.remove('loaded');
+            screenshotImg.style.display = 'block';
+            if (screenshotLoader) screenshotLoader.classList.add('active');
+
+            const probe = new Image();
+            probe.onload = function() {
+                screenshotImg.src = member.image;
+                screenshotImg.classList.add('loaded');
+                if (screenshotLoader) screenshotLoader.classList.remove('active');
+            };
+            probe.onerror = function() {
+                if (screenshotLoader) screenshotLoader.classList.remove('active');
+                screenshotImg.style.display = 'none';
+                if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
+            };
+            probe.src = member.image;
+
+            // Nếu ảnh đã sẵn sàng trong RAM/Cache của trình duyệt thì kích hoạt ngay
+            if (probe.complete && probe.naturalWidth > 0) {
+                screenshotImg.src = member.image;
+                screenshotImg.classList.add('loaded');
+                if (screenshotLoader) screenshotLoader.classList.remove('active');
+            }
+        }
     } else {
-        if (screenshotImg) screenshotImg.style.display = 'none';
+        if (screenshotLoader) screenshotLoader.classList.remove('active');
+        if (screenshotImg) {
+            screenshotImg.style.display = 'none';
+            screenshotImg.classList.remove('loaded');
+        }
         if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
         if (screenshotContainer) screenshotContainer.classList.remove('has-active-image');
     }
@@ -1274,6 +1331,12 @@ function closeModal(modalId) {
         const anyActive = document.querySelector('.modal-backdrop.active');
         if (!anyActive) {
             document.body.classList.remove('modal-open');
+        }
+        if (modalId === 'modal-formation-view') {
+            const screenshotImg = document.getElementById('formation-screenshot-preview');
+            const screenshotLoader = document.getElementById('formation-screenshot-loader');
+            if (screenshotImg) screenshotImg.classList.remove('loaded');
+            if (screenshotLoader) screenshotLoader.classList.remove('active');
         }
     }
 }
