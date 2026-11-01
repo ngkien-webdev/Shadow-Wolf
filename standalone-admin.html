@@ -2759,12 +2759,12 @@ body {
 const DEFAULT_MEMBERS = [
     { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.664T", powerVal: 1664, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.664T", server: "S 645" },
     { stt: 2, name: "SW • YUDAI", power: "1.062T", powerVal: 1062, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.062T", server: "S 657" },
-    { stt: 3, name: "SW ⚜️ ẦyYa 🇻🇳", power: "680B", powerVal: 680, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
+    { stt: 3, name: "SW ⚜️ Ây Ya 🇻🇳", power: "680B", powerVal: 680, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
     { stt: 4, name: "SW ⚜️ LTD 🇻🇳", power: "369.8B", powerVal: 369.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "369.8B", server: "S 643" },
     { stt: 5, name: "SW • Alinx •", power: "358.3B", powerVal: 358.3, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.3B", server: "S 645" },
-    { stt: 6, name: "SW ⚜️ 1701 🇻🇳", power: "258.5B", powerVal: 258.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "258.5B", server: "S 645" },
-    { stt: 7, name: "SW ⚜️ NTTP 🇻🇳", power: "255.3B", powerVal: 255.3, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "255.3B", server: "S 657" },
-    { stt: 8, name: "SW ⚜️ Howl 🇻🇳", power: "254.5B", powerVal: 254.5, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "254.5B", server: "S 649" },
+    { stt: 6, name: "SW ⚜️ NTTP 🇻🇳", power: "271.1B", powerVal: 271.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "271.1B", server: "S 657" },
+    { stt: 7, name: "SW ⚜️ 1701 🇻🇳", power: "258.5B", powerVal: 258.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "258.5B", server: "S 645" },
+    { stt: 8, name: "SW ⚜️ Bi Tiên", power: "254.5B", powerVal: 254.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-bitien.jpg", ingamePower: "254.5B", server: "S 658" },
     { stt: 9, name: "SW ⭐️ Haruki", power: "233.1B", powerVal: 233.1, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "233.1B", server: "S 656" },
     { stt: 10, name: "SW • ĐỘLiVi", power: "231.8B", powerVal: 231.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "231.8B", server: "S 657" },
     { stt: 11, name: "SW • Rain", power: "220B", powerVal: 220, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "220B", server: "S 645" },
@@ -2801,7 +2801,7 @@ const DEFAULT_MEMBERS = [
 ];
 
 // Khóa LocalStorage
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v7';
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v10';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Trạng thái ứng dụng
@@ -2885,11 +2885,7 @@ function loadMembersData() {
                 if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
                 if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
                 if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
-                if (m.stt === 3 && (m.power === '610.9B' || m.powerVal === 610.9)) {
-                    m.power = '680B';
-                    m.powerVal = 680;
-                    m.ingamePower = '680B';
-                }
+                if (m.stt === 3) m.name = 'SW ⚜️ Ây Ya 🇻🇳';
 
                 const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
                 if (defaultItem) {
@@ -3862,7 +3858,7 @@ function parseCSVLine(text) {
 }
 
 function downloadSampleCSV() {
-    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\r\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\r\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\r\n3,SW ⚜️ ẦyYa 🇻🇳,680B,Phiêu Kỵ Tướng Quân,Tinh anh\r\n';
+    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\r\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\r\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\r\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Phiêu Kỵ Tướng Quân,Tinh anh\r\n';
     const blob = new Blob([sample], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
