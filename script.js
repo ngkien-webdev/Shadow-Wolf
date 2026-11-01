@@ -1315,29 +1315,26 @@ function openFormationModal(stt) {
         if (screenshotContainer) screenshotContainer.classList.add('has-active-image');
 
         if (screenshotImg) {
-            // Đặt trạng thái chuẩn bị để fade-in trơn tru
-            screenshotImg.classList.remove('loaded');
             screenshotImg.style.display = 'block';
-            if (screenshotLoader) screenshotLoader.classList.add('active');
+            screenshotImg.src = member.image;
 
-            const probe = new Image();
-            probe.onload = function() {
-                screenshotImg.src = member.image;
+            // Nếu ảnh đã tải xong trong cache RAM thì hiển thị ngay 0ms không giật lag hay nháy spinner
+            if (screenshotImg.complete && screenshotImg.naturalWidth > 0) {
                 screenshotImg.classList.add('loaded');
                 if (screenshotLoader) screenshotLoader.classList.remove('active');
-            };
-            probe.onerror = function() {
-                if (screenshotLoader) screenshotLoader.classList.remove('active');
-                screenshotImg.style.display = 'none';
-                if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
-            };
-            probe.src = member.image;
+            } else {
+                screenshotImg.classList.remove('loaded');
+                if (screenshotLoader) screenshotLoader.classList.add('active');
 
-            // Nếu ảnh đã sẵn sàng trong RAM/Cache của trình duyệt thì kích hoạt ngay
-            if (probe.complete && probe.naturalWidth > 0) {
-                screenshotImg.src = member.image;
-                screenshotImg.classList.add('loaded');
-                if (screenshotLoader) screenshotLoader.classList.remove('active');
+                screenshotImg.onload = function() {
+                    screenshotImg.classList.add('loaded');
+                    if (screenshotLoader) screenshotLoader.classList.remove('active');
+                };
+                screenshotImg.onerror = function() {
+                    if (screenshotLoader) screenshotLoader.classList.remove('active');
+                    screenshotImg.style.display = 'none';
+                    if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
+                };
             }
         }
     } else {
