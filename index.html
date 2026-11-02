@@ -54,7 +54,7 @@
                 </div>
             </div>
 
-            <!-- Header Action Controls: CHỈ NÚT TRANG QUẢN TRỊ Ở GÓC TRÊN CÙNG BÊN PHẢI -->
+            <!-- Header Action Controls -->
             <div class="header-actions-right">
                 <a href="admin.html" class="btn btn-admin-header" title="Đăng nhập Trang Quản Trị Bang Hội">
                     <i class="fa-solid fa-user-shield"></i> Trang Quản Trị
@@ -81,7 +81,7 @@
                     </div>
                     <div class="stat-value" id="stat-total-members">TOP 15</div>
                     <div class="stat-subtext">
-                        <i class="fa-solid fa-shield-halved"></i> 15 Tinh Anh Đỉnh Phong
+                        <i class="fa-solid fa-shield-halved"></i> 15 Cao Thủ Đỉnh Phong
                     </div>
                 </div>
 
@@ -130,16 +130,32 @@
         </div>
     </section>
 
-    <!-- 3. VINH DANH TAM KIỆT (BỤC TOP 1, TOP 2, TOP 3) -->
+    <!-- 3. VINH DANH TOP 5 CAO THỦ (BỤC NGŨ ĐẠI CHIẾN TƯỚNG) -->
     <section class="podium-section">
         <div class="container">
-            <div class="section-title-wrap">
-                <span class="section-badge"><i class="fa-solid fa-trophy"></i> BẢNG VÀNG DANH VỌNG</span>
-                <h2 class="section-title">TAM ĐẠI THỐNG LĨNH BANG HỘI</h2>
+            <div class="podium-header-banner">
+                <span class="podium-badge-pill"><i class="fa-solid fa-trophy"></i> BẢNG VÀNG DANH VỌNG</span>
+                <h2 class="podium-main-heading">
+                    <span class="heading-wing wing-left"></span>
+                    TOP 5 VINH DANH
+                    <span class="heading-wing wing-right"></span>
+                </h2>
+                <div class="podium-sub-heading">NGŨ ĐẠI THỐNG LĨNH BANG HỘI</div>
+                <div class="podium-watermark-crest">
+                    <i class="fa-solid fa-paw"></i> SHADOW WOLF
+                </div>
             </div>
             
-            <div class="podium-container" id="top-podium-container">
-                <!-- Javascript sẽ render Top 1, Top 2, Top 3 vào đây -->
+            <div class="podium-stage-wrapper">
+                <div class="podium-container top5-layout" id="top-podium-container">
+                    <!-- Javascript sẽ render 5 cột Top 1-5 vào đây: Top 4, Top 2, Top 1, Top 3, Top 5 -->
+                </div>
+                <!-- Bệ bậc tam cấp hoàng kim phát sáng phía dưới -->
+                <div class="podium-stage-pedestal-base">
+                    <div class="pedestal-layer layer-top"></div>
+                    <div class="pedestal-layer layer-mid"></div>
+                    <div class="pedestal-layer layer-bottom"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -230,53 +246,37 @@
         </div>
     </section>
 
-    <!-- 5. BẢNG XẾP HẠNG CHÍNH -->
-    <section class="table-section">
+    <!-- 5. DANH SÁCH THẬP ĐẠI TINH ANH (THẺ TÊN TOP 6 - TOP 15) -->
+    <section class="elite-grid-section">
         <div class="container">
-            <div class="table-card-wrapper">
-                <div class="table-responsive">
-                    <table class="rankings-table" id="rankings-table">
-                        <thead>
-                            <tr>
-                                <th class="th-center" style="width: 80px;">STT</th>
-                                <th>TÊN TƯỚNG IN-GAME</th>
-                                <th>LỰC CHIẾN</th>
-                                <th>DANH HIỆU</th>
-                                <th>CHỨC VỤ</th>
-                                <th class="th-center" style="width: 140px;">ĐỘI HÌNH</th>
-                            </tr>
-                        </thead>
-                        <tbody id="members-table-body">
-                            <!-- Dòng dữ liệu thành viên do JS vẽ -->
-                        </tbody>
-                    </table>
+            <!-- Tiêu đề phân khu -->
+            <div class="section-title-wrap">
+                <span class="section-badge"><i class="fa-solid fa-shield-halved"></i> THẬP ĐẠI TINH ANH</span>
+                <h2 class="section-title">THẬP ĐẠI CAO THỦ BANG HỘI</h2>
+            </div>
 
-                    <div class="table-empty-state" id="table-empty-state">
-                        <div class="empty-icon"><i class="fa-solid fa-paw"></i></div>
-                        <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
-                        <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh sách.</p>
-                    </div>
+            <!-- DANH SÁCH THẺ TÊN TINH ANH TOP 6 - TOP 15 -->
+            <div class="elite-row-container" id="container-row-1">
+                <div class="elite-cards-grid grid-elite-top10" id="elite-cards-row-1">
+                    <!-- Javascript sẽ render Top 6 đến Top 15 vào đây -->
                 </div>
+            </div>
 
-                <!-- Phân trang -->
-                <div class="table-footer">
-                    <div class="pagination-info" id="pagination-info">
-                        Hiển thị Top 15 cao thủ bang hội
-                    </div>
-
-                    <div class="pagination-right-wrap">
-                        <div class="page-size-selector">
-                            <span>Hiển thị mỗi trang:</span>
-                            <select id="page-size-select">
-                                <option value="15" selected>15 người (Toàn bộ Top 15)</option>
-                                <option value="10">10 người</option>
-                            </select>
-                        </div>
-
-                        <div class="pagination-buttons" id="pagination-controls">
-                            <!-- Nút chuyển trang do JS render -->
-                        </div>
-                    </div>
+            <!-- KHU VỰC HIỂN THỊ KẾT QUẢ KHI TÌM KIẾM HOẶC LỌC DANH SÁCH -->
+            <div class="elite-search-results-wrap" id="elite-search-results-wrap" style="display: none;">
+                <div class="elite-row-header">
+                    <span class="elite-row-badge badge-search">
+                        <i class="fa-solid fa-magnifying-glass"></i> KẾT QUẢ TÌM KIẾM & BỘ LỌC
+                    </span>
+                    <span class="elite-row-divider"></span>
+                </div>
+                <div class="elite-cards-grid grid-elite-top10" id="elite-cards-filtered">
+                    <!-- Javascript render các thẻ khớp bộ lọc vào đây -->
+                </div>
+                <div class="table-empty-state" id="table-empty-state" style="display: none;">
+                    <div class="empty-icon"><i class="fa-solid fa-paw"></i></div>
+                    <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
+                    <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh sách.</p>
                 </div>
             </div>
         </div>
@@ -307,7 +307,8 @@
                         <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
                         <div class="fm-tags">
                             <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
-                            <span class="fm-server-pill" id="formation-member-server">Server: S 645</span>
+                            <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i> Ải 12.500</span>
+                            <span class="fm-tower-pill" id="formation-member-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 2.850</span>
                             <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần Vương</span>
                             <span class="member-note-badge note-bang-chu" id="formation-member-note">Bang Chủ</span>
                         </div>

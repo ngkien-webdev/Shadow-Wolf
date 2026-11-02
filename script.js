@@ -3,54 +3,58 @@
  * Hệ thống quản lý dữ liệu, tìm kiếm, lọc, sắp xếp, quản trị và lưu trữ LocalStorage
  */
 
-// DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME
+// DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
-    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.664T", powerVal: 1664, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.664T", server: "S 645" },
-    { stt: 2, name: "SW • YUDAI", power: "1.062T", powerVal: 1062, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.062T", server: "S 657" },
-    { stt: 3, name: "SW ⚜️ Ây Ya 🇻🇳", power: "680B", powerVal: 680, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "680B", server: "S 642" },
-    { stt: 4, name: "SW ⚜️ LTD 🇻🇳", power: "369.8B", powerVal: 369.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "369.8B", server: "S 643" },
-    { stt: 5, name: "SW • Alinx •", power: "358.3B", powerVal: 358.3, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.3B", server: "S 645" },
-    { stt: 6, name: "SW ⚜️ NTTP 🇻🇳", power: "271.1B", powerVal: 271.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "271.1B", server: "S 657" },
-    { stt: 7, name: "SW ⚜️ 1701 🇻🇳", power: "258.5B", powerVal: 258.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "258.5B", server: "S 645" },
-    { stt: 8, name: "SW ⚜️ Bi Tiên", power: "254.5B", powerVal: 254.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-bitien.jpg", ingamePower: "254.5B", server: "S 658" },
-    { stt: 9, name: "SW ⭐️ Haruki", power: "233.1B", powerVal: 233.1, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "233.1B", server: "S 656" },
-    { stt: 10, name: "SW • ĐỘLiVi", power: "231.8B", powerVal: 231.8, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "231.8B", server: "S 657" },
-    { stt: 11, name: "SW • Rain", power: "220B", powerVal: 220, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "220B", server: "S 645" },
-    { stt: 12, name: "SW ღ Rin ღ", power: "200B", powerVal: 200, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "200B", server: "S 645" },
-    { stt: 13, name: "SW ⚜️ Ryo 🇻🇳", power: "197.7B", powerVal: 197.7, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "197.7B", server: "S 645" },
-    { stt: 14, name: "0379318347", power: "195.7B", powerVal: 195.7, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-16.jpg", ingamePower: "195.7B", server: "S 642" },
-    { stt: 15, name: "SW ⚜️ Neko", power: "188.9B", powerVal: 188.9, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "188.9B", server: "S 649" },
-    { stt: 16, name: "SW • Bãoo", power: "185B", powerVal: 185, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "185B", server: null },
-    { stt: 17, name: "SW • Bear", power: "150.2B", powerVal: 150.2, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "150.2B", server: "S 649" },
-    { stt: 18, name: "SW • PandaxMun", power: "111.3B", powerVal: 111.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-18.jpg", ingamePower: "111.3B", server: "S 656" },
-    { stt: 19, name: "SW • Minh Thành", power: "100-200B", powerVal: 156.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "156.7B", server: "S 659" },
-    { stt: 20, name: "SW • Poision", power: "100-200B", powerVal: 130.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "130.3B", server: "S 644" },
-    { stt: 21, name: "SW • WOLF", power: "100-200B", powerVal: 110.8, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "110.8B", server: "S 651" },
-    { stt: 22, name: "SW • Kaneki", power: "80-100B", powerVal: 104.1, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-22.jpg", ingamePower: "104.1B", server: "S 642" },
-    { stt: 23, name: "SW • Cà Na", power: "80-100B", powerVal: 101.3, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-23.jpg", ingamePower: "101.3B", server: "S 641" },
-    { stt: 24, name: "SW • MODA", power: "80-100B", powerVal: 98.74, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-24.jpg", ingamePower: "98.74B", server: "S 650" },
-    { stt: 25, name: "SW • T", power: "80-100B", powerVal: 102.7, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-25.jpg", ingamePower: "102.7B", server: "S 657" },
-    { stt: 26, name: "SW • lukita", power: "60-80B", powerVal: 103.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-26.jpg", ingamePower: "103.5B", server: "S 647" },
-    { stt: 27, name: "SW • lubu", power: "60-80B", powerVal: 97.16, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-27.jpg", ingamePower: "97.16B", server: "S 650" },
-    { stt: 28, name: "SW • Yuta", power: "60-80B", powerVal: 100.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-28.jpg", ingamePower: "100.5B", server: "S 650" },
-    { stt: 29, name: "SW • Next", power: "60-80B", powerVal: 83.54, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-29.jpg", ingamePower: "83.54B", server: "S 655" },
-    { stt: 30, name: "SW • Poitwo", power: "60-80B", powerVal: 98.02, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-30.jpg", ingamePower: "98.02B", server: "S 648" },
-    { stt: 31, name: "SW • Xoài", power: "60-80B", powerVal: 70, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, server: null },
-    { stt: 32, name: "SW • THIEN", power: "60-80B", powerVal: 73.55, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-32.jpg", ingamePower: "73.55B", server: "S 657" },
-    { stt: 33, name: "SW • Hạ", power: "60-80B", powerVal: 73.61, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-33.jpg", ingamePower: "73.61B", server: "S 642" },
-    { stt: 34, name: "SW • Sai", power: "40-80B", powerVal: 71.25, title: "Tư không", note: "Thành viên", avatar: "🐺", image: "images/dh/member-34.jpg", ingamePower: "71.25B", server: "S 647" },
-    { stt: 35, name: "SW • Lang", power: "40-80B", powerVal: 79.02, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-35.jpg", ingamePower: "79.02B", server: "S 641" },
-    { stt: 36, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", server: "S 644" },
-    { stt: 37, name: "SW • Đông", power: "40-80B", powerVal: 93.64, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-37.jpg", ingamePower: "93.64B", server: "S 646" },
-    { stt: 38, name: "SW • Măng", power: "20-60B", powerVal: 40, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, server: null },
-    { stt: 39, name: "SW • Hỏa", power: "20-60B", powerVal: 58.44, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-39.jpg", ingamePower: "58.44B", server: "S 644" },
-    { stt: 40, name: "SW • Bưởi", power: "20-60B", powerVal: 46.65, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-40.jpg", ingamePower: "46.65B", server: "S 649" },
-    { stt: 41, name: "SW • SUKY", power: "20-60B", powerVal: 39.19, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-41.jpg", ingamePower: "39.19B", server: "S 652" }
+    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.715T", powerVal: 1715, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.715T", stage: "17.830", tower: "4.794" },
+    { stt: 2, name: "SW • YUDAI", power: "1.06T", powerVal: 1060, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.06T", stage: "16.883", tower: "4.527" },
+    { stt: 3, name: "SW ⚜️ ÂyYa 🇻🇳", power: "652B", powerVal: 652, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "652B", stage: "16.487", tower: "4.487" },
+    { stt: 4, name: "SW • Alinx •", power: "358.6B", powerVal: 358.6, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.6B", stage: "15.037", tower: "3.567" },
+    { stt: 5, name: "SW ⚜️ LTD 🇻🇳", power: "350.4B", powerVal: 350.4, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "350.4B", stage: "15.136", tower: "3.707" },
+    { stt: 6, name: "SW ⚜️ Stom 🇻🇳", power: "268.1B", powerVal: 268.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "268.1B", stage: "14.354", tower: "3.147" },
+    { stt: 7, name: "SW ⚜️ Bi Tiên", power: "266.9B", powerVal: 266.9, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-bitien.jpg", ingamePower: "266.9B", stage: "14.827", tower: "3.388" },
+    { stt: 8, name: "SW ⚜️ NTTP 🇻🇳", power: "257.8B", powerVal: 257.8, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "257.8B", stage: "14.836", tower: "3.406" },
+    { stt: 9, name: "SW ⭐️ Haruki", power: "237.2B", powerVal: 237.2, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "237.2B", stage: "14.911", tower: "3.484" },
+    { stt: 10, name: "SW • ĐỘLiVi", power: "231.6B", powerVal: 231.6, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "231.6B", stage: "14.759", tower: "3.334" },
+    { stt: 11, name: "SW ⚜️ Rain 🇻🇳", power: "230.5B", powerVal: 230.5, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "230.5B", stage: "14.518", tower: "3.192" },
+    { stt: 12, name: "SW ⚜️ Rinn 🇻🇳", power: "202.8B", powerVal: 202.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "202.8B", stage: "14.650", tower: "3.230" },
+    { stt: 13, name: "SW ⚜️ Ryo 🇻🇳", power: "197.7B", powerVal: 197.7, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "197.7B", stage: "14.600", tower: "3.254" },
+    { stt: 14, name: "SW ⚜️ Neko", power: "188.9B", powerVal: 188.9, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "188.9B", stage: "14.487", tower: "3.218" },
+    { stt: 15, name: "SW ⚜️ Furies", power: "172.9B", powerVal: 172.9, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.9B", stage: "14.482", tower: "3.167" },
+    { stt: 16, name: "SW ⚜️ Klein ★", power: "166.4B", powerVal: 166.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "166.4B", stage: "14.222", tower: "3.138" },
+    { stt: 17, name: "0379318347", power: "160B", powerVal: 160, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-16.jpg", ingamePower: "160B", stage: "14.000", tower: "3.100" },
+    { stt: 18, name: "SW • Bãoo", power: "155B", powerVal: 155, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "155B", stage: "13.800", tower: "3.050" },
+    { stt: 19, name: "SW • Bear", power: "150.2B", powerVal: 150.2, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "150.2B", stage: "13.500", tower: "3.000" },
+    { stt: 20, name: "SW • PandaxMun", power: "111.3B", powerVal: 111.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-18.jpg", ingamePower: "111.3B", stage: "13.200", tower: "2.950" },
+    { stt: 21, name: "SW • Minh Thành", power: "100-200B", powerVal: 156.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "156.7B", stage: "13.000", tower: "2.900" },
+    { stt: 22, name: "SW • Poision", power: "100-200B", powerVal: 130.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "130.3B", stage: "12.800", tower: "2.850" },
+    { stt: 23, name: "SW • WOLF", power: "100-200B", powerVal: 110.8, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "110.8B", stage: "12.500", tower: "2.800" },
+    { stt: 24, name: "SW • Kaneki", power: "80-100B", powerVal: 104.1, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-22.jpg", ingamePower: "104.1B", stage: "12.200", tower: "2.750" },
+    { stt: 25, name: "SW • Cà Na", power: "80-100B", powerVal: 101.3, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-23.jpg", ingamePower: "101.3B", stage: "12.000", tower: "2.700" },
+    { stt: 26, name: "SW • MODA", power: "80-100B", powerVal: 98.74, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-24.jpg", ingamePower: "98.74B", stage: "11.800", tower: "2.650" },
+    { stt: 27, name: "SW • T", power: "80-100B", powerVal: 102.7, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-25.jpg", ingamePower: "102.7B", stage: "11.600", tower: "2.600" },
+    { stt: 28, name: "SW • lukita", power: "60-80B", powerVal: 103.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-26.jpg", ingamePower: "103.5B", stage: "11.400", tower: "2.550" },
+    { stt: 29, name: "SW • lubu", power: "60-80B", powerVal: 97.16, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-27.jpg", ingamePower: "97.16B", stage: "11.200", tower: "2.500" },
+    { stt: 30, name: "SW • Yuta", power: "60-80B", powerVal: 100.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-28.jpg", ingamePower: "100.5B", stage: "11.000", tower: "2.450" },
+    { stt: 31, name: "SW • Next", power: "60-80B", powerVal: 83.54, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-29.jpg", ingamePower: "83.54B", stage: "10.800", tower: "2.400" },
+    { stt: 32, name: "SW • Poitwo", power: "60-80B", powerVal: 98.02, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-30.jpg", ingamePower: "98.02B", stage: "10.600", tower: "2.350" },
+    { stt: 33, name: "SW • Xoài", power: "60-80B", powerVal: 70, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, stage: "10.400", tower: "2.300" },
+    { stt: 34, name: "SW • THIEN", power: "60-80B", powerVal: 73.55, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-32.jpg", ingamePower: "73.55B", stage: "10.200", tower: "2.250" },
+    { stt: 35, name: "SW • Hạ", power: "60-80B", powerVal: 73.61, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-33.jpg", ingamePower: "73.61B", stage: "10.000", tower: "2.200" },
+    { stt: 36, name: "SW • Sai", power: "40-80B", powerVal: 71.25, title: "Tư không", note: "Thành viên", avatar: "🐺", image: "images/dh/member-34.jpg", ingamePower: "71.25B", stage: "9.800", tower: "2.150" },
+    { stt: 37, name: "SW • Lang", power: "40-80B", powerVal: 79.02, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-35.jpg", ingamePower: "79.02B", stage: "9.600", tower: "2.100" },
+    { stt: 38, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" },
+    { stt: 39, name: "SW • Đông", power: "40-80B", powerVal: 93.64, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-37.jpg", ingamePower: "93.64B", stage: "9.200", tower: "2.000" },
+    { stt: 40, name: "SW • Măng", power: "20-60B", powerVal: 40, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, stage: "9.000", tower: "1.950" },
+    { stt: 41, name: "SW • Hỏa", power: "20-60B", powerVal: 58.44, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-39.jpg", ingamePower: "58.44B", stage: "8.800", tower: "1.900" }
 ];
 
-// Khóa LocalStorage
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v12';
+// Khóa LocalStorage (Bản v16: Cập nhật BXH, Lực Chiến, Ải & Tháp chính xác theo ảnh ingame)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v16';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
+
+// Cấu hình Google Sheet kết nối tự động từ Google Form
+const GOOGLE_SHEET_ID = '1BoKUDrS2VPKtXVqkjh4piaDyFd1l_hWDZ_r_uMuQXe4';
+const GOOGLE_SHEET_API_URL = `https://docs.google.com/spreadsheets/d/${GOOGLE_SHEET_ID}/gviz/tq?tqx=out:json`;
 
 // Trạng thái ứng dụng
 let members = [];
@@ -113,6 +117,11 @@ function initApp() {
     applyFilterAndSort();
     initLastUpdated();
     preloadMemberImages();
+
+    // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền
+    setTimeout(() => {
+        syncFromGoogleSheet({ silent: true });
+    }, 1200);
 
     // Hỗ trợ mở nhanh modal qua URL (VD: ?modal=2)
     const urlParams = new URLSearchParams(window.location.search);
@@ -178,7 +187,6 @@ function loadMembersData() {
                     m.ingamePower = '271.1B';
                     m.title = 'Thái phó';
                     m.image = 'images/dh/member-nttp.jpg';
-                    m.server = 'S 657';
                 }
                 if (m.stt === 7) {
                     m.name = 'SW ⚜️ 1701 🇻🇳';
@@ -187,7 +195,6 @@ function loadMembersData() {
                     m.ingamePower = '258.5B';
                     m.title = 'Thái phó';
                     m.image = 'images/dh/member-6.jpg';
-                    m.server = 'S 645';
                 }
                 if (m.stt === 8) {
                     m.name = 'SW ⚜️ Bi Tiên';
@@ -196,14 +203,14 @@ function loadMembersData() {
                     m.ingamePower = '254.5B';
                     m.title = 'Thái phó';
                     m.image = 'images/dh/member-bitien.jpg';
-                    m.server = 'S 658';
                 }
 
                 const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
                 if (defaultItem) {
                     if (!m.ingameName) m.ingameName = defaultItem.ingameName;
                     if (!m.ingamePower) m.ingamePower = defaultItem.ingamePower;
-                    if (m.server === undefined) m.server = defaultItem.server;
+                    if (!m.stage) m.stage = defaultItem.stage;
+                    if (!m.tower) m.tower = defaultItem.tower;
                     if (m.image === undefined) m.image = defaultItem.image;
                     if (!m.powerVal) m.powerVal = defaultItem.powerVal || calculateNumericPower(m.power);
                 } else {
@@ -215,7 +222,7 @@ function loadMembersData() {
             saveMembersData();
         }
     } catch (e) {
-        console.error("Lỗi đọc LocalStorage, sử dụng dữ liệu mặc định:", e);
+        console.error("Lỗi đọc LocalStorage, sử dữ liệu mặc định:", e);
         members = JSON.parse(JSON.stringify(DEFAULT_MEMBERS));
     }
 }
@@ -276,7 +283,7 @@ function calculateNumericPower(powerStr) {
  * Tính toán & cập nhật 4 thẻ thống kê
  */
 function updateStats() {
-    const isPublicPage = document.getElementById('rankings-table') && !document.querySelector('.admin-page-body');
+    const isPublicPage = !document.querySelector('.admin-page-body');
     const statsPool = isPublicPage ? members.filter(m => (Number(m.stt) || 999) <= 15) : members;
     const totalCount = statsPool.length;
 
@@ -326,16 +333,148 @@ function updateStats() {
 }
 
 /**
- * Hiển thị bục vinh danh Top 3 (Podium)
+ * Tạo SVG Danh hiệu Ingame chuẩn bố cục game Miêu Chủ Tam Quốc
+ * Gồm: Linh vật đỉnh đầu có vương miện, song kiếm đan chéo, cánh vương giả 2 bên,
+ * dải lụa hoàng kim uốn lượn có đuôi xẻ rãnh, và chữ 3D gradient stroke nổi bật.
+ */
+function renderIngameTitleSvg(tier, mainTitle) {
+    const configs = {
+        platinum: {
+            cLight: '#f0f9ff', cMid: '#38bdf8', cDark: '#0284c7',
+            cBg1: '#0c223f', cBg2: '#040d1a',
+            strokeColor: '#7dd3fc', textStroke: '#021024',
+            wingColor: '#38bdf8', gemColor: '#38bdf8', id: 'plat'
+        },
+        darkgold: {
+            cLight: '#fef9c3', cMid: '#eab308', cDark: '#854d0e',
+            cBg1: '#261b0d', cBg2: '#0d0903',
+            strokeColor: '#facc15', textStroke: '#0d0802',
+            wingColor: '#ca8a04', gemColor: '#eab308', id: 'darkg'
+        },
+        gold: {
+            cLight: '#fffbeb', cMid: '#f59e0b', cDark: '#b45309',
+            cBg1: '#351c04', cBg2: '#130801',
+            strokeColor: '#fbbf24', textStroke: '#240a02',
+            wingColor: '#f59e0b', gemColor: '#fbbf24', id: 'gold'
+        },
+        silver: {
+            cLight: '#ffffff', cMid: '#cbd5e1', cDark: '#64748b',
+            cBg1: '#1e293b', cBg2: '#090d16',
+            strokeColor: '#e2e8f0', textStroke: '#0f172a',
+            wingColor: '#94a3b8', gemColor: '#cbd5e1', id: 'silv'
+        },
+        bronze: {
+            cLight: '#ffedd5', cMid: '#fb923c', cDark: '#c2410c',
+            cBg1: '#361506', cBg2: '#130601',
+            strokeColor: '#fdba74', textStroke: '#240802',
+            wingColor: '#ea580c', gemColor: '#f97316', id: 'brz'
+        }
+    };
+
+    const c = configs[tier] || configs.gold;
+
+    return `
+    <svg class="ingame-badge-svg" viewBox="0 0 240 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="p-text-${c.id}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ffffff"/>
+                <stop offset="30%" stop-color="${c.cLight}"/>
+                <stop offset="70%" stop-color="${c.cMid}"/>
+                <stop offset="100%" stop-color="${c.cDark}"/>
+            </linearGradient>
+            <linearGradient id="p-border-${c.id}" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="${c.cLight}"/>
+                <stop offset="50%" stop-color="${c.cMid}"/>
+                <stop offset="100%" stop-color="${c.cDark}"/>
+            </linearGradient>
+            <linearGradient id="p-bg-${c.id}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="${c.cBg1}"/>
+                <stop offset="50%" stop-color="${c.cBg2}"/>
+                <stop offset="100%" stop-color="${c.cBg1}"/>
+            </linearGradient>
+            <filter id="p-glow-${c.id}" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="${c.cMid}" flood-opacity="0.45"/>
+            </filter>
+        </defs>
+
+        <!-- CÁNH CHIẾN BINH HAI BÊN -->
+        <g class="badge-wings" filter="url(#p-glow-${c.id})">
+            <path d="M 90 22 C 70 12, 42 8, 16 16 C 28 22, 42 26, 58 28 C 36 28, 20 33, 10 41 C 24 42, 44 42, 66 39 C 48 44, 32 50, 24 56 C 42 54, 64 49, 85 40 Z" 
+                  fill="url(#p-border-${c.id})" opacity="0.9"/>
+            <path d="M 85 24 C 68 16, 44 13, 22 19 C 38 25, 56 27, 74 30 C 51 33, 32 38, 20 43 C 38 44, 58 42, 76 38 Z" 
+                  fill="url(#p-bg-${c.id})" opacity="0.6"/>
+
+            <path d="M 150 22 C 170 12, 198 8, 224 16 C 212 22, 198 26, 182 28 C 204 28, 220 33, 230 41 C 216 42, 196 42, 174 39 C 192 44, 208 50, 216 56 C 198 54, 176 49, 155 40 Z" 
+                  fill="url(#p-border-${c.id})" opacity="0.9"/>
+            <path d="M 155 24 C 172 16, 196 13, 218 19 C 202 25, 184 27, 166 30 C 189 33, 208 38, 220 43 C 202 44, 182 42, 164 38 Z" 
+                  fill="url(#p-bg-${c.id})" opacity="0.6"/>
+        </g>
+
+        <!-- KIẾM THẦN ĐAN CHÉO -->
+        <g class="badge-swords" opacity="0.85">
+            <line x1="98" y1="5" x2="142" y2="32" stroke="${c.cLight}" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="95" y1="3" x2="101" y2="7" stroke="${c.cMid}" stroke-width="4" stroke-linecap="round"/>
+            <line x1="142" y1="5" x2="98" y2="32" stroke="${c.cLight}" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="145" y1="3" x2="139" y2="7" stroke="${c.cMid}" stroke-width="4" stroke-linecap="round"/>
+        </g>
+
+        <!-- ĐUÔI RUY BĂNG -->
+        <g class="badge-tails">
+            <path d="M 26 33 L 6 43 L 22 51 L 6 59 L 30 56 L 42 46 Z" fill="url(#p-bg-${c.id})" stroke="${c.strokeColor}" stroke-width="1.2"/>
+            <path d="M 214 33 L 234 43 L 218 51 L 234 59 L 210 56 L 198 46 Z" fill="url(#p-bg-${c.id})" stroke="${c.strokeColor}" stroke-width="1.2"/>
+        </g>
+
+        <!-- THÂN DẢI LỤA BẢNG TÊN CHÍNH -->
+        <path d="M 32 30 C 72 23, 168 23, 208 30 C 216 31, 218 36, 216 43 L 210 55 C 208 59, 202 61, 196 60 C 154 56, 86 56, 44 60 C 38 61, 32 59, 30 55 L 24 43 C 22 36, 24 31, 32 30 Z" 
+              fill="url(#p-bg-${c.id})" stroke="url(#p-border-${c.id})" stroke-width="2.2" filter="url(#p-glow-${c.id})"/>
+
+        <!-- Khung viền chỉ vàng kim bên trong -->
+        <path d="M 36 33 C 74 28, 166 28, 204 33 L 205 44 L 200 54 C 154 51, 86 51, 40 54 L 35 44 Z" 
+              fill="none" stroke="${c.cLight}" stroke-width="0.8" opacity="0.6"/>
+
+        <!-- Đinh tán góc -->
+        <circle cx="40" cy="45" r="1.8" fill="${c.cLight}"/>
+        <circle cx="200" cy="45" r="1.8" fill="${c.cLight}"/>
+
+        <!-- LINH VẬT CHIẾN LANG ĐỈNH ĐẦU -->
+        <g class="badge-crest" transform="translate(120, 16)">
+            <path d="M -14 -4 L -8 -12 L 0 -7 L 8 -12 L 14 -4 L 10 2 L -10 2 Z" fill="url(#p-border-${c.id})" stroke="${c.cLight}" stroke-width="1"/>
+            <circle cx="0" cy="2" r="12" fill="url(#p-bg-${c.id})" stroke="url(#p-border-${c.id})" stroke-width="2"/>
+            <circle cx="0" cy="2" r="9.5" fill="none" stroke="${c.cLight}" stroke-width="0.8" stroke-dasharray="2 1" opacity="0.8"/>
+            <path d="M -5 -2 L -8 5 L -3 7 L 0 4 L 3 7 L 8 5 L 5 -2 L 3 1 L 0 -1 L -3 1 Z" fill="${c.cLight}"/>
+            <polygon points="0,-4 3,-1 0,2 -3,-1" fill="${c.gemColor}"/>
+        </g>
+
+        <!-- CHỮ DANH HIỆU INGAME 3D -->
+        <text x="120" y="49" 
+              text-anchor="middle" 
+              font-family="'Montserrat', 'Arial Black', sans-serif" 
+              font-weight="900" 
+              font-size="11.5" 
+              letter-spacing="1.2"
+              stroke="${c.textStroke}" 
+              stroke-width="4.5" 
+              stroke-linejoin="round"
+              paint-order="stroke fill"
+              fill="url(#p-text-${c.id})">${mainTitle}</text>
+    </svg>
+    `;
+}
+
+/**
+ * Hiển thị bục vinh danh Top 5 (Podium Ngũ Đại Chiến Tướng)
+ * Thứ tự trực quan từ trái qua phải: Top 4 (Bạch Ngân) | Top 2 (Hắc Kim) | Top 1 (Bạch Kim) | Top 3 (Hoàng Kim) | Top 5 (Xích Đồng)
  */
 function renderPodium() {
     const podiumContainer = document.getElementById('top-podium-container');
     if (!podiumContainer) return;
 
     const sortedForPodium = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
-    const top1 = sortedForPodium[0];
-    const top2 = sortedForPodium[1];
-    const top3 = sortedForPodium[2];
+    const top1 = sortedForPodium[0]; // Bạch Kim
+    const top2 = sortedForPodium[1]; // Hắc Kim
+    const top3 = sortedForPodium[2]; // Hoàng Kim
+    const top4 = sortedForPodium[3]; // Bạch Ngân
+    const top5 = sortedForPodium[4]; // Xích Đồng
 
     if (!top1) {
         podiumContainer.innerHTML = '<div class="empty-podium">Chưa có dữ liệu thành viên</div>';
@@ -343,25 +482,70 @@ function renderPodium() {
     }
 
     podiumContainer.innerHTML = `
-        <!-- TOP 2: Á QUÂN (BẠCH NGÂN LANG TƯỚNG) -->
-        ${top2 ? `
-        <div class="podium-card rank-2 animate-fade-in" onclick="openFormationModal(${top2.stt})">
+        <!-- TOP 4: BẠCH NGÂN (ORDER 1, BÊN TRÁI NGOÀI CÙNG) -->
+        ${top4 ? `
+        <div class="podium-card rank-4 animate-fade-in" onclick="openFormationModal(${top4.stt})">
             <div class="podium-pillar">
                 <div class="podium-avatar-wrapper wrapper-silver">
                     <div class="podium-crown-badge silver">
-                        <i class="fa-solid fa-shield-halved"></i>
+                        <i class="fa-solid fa-medal"></i>
                     </div>
                     <div class="podium-avatar silver-glow wolf-podium-silver">
                         <div class="wolf-aura-burst aura-silver"></div>
                         <img src="images/logo.png" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver">
                     </div>
                 </div>
-                <div class="podium-rank-badge-wrap">
-                    <div class="podium-rank-tag silver"><i class="fa-solid fa-medal"></i> HẠNG 2 • Á QUÂN</div>
-                    <div class="podium-wolf-tier silver-tier">BẠCH NGÂN LANG TƯỚNG</div>
+                <div class="podium-rank-tag tag-silver"><i class="fa-solid fa-medal"></i> TOP 4</div>
+                
+                <!-- BỐ CỤC DANH HIỆU INGAME: BẠCH NGÂN LANG TƯỚNG -->
+                <div class="ingame-title-plaque">
+                    ${renderIngameTitleSvg('silver', 'BẠCH NGÂN LANG TƯỚNG')}
                 </div>
+
                 <div class="podium-info">
-                    ${top2.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top2.server)}</span>` : ''}
+                    <div class="podium-stage-tower">
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top4.stage || '15.037'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top4.tower || '3.567'}</span>
+                    </div>
+                    <h3 class="podium-name" title="${escapeHtml(top4.name)}">${escapeHtml(top4.name)}</h3>
+                    <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top4.power)}</div>
+                    <div class="podium-badges">
+                        <span class="member-title-badge ${TITLE_CLASSES[top4.title] || 'title-default'}">${escapeHtml(top4.title)}</span>
+                        <span class="member-note-badge ${NOTE_CLASSES[top4.note] || 'note-default'}">${escapeHtml(top4.note)}</span>
+                    </div>
+                </div>
+                <button class="podium-view-btn" onclick="event.stopPropagation(); openFormationModal(${top4.stt})">
+                    <i class="fa-solid fa-paw"></i> Xem Đội Hình
+                </button>
+            </div>
+        </div>
+        ` : ''}
+
+        <!-- TOP 2: HẮC KIM (ORDER 2, BÊN TRÁI TOP 1) -->
+        ${top2 ? `
+        <div class="podium-card rank-2 animate-fade-in" onclick="openFormationModal(${top2.stt})">
+            <div class="podium-pillar">
+                <div class="podium-avatar-wrapper wrapper-darkgold">
+                    <div class="podium-crown-badge darkgold">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="podium-avatar darkgold-glow wolf-podium-darkgold">
+                        <div class="wolf-aura-burst aura-darkgold"></div>
+                        <img src="images/logo.png" alt="Hắc Đế Thượng Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-darkgold">
+                    </div>
+                </div>
+                <div class="podium-rank-tag tag-darkgold"><i class="fa-solid fa-shield-halved"></i> TOP 2</div>
+                
+                <!-- BỐ CỤC DANH HIỆU INGAME: HẮC ĐẾ THƯỢNG TÔN -->
+                <div class="ingame-title-plaque">
+                    ${renderIngameTitleSvg('darkgold', 'HẮC ĐẾ THƯỢNG TÔN')}
+                </div>
+
+                <div class="podium-info">
+                    <div class="podium-stage-tower">
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '16.883'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top2.tower || '4.527'}</span>
+                    </div>
                     <h3 class="podium-name" title="${escapeHtml(top2.name)}">${escapeHtml(top2.name)}</h3>
                     <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top2.power)}</div>
                     <div class="podium-badges">
@@ -376,59 +560,71 @@ function renderPodium() {
         </div>
         ` : ''}
 
-        <!-- TOP 1: QUÁN QUÂN (HOÀNG KIM LANG VƯƠNG) -->
+        <!-- TOP 1: BẠCH KIM (ORDER 3, CHÍNH GIỮA, CAO NHẤT) -->
         <div class="podium-card rank-1 animate-fade-in" onclick="openFormationModal(${top1.stt})">
             <div class="podium-dragon-crest">
-                <i class="fa-solid fa-crown dragon-crown"></i>
+                <i class="fa-solid fa-crown platinum-crown"></i>
             </div>
-            <div class="podium-pillar gold-pillar">
-                <div class="podium-avatar-wrapper wrapper-gold">
-                    <div class="podium-crown-badge gold">
+            <div class="podium-pillar platinum-pillar">
+                <div class="podium-avatar-wrapper wrapper-platinum">
+                    <div class="podium-crown-badge platinum">
                         <i class="fa-solid fa-crown"></i>
                     </div>
-                    <div class="podium-avatar gold-glow wolf-podium-gold">
-                        <div class="wolf-aura-burst aura-gold"></div>
-                        <img src="images/logo.png" alt="Hoàng Kim Lang Vương" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
+                    <div class="podium-avatar platinum-glow wolf-podium-platinum">
+                        <div class="wolf-aura-burst aura-platinum"></div>
+                        <img src="images/logo.png" alt="Bạch Thánh Kim Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-platinum">
                     </div>
                 </div>
-                <div class="podium-rank-badge-wrap">
-                    <div class="podium-rank-tag gold"><i class="fa-solid fa-crown"></i> QUÁN QUÂN • TOP 1</div>
-                    <div class="podium-wolf-tier gold-tier">HOÀNG KIM LANG VƯƠNG</div>
+                <div class="podium-rank-tag tag-platinum"><i class="fa-solid fa-crown"></i> TOP 1</div>
+                
+                <!-- BỐ CỤC DANH HIỆU INGAME: BẠCH THÁNH KIM TÔN -->
+                <div class="ingame-title-plaque">
+                    ${renderIngameTitleSvg('platinum', 'BẠCH THÁNH KIM TÔN')}
                 </div>
+
                 <div class="podium-info">
-                    ${top1.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top1.server)}</span>` : ''}
+                    <div class="podium-stage-tower">
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '17.830'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top1.tower || '4.794'}</span>
+                    </div>
                     <h3 class="podium-name main-champion" title="${escapeHtml(top1.name)}">${escapeHtml(top1.name)}</h3>
-                    <div class="podium-power gold-power"><i class="fa-solid fa-fire-flame-curved"></i> ${escapeHtml(top1.power)}</div>
+                    <div class="podium-power platinum-power"><i class="fa-solid fa-fire-flame-curved"></i> ${escapeHtml(top1.power)}</div>
                     <div class="podium-badges">
                         <span class="member-title-badge ${TITLE_CLASSES[top1.title] || 'title-default'}">${escapeHtml(top1.title)}</span>
                         <span class="member-note-badge ${NOTE_CLASSES[top1.note] || 'note-default'}">${escapeHtml(top1.note)}</span>
                     </div>
                 </div>
-                <button class="podium-view-btn gold-btn" onclick="event.stopPropagation(); openFormationModal(${top1.stt})">
+                <button class="podium-view-btn platinum-btn" onclick="event.stopPropagation(); openFormationModal(${top1.stt})">
                     <i class="fa-solid fa-paw"></i> Chi Tiết Đội Hình
                 </button>
             </div>
         </div>
 
-        <!-- TOP 3: QUÝ QUÂN (XÍCH ĐỒNG LANG TƯỚNG) -->
+        <!-- TOP 3: HOÀNG KIM (ORDER 4, BÊN PHẢI TOP 1) -->
         ${top3 ? `
         <div class="podium-card rank-3 animate-fade-in" onclick="openFormationModal(${top3.stt})">
             <div class="podium-pillar">
-                <div class="podium-avatar-wrapper wrapper-bronze">
-                    <div class="podium-crown-badge bronze">
+                <div class="podium-avatar-wrapper wrapper-gold">
+                    <div class="podium-crown-badge gold">
                         <i class="fa-solid fa-award"></i>
                     </div>
-                    <div class="podium-avatar bronze-glow wolf-podium-bronze">
-                        <div class="wolf-aura-burst aura-bronze"></div>
-                        <img src="images/logo.png" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
+                    <div class="podium-avatar gold-glow wolf-podium-gold">
+                        <div class="wolf-aura-burst aura-gold"></div>
+                        <img src="images/logo.png" alt="Hoàng Kim Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
                     </div>
                 </div>
-                <div class="podium-rank-badge-wrap">
-                    <div class="podium-rank-tag bronze"><i class="fa-solid fa-trophy"></i> HẠNG 3 • QUÝ QUÂN</div>
-                    <div class="podium-wolf-tier bronze-tier">XÍCH ĐỒNG LANG TƯỚNG</div>
+                <div class="podium-rank-tag tag-gold"><i class="fa-solid fa-award"></i> TOP 3</div>
+                
+                <!-- BỐ CỤC DANH HIỆU INGAME: HOÀNG KIM LANG TƯỚNG -->
+                <div class="ingame-title-plaque">
+                    ${renderIngameTitleSvg('gold', 'HOÀNG KIM LANG TƯỚNG')}
                 </div>
+
                 <div class="podium-info">
-                    ${top3.server ? `<span class="podium-server-tag"><i class="fa-solid fa-server"></i> Server: ${escapeHtml(top3.server)}</span>` : ''}
+                    <div class="podium-stage-tower">
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16.487'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top3.tower || '4.487'}</span>
+                    </div>
                     <h3 class="podium-name" title="${escapeHtml(top3.name)}">${escapeHtml(top3.name)}</h3>
                     <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top3.power)}</div>
                     <div class="podium-badges">
@@ -442,6 +638,152 @@ function renderPodium() {
             </div>
         </div>
         ` : ''}
+
+        <!-- TOP 5: XÍCH ĐỒNG (ORDER 5, BÊN PHẢI NGOÀI CÙNG) -->
+        ${top5 ? `
+        <div class="podium-card rank-5 animate-fade-in" onclick="openFormationModal(${top5.stt})">
+            <div class="podium-pillar">
+                <div class="podium-avatar-wrapper wrapper-bronze">
+                    <div class="podium-crown-badge bronze">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="podium-avatar bronze-glow wolf-podium-bronze">
+                        <div class="wolf-aura-burst aura-bronze"></div>
+                        <img src="images/logo.png" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
+                    </div>
+                </div>
+                <div class="podium-rank-tag tag-bronze"><i class="fa-solid fa-star"></i> TOP 5</div>
+                
+                <!-- BỐ CỤC DANH HIỆU INGAME: XÍCH ĐỒNG LANG TƯỚNG -->
+                <div class="ingame-title-plaque">
+                    ${renderIngameTitleSvg('bronze', 'XÍCH ĐỒNG LANG TƯỚNG')}
+                </div>
+
+                <div class="podium-info">
+                    <div class="podium-stage-tower">
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top5.stage || '15.136'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top5.tower || '3.707'}</span>
+                    </div>
+                    <h3 class="podium-name" title="${escapeHtml(top5.name)}">${escapeHtml(top5.name)}</h3>
+                    <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top5.power)}</div>
+                    <div class="podium-badges">
+                        <span class="member-title-badge ${TITLE_CLASSES[top5.title] || 'title-default'}">${escapeHtml(top5.title)}</span>
+                        <span class="member-note-badge ${NOTE_CLASSES[top5.note] || 'note-default'}">${escapeHtml(top5.note)}</span>
+                    </div>
+                </div>
+                <button class="podium-view-btn" onclick="event.stopPropagation(); openFormationModal(${top5.stt})">
+                    <i class="fa-solid fa-paw"></i> Xem Đội Hình
+                </button>
+            </div>
+        </div>
+        ` : ''}
+    `;
+}
+
+/**
+ * Hiển thị các thẻ tên Thập Đại Tinh Anh (Top 6 - Top 15)
+ */
+function renderEliteCards() {
+    const row1Container = document.getElementById('elite-cards-row-1');
+    const searchResultsWrap = document.getElementById('elite-search-results-wrap');
+    const filteredGrid = document.getElementById('elite-cards-filtered');
+    const emptyState = document.getElementById('table-empty-state');
+
+    if (!row1Container) return;
+
+    // Kiểm tra xem người dùng có đang tìm kiếm hoặc lọc không
+    const searchVal = (document.getElementById('search-input')?.value || '').trim();
+    const titleFilter = document.getElementById('filter-title')?.value || 'all';
+    const noteFilter = document.getElementById('filter-note')?.value || 'all';
+    const powerTierFilter = document.getElementById('filter-power-tier')?.value || 'all';
+    const isFiltered = searchVal !== '' || titleFilter !== 'all' || noteFilter !== 'all' || powerTierFilter !== 'all' || currentSort.column !== 'stt' || currentSort.direction !== 'asc';
+
+    if (isFiltered) {
+        const fixedContainer = document.getElementById('container-row-1');
+        if (fixedContainer) fixedContainer.style.display = 'none';
+        if (searchResultsWrap) searchResultsWrap.style.display = 'block';
+
+        if (filteredMembers.length === 0) {
+            if (filteredGrid) filteredGrid.innerHTML = '';
+            if (emptyState) emptyState.style.display = 'block';
+            return;
+        }
+
+        if (emptyState) emptyState.style.display = 'none';
+        if (filteredGrid) filteredGrid.innerHTML = filteredMembers.map(m => generateEliteCardHtml(m)).join('');
+    } else {
+        const fixedContainer = document.getElementById('container-row-1');
+        if (fixedContainer) fixedContainer.style.display = 'block';
+        if (searchResultsWrap) searchResultsWrap.style.display = 'none';
+        if (emptyState) emptyState.style.display = 'none';
+
+        const sortedTop15 = [...members].filter(m => (Number(m.stt) || 999) <= 15).sort((a, b) => (a.stt || 0) - (b.stt || 0));
+        const eliteMembers = sortedTop15.filter(m => m.stt >= 6 && m.stt <= 15);
+
+        row1Container.innerHTML = eliteMembers.map(m => generateEliteCardHtml(m)).join('');
+    }
+}
+
+/**
+ * Tạo HTML cho 1 thẻ tướng lĩnh tinh anh (Elite Name Card)
+ */
+function generateEliteCardHtml(m) {
+    let shieldClass = 'rank-shield-silver';
+    let shieldIcon = '<i class="fa-solid fa-shield"></i>';
+    if (m.stt <= 8) {
+        shieldClass = 'rank-shield-diamond';
+        shieldIcon = '<i class="fa-solid fa-crown"></i>';
+    } else if (m.stt <= 10) {
+        shieldClass = 'rank-shield-gold';
+        shieldIcon = '<i class="fa-solid fa-star"></i>';
+    }
+
+    const titleClass = TITLE_CLASSES[m.title] || 'title-default';
+    const noteClass = NOTE_CLASSES[m.note] || 'note-default';
+    const avatarImg = 'images/logo.png';
+    const stageDisplay = m.stage || '5.000';
+    const towerDisplay = m.tower || '1.000';
+    const rankStr = m.stt < 10 ? '0' + m.stt : m.stt;
+
+    return `
+        <div class="elite-member-card" onclick="openFormationModal(${m.stt})">
+            <span class="card-corner corner-tl"></span>
+            <span class="card-corner corner-tr"></span>
+            <span class="card-corner corner-bl"></span>
+            <span class="card-corner corner-br"></span>
+
+            <div class="elite-card-topbar">
+                <span class="elite-rank-shield ${shieldClass}">
+                    ${shieldIcon} #${rankStr}
+                </span>
+                <div class="elite-milestones-plate">
+                    <span class="milestone-pill pill-stage" title="Vượt Ải"><i class="fa-solid fa-mountain"></i> ${stageDisplay}</span>
+                    <span class="milestone-pill pill-tower" title="Leo Tháp"><i class="fa-solid fa-chess-rook"></i> ${towerDisplay}</span>
+                </div>
+            </div>
+
+            <div class="elite-avatar-container">
+                <div class="elite-avatar-ring">
+                    <img src="${avatarImg}" alt="${escapeHtml(m.name)}" class="elite-avatar-img">
+                </div>
+            </div>
+
+            <div class="elite-name-text" title="${escapeHtml(m.name)}">${escapeHtml(m.name)}</div>
+
+            <div class="elite-power-card-box">
+                <i class="fa-solid fa-bolt power-bolt-icon"></i>
+                <span class="power-number-text">${escapeHtml(m.power)}</span>
+            </div>
+
+            <div class="elite-tags-row">
+                <span class="tag-badge ${titleClass}">${escapeHtml(m.title)}</span>
+                <span class="tag-badge ${noteClass}">${escapeHtml(m.note)}</span>
+            </div>
+
+            <button class="elite-action-btn" onclick="event.stopPropagation(); openFormationModal(${m.stt})">
+                <i class="fa-solid fa-paw"></i> Xem Đội Hình
+            </button>
+        </div>
     `;
 }
 
@@ -449,15 +791,14 @@ function renderPodium() {
  * Tìm kiếm & Lọc dữ liệu
  */
 function applyFilterAndSort() {
-    const isPublicTable = document.getElementById('rankings-table') && !document.querySelector('.admin-page-body');
+    const isPublicPage = !document.querySelector('.admin-page-body');
     const searchVal = (document.getElementById('search-input')?.value || '').trim();
     const titleFilter = document.getElementById('filter-title')?.value || 'all';
     const noteFilter = document.getElementById('filter-note')?.value || 'all';
     const powerTierFilter = document.getElementById('filter-power-tier')?.value || 'all';
 
     // Trang công khai (index.html): CHỈ HIỂN THỊ TOP 15 CAO THỦ!
-    // Các thành viên từ hạng #16 trở xuống được bảo mật và chỉ quản trị viên mới thấy trên trang Admin.
-    const pool = isPublicTable ? members.filter(m => (Number(m.stt) || 999) <= 15) : members;
+    const pool = isPublicPage ? members.filter(m => (Number(m.stt) || 999) <= 15) : members;
 
     filteredMembers = pool.filter(m => {
         // Tìm kiếm tên thành viên in-game
@@ -496,6 +837,7 @@ function applyFilterAndSort() {
 
     sortMembersData();
     currentPage = 1;
+    renderEliteCards();
     renderTable();
     renderPagination();
     updateFilterCounts();
@@ -539,6 +881,7 @@ function setSorting(column, direction) {
     });
 
     sortMembersData();
+    renderEliteCards();
     renderTable();
     renderPagination();
 }
@@ -806,8 +1149,8 @@ function changePage(newPage) {
 
 function updateFilterCounts() {
     const countBadge = document.getElementById('filtered-count-badge');
-    const isPublicTable = document.getElementById('rankings-table') && !document.querySelector('.admin-page-body');
-    const poolTotal = isPublicTable ? 15 : members.length;
+    const isPublicPage = !document.querySelector('.admin-page-body');
+    const poolTotal = isPublicPage ? 15 : members.length;
     if (countBadge) {
         countBadge.textContent = `${filteredMembers.length}/${poolTotal}`;
     }
@@ -895,6 +1238,11 @@ function setupEventListeners() {
     const editGuildNameBtn = document.getElementById('btn-edit-guild-name');
     if (editGuildNameBtn) {
         editGuildNameBtn.addEventListener('click', promptEditGuildName);
+    }
+
+    const btnSyncGoogleSheet = document.getElementById('btn-sync-google-sheet');
+    if (btnSyncGoogleSheet) {
+        btnSyncGoogleSheet.addEventListener('click', () => syncFromGoogleSheet({ silent: false }));
     }
 }
 
@@ -1282,6 +1630,208 @@ function formatDateTime(d) {
 }
 
 /**
+ * ==========================================================================
+ * TỰ ĐỘNG ĐỒNG BỘ TỪ GOOGLE SHEET / GOOGLE FORM
+ * ==========================================================================
+ */
+
+/**
+ * Chuyển đổi link Google Drive sang URL ảnh trực tiếp hiển thị được trên web
+ */
+function convertGoogleDriveUrl(url) {
+    if (!url) return null;
+    url = url.trim();
+    if (!url) return null;
+
+    // Nếu đã là link ảnh trực tiếp hoặc ảnh nội bộ
+    if (url.startsWith('images/') || url.startsWith('data:image/')) return url;
+
+    // Trích xuất File ID từ link Google Drive
+    const match = url.match(/(?:id=|\/d\/|open\?id=)([a-zA-Z0-9_-]+)/);
+    if (match && match[1]) {
+        const fileId = match[1];
+        // CDN Google UserContent thumbnail phân giải cao (w1600) hiển thị tức thì không cần đăng nhập
+        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1600`;
+    }
+    return url;
+}
+
+/**
+ * Chuẩn hóa tên thành viên để so khớp thông minh (bỏ ký tự hoa lá, emoji, tiền tố SW...)
+ */
+function normalizeMemberName(str) {
+    if (!str) return '';
+    return str.toString()
+        .toLowerCase()
+        .replace(/^sw\s*[:•\-~_⚜️⭐️ღ\s]*/i, '')
+        .replace(/[:•\-~_⚜️⭐️ღ🇻🇳]/g, '')
+        .replace(/\s+/g, '')
+        .trim();
+}
+
+/**
+ * Tự động tìm vị trí các cột trong Google Sheet dựa trên từ khóa tiêu đề
+ */
+function mapGoogleSheetColumns(headerRow) {
+    const colMap = { timestamp: -1, email: -1, name: -1, server: -1, power: -1, title: -1, note: -1, image: -1, stage: -1, tower: -1 };
+    headerRow.forEach((val, idx) => {
+        const text = (val || '').toString().toLowerCase().trim();
+        if (text.includes('thời gian') || text.includes('timestamp')) colMap.timestamp = idx;
+        else if (text.includes('email')) colMap.email = idx;
+        else if (text.includes('tên') || text.includes('name') || text.includes('ingame')) colMap.name = idx;
+        else if (text.includes('ải') || text.includes('ai') || text.includes('stage') || text.includes('màn')) colMap.stage = idx;
+        else if (text.includes('tháp') || text.includes('thap') || text.includes('tower') || text.includes('tầng')) colMap.tower = idx;
+        else if (text.includes('server')) colMap.server = idx;
+        else if (text.includes('lực chiến') || text.includes('chiến lực') || text.includes('power')) colMap.power = idx;
+        else if (text.includes('danh hiệu') || text.includes('title')) colMap.title = idx;
+        else if (text.includes('chức vụ') || text.includes('role') || text.includes('ghi chú')) colMap.note = idx;
+        else if (text.includes('ảnh') || text.includes('đội hình') || text.includes('screenshot') || text.includes('image')) colMap.image = idx;
+    });
+    return colMap;
+}
+
+/**
+ * Đồng bộ dữ liệu mới nhất từ Google Sheet (kết nối trực tiếp từ Google Form)
+ */
+async function syncFromGoogleSheet(options = { silent: false }) {
+    const syncBtns = document.querySelectorAll('.btn-sync-header, #btn-sync-google-sheet, #btn-sync-sheet-admin');
+    syncBtns.forEach(btn => btn.classList.add('syncing'));
+
+    try {
+        const res = await fetch(GOOGLE_SHEET_API_URL);
+        if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
+
+        const text = await res.text();
+        const jsonStart = text.indexOf('{');
+        const jsonEnd = text.lastIndexOf('}');
+        if (jsonStart === -1 || jsonEnd === -1) throw new Error('Không đọc được dữ liệu JSON từ Google Sheet');
+
+        const parsed = JSON.parse(text.substring(jsonStart, jsonEnd + 1));
+        const rows = parsed.table?.rows || [];
+
+        if (rows.length <= 1) {
+            if (!options.silent) {
+                showToast("Google Form hiện chưa có câu trả lời nào mới của thành viên!", "info");
+            }
+            return;
+        }
+
+        // Dòng đầu tiên là tiêu đề cột
+        const headerRow = rows[0].c.map(cell => (cell ? cell.v : '') || '');
+        const colMap = mapGoogleSheetColumns(headerRow);
+
+        if (colMap.name === -1 || colMap.power === -1) {
+            throw new Error("Không tìm thấy cột 'Tên' hoặc 'Lực chiến' trong Google Sheet!");
+        }
+
+        // Đọc tất cả các câu trả lời (từ dòng 2 trở đi)
+        // Nếu một người gửi nhiều lần, lấy dòng gửi sau cùng (mới nhất)
+        const latestSubmissions = new Map();
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].c;
+            if (!cells) continue;
+
+            const name = cells[colMap.name]?.v?.toString().trim();
+            if (!name) continue;
+
+            const power = cells[colMap.power]?.v?.toString().trim() || '';
+            const stage = colMap.stage !== -1 ? cells[colMap.stage]?.v?.toString().trim() : '';
+            const tower = colMap.tower !== -1 ? cells[colMap.tower]?.v?.toString().trim() : '';
+            const server = colMap.server !== -1 ? cells[colMap.server]?.v?.toString().trim() : '';
+            const title = colMap.title !== -1 ? cells[colMap.title]?.v?.toString().trim() : '';
+            const note = colMap.note !== -1 ? cells[colMap.note]?.v?.toString().trim() : '';
+            const rawImg = colMap.image !== -1 ? cells[colMap.image]?.v?.toString().trim() : '';
+            const image = convertGoogleDriveUrl(rawImg);
+
+            const normKey = normalizeMemberName(name);
+            latestSubmissions.set(normKey, {
+                originalName: name,
+                power,
+                stage,
+                tower,
+                server,
+                title,
+                note,
+                image
+            });
+        }
+
+        if (latestSubmissions.size === 0) {
+            if (!options.silent) {
+                showToast("Chưa có thành viên nào nộp form!", "info");
+            }
+            return;
+        }
+
+        let updatedCount = 0;
+        let addedCount = 0;
+
+        // Cập nhật hoặc thêm thành viên vào danh sách
+        latestSubmissions.forEach((sub, normKey) => {
+            const existing = members.find(m => normalizeMemberName(m.name) === normKey);
+            if (existing) {
+                if (sub.power) {
+                    existing.power = sub.power;
+                    existing.powerVal = calculateNumericPower(sub.power);
+                    existing.ingamePower = sub.power;
+                }
+                if (sub.stage) existing.stage = sub.stage;
+                if (sub.tower) existing.tower = sub.tower;
+                if (sub.server) existing.server = sub.server;
+                if (sub.title) existing.title = sub.title;
+                if (sub.note) existing.note = sub.note;
+                if (sub.image) existing.image = sub.image;
+                updatedCount++;
+            } else {
+                members.push({
+                    stt: members.length + 1,
+                    name: sub.originalName.startsWith('SW') ? sub.originalName : `SW ⚜️ ${sub.originalName}`,
+                    power: sub.power || '0B',
+                    powerVal: calculateNumericPower(sub.power || '0B'),
+                    ingamePower: sub.power || '0B',
+                    stage: sub.stage || '5000',
+                    tower: sub.tower || '1000',
+                    server: sub.server || null,
+                    title: sub.title || 'Vệ Tướng Quân',
+                    note: sub.note || 'Thành viên',
+                    avatar: '🐺',
+                    image: sub.image || null
+                });
+                addedCount++;
+            }
+        });
+
+        // Tự động sắp xếp lại toàn bộ theo lực chiến giảm dần
+        members.sort((a, b) => (b.powerVal || 0) - (a.powerVal || 0));
+        members.forEach((m, idx) => { m.stt = idx + 1; });
+
+        // Lưu vào LocalStorage
+        saveMembersData();
+
+        // Cập nhật giao diện
+        updateGuildInfo();
+        updateStats();
+        renderPodium();
+        applyFilterAndSort();
+        preloadMemberImages();
+        updateLastUpdatedTime();
+
+        if (!options.silent) {
+            showToast(`Đồng bộ thành công! Đã cập nhật ${updatedCount} thành viên, thêm mới ${addedCount} tướng!`, "success");
+        } else {
+            console.log(`[Google Sheet Auto-Sync] Cập nhật ${updatedCount} thành viên, thêm mới ${addedCount} tướng.`);
+        }
+    } catch (err) {
+        console.error("Lỗi đồng bộ Google Sheet:", err);
+        if (!options.silent) {
+            showToast(`Lỗi đồng bộ: ${err.message}`, "error");
+        }
+    } finally {
+        syncBtns.forEach(btn => btn.classList.remove('syncing'));
+    }
+}
+
+/**
  * MODAL XEM CHI TIẾT ĐỘI HÌNH (Lineup / Formation)
  */
 function openFormationModal(stt) {
@@ -1295,13 +1845,21 @@ function openFormationModal(stt) {
     const modalPower = document.getElementById('formation-member-power');
     const modalTitle = document.getElementById('formation-member-title');
     const modalNote = document.getElementById('formation-member-note');
+    const modalStage = document.getElementById('formation-member-stage');
+    const modalTower = document.getElementById('formation-member-tower');
     const modalServer = document.getElementById('formation-member-server');
 
     if (modalName) modalName.textContent = member.name;
     if (modalRank) modalRank.textContent = `Hạng #${member.stt}`;
     if (modalPower) modalPower.textContent = member.power;
+    if (modalStage) {
+        modalStage.innerHTML = `<i class="fa-solid fa-mountain"></i> Ải ${member.stage || '5.000'}`;
+    }
+    if (modalTower) {
+        modalTower.innerHTML = `<i class="fa-solid fa-chess-rook"></i> Tháp ${member.tower || '1.000'}`;
+    }
     if (modalServer) {
-        modalServer.textContent = member.server ? `Server: ${member.server}` : 'Chưa rõ server';
+        modalServer.style.display = 'none';
     }
     if (modalTitle) {
         modalTitle.className = `member-title-badge ${TITLE_CLASSES[member.title] || 'title-default'}`;
@@ -1324,6 +1882,7 @@ function openFormationModal(stt) {
 
         if (screenshotImg) {
             screenshotImg.style.display = 'block';
+            delete screenshotImg.dataset.triedFallback;
             screenshotImg.src = member.image;
 
             // Nếu ảnh đã tải xong trong cache RAM thì hiển thị ngay 0ms không giật lag hay nháy spinner
@@ -1339,6 +1898,15 @@ function openFormationModal(stt) {
                     if (screenshotLoader) screenshotLoader.classList.remove('active');
                 };
                 screenshotImg.onerror = function() {
+                    // Fallback thông minh: nếu link thumbnail bị chặn, thử CDN lh3
+                    if (member.image && member.image.includes('drive.google.com') && !screenshotImg.dataset.triedFallback) {
+                        screenshotImg.dataset.triedFallback = 'true';
+                        const fileId = member.image.match(/(?:id=|\/d\/)([a-zA-Z0-9_-]+)/)?.[1];
+                        if (fileId) {
+                            screenshotImg.src = `https://lh3.googleusercontent.com/d/${fileId}`;
+                            return;
+                        }
+                    }
                     if (screenshotLoader) screenshotLoader.classList.remove('active');
                     screenshotImg.style.display = 'none';
                     if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
