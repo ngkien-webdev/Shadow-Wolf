@@ -42,14 +42,11 @@ const DEFAULT_MEMBERS = [
     { stt: 35, name: "SW • Hạ", power: "60-80B", powerVal: 73.61, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-33.jpg", ingamePower: "73.61B", stage: "10.000", tower: "2.200" },
     { stt: 36, name: "SW • Sai", power: "40-80B", powerVal: 71.25, title: "Tư không", note: "Thành viên", avatar: "🐺", image: "images/dh/member-34.jpg", ingamePower: "71.25B", stage: "9.800", tower: "2.150" },
     { stt: 37, name: "SW • Lang", power: "40-80B", powerVal: 79.02, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-35.jpg", ingamePower: "79.02B", stage: "9.600", tower: "2.100" },
-    { stt: 38, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" },
-    { stt: 39, name: "SW • Đông", power: "40-80B", powerVal: 93.64, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-37.jpg", ingamePower: "93.64B", stage: "9.200", tower: "2.000" },
-    { stt: 40, name: "SW • Măng", power: "20-60B", powerVal: 40, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, stage: "9.000", tower: "1.950" },
-    { stt: 41, name: "SW • Hỏa", power: "20-60B", powerVal: 58.44, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-39.jpg", ingamePower: "58.44B", stage: "8.800", tower: "1.900" }
+    { stt: 38, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
-// Khóa LocalStorage (Bản v25: Cập nhật Lực Chiến Top 3 ÂyYa 710B & Danh hiệu Tối Cao Hiện Đại)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v25';
+// Khóa LocalStorage (Bản v26: Cập nhật sĩ số bang chuẩn 38 thành viên)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v26';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -2534,6 +2531,8 @@ function handleLookupInput(keyword) {
 
     if (!query) {
         // Nếu ô tìm kiếm rỗng
+        const total = members.length;
+        const maxStt = members[members.length - 1]?.stt || total;
         if (isLowerRanksExpanded) {
             renderLowerRanksGrid();
         } else {
@@ -2541,14 +2540,14 @@ function handleLookupInput(keyword) {
             if (cardsGrid) cardsGrid.style.display = 'none';
             if (emptyWrap) emptyWrap.style.display = 'none';
             if (counterText) {
-                counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+                counterText.innerHTML = `<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>${total}</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.`;
             }
-            if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+            if (toggleText) toggleText.textContent = `Xem tất cả Top 16 - ${maxStt}`;
         }
         return;
     }
 
-    // Tra cứu trên toàn bộ 41 thành viên
+    // Tra cứu trên toàn bộ thành viên
     const normalizedQuery = removeVietnameseTones(query.toLowerCase());
     const queryNumber = parseInt(query.replace(/[^0-9]/g, ''), 10);
 
@@ -2593,13 +2592,15 @@ function toggleLowerRanksView() {
     isLowerRanksExpanded = !isLowerRanksExpanded;
     const lookupInput = document.getElementById('member-lookup-input');
     const toggleText = document.getElementById('toggle-lower-text');
+    const total = members.length;
+    const maxStt = members[members.length - 1]?.stt || total;
 
     if (isLowerRanksExpanded) {
         if (lookupInput) lookupInput.value = '';
         const clearBtn = document.getElementById('btn-lookup-clear');
         if (clearBtn) clearBtn.style.display = 'none';
         renderLowerRanksGrid();
-        if (toggleText) toggleText.textContent = 'Thu gọn Top 16 - 41';
+        if (toggleText) toggleText.textContent = `Thu gọn Top 16 - ${maxStt}`;
     } else {
         const initialWrap = document.getElementById('lookup-initial-state');
         const cardsGrid = document.getElementById('lookup-grid-cards');
@@ -2610,9 +2611,9 @@ function toggleLowerRanksView() {
         if (cardsGrid) cardsGrid.style.display = 'none';
         if (emptyWrap) emptyWrap.style.display = 'none';
         if (counterText) {
-            counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+            counterText.innerHTML = `<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>${total}</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.`;
         }
-        if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+        if (toggleText) toggleText.textContent = `Xem tất cả Top 16 - ${maxStt}`;
     }
 }
 
@@ -2634,7 +2635,8 @@ function renderLowerRanksGrid() {
     }
 
     if (counterText) {
-        counterText.innerHTML = `<i class="fa-solid fa-users" style="color: var(--gold-300);"></i> Đang hiển thị toàn bộ <strong>${lowerRanks.length}</strong> anh em Top dưới (Hạng #16 đến #${lowerRanks[lowerRanks.length - 1]?.stt || 41})`;
+        const lastStt = lowerRanks[lowerRanks.length - 1]?.stt || members.length;
+        counterText.innerHTML = `<i class="fa-solid fa-users" style="color: var(--gold-300);"></i> Đang hiển thị toàn bộ <strong>${lowerRanks.length}</strong> anh em Top dưới (Hạng #16 đến #${lastStt})`;
     }
 }
 
