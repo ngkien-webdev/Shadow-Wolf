@@ -117,6 +117,7 @@ function initApp() {
     applyFilterAndSort();
     initLastUpdated();
     preloadMemberImages();
+    initMemberLookup();
 
     // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền
     setTimeout(() => {
@@ -1142,6 +1143,15 @@ function generateEliteCardHtml(m) {
     } else if (m.stt <= 10) {
         shieldClass = 'rank-shield-gold';
         shieldIcon = '<i class="fa-solid fa-star"></i>';
+    } else if (m.stt <= 15) {
+        shieldClass = 'rank-shield-silver';
+        shieldIcon = '<i class="fa-solid fa-shield"></i>';
+    } else if (m.stt <= 25) {
+        shieldClass = 'rank-shield-bronze';
+        shieldIcon = '<i class="fa-solid fa-shield-halved"></i>';
+    } else {
+        shieldClass = 'rank-shield-steel';
+        shieldIcon = '<i class="fa-solid fa-shield-cat"></i>';
     }
 
     const titleClass = TITLE_CLASSES[m.title] || 'title-default';
@@ -2474,4 +2484,169 @@ function removeVietnameseTones(str) {
     str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, 'Y');
     str = str.replace(/Đ/g, 'D');
     return str;
+}
+
+/* ==========================================================================
+   TRA CỨU THỨ HẠNG THÀNH VIÊN (DÀNH CHO ANH EM TOP DƯỚI & TOÀN BANG)
+   ========================================================================== */
+let isLowerRanksExpanded = false;
+
+function initMemberLookup() {
+    const lookupInput = document.getElementById('member-lookup-input');
+    const clearBtn = document.getElementById('btn-lookup-clear');
+    const toggleBtn = document.getElementById('btn-toggle-lower-ranks');
+
+    if (!lookupInput) return;
+
+    lookupInput.addEventListener('input', debounce(() => {
+        handleLookupInput(lookupInput.value);
+    }, 120));
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            lookupInput.value = '';
+            clearBtn.style.display = 'none';
+            handleLookupInput('');
+            lookupInput.focus();
+        });
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            toggleLowerRanksView();
+        });
+    }
+}
+
+function handleLookupInput(keyword) {
+    const query = (keyword || '').trim();
+    const clearBtn = document.getElementById('btn-lookup-clear');
+    const initialWrap = document.getElementById('lookup-initial-state');
+    const cardsGrid = document.getElementById('lookup-grid-cards');
+    const emptyWrap = document.getElementById('lookup-empty-state');
+    const queryEcho = document.getElementById('lookup-query-term');
+    const counterText = document.getElementById('lookup-counter-text');
+    const toggleText = document.getElementById('toggle-lower-text');
+
+    if (clearBtn) {
+        clearBtn.style.display = query ? 'flex' : 'none';
+    }
+
+    if (!query) {
+        // Nếu ô tìm kiếm rỗng
+        if (isLowerRanksExpanded) {
+            renderLowerRanksGrid();
+        } else {
+            if (initialWrap) initialWrap.style.display = 'block';
+            if (cardsGrid) cardsGrid.style.display = 'none';
+            if (emptyWrap) emptyWrap.style.display = 'none';
+            if (counterText) {
+                counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+            }
+            if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+        }
+        return;
+    }
+
+    // Tra cứu trên toàn bộ 41 thành viên
+    const normalizedQuery = removeVietnameseTones(query.toLowerCase());
+    const queryNumber = parseInt(query.replace(/[^0-9]/g, ''), 10);
+
+    const matches = members.filter(m => {
+        // Khớp thứ hạng chính xác nếu người dùng gõ số
+        if (!isNaN(queryNumber) && m.stt === queryNumber) return true;
+
+        const normalizedName = removeVietnameseTones((m.name || '').toLowerCase());
+        const normalizedTitle = removeVietnameseTones((m.title || '').toLowerCase());
+        const normalizedNote = removeVietnameseTones((m.note || '').toLowerCase());
+
+        return normalizedName.includes(normalizedQuery) ||
+               normalizedTitle.includes(normalizedQuery) ||
+               normalizedNote.includes(normalizedQuery);
+    });
+
+    // Sắp xếp theo thứ hạng tăng dần
+    matches.sort((a, b) => (a.stt || 0) - (b.stt || 0));
+
+    if (initialWrap) initialWrap.style.display = 'none';
+
+    if (matches.length === 0) {
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (emptyWrap) emptyWrap.style.display = 'block';
+        if (queryEcho) queryEcho.textContent = query;
+        if (counterText) {
+            counterText.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> Không tìm thấy thành viên nào khớp với "${escapeHtml(query)}"`;
+        }
+    } else {
+        if (emptyWrap) emptyWrap.style.display = 'none';
+        if (cardsGrid) {
+            cardsGrid.style.display = 'grid';
+            cardsGrid.innerHTML = matches.map(m => generateEliteCardHtml(m)).join('');
+        }
+        if (counterText) {
+            counterText.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> Tìm thấy <strong>${matches.length}</strong> thành viên phù hợp với "${escapeHtml(query)}"`;
+        }
+    }
+}
+
+function toggleLowerRanksView() {
+    isLowerRanksExpanded = !isLowerRanksExpanded;
+    const lookupInput = document.getElementById('member-lookup-input');
+    const toggleText = document.getElementById('toggle-lower-text');
+
+    if (isLowerRanksExpanded) {
+        if (lookupInput) lookupInput.value = '';
+        const clearBtn = document.getElementById('btn-lookup-clear');
+        if (clearBtn) clearBtn.style.display = 'none';
+        renderLowerRanksGrid();
+        if (toggleText) toggleText.textContent = 'Thu gọn Top 16 - 41';
+    } else {
+        const initialWrap = document.getElementById('lookup-initial-state');
+        const cardsGrid = document.getElementById('lookup-grid-cards');
+        const emptyWrap = document.getElementById('lookup-empty-state');
+        const counterText = document.getElementById('lookup-counter-text');
+
+        if (initialWrap) initialWrap.style.display = 'block';
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (emptyWrap) emptyWrap.style.display = 'none';
+        if (counterText) {
+            counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+        }
+        if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+    }
+}
+
+function renderLowerRanksGrid() {
+    const initialWrap = document.getElementById('lookup-initial-state');
+    const cardsGrid = document.getElementById('lookup-grid-cards');
+    const emptyWrap = document.getElementById('lookup-empty-state');
+    const counterText = document.getElementById('lookup-counter-text');
+
+    // Lọc thành viên từ hạng 16 trở lên
+    const lowerRanks = members.filter(m => (m.stt || 0) >= 16).sort((a, b) => (a.stt || 0) - (b.stt || 0));
+
+    if (initialWrap) initialWrap.style.display = 'none';
+    if (emptyWrap) emptyWrap.style.display = 'none';
+
+    if (cardsGrid) {
+        cardsGrid.style.display = 'grid';
+        cardsGrid.innerHTML = lowerRanks.map(m => generateEliteCardHtml(m)).join('');
+    }
+
+    if (counterText) {
+        counterText.innerHTML = `<i class="fa-solid fa-users" style="color: var(--gold-300);"></i> Đang hiển thị toàn bộ <strong>${lowerRanks.length}</strong> anh em Top dưới (Hạng #16 đến #${lowerRanks[lowerRanks.length - 1]?.stt || 41})`;
+    }
+}
+
+function quickLookupMember(name) {
+    const lookupInput = document.getElementById('member-lookup-input');
+    if (!lookupInput) return;
+    lookupInput.value = name;
+    handleLookupInput(name);
+    lookupInput.focus();
+
+    const section = document.getElementById('member-lookup-section');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 }

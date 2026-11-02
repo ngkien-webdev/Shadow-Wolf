@@ -1506,6 +1506,18 @@ body {
     color: #f8fafc;
     text-shadow: 0 0 8px rgba(203, 213, 225, 0.7);
 }
+.rank-shield-bronze {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.3) 0%, rgba(154, 52, 18, 0.45) 100%);
+    border: 1px solid #fb923c;
+    color: #ffedd5;
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+}
+.rank-shield-steel {
+    background: linear-gradient(135deg, rgba(71, 85, 105, 0.35) 0%, rgba(30, 41, 59, 0.5) 100%);
+    border: 1px solid #94a3b8;
+    color: #e2e8f0;
+    text-shadow: 0 0 6px rgba(148, 163, 184, 0.6);
+}
 
 /* Cặp viên ngọc Ải & Tháp */
 .elite-milestones-plate {
@@ -3762,5 +3774,299 @@ body {
     }
     .supreme-main-title .heading-wing {
         width: 30px;
+    }
+}
+
+/* ==========================================================================
+   TRA CỨU THỨ HẠNG THÀNH VIÊN (DÀNH CHO ANH EM TOP DƯỚI & TOÀN BANG)
+   ========================================================================== */
+.member-lookup-section {
+    padding: 10px 0 60px 0;
+}
+
+.lookup-card-wrapper {
+    background: linear-gradient(180deg, rgba(20, 29, 48, 0.95) 0%, rgba(10, 15, 26, 0.98) 100%);
+    border: 1.5px solid rgba(255, 212, 59, 0.28);
+    border-radius: 18px;
+    padding: 30px 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 212, 59, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.lookup-card-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd43b, #f59e0b, transparent);
+    box-shadow: 0 0 14px #ffd43b;
+}
+
+.lookup-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.lookup-header .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: rgba(255, 212, 59, 0.12);
+    border: 1px solid rgba(255, 212, 59, 0.4);
+    border-radius: 999px;
+    color: #fef08a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.lookup-title {
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #fff3c4 50%, #fcc419 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.lookup-subtitle {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+/* Thanh tìm kiếm trực tiếp & Nút mở rộng */
+.lookup-search-bar-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    max-width: 840px;
+    margin: 0 auto 16px auto;
+}
+
+.lookup-search-box {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(12, 17, 30, 0.92);
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    padding: 0 16px;
+    transition: all 0.25s ease;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.lookup-search-box:focus-within {
+    border-color: #ffd43b;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45), 0 0 18px rgba(255, 212, 59, 0.3);
+    background: rgba(16, 24, 42, 0.98);
+}
+
+.lookup-icon {
+    color: #ffd43b;
+    font-size: 1.1rem;
+    margin-right: 12px;
+}
+
+.lookup-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    font-weight: 600;
+    padding: 13px 0;
+}
+
+.lookup-input::placeholder {
+    color: #64748b;
+    font-weight: 400;
+}
+
+.lookup-clear-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lookup-clear-btn:hover {
+    background: rgba(239, 68, 68, 0.45);
+    color: #fff;
+}
+
+.lookup-toggle-btn {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.4) 100%);
+    border: 1.5px solid rgba(255, 212, 59, 0.45);
+    border-radius: 12px;
+    color: #fef08a;
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.lookup-toggle-btn:hover {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.6) 100%);
+    border-color: #ffd43b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 212, 59, 0.35);
+}
+
+/* Thanh trạng thái & Gợi ý nhanh */
+.lookup-status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 840px;
+    margin: 0 auto 22px auto;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+    font-size: 0.86rem;
+    color: #94a3b8;
+}
+
+.lookup-counter-text i {
+    margin-right: 5px;
+}
+
+.lookup-counter-text strong {
+    color: #fef08a;
+}
+
+.lookup-quick-tags {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.quick-tag-label {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.quick-tag-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-tag-chip:hover {
+    background: rgba(56, 189, 248, 0.22);
+    border-color: #38bdf8;
+    color: #e0f2fe;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+/* Khu vực hiển thị kết quả */
+.lookup-results-area {
+    min-height: 120px;
+    position: relative;
+}
+
+.lookup-initial-state {
+    text-align: center;
+    padding: 36px 20px;
+    color: #94a3b8;
+}
+
+.lookup-initial-state .initial-icon {
+    font-size: 2.4rem;
+    color: rgba(255, 212, 59, 0.45);
+    margin-bottom: 12px;
+}
+
+.lookup-initial-state .initial-text {
+    font-size: 0.95rem;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.lookup-initial-state .initial-text strong {
+    color: #fef08a;
+}
+
+.lookup-empty-state {
+    text-align: center;
+    padding: 36px 20px;
+}
+
+.lookup-empty-state .empty-icon {
+    font-size: 2.4rem;
+    color: #f87171;
+    margin-bottom: 12px;
+}
+
+.lookup-empty-state .empty-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.lookup-empty-state .empty-desc {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.lookup-empty-state .empty-desc strong {
+    color: #f87171;
+}
+
+.lookup-grid {
+    margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lookup-search-bar-row {
+        flex-direction: column;
+    }
+    .lookup-toggle-btn {
+        justify-content: center;
+        padding: 12px;
+    }
+    .lookup-status-row {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }

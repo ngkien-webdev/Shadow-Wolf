@@ -1531,6 +1531,18 @@ body {
     color: #f8fafc;
     text-shadow: 0 0 8px rgba(203, 213, 225, 0.7);
 }
+.rank-shield-bronze {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.3) 0%, rgba(154, 52, 18, 0.45) 100%);
+    border: 1px solid #fb923c;
+    color: #ffedd5;
+    text-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+}
+.rank-shield-steel {
+    background: linear-gradient(135deg, rgba(71, 85, 105, 0.35) 0%, rgba(30, 41, 59, 0.5) 100%);
+    border: 1px solid #94a3b8;
+    color: #e2e8f0;
+    text-shadow: 0 0 6px rgba(148, 163, 184, 0.6);
+}
 
 /* Cặp viên ngọc Ải & Tháp */
 .elite-milestones-plate {
@@ -3790,6 +3802,300 @@ body {
     }
 }
 
+/* ==========================================================================
+   TRA CỨU THỨ HẠNG THÀNH VIÊN (DÀNH CHO ANH EM TOP DƯỚI & TOÀN BANG)
+   ========================================================================== */
+.member-lookup-section {
+    padding: 10px 0 60px 0;
+}
+
+.lookup-card-wrapper {
+    background: linear-gradient(180deg, rgba(20, 29, 48, 0.95) 0%, rgba(10, 15, 26, 0.98) 100%);
+    border: 1.5px solid rgba(255, 212, 59, 0.28);
+    border-radius: 18px;
+    padding: 30px 24px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 25px rgba(255, 212, 59, 0.08);
+    position: relative;
+    overflow: hidden;
+}
+
+.lookup-card-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 8%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffd43b, #f59e0b, transparent);
+    box-shadow: 0 0 14px #ffd43b;
+}
+
+.lookup-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.lookup-header .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 14px;
+    background: rgba(255, 212, 59, 0.12);
+    border: 1px solid rgba(255, 212, 59, 0.4);
+    border-radius: 999px;
+    color: #fef08a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.lookup-title {
+    font-family: var(--font-heading);
+    font-size: 1.55rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #fff3c4 50%, #fcc419 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 0.6px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.lookup-subtitle {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+/* Thanh tìm kiếm trực tiếp & Nút mở rộng */
+.lookup-search-bar-row {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    max-width: 840px;
+    margin: 0 auto 16px auto;
+}
+
+.lookup-search-box {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(12, 17, 30, 0.92);
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    border-radius: 12px;
+    padding: 0 16px;
+    transition: all 0.25s ease;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+
+.lookup-search-box:focus-within {
+    border-color: #ffd43b;
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.45), 0 0 18px rgba(255, 212, 59, 0.3);
+    background: rgba(16, 24, 42, 0.98);
+}
+
+.lookup-icon {
+    color: #ffd43b;
+    font-size: 1.1rem;
+    margin-right: 12px;
+}
+
+.lookup-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.96rem;
+    font-weight: 600;
+    padding: 13px 0;
+}
+
+.lookup-input::placeholder {
+    color: #64748b;
+    font-weight: 400;
+}
+
+.lookup-clear-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.lookup-clear-btn:hover {
+    background: rgba(239, 68, 68, 0.45);
+    color: #fff;
+}
+
+.lookup-toggle-btn {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(217, 119, 6, 0.4) 100%);
+    border: 1.5px solid rgba(255, 212, 59, 0.45);
+    border-radius: 12px;
+    color: #fef08a;
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    font-weight: 700;
+    padding: 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    white-space: nowrap;
+}
+
+.lookup-toggle-btn:hover {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.6) 100%);
+    border-color: #ffd43b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(255, 212, 59, 0.35);
+}
+
+/* Thanh trạng thái & Gợi ý nhanh */
+.lookup-status-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 840px;
+    margin: 0 auto 22px auto;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.12);
+    font-size: 0.86rem;
+    color: #94a3b8;
+}
+
+.lookup-counter-text i {
+    margin-right: 5px;
+}
+
+.lookup-counter-text strong {
+    color: #fef08a;
+}
+
+.lookup-quick-tags {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.quick-tag-label {
+    color: #64748b;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.quick-tag-chip {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    color: #cbd5e1;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-tag-chip:hover {
+    background: rgba(56, 189, 248, 0.22);
+    border-color: #38bdf8;
+    color: #e0f2fe;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+/* Khu vực hiển thị kết quả */
+.lookup-results-area {
+    min-height: 120px;
+    position: relative;
+}
+
+.lookup-initial-state {
+    text-align: center;
+    padding: 36px 20px;
+    color: #94a3b8;
+}
+
+.lookup-initial-state .initial-icon {
+    font-size: 2.4rem;
+    color: rgba(255, 212, 59, 0.45);
+    margin-bottom: 12px;
+}
+
+.lookup-initial-state .initial-text {
+    font-size: 0.95rem;
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.lookup-initial-state .initial-text strong {
+    color: #fef08a;
+}
+
+.lookup-empty-state {
+    text-align: center;
+    padding: 36px 20px;
+}
+
+.lookup-empty-state .empty-icon {
+    font-size: 2.4rem;
+    color: #f87171;
+    margin-bottom: 12px;
+}
+
+.lookup-empty-state .empty-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.lookup-empty-state .empty-desc {
+    font-size: 0.9rem;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.lookup-empty-state .empty-desc strong {
+    color: #f87171;
+}
+
+.lookup-grid {
+    margin-top: 6px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lookup-search-bar-row {
+        flex-direction: column;
+    }
+    .lookup-toggle-btn {
+        justify-content: center;
+        padding: 12px;
+    }
+    .lookup-status-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 </style>
 </head>
 
@@ -3957,95 +4263,7 @@ body {
         </div>
     </section>
 
-    <!-- 4. KHU VỰC ĐIỀU KHIỂN: TÌM KIẾM, LỌC & SẮP XẾP -->
-    <section class="controls-section">
-        <div class="container">
-            <!-- BỘ LỌC VÀ TÌM KIẾM TỨC THÌ -->
-            <div class="controls-card">
-                <div class="controls-top-row">
-                    <!-- Ô tìm kiếm -->
-                    <div class="search-box">
-                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        <input type="text" id="search-input" class="search-input"
-                            placeholder="Tìm kiếm theo tên thành viên, biệt danh (VD: Apex, Sỹ, Tùng, Haruki, Xuân Tiền...)...">
-                        <button class="clear-search-btn" id="btn-clear-search" title="Xóa tìm kiếm">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-
-                    <!-- Nhóm dropdown lọc -->
-                    <div class="filter-dropdown-group">
-                        <!-- Lọc theo danh hiệu -->
-                        <select id="filter-title" class="filter-select">
-                            <option value="all">Tất cả Danh Hiệu</option>
-                            <option value="Thần Vương">Thần Vương (Vàng kim)</option>
-                            <option value="Đại Tướng Quân">Đại Tướng Quân (Tím)</option>
-                            <option value="Thái Sư">Thái Sư (Hồng ngọc)</option>
-                            <option value="Phiêu Kỵ Tướng Quân">Phiêu Kỵ Tướng Quân (Cam vàng)</option>
-                            <option value="Thái phó">Thái phó (Đỏ)</option>
-                            <option value="Thái úy">Thái úy (Đỏ nâu)</option>
-                            <option value="Xa Kỵ Tướng Quân">Xa Kỵ Tướng Quân (Vàng đồng)</option>
-                            <option value="Vệ Tướng Quân">Vệ Tướng Quân (Xanh ngọc)</option>
-                            <option value="Tư đồ">Tư đồ (Vàng đất)</option>
-                            <option value="Trung Lang Tướng">Trung Lang Tướng (Cam đồng)</option>
-                            <option value="Tư không">Tư không (Đỏ cam)</option>
-                            <option value="Ngự Sử đại phu">Ngự Sử đại phu (Xanh lam)</option>
-                        </select>
-
-                        <!-- Lọc theo chức vụ -->
-                        <select id="filter-note" class="filter-select">
-                            <option value="all">Tất cả Chức Vụ</option>
-                            <option value="Bang Chủ">Bang Chủ</option>
-                            <option value="Bang phó">Bang phó</option>
-                            <option value="Tinh anh">Tinh anh</option>
-                            <option value="Thành viên">Thành viên</option>
-                        </select>
-
-                        <!-- Lọc theo khoảng lực chiến -->
-                        <select id="filter-power-tier" class="filter-select">
-                            <option value="all">Tất cả Lực Chiến</option>
-                            <option value="tier-1t">Siêu Đỉnh Phong (> 1T)</option>
-                            <option value="tier-400-1t">Đại Thống Soái (400B - 1T)</option>
-                            <option value="tier-100-400">Trấn Thủ Biên Cương (100B - 400B)</option>
-                            <option value="tier-60-100">Dũng Mãnh Tiên Phong (60B - 100B)</option>
-                            <option value="tier-below-60">Tân Binh Tiềm Năng (&lt; 60B)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Hàng điều khiển sắp xếp nhanh -->
-                <div class="controls-bottom-row">
-                    <div class="sort-buttons-wrap">
-                        <span class="sort-label"><i class="fa-solid fa-arrow-down-wide-short"></i> Sắp xếp:</span>
-                        <button class="sort-btn active" data-col="stt" data-dir="asc"
-                            onclick="setSorting('stt', 'asc')">
-                            <i class="fa-solid fa-ranking-star"></i> Thứ hạng (STT)
-                        </button>
-                        <button class="sort-btn" data-col="power" data-dir="desc" onclick="setSorting('power', 'desc')">
-                            <i class="fa-solid fa-bolt"></i> Lực chiến: Cao &rarr; Thấp
-                        </button>
-                        <button class="sort-btn" data-col="power" data-dir="asc" onclick="setSorting('power', 'asc')">
-                            <i class="fa-solid fa-arrow-up-right-dots"></i> Lực chiến: Thấp &rarr; Cao
-                        </button>
-                        <button class="sort-btn" data-col="name" data-dir="asc" onclick="setSorting('name', 'asc')">
-                            <i class="fa-solid fa-arrow-down-a-z"></i> Tên A &rarr; Z
-                        </button>
-                    </div>
-
-                    <div class="controls-meta-wrap">
-                        <span class="filter-counter">
-                            Kết quả: <strong id="filtered-count-badge">15/15</strong>
-                        </span>
-                        <button class="btn-reset-filters" id="btn-reset-filters">
-                            <i class="fa-solid fa-arrow-rotate-right"></i> Đặt lại bộ lọc
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5. DANH SÁCH THẬP ĐẠI TINH ANH (THẺ TÊN TOP 6 - TOP 15) -->
+    <!-- 4. DANH SÁCH THẬP ĐẠI TINH ANH (THẺ TÊN TOP 6 - TOP 15) -->
     <section class="elite-grid-section">
         <div class="container">
             <!-- Tiêu đề phân khu -->
@@ -4060,23 +4278,69 @@ body {
                     <!-- Javascript sẽ render Top 6 đến Top 15 vào đây -->
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- KHU VỰC HIỂN THỊ KẾT QUẢ KHI TÌM KIẾM HOẶC LỌC DANH SÁCH -->
-            <div class="elite-search-results-wrap" id="elite-search-results-wrap" style="display: none;">
-                <div class="elite-row-header">
-                    <span class="elite-row-badge badge-search">
-                        <i class="fa-solid fa-magnifying-glass"></i> KẾT QUẢ TÌM KIẾM & BỘ LỌC
-                    </span>
-                    <span class="elite-row-divider"></span>
+    <!-- 5. TRA CỨU THỨ HẠNG THÀNH VIÊN TOÀN BANG (DÀNH CHO ANH EM TOP DƯỚI) -->
+    <section class="member-lookup-section" id="member-lookup-section">
+        <div class="container">
+            <div class="lookup-card-wrapper">
+                <div class="lookup-header">
+                    <span class="section-badge"><i class="fa-solid fa-magnifying-glass"></i> TRA CỨU THỨ HẠNG</span>
+                    <h3 class="lookup-title">TRA CỨU THỨ HẠNG THÀNH VIÊN</h3>
+                    <p class="lookup-subtitle">Dành cho anh em top dưới xem ngay thứ hạng hiện tại, chiến lực, ải &amp; tháp</p>
                 </div>
-                <div class="elite-cards-grid grid-elite-top10" id="elite-cards-filtered">
-                    <!-- Javascript render các thẻ khớp bộ lọc vào đây -->
+
+                <!-- THANH TÌM KIẾM TRỰC TIẾP & NÚT XEM TẤT CẢ -->
+                <div class="lookup-search-bar-row">
+                    <div class="lookup-search-box">
+                        <i class="fa-solid fa-magnifying-glass lookup-icon"></i>
+                        <input type="text" id="member-lookup-input" class="lookup-input"
+                            placeholder="Nhập tên nhân vật hoặc số thứ hạng (VD: Klein, Baoo, PandaxMun, Bear, T, 18, 25...)..."
+                            autocomplete="off" spellcheck="false">
+                        <button class="lookup-clear-btn" id="btn-lookup-clear" title="Xóa tìm kiếm" style="display: none;">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                    <button class="lookup-toggle-btn" id="btn-toggle-lower-ranks">
+                        <i class="fa-solid fa-users"></i> <span id="toggle-lower-text">Xem tất cả Top 16 - 41</span>
+                    </button>
                 </div>
-                <div class="table-empty-state" id="table-empty-state" style="display: none;">
-                    <div class="empty-icon"><i class="fa-solid fa-paw"></i></div>
-                    <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
-                    <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh
-                        sách.</p>
+
+                <!-- THANH THỐNG KÊ & GỢI Ý NHANH -->
+                <div class="lookup-status-row" id="lookup-status-row">
+                    <div class="lookup-counter-text" id="lookup-counter-text">
+                        <i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.
+                    </div>
+                    <div class="lookup-quick-tags" id="lookup-quick-tags">
+                        <span class="quick-tag-label">Xem nhanh:</span>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('Klein')">#16 Klein</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('Baoo')">#18 Baoo</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('Bear')">#19 Bear</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('PandaxMun')">#20 PandaxMun</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('Kaneki')">#24 Kaneki</button>
+                    </div>
+                </div>
+
+                <!-- KHU VỰC HIỂN THỊ THẺ THÀNH VIÊN TRA CỨU -->
+                <div class="lookup-results-area" id="lookup-results-area">
+                    <!-- Trạng thái gợi ý ban đầu -->
+                    <div class="lookup-initial-state" id="lookup-initial-state">
+                        <div class="initial-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <p class="initial-text">Nhập tên nhân vật ở ô trên để tra cứu ngay <strong>Thứ Hạng Hiện Tại</strong>, hoặc bấm <strong>"Xem tất cả Top 16 - 41"</strong> để xem danh sách toàn bộ anh em top dưới.</p>
+                    </div>
+
+                    <!-- Lưới thẻ thành viên khi tìm kiếm hoặc mở rộng Top 16-41 -->
+                    <div class="elite-cards-grid grid-elite-top10 lookup-grid" id="lookup-grid-cards" style="display: none;">
+                        <!-- Javascript render các thẻ thành viên vào đây -->
+                    </div>
+
+                    <!-- Trạng thái không tìm thấy kết quả -->
+                    <div class="lookup-empty-state" id="lookup-empty-state" style="display: none;">
+                        <div class="empty-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+                        <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
+                        <p class="empty-desc">Không có kết quả nào khớp với "<strong id="lookup-query-term"></strong>". Vui lòng kiểm tra lại chính tả hoặc bấm "Xem tất cả Top 16 - 41".</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4273,6 +4537,7 @@ function initApp() {
     applyFilterAndSort();
     initLastUpdated();
     preloadMemberImages();
+    initMemberLookup();
 
     // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền
     setTimeout(() => {
@@ -5298,6 +5563,15 @@ function generateEliteCardHtml(m) {
     } else if (m.stt <= 10) {
         shieldClass = 'rank-shield-gold';
         shieldIcon = '<i class="fa-solid fa-star"></i>';
+    } else if (m.stt <= 15) {
+        shieldClass = 'rank-shield-silver';
+        shieldIcon = '<i class="fa-solid fa-shield"></i>';
+    } else if (m.stt <= 25) {
+        shieldClass = 'rank-shield-bronze';
+        shieldIcon = '<i class="fa-solid fa-shield-halved"></i>';
+    } else {
+        shieldClass = 'rank-shield-steel';
+        shieldIcon = '<i class="fa-solid fa-shield-cat"></i>';
     }
 
     const titleClass = TITLE_CLASSES[m.title] || 'title-default';
@@ -6630,6 +6904,171 @@ function removeVietnameseTones(str) {
     str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, 'Y');
     str = str.replace(/Đ/g, 'D');
     return str;
+}
+
+/* ==========================================================================
+   TRA CỨU THỨ HẠNG THÀNH VIÊN (DÀNH CHO ANH EM TOP DƯỚI & TOÀN BANG)
+   ========================================================================== */
+let isLowerRanksExpanded = false;
+
+function initMemberLookup() {
+    const lookupInput = document.getElementById('member-lookup-input');
+    const clearBtn = document.getElementById('btn-lookup-clear');
+    const toggleBtn = document.getElementById('btn-toggle-lower-ranks');
+
+    if (!lookupInput) return;
+
+    lookupInput.addEventListener('input', debounce(() => {
+        handleLookupInput(lookupInput.value);
+    }, 120));
+
+    if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+            lookupInput.value = '';
+            clearBtn.style.display = 'none';
+            handleLookupInput('');
+            lookupInput.focus();
+        });
+    }
+
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            toggleLowerRanksView();
+        });
+    }
+}
+
+function handleLookupInput(keyword) {
+    const query = (keyword || '').trim();
+    const clearBtn = document.getElementById('btn-lookup-clear');
+    const initialWrap = document.getElementById('lookup-initial-state');
+    const cardsGrid = document.getElementById('lookup-grid-cards');
+    const emptyWrap = document.getElementById('lookup-empty-state');
+    const queryEcho = document.getElementById('lookup-query-term');
+    const counterText = document.getElementById('lookup-counter-text');
+    const toggleText = document.getElementById('toggle-lower-text');
+
+    if (clearBtn) {
+        clearBtn.style.display = query ? 'flex' : 'none';
+    }
+
+    if (!query) {
+        // Nếu ô tìm kiếm rỗng
+        if (isLowerRanksExpanded) {
+            renderLowerRanksGrid();
+        } else {
+            if (initialWrap) initialWrap.style.display = 'block';
+            if (cardsGrid) cardsGrid.style.display = 'none';
+            if (emptyWrap) emptyWrap.style.display = 'none';
+            if (counterText) {
+                counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+            }
+            if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+        }
+        return;
+    }
+
+    // Tra cứu trên toàn bộ 41 thành viên
+    const normalizedQuery = removeVietnameseTones(query.toLowerCase());
+    const queryNumber = parseInt(query.replace(/[^0-9]/g, ''), 10);
+
+    const matches = members.filter(m => {
+        // Khớp thứ hạng chính xác nếu người dùng gõ số
+        if (!isNaN(queryNumber) && m.stt === queryNumber) return true;
+
+        const normalizedName = removeVietnameseTones((m.name || '').toLowerCase());
+        const normalizedTitle = removeVietnameseTones((m.title || '').toLowerCase());
+        const normalizedNote = removeVietnameseTones((m.note || '').toLowerCase());
+
+        return normalizedName.includes(normalizedQuery) ||
+               normalizedTitle.includes(normalizedQuery) ||
+               normalizedNote.includes(normalizedQuery);
+    });
+
+    // Sắp xếp theo thứ hạng tăng dần
+    matches.sort((a, b) => (a.stt || 0) - (b.stt || 0));
+
+    if (initialWrap) initialWrap.style.display = 'none';
+
+    if (matches.length === 0) {
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (emptyWrap) emptyWrap.style.display = 'block';
+        if (queryEcho) queryEcho.textContent = query;
+        if (counterText) {
+            counterText.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> Không tìm thấy thành viên nào khớp với "${escapeHtml(query)}"`;
+        }
+    } else {
+        if (emptyWrap) emptyWrap.style.display = 'none';
+        if (cardsGrid) {
+            cardsGrid.style.display = 'grid';
+            cardsGrid.innerHTML = matches.map(m => generateEliteCardHtml(m)).join('');
+        }
+        if (counterText) {
+            counterText.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> Tìm thấy <strong>${matches.length}</strong> thành viên phù hợp với "${escapeHtml(query)}"`;
+        }
+    }
+}
+
+function toggleLowerRanksView() {
+    isLowerRanksExpanded = !isLowerRanksExpanded;
+    const lookupInput = document.getElementById('member-lookup-input');
+    const toggleText = document.getElementById('toggle-lower-text');
+
+    if (isLowerRanksExpanded) {
+        if (lookupInput) lookupInput.value = '';
+        const clearBtn = document.getElementById('btn-lookup-clear');
+        if (clearBtn) clearBtn.style.display = 'none';
+        renderLowerRanksGrid();
+        if (toggleText) toggleText.textContent = 'Thu gọn Top 16 - 41';
+    } else {
+        const initialWrap = document.getElementById('lookup-initial-state');
+        const cardsGrid = document.getElementById('lookup-grid-cards');
+        const emptyWrap = document.getElementById('lookup-empty-state');
+        const counterText = document.getElementById('lookup-counter-text');
+
+        if (initialWrap) initialWrap.style.display = 'block';
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (emptyWrap) emptyWrap.style.display = 'none';
+        if (counterText) {
+            counterText.innerHTML = '<i class="fa-solid fa-circle-info"></i> Bang hội có <strong>41</strong> thành viên. Gõ tên để tra cứu thứ hạng hiện tại của bạn.';
+        }
+        if (toggleText) toggleText.textContent = 'Xem tất cả Top 16 - 41';
+    }
+}
+
+function renderLowerRanksGrid() {
+    const initialWrap = document.getElementById('lookup-initial-state');
+    const cardsGrid = document.getElementById('lookup-grid-cards');
+    const emptyWrap = document.getElementById('lookup-empty-state');
+    const counterText = document.getElementById('lookup-counter-text');
+
+    // Lọc thành viên từ hạng 16 trở lên
+    const lowerRanks = members.filter(m => (m.stt || 0) >= 16).sort((a, b) => (a.stt || 0) - (b.stt || 0));
+
+    if (initialWrap) initialWrap.style.display = 'none';
+    if (emptyWrap) emptyWrap.style.display = 'none';
+
+    if (cardsGrid) {
+        cardsGrid.style.display = 'grid';
+        cardsGrid.innerHTML = lowerRanks.map(m => generateEliteCardHtml(m)).join('');
+    }
+
+    if (counterText) {
+        counterText.innerHTML = `<i class="fa-solid fa-users" style="color: var(--gold-300);"></i> Đang hiển thị toàn bộ <strong>${lowerRanks.length}</strong> anh em Top dưới (Hạng #16 đến #${lowerRanks[lowerRanks.length - 1]?.stt || 41})`;
+    }
+}
+
+function quickLookupMember(name) {
+    const lookupInput = document.getElementById('member-lookup-input');
+    if (!lookupInput) return;
+    lookupInput.value = name;
+    handleLookupInput(name);
+    lookupInput.focus();
+
+    const section = document.getElementById('member-lookup-section');
+    if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 }
 
 </script>
