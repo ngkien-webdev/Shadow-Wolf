@@ -7,7 +7,7 @@
 const DEFAULT_MEMBERS = [
     { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.715T", powerVal: 1715, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.715T", stage: "17.830", tower: "4.794" },
     { stt: 2, name: "SW • YUDAI", power: "1.06T", powerVal: 1060, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.06T", stage: "16.883", tower: "4.527" },
-    { stt: 3, name: "SW ⚜️ ÂyYa 🇻🇳", power: "652B", powerVal: 652, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "652B", stage: "16.487", tower: "4.487" },
+    { stt: 3, name: "SW ⚜️ ÂyYa 🇻🇳", power: "710B", powerVal: 710, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "710B", stage: "16.487", tower: "4.487" },
     { stt: 4, name: "SW • Alinx •", power: "358.6B", powerVal: 358.6, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.6B", stage: "15.037", tower: "3.567" },
     { stt: 5, name: "SW ⚜️ LTD 🇻🇳", power: "350.4B", powerVal: 350.4, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "350.4B", stage: "15.136", tower: "3.707" },
     { stt: 6, name: "SW ⚜️ Stom 🇻🇳", power: "268.1B", powerVal: 268.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "268.1B", stage: "14.354", tower: "3.147" },
@@ -48,8 +48,8 @@ const DEFAULT_MEMBERS = [
     { stt: 41, name: "SW • Hỏa", power: "20-60B", powerVal: 58.44, title: "Ngự Sử đại phu", note: "Thành viên", avatar: "🐺", image: "images/dh/member-39.jpg", ingamePower: "58.44B", stage: "8.800", tower: "1.900" }
 ];
 
-// Khóa LocalStorage (Bản v16: Cập nhật BXH, Lực Chiến, Ải & Tháp chính xác theo ảnh ingame)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v16';
+// Khóa LocalStorage (Bản v25: Cập nhật Lực Chiến Top 3 ÂyYa 710B & Danh hiệu Tối Cao Hiện Đại)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v25';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -173,37 +173,6 @@ function loadMembersData() {
                 if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
                 if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
                 if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
-                if (m.stt === 3) {
-                    m.name = 'SW ⚜️ Ây Ya 🇻🇳';
-                    m.title = 'Thái Sư';
-                    m.power = '680B';
-                    m.powerVal = 680;
-                    m.ingamePower = '680B';
-                }
-                if (m.stt === 6) {
-                    m.name = 'SW ⚜️ NTTP 🇻🇳';
-                    m.power = '271.1B';
-                    m.powerVal = 271.1;
-                    m.ingamePower = '271.1B';
-                    m.title = 'Thái phó';
-                    m.image = 'images/dh/member-nttp.jpg';
-                }
-                if (m.stt === 7) {
-                    m.name = 'SW ⚜️ 1701 🇻🇳';
-                    m.power = '258.5B';
-                    m.powerVal = 258.5;
-                    m.ingamePower = '258.5B';
-                    m.title = 'Thái phó';
-                    m.image = 'images/dh/member-6.jpg';
-                }
-                if (m.stt === 8) {
-                    m.name = 'SW ⚜️ Bi Tiên';
-                    m.power = '254.5B';
-                    m.powerVal = 254.5;
-                    m.ingamePower = '254.5B';
-                    m.title = 'Thái phó';
-                    m.image = 'images/dh/member-bitien.jpg';
-                }
 
                 const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
                 if (defaultItem) {
@@ -333,131 +302,567 @@ function updateStats() {
 }
 
 /**
- * Tạo SVG Danh hiệu Ingame chuẩn bố cục game Miêu Chủ Tam Quốc
- * Gồm: Linh vật đỉnh đầu có vương miện, song kiếm đan chéo, cánh vương giả 2 bên,
- * dải lụa hoàng kim uốn lượn có đuôi xẻ rãnh, và chữ 3D gradient stroke nổi bật.
+ * Tạo SVG Danh hiệu Vinh Danh Top 5 phong cách 3D Hoàng Gia & Mobile RPG
+ * Sử dụng font Baloo 2 phong cách In-game Chibi Heroic đặc trưng,
+ * Cánh ôm cong hướng lên (Upward Swept Wings) và Cartouche Plate đa lớp,
+ * gọn gàng, tinh xảo tuyệt đối, đảm bảo 100% nằm trọn vẹn trong thẻ trụ bục vinh danh.
  */
 function renderIngameTitleSvg(tier, mainTitle) {
+    if (tier === 'platinum') {
+        return `
+        <svg class="ingame-badge-svg tier-platinum" viewBox="0 0 175 54" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+                </style>
+                <linearGradient id="t5-plat" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="30%" stop-color="#bae6fd"/>
+                    <stop offset="65%" stop-color="#38bdf8"/>
+                    <stop offset="100%" stop-color="#0284c7"/>
+                </linearGradient>
+                <linearGradient id="t5-plat-gold" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#fef08a"/>
+                    <stop offset="100%" stop-color="#eab308"/>
+                </linearGradient>
+                <linearGradient id="t5-plat-bg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#0a1d32"/>
+                    <stop offset="100%" stop-color="#02070e"/>
+                </linearGradient>
+                <linearGradient id="t5-plat-sheen" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+                    <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+                </linearGradient>
+                <linearGradient id="t5-plat-text" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ffffff"/>
+                    <stop offset="40%" stop-color="#e0f2fe"/>
+                    <stop offset="100%" stop-color="#7dd3fc"/>
+                </linearGradient>
+                <filter id="t5-plat-glow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#38bdf8" flood-opacity="0.6"/>
+                </filter>
+            </defs>
+            <!-- Cánh ôm cong hướng lên -->
+            <g filter="url(#t5-plat-glow)">
+                <path d="M 30 33 C 18 29, 10 19, 14 9 C 18 15, 23 21, 34 23 Z" fill="url(#t5-plat)"/>
+                <polygon points="14,9 20,16 15,18" fill="#ffffff" opacity="0.9"/>
+                <path d="M 145 33 C 157 29, 165 19, 161 9 C 157 15, 152 21, 141 23 Z" fill="url(#t5-plat)"/>
+                <polygon points="161,9 155,16 160,18" fill="#ffffff" opacity="0.9"/>
+            </g>
+            <!-- Khung Cartouche Bọc Viền Vàng Hoàng Gia -->
+            <g filter="url(#t5-plat-glow)">
+                <path d="M 19 31 L 30 17 Q 87 11 145 17 L 156 31 L 145 45 Q 87 51 30 45 Z" fill="url(#t5-plat)"/>
+                <path d="M 22 31 L 32 19 Q 87 13 143 19 L 153 31 L 143 43 Q 87 49 32 43 Z" fill="url(#t5-plat-bg)" stroke="url(#t5-plat-gold)" stroke-width="0.9"/>
+                <path d="M 22 31 L 32 19 Q 87 13 143 19 L 153 31 Q 87 25 22 31 Z" fill="url(#t5-plat-sheen)"/>
+                <circle cx="28" cy="31" r="1.6" fill="#38bdf8" stroke="#ffffff" stroke-width="0.5"/>
+                <circle cx="147" cy="31" r="1.6" fill="#38bdf8" stroke="#ffffff" stroke-width="0.5"/>
+            </g>
+            <!-- Vương Miện Đỉnh Đầu -->
+            <g transform="translate(87, 13)" filter="url(#t5-plat-glow)">
+                <path d="M -9 -1 L -6 -7 L 0 -4 L 6 -7 L 9 -1 Z" fill="url(#t5-plat)" stroke="#ffffff" stroke-width="0.5"/>
+                <polygon points="0,-6 3,-3 0,0 -3,-3" fill="#38bdf8"/>
+            </g>
+            <!-- Typography BẠCH THÁNH KIM TÔN -->
+            <text x="87" y="35.5" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="12" 
+                  letter-spacing="0.3" stroke="#02070e" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#t5-plat-text)">${mainTitle}</text>
+        </svg>
+        `;
+    }
+
     const configs = {
-        platinum: {
-            cLight: '#f0f9ff', cMid: '#38bdf8', cDark: '#0284c7',
-            cBg1: '#0c223f', cBg2: '#040d1a',
-            strokeColor: '#7dd3fc', textStroke: '#021024',
-            wingColor: '#38bdf8', gemColor: '#38bdf8', id: 'plat'
-        },
         darkgold: {
-            cLight: '#fef9c3', cMid: '#eab308', cDark: '#854d0e',
-            cBg1: '#261b0d', cBg2: '#0d0903',
-            strokeColor: '#facc15', textStroke: '#0d0802',
-            wingColor: '#ca8a04', gemColor: '#eab308', id: 'darkg'
+            grad: 't5-darkg',
+            stops: ['#fef08a', '#eab308', '#ca8a04', '#713f12'],
+            textStops: ['#ffffff', '#fef08a', '#eab308'],
+            wire: '#fef08a',
+            bg: ['#201305', '#080401'],
+            glow: '#eab308',
+            gem: '#facc15',
+            fontSize: '11.5',
+            letterSpacing: '0.3'
         },
         gold: {
-            cLight: '#fffbeb', cMid: '#f59e0b', cDark: '#b45309',
-            cBg1: '#351c04', cBg2: '#130801',
-            strokeColor: '#fbbf24', textStroke: '#240a02',
-            wingColor: '#f59e0b', gemColor: '#fbbf24', id: 'gold'
+            grad: 't5-gold',
+            stops: ['#fffbeb', '#fde047', '#f59e0b', '#b45309'],
+            textStops: ['#ffffff', '#fef08a', '#f59e0b'],
+            wire: '#fde047',
+            bg: ['#241404', '#080301'],
+            glow: '#f59e0b',
+            gem: '#f59e0b',
+            fontSize: '11',
+            letterSpacing: '0.3'
         },
         silver: {
-            cLight: '#ffffff', cMid: '#cbd5e1', cDark: '#64748b',
-            cBg1: '#1e293b', cBg2: '#090d16',
-            strokeColor: '#e2e8f0', textStroke: '#0f172a',
-            wingColor: '#94a3b8', gemColor: '#cbd5e1', id: 'silv'
+            grad: 't5-silv',
+            stops: ['#ffffff', '#e2e8f0', '#94a3b8', '#475569'],
+            textStops: ['#ffffff', '#e2e8f0', '#cbd5e1'],
+            wire: '#e2e8f0',
+            bg: ['#141c2c', '#050810'],
+            glow: '#94a3b8',
+            gem: '#38bdf8',
+            fontSize: '11',
+            letterSpacing: '0.3'
         },
         bronze: {
-            cLight: '#ffedd5', cMid: '#fb923c', cDark: '#c2410c',
-            cBg1: '#361506', cBg2: '#130601',
-            strokeColor: '#fdba74', textStroke: '#240802',
-            wingColor: '#ea580c', gemColor: '#f97316', id: 'brz'
+            grad: 't5-brz',
+            stops: ['#ffedd5', '#fb923c', '#ea580c', '#7c2d12'],
+            textStops: ['#ffffff', '#fed7aa', '#fb923c'],
+            wire: '#fed7aa',
+            bg: ['#280e03', '#080201'],
+            glow: '#ea580c',
+            gem: '#f97316',
+            fontSize: '11',
+            letterSpacing: '0.3'
         }
     };
 
     const c = configs[tier] || configs.gold;
 
     return `
-    <svg class="ingame-badge-svg" viewBox="0 0 240 64" xmlns="http://www.w3.org/2000/svg">
+    <svg class="ingame-badge-svg tier-${tier}" viewBox="0 0 165 52" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <linearGradient id="p-text-${c.id}" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#ffffff"/>
-                <stop offset="30%" stop-color="${c.cLight}"/>
-                <stop offset="70%" stop-color="${c.cMid}"/>
-                <stop offset="100%" stop-color="${c.cDark}"/>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+            </style>
+            <linearGradient id="${c.grad}" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="${c.stops[0]}"/>
+                <stop offset="35%" stop-color="${c.stops[1]}"/>
+                <stop offset="70%" stop-color="${c.stops[2]}"/>
+                <stop offset="100%" stop-color="${c.stops[3]}"/>
             </linearGradient>
-            <linearGradient id="p-border-${c.id}" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="${c.cLight}"/>
-                <stop offset="50%" stop-color="${c.cMid}"/>
-                <stop offset="100%" stop-color="${c.cDark}"/>
+            <linearGradient id="${c.grad}-text" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="${c.textStops[0]}"/>
+                <stop offset="50%" stop-color="${c.textStops[1]}"/>
+                <stop offset="100%" stop-color="${c.textStops[2]}"/>
             </linearGradient>
-            <linearGradient id="p-bg-${c.id}" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="${c.cBg1}"/>
-                <stop offset="50%" stop-color="${c.cBg2}"/>
-                <stop offset="100%" stop-color="${c.cBg1}"/>
+            <linearGradient id="${c.grad}-bg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="${c.bg[0]}"/>
+                <stop offset="100%" stop-color="${c.bg[1]}"/>
             </linearGradient>
-            <filter id="p-glow-${c.id}" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="${c.cMid}" flood-opacity="0.45"/>
+            <linearGradient id="${c.grad}-sheen" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+                <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+            </linearGradient>
+            <filter id="${c.grad}-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="${c.glow}" flood-opacity="0.5"/>
             </filter>
         </defs>
-
-        <!-- CÁNH CHIẾN BINH HAI BÊN -->
-        <g class="badge-wings" filter="url(#p-glow-${c.id})">
-            <path d="M 90 22 C 70 12, 42 8, 16 16 C 28 22, 42 26, 58 28 C 36 28, 20 33, 10 41 C 24 42, 44 42, 66 39 C 48 44, 32 50, 24 56 C 42 54, 64 49, 85 40 Z" 
-                  fill="url(#p-border-${c.id})" opacity="0.9"/>
-            <path d="M 85 24 C 68 16, 44 13, 22 19 C 38 25, 56 27, 74 30 C 51 33, 32 38, 20 43 C 38 44, 58 42, 76 38 Z" 
-                  fill="url(#p-bg-${c.id})" opacity="0.6"/>
-
-            <path d="M 150 22 C 170 12, 198 8, 224 16 C 212 22, 198 26, 182 28 C 204 28, 220 33, 230 41 C 216 42, 196 42, 174 39 C 192 44, 208 50, 216 56 C 198 54, 176 49, 155 40 Z" 
-                  fill="url(#p-border-${c.id})" opacity="0.9"/>
-            <path d="M 155 24 C 172 16, 196 13, 218 19 C 202 25, 184 27, 166 30 C 189 33, 208 38, 220 43 C 202 44, 182 42, 164 38 Z" 
-                  fill="url(#p-bg-${c.id})" opacity="0.6"/>
+        <!-- Cánh ôm cong hướng lên -->
+        <g filter="url(#${c.grad}-glow)">
+            <path d="M 28 32 C 18 28, 10 18, 14 8 C 18 14, 22 20, 32 22 Z" fill="url(#${c.grad})"/>
+            <polygon points="14,8 19,15 15,17" fill="#ffffff" opacity="0.85"/>
+            <path d="M 137 32 C 147 28, 155 18, 151 8 C 147 14, 143 20, 133 22 Z" fill="url(#${c.grad})"/>
+            <polygon points="151,8 146,15 150,17" fill="#ffffff" opacity="0.85"/>
         </g>
-
-        <!-- KIẾM THẦN ĐAN CHÉO -->
-        <g class="badge-swords" opacity="0.85">
-            <line x1="98" y1="5" x2="142" y2="32" stroke="${c.cLight}" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="95" y1="3" x2="101" y2="7" stroke="${c.cMid}" stroke-width="4" stroke-linecap="round"/>
-            <line x1="142" y1="5" x2="98" y2="32" stroke="${c.cLight}" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="145" y1="3" x2="139" y2="7" stroke="${c.cMid}" stroke-width="4" stroke-linecap="round"/>
+        <!-- Khung Cartouche Đa Tầng -->
+        <g filter="url(#${c.grad}-glow)">
+            <path d="M 18 30 L 28 16 Q 82 10 137 16 L 147 30 L 137 44 Q 82 50 28 44 Z" fill="url(#${c.grad})"/>
+            <path d="M 21 30 L 30 18 Q 82 12 135 18 L 144 30 L 135 42 Q 82 48 30 42 Z" fill="url(#${c.grad}-bg)" stroke="url(#${c.grad})" stroke-width="0.8"/>
+            <path d="M 21 30 L 30 18 Q 82 12 135 18 L 144 30 Q 82 24 21 30 Z" fill="url(#${c.grad}-sheen)"/>
+            <circle cx="26" cy="30" r="1.5" fill="${c.gem}" stroke="#ffffff" stroke-width="0.4"/>
+            <circle cx="139" cy="30" r="1.5" fill="${c.gem}" stroke="#ffffff" stroke-width="0.4"/>
         </g>
-
-        <!-- ĐUÔI RUY BĂNG -->
-        <g class="badge-tails">
-            <path d="M 26 33 L 6 43 L 22 51 L 6 59 L 30 56 L 42 46 Z" fill="url(#p-bg-${c.id})" stroke="${c.strokeColor}" stroke-width="1.2"/>
-            <path d="M 214 33 L 234 43 L 218 51 L 234 59 L 210 56 L 198 46 Z" fill="url(#p-bg-${c.id})" stroke="${c.strokeColor}" stroke-width="1.2"/>
+        <!-- Huy hiệu Ngôi Sao Đỉnh Đầu -->
+        <g transform="translate(82, 14)" filter="url(#${c.grad}-glow)">
+            <polygon points="0,-6 4,-2 0,2 -4,-2" fill="url(#${c.grad})" stroke="#ffffff" stroke-width="0.5"/>
+            <circle cx="0" cy="-2" r="1.2" fill="${c.gem}"/>
         </g>
-
-        <!-- THÂN DẢI LỤA BẢNG TÊN CHÍNH -->
-        <path d="M 32 30 C 72 23, 168 23, 208 30 C 216 31, 218 36, 216 43 L 210 55 C 208 59, 202 61, 196 60 C 154 56, 86 56, 44 60 C 38 61, 32 59, 30 55 L 24 43 C 22 36, 24 31, 32 30 Z" 
-              fill="url(#p-bg-${c.id})" stroke="url(#p-border-${c.id})" stroke-width="2.2" filter="url(#p-glow-${c.id})"/>
-
-        <!-- Khung viền chỉ vàng kim bên trong -->
-        <path d="M 36 33 C 74 28, 166 28, 204 33 L 205 44 L 200 54 C 154 51, 86 51, 40 54 L 35 44 Z" 
-              fill="none" stroke="${c.cLight}" stroke-width="0.8" opacity="0.6"/>
-
-        <!-- Đinh tán góc -->
-        <circle cx="40" cy="45" r="1.8" fill="${c.cLight}"/>
-        <circle cx="200" cy="45" r="1.8" fill="${c.cLight}"/>
-
-        <!-- LINH VẬT CHIẾN LANG ĐỈNH ĐẦU -->
-        <g class="badge-crest" transform="translate(120, 16)">
-            <path d="M -14 -4 L -8 -12 L 0 -7 L 8 -12 L 14 -4 L 10 2 L -10 2 Z" fill="url(#p-border-${c.id})" stroke="${c.cLight}" stroke-width="1"/>
-            <circle cx="0" cy="2" r="12" fill="url(#p-bg-${c.id})" stroke="url(#p-border-${c.id})" stroke-width="2"/>
-            <circle cx="0" cy="2" r="9.5" fill="none" stroke="${c.cLight}" stroke-width="0.8" stroke-dasharray="2 1" opacity="0.8"/>
-            <path d="M -5 -2 L -8 5 L -3 7 L 0 4 L 3 7 L 8 5 L 5 -2 L 3 1 L 0 -1 L -3 1 Z" fill="${c.cLight}"/>
-            <polygon points="0,-4 3,-1 0,2 -3,-1" fill="${c.gemColor}"/>
-        </g>
-
-        <!-- CHỮ DANH HIỆU INGAME 3D -->
-        <text x="120" y="49" 
-              text-anchor="middle" 
-              font-family="'Montserrat', 'Arial Black', sans-serif" 
-              font-weight="900" 
-              font-size="11.5" 
-              letter-spacing="1.2"
-              stroke="${c.textStroke}" 
-              stroke-width="4.5" 
-              stroke-linejoin="round"
-              paint-order="stroke fill"
-              fill="url(#p-text-${c.id})">${mainTitle}</text>
+        <!-- Typography Danh Hiệu -->
+        <text x="82" y="34.5" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="${c.fontSize}" 
+              letter-spacing="${c.letterSpacing}" stroke="${c.bg[1]}" stroke-width="3.5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#${c.grad}-text)">${mainTitle}</text>
     </svg>
+    `;
+}
+
+/**
+ * Render Danh Hiệu Tối Cao eSports: APEX Vương Giả (Top 1)
+ * Thiết kế phong cách 3D Imperial Grand Master, Cánh Rồng Vàng ôm cong hướng lên (Upward Swept Wings)
+ * Cartouche ngọc Ruby 24K viền nổi, vương miện hoàng gia và typography Baloo 2 quyền lực rực rỡ.
+ */
+function renderApexVuongGiaSvg() {
+    return `
+    <svg class="modern-title-badge-svg badge-top1" viewBox="0 0 300 86" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+        </style>
+        <linearGradient id="p1-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="15%" stop-color="#fef08a"/>
+          <stop offset="35%" stop-color="#facc15"/>
+          <stop offset="60%" stop-color="#eab308"/>
+          <stop offset="85%" stop-color="#ca8a04"/>
+          <stop offset="100%" stop-color="#78350f"/>
+        </linearGradient>
+        <linearGradient id="p1-ruby" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#6b0e0e"/>
+          <stop offset="40%" stop-color="#3c0606"/>
+          <stop offset="100%" stop-color="#140101"/>
+        </linearGradient>
+        <linearGradient id="p1-text" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="25%" stop-color="#fef08a"/>
+          <stop offset="65%" stop-color="#facc15"/>
+          <stop offset="100%" stop-color="#eab308"/>
+        </linearGradient>
+        <linearGradient id="p1-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.1"/>
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="p1-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#f59e0b" flood-opacity="0.75"/>
+        </filter>
+      </defs>
+
+      <!-- 1. Cặp Cánh Rồng Vàng Ôm Hướng Lên (Upward Swept Royal Wings) -->
+      <g class="wings-upward" filter="url(#p1-glow)">
+        <path d="M 46 54 C 30 48, 16 32, 22 14 C 30 26, 38 34, 52 38 C 40 30, 32 18, 42 6 C 46 18, 56 26, 70 32 Z" 
+              fill="url(#p1-gold)"/>
+        <polygon points="22,14 34,26 24,30" fill="#ffffff" opacity="0.85"/>
+        <path d="M 254 54 C 270 48, 284 32, 278 14 C 270 26, 262 34, 248 38 C 260 30, 268 18, 258 6 C 254 18, 244 26, 230 32 Z" 
+              fill="url(#p1-gold)"/>
+        <polygon points="278,14 266,26 276,30" fill="#ffffff" opacity="0.85"/>
+      </g>
+
+      <!-- 2. Khung Bảng Hoàng Gia 24K Ruby Cartouche -->
+      <g class="cartouche-base" filter="url(#p1-glow)">
+        <path d="M 30 50 L 46 26 Q 150 17 254 26 L 270 50 L 254 74 Q 150 83 46 74 Z" 
+              fill="url(#p1-gold)"/>
+        <path d="M 34 50 L 49 29 Q 150 20 251 29 L 266 50 L 251 71 Q 150 80 49 71 Z" 
+              fill="url(#p1-ruby)" stroke="url(#p1-gold)" stroke-width="1.2"/>
+        <path d="M 40 50 L 54 32 Q 150 24 246 32 L 260 50 L 246 68 Q 150 76 54 68 Z" 
+              fill="none" stroke="#fef08a" stroke-width="1.2" stroke-dasharray="10 3" opacity="0.9"/>
+        <path d="M 34 50 L 49 29 Q 150 20 251 29 L 266 50 Q 150 42 34 50 Z" 
+              fill="url(#p1-sheen)"/>
+        <circle cx="48" cy="50" r="2.8" fill="#fef08a" stroke="#78350f" stroke-width="0.8"/>
+        <circle cx="252" cy="50" r="2.8" fill="#fef08a" stroke="#78350f" stroke-width="0.8"/>
+        <text x="64" y="55" font-size="13" fill="#facc15" text-anchor="middle">★</text>
+        <text x="236" y="55" font-size="13" fill="#facc15" text-anchor="middle">★</text>
+      </g>
+
+      <!-- 3. Vương Miện Hoàng Đế Đỉnh Đầu (Imperial Crown & Ruby Gem) -->
+      <g class="crown" transform="translate(150, 19)" filter="url(#p1-glow)">
+        <path d="M -24 -2 L -16 -16 L 0 -9 L 16 -16 L 24 -2 L 14 5 L -14 5 Z" fill="url(#p1-gold)" stroke="#ffffff" stroke-width="0.8"/>
+        <polygon points="0,-14 6,-7 0,0 -6,-7" fill="#dc2626" stroke="#ffffff" stroke-width="0.6"/>
+        <circle cx="-14" cy="-4" r="2" fill="#fff"/>
+        <circle cx="14" cy="-4" r="2" fill="#fff"/>
+      </g>
+
+      <!-- 4. Typography Hoàng Gia: APEX Vương Giả -->
+      <text x="150" y="58" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="23.5" 
+            letter-spacing="0.6" stroke="#120101" stroke-width="5.5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p1-text)">APEX Vương Giả</text>
+    </svg>`;
+}
+
+/**
+ * Render Danh Hiệu Tối Cao eSports: Bá Chủ Kiêu Hùng (Top 2 - Yudai)
+ * Thiết kế phong cách 3D Cyber-Knight Frost Diamond, Cánh Băng ôm cong hướng lên (Upward Swept Wings)
+ * Cartouche đen huyền Obsidian đính ngọc Lam Bảo Sapphire & Song Kiếm thần phong.
+ */
+function renderBaChuKieuHungSvg() {
+    return `
+    <svg class="modern-title-badge-svg badge-top2" viewBox="0 0 280 82" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+        </style>
+        <linearGradient id="p2-gold" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="25%" stop-color="#bae6fd"/>
+          <stop offset="50%" stop-color="#38bdf8"/>
+          <stop offset="75%" stop-color="#0284c7"/>
+          <stop offset="100%" stop-color="#075985"/>
+        </linearGradient>
+        <linearGradient id="p2-gold-wire" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fef08a"/>
+          <stop offset="50%" stop-color="#38bdf8"/>
+          <stop offset="100%" stop-color="#ca8a04"/>
+        </linearGradient>
+        <linearGradient id="p2-text" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="30%" stop-color="#e0f2fe"/>
+          <stop offset="70%" stop-color="#7dd3fc"/>
+          <stop offset="100%" stop-color="#0284c7"/>
+        </linearGradient>
+        <linearGradient id="p2-dark-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#091b30"/>
+          <stop offset="50%" stop-color="#040c17"/>
+          <stop offset="100%" stop-color="#010408"/>
+        </linearGradient>
+        <linearGradient id="p2-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="p2-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#38bdf8" flood-opacity="0.7"/>
+        </filter>
+      </defs>
+
+      <!-- 1. Đôi cánh Phượng Hoàng Băng ôm cong hướng lên -->
+      <g class="wings-upward" filter="url(#p2-glow)">
+        <path d="M 40 50 C 26 44, 14 30, 20 14 C 26 24, 34 32, 46 36 C 36 28, 30 18, 38 8 C 42 18, 50 26, 62 32 Z" 
+              fill="url(#p2-gold)"/>
+        <polygon points="20,14 30,24 22,28" fill="#ffffff" opacity="0.85"/>
+        <path d="M 240 50 C 254 44, 266 30, 260 14 C 254 24, 246 32, 234 36 C 244 28, 250 18, 242 8 C 238 18, 230 26, 218 32 Z" 
+              fill="url(#p2-gold)"/>
+        <polygon points="260,14 250,24 258,28" fill="#ffffff" opacity="0.85"/>
+      </g>
+
+      <!-- 2. Khung Tấm Bảng Cartouche Hoàng Gia -->
+      <g class="cartouche-base" filter="url(#p2-glow)">
+        <path d="M 26 48 L 42 26 Q 140 18 238 26 L 254 48 L 238 70 Q 140 78 42 70 Z" 
+              fill="url(#p2-gold)"/>
+        <path d="M 30 48 L 45 29 Q 140 21 235 29 L 250 48 L 235 67 Q 140 75 45 67 Z" 
+              fill="url(#p2-dark-bg)" stroke="#38bdf8" stroke-width="1.2"/>
+        <path d="M 36 48 L 49 32 Q 140 25 231 32 L 244 48 L 231 64 Q 140 71 49 64 Z" 
+              fill="none" stroke="url(#p2-gold-wire)" stroke-width="1" opacity="0.85"/>
+        <path d="M 30 48 L 45 29 Q 140 21 235 29 L 250 48 Q 140 40 30 48 Z" 
+              fill="url(#p2-sheen)"/>
+        <circle cx="44" cy="48" r="2.8" fill="#38bdf8" stroke="#ffffff" stroke-width="0.8"/>
+        <circle cx="236" cy="48" r="2.8" fill="#38bdf8" stroke="#ffffff" stroke-width="0.8"/>
+      </g>
+
+      <!-- 3. Huy hiệu Đỉnh Đầu (Ngôi Sao Băng & Song Kiếm) -->
+      <g class="crest" transform="translate(140, 20)" filter="url(#p2-glow)">
+        <line x1="-22" y1="-5" x2="22" y2="8" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+        <line x1="22" y1="-5" x2="-22" y2="8" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+        <polygon points="0,-12 8,-4 0,3 -8,-4" fill="url(#p2-gold)" stroke="#ffffff" stroke-width="0.8"/>
+        <circle cx="0" cy="-4" r="2.5" fill="#38bdf8"/>
+      </g>
+
+      <!-- 4. Typography: Bá Chủ Kiêu Hùng -->
+      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="21.5" 
+            letter-spacing="0.5" stroke="#01060e" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p2-text)">Bá Chủ Kiêu Hùng</text>
+    </svg>`;
+}
+
+/**
+ * Render Danh Hiệu Tối Cao eSports: Chiến Lang Thần Tam (Top 3 - ÂyYa)
+ * Thiết kế phong cách 3D Solar Bronze-Gold, Cánh Lửa Đồng ôm cong hướng lên (Upward Swept Wings)
+ * Cartouche Hổ Phách viền kim loại 3D đính ngọc Hồng Ngọc & Song Kiếm Lang Vương.
+ */
+function renderChienLangThanTamSvg() {
+    return `
+    <svg class="modern-title-badge-svg badge-top3" viewBox="0 0 280 82" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap');
+        </style>
+        <linearGradient id="p3-bronze" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="20%" stop-color="#fed7aa"/>
+          <stop offset="45%" stop-color="#fb923c"/>
+          <stop offset="70%" stop-color="#ea580c"/>
+          <stop offset="85%" stop-color="#c2410c"/>
+          <stop offset="100%" stop-color="#7c2d12"/>
+        </linearGradient>
+        <linearGradient id="p3-text" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="30%" stop-color="#ffedd5"/>
+          <stop offset="65%" stop-color="#fdba74"/>
+          <stop offset="100%" stop-color="#ea580c"/>
+        </linearGradient>
+        <linearGradient id="p3-accent" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#fef08a"/>
+          <stop offset="50%" stop-color="#f59e0b"/>
+          <stop offset="100%" stop-color="#ea580c"/>
+        </linearGradient>
+        <linearGradient id="p3-dark-bg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a1005"/>
+          <stop offset="50%" stop-color="#140602"/>
+          <stop offset="100%" stop-color="#070201"/>
+        </linearGradient>
+        <linearGradient id="p3-sheen" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="45%" stop-color="#ffffff" stop-opacity="0.08"/>
+          <stop offset="50%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="p3-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#f97316" flood-opacity="0.7"/>
+        </filter>
+      </defs>
+
+      <!-- 1. Cặp Cánh Lửa Đồng Ôm Cong Hướng Lên -->
+      <g class="wings-upward" filter="url(#p3-glow)">
+        <path d="M 40 50 C 26 44, 14 30, 20 14 C 26 24, 34 32, 46 36 C 36 28, 30 18, 38 8 C 42 18, 50 26, 62 32 Z" 
+              fill="url(#p3-bronze)"/>
+        <polygon points="20,14 30,24 22,28" fill="#ffffff" opacity="0.85"/>
+        <path d="M 240 50 C 254 44, 266 30, 260 14 C 254 24, 246 32, 234 36 C 244 28, 250 18, 242 8 C 238 18, 230 26, 218 32 Z" 
+              fill="url(#p3-bronze)"/>
+        <polygon points="260,14 250,24 258,28" fill="#ffffff" opacity="0.85"/>
+      </g>
+
+      <!-- 2. Khung Tấm Bảng Cartouche Đồng Hoàng Kim -->
+      <g class="cartouche-base" filter="url(#p3-glow)">
+        <path d="M 26 48 L 42 26 Q 140 18 238 26 L 254 48 L 238 70 Q 140 78 42 70 Z" 
+              fill="url(#p3-bronze)"/>
+        <path d="M 30 48 L 45 29 Q 140 21 235 29 L 250 48 L 235 67 Q 140 75 45 67 Z" 
+              fill="url(#p3-dark-bg)" stroke="#fb923c" stroke-width="1.2"/>
+        <path d="M 36 48 L 49 32 Q 140 25 231 32 L 244 48 L 231 64 Q 140 71 49 64 Z" 
+              fill="none" stroke="url(#p3-accent)" stroke-width="1" opacity="0.85"/>
+        <path d="M 30 48 L 45 29 Q 140 21 235 29 L 250 48 Q 140 40 30 48 Z" 
+              fill="url(#p3-sheen)"/>
+        <circle cx="44" cy="48" r="2.8" fill="#fb923c" stroke="#ffffff" stroke-width="0.8"/>
+        <circle cx="236" cy="48" r="2.8" fill="#fb923c" stroke="#ffffff" stroke-width="0.8"/>
+      </g>
+
+      <!-- 3. Huy hiệu Đỉnh Đầu (Song Kiếm & Hổ Phách) -->
+      <g class="crest" transform="translate(140, 20)" filter="url(#p3-glow)">
+        <line x1="-22" y1="-5" x2="22" y2="8" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/>
+        <line x1="22" y1="-5" x2="-22" y2="8" stroke="#fb923c" stroke-width="2" stroke-linecap="round"/>
+        <polygon points="0,-12 8,-4 0,3 -8,-4" fill="url(#p3-bronze)" stroke="#ffffff" stroke-width="0.8"/>
+        <circle cx="0" cy="-4" r="2.5" fill="#ea580c"/>
+      </g>
+
+      <!-- 4. Typography: Chiến Lang Thần Tam -->
+      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="20.5" 
+            letter-spacing="0.5" stroke="#120401" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p3-text)">Chiến Lang Thần Tam</text>
+    </svg>`;
+}
+
+/**
+ * Hiển thị phân khu Vinh Danh Tối Cao Top 3 (Tam Đại Đỉnh Phong Bang Hội)
+ * Nằm trên khu vực Top 5, vinh danh 3 thủ lĩnh tối cao với thẻ eSports hiện đại, góc viền công nghệ & hào quang rực rỡ
+ */
+function renderSupremeTop3() {
+    const container = document.getElementById('supreme-cards-container');
+    if (!container) return;
+
+    const sortedForPodium = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
+    const top1 = sortedForPodium[0];
+    const top2 = sortedForPodium[1];
+    const top3 = sortedForPodium[2];
+
+    if (!top1 || !top2 || !top3) return;
+
+    container.innerHTML = `
+        <!-- TOP 2: Á QUÂN (BÊN TRÁI TOP 1) -->
+        <div class="supreme-champ-card rank-2-supreme animate-fade-in" onclick="openFormationModal(${top2.stt})">
+            <span class="card-corner corner-tl"></span>
+            <span class="card-corner corner-tr"></span>
+            <span class="card-corner corner-bl"></span>
+            <span class="card-corner corner-br"></span>
+
+            <div class="supreme-floating-crest">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            
+            <div class="supreme-title-wrap">
+                ${renderBaChuKieuHungSvg()}
+            </div>
+
+            <div class="supreme-avatar-container">
+                <div class="supreme-avatar-ring"></div>
+                <img src="images/logo.png" alt="${escapeHtml(top2.name)}" class="supreme-avatar-core">
+            </div>
+
+            <h3 class="supreme-member-name" title="${escapeHtml(top2.name)}">${escapeHtml(top2.name)}</h3>
+            
+            <div class="supreme-power-badge">
+                <i class="fa-solid fa-bolt"></i> ${escapeHtml(top2.power)}
+            </div>
+
+            <div class="supreme-milestones">
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '16.883'}</span>
+                <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top2.tower || '4.527'}</span>
+            </div>
+
+            <div class="supreme-roles-row">
+                <span class="member-title-badge ${TITLE_CLASSES[top2.title] || 'title-default'}">${escapeHtml(top2.title)}</span>
+                <span class="member-note-badge ${NOTE_CLASSES[top2.note] || 'note-default'}">${escapeHtml(top2.note)}</span>
+            </div>
+
+            <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(${top2.stt})">
+                <i class="fa-solid fa-paw"></i> Xem Đội Hình
+            </button>
+        </div>
+
+        <!-- TOP 1: QUÁN QUÂN CHÍ TÔN (CHÍNH GIỮA, NỔI BẬT NHẤT) -->
+        <div class="supreme-champ-card rank-1-supreme animate-fade-in" onclick="openFormationModal(${top1.stt})">
+            <span class="card-corner corner-tl"></span>
+            <span class="card-corner corner-tr"></span>
+            <span class="card-corner corner-bl"></span>
+            <span class="card-corner corner-br"></span>
+
+            <div class="supreme-floating-crest">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+
+            <div class="supreme-title-wrap">
+                ${renderApexVuongGiaSvg()}
+            </div>
+
+            <div class="supreme-avatar-container">
+                <div class="supreme-avatar-ring"></div>
+                <img src="images/logo.png" alt="${escapeHtml(top1.name)}" class="supreme-avatar-core">
+            </div>
+
+            <h3 class="supreme-member-name" title="${escapeHtml(top1.name)}">${escapeHtml(top1.name)}</h3>
+            
+            <div class="supreme-power-badge">
+                <i class="fa-solid fa-fire-flame-curved"></i> ${escapeHtml(top1.power)}
+            </div>
+
+            <div class="supreme-milestones">
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '17.830'}</span>
+                <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top1.tower || '4.794'}</span>
+            </div>
+
+            <div class="supreme-roles-row">
+                <span class="member-title-badge ${TITLE_CLASSES[top1.title] || 'title-default'}">${escapeHtml(top1.title)}</span>
+                <span class="member-note-badge ${NOTE_CLASSES[top1.note] || 'note-default'}">${escapeHtml(top1.note)}</span>
+            </div>
+
+            <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(${top1.stt})">
+                <i class="fa-solid fa-paw"></i> Chi Tiết Đội Hình
+            </button>
+        </div>
+
+        <!-- TOP 3: QUÝ QUÂN (BÊN PHẢI TOP 1) -->
+        <div class="supreme-champ-card rank-3-supreme animate-fade-in" onclick="openFormationModal(${top3.stt})">
+            <span class="card-corner corner-tl"></span>
+            <span class="card-corner corner-tr"></span>
+            <span class="card-corner corner-bl"></span>
+            <span class="card-corner corner-br"></span>
+
+            <div class="supreme-floating-crest">
+                <i class="fa-solid fa-award"></i>
+            </div>
+
+            <div class="supreme-title-wrap">
+                ${renderChienLangThanTamSvg()}
+            </div>
+
+            <div class="supreme-avatar-container">
+                <div class="supreme-avatar-ring"></div>
+                <img src="images/logo.png" alt="${escapeHtml(top3.name)}" class="supreme-avatar-core">
+            </div>
+
+            <h3 class="supreme-member-name" title="${escapeHtml(top3.name)}">${escapeHtml(top3.name)}</h3>
+            
+            <div class="supreme-power-badge">
+                <i class="fa-solid fa-award"></i> ${escapeHtml(top3.power)}
+            </div>
+
+            <div class="supreme-milestones">
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16.487'}</span>
+                <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top3.tower || '4.487'}</span>
+            </div>
+
+            <div class="supreme-roles-row">
+                <span class="member-title-badge ${TITLE_CLASSES[top3.title] || 'title-default'}">${escapeHtml(top3.title)}</span>
+                <span class="member-note-badge ${NOTE_CLASSES[top3.note] || 'note-default'}">${escapeHtml(top3.note)}</span>
+            </div>
+
+            <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(${top3.stt})">
+                <i class="fa-solid fa-paw"></i> Xem Đội Hình
+            </button>
+        </div>
     `;
 }
 
@@ -466,6 +871,7 @@ function renderIngameTitleSvg(tier, mainTitle) {
  * Thứ tự trực quan từ trái qua phải: Top 4 (Bạch Ngân) | Top 2 (Hắc Kim) | Top 1 (Bạch Kim) | Top 3 (Hoàng Kim) | Top 5 (Xích Đồng)
  */
 function renderPodium() {
+    renderSupremeTop3();
     const podiumContainer = document.getElementById('top-podium-container');
     if (!podiumContainer) return;
 
@@ -499,7 +905,7 @@ function renderPodium() {
                 
                 <!-- BỐ CỤC DANH HIỆU INGAME: BẠCH NGÂN LANG TƯỚNG -->
                 <div class="ingame-title-plaque">
-                    ${renderIngameTitleSvg('silver', 'BẠCH NGÂN LANG TƯỚNG')}
+                    ${renderIngameTitleSvg('silver', 'Bạch Ngân Lang Tướng')}
                 </div>
 
                 <div class="podium-info">
@@ -538,7 +944,7 @@ function renderPodium() {
                 
                 <!-- BỐ CỤC DANH HIỆU INGAME: HẮC ĐẾ THƯỢNG TÔN -->
                 <div class="ingame-title-plaque">
-                    ${renderIngameTitleSvg('darkgold', 'HẮC ĐẾ THƯỢNG TÔN')}
+                    ${renderIngameTitleSvg('darkgold', 'Hắc Đế Thượng Tôn')}
                 </div>
 
                 <div class="podium-info">
@@ -579,7 +985,7 @@ function renderPodium() {
                 
                 <!-- BỐ CỤC DANH HIỆU INGAME: BẠCH THÁNH KIM TÔN -->
                 <div class="ingame-title-plaque">
-                    ${renderIngameTitleSvg('platinum', 'BẠCH THÁNH KIM TÔN')}
+                    ${renderIngameTitleSvg('platinum', 'Bạch Thánh Kim Tôn')}
                 </div>
 
                 <div class="podium-info">
@@ -617,7 +1023,7 @@ function renderPodium() {
                 
                 <!-- BỐ CỤC DANH HIỆU INGAME: HOÀNG KIM LANG TƯỚNG -->
                 <div class="ingame-title-plaque">
-                    ${renderIngameTitleSvg('gold', 'HOÀNG KIM LANG TƯỚNG')}
+                    ${renderIngameTitleSvg('gold', 'Hoàng Kim Lang Tướng')}
                 </div>
 
                 <div class="podium-info">
@@ -656,7 +1062,7 @@ function renderPodium() {
                 
                 <!-- BỐ CỤC DANH HIỆU INGAME: XÍCH ĐỒNG LANG TƯỚNG -->
                 <div class="ingame-title-plaque">
-                    ${renderIngameTitleSvg('bronze', 'XÍCH ĐỒNG LANG TƯỚNG')}
+                    ${renderIngameTitleSvg('bronze', 'Xích Đồng Lang Tướng')}
                 </div>
 
                 <div class="podium-info">
@@ -741,8 +1147,8 @@ function generateEliteCardHtml(m) {
     const titleClass = TITLE_CLASSES[m.title] || 'title-default';
     const noteClass = NOTE_CLASSES[m.note] || 'note-default';
     const avatarImg = 'images/logo.png';
-    const stageDisplay = m.stage || '5.000';
-    const towerDisplay = m.tower || '1.000';
+    const stageDisplay = m.stage || '14.500';
+    const towerDisplay = m.tower || '3.200';
     const rankStr = m.stt < 10 ? '0' + m.stt : m.stt;
 
     return `
@@ -1853,10 +2259,10 @@ function openFormationModal(stt) {
     if (modalRank) modalRank.textContent = `Hạng #${member.stt}`;
     if (modalPower) modalPower.textContent = member.power;
     if (modalStage) {
-        modalStage.innerHTML = `<i class="fa-solid fa-mountain"></i> Ải ${member.stage || '5.000'}`;
+        modalStage.innerHTML = `<i class="fa-solid fa-mountain"></i> Ải ${member.stage || '14.500'}`;
     }
     if (modalTower) {
-        modalTower.innerHTML = `<i class="fa-solid fa-chess-rook"></i> Tháp ${member.tower || '1.000'}`;
+        modalTower.innerHTML = `<i class="fa-solid fa-chess-rook"></i> Tháp ${member.tower || '3.200'}`;
     }
     if (modalServer) {
         modalServer.style.display = 'none';

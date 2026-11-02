@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QUẢN TRỊ BANG HỘI – MIÊU CHỦ TAM QUỐC</title>
-    
+
     <!-- Game Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    
-    <!-- Google Fonts -->
+
+    <!-- Google Fonts: Baloo 2, Cinzel, Be Vietnam Pro & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="admin-page-body">
 
     <!-- Ambient Cyber Glow Mesh Background -->
@@ -40,19 +44,23 @@
             </div>
             <h2 class="login-title">ĐĂNG NHẬP TRANG QUẢN TRỊ</h2>
             <p class="login-desc">Hệ thống điều hành & phê duyệt Bang Hội Miêu Chủ Tam Quốc</p>
-            
+
             <div class="login-error-msg" id="admin-login-error">
                 <i class="fa-solid fa-circle-exclamation"></i> Tài khoản hoặc mật khẩu không chính xác!
             </div>
 
             <form id="admin-login-form" onsubmit="handleAdminLogin(event)" autocomplete="off">
                 <div class="form-group" style="text-align: left; margin-bottom: 16px;">
-                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-user"></i> Tài khoản quản trị:</label>
-                    <input type="text" id="admin-login-user" class="form-input" placeholder="Nhập tài khoản quản trị..." value="" required autocomplete="off">
+                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-user"></i> Tài khoản
+                        quản trị:</label>
+                    <input type="text" id="admin-login-user" class="form-input" placeholder="Nhập tài khoản quản trị..."
+                        value="" required autocomplete="off">
                 </div>
                 <div class="form-group" style="text-align: left; margin-bottom: 22px;">
-                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-key"></i> Mật khẩu:</label>
-                    <input type="password" id="admin-login-pass" class="form-input" placeholder="Nhập mật khẩu..." value="" required autocomplete="new-password">
+                    <label class="form-label" style="font-size: 0.85rem;"><i class="fa-solid fa-key"></i> Mật
+                        khẩu:</label>
+                    <input type="password" id="admin-login-pass" class="form-input" placeholder="Nhập mật khẩu..."
+                        value="" required autocomplete="new-password">
                 </div>
                 <div style="display: flex; flex-direction: column; gap: 10px;">
                     <button type="submit" class="btn btn-gold" style="width: 100%; padding: 12px; font-size: 1rem;">
@@ -82,7 +90,8 @@
                             <span>TRUNG TÂM ĐIỀU HÀNH BANG HỘI</span>
                             <span class="admin-badge-indicator">ADMIN PANEL</span>
                         </div>
-                        <h1 class="main-title" style="background: linear-gradient(135deg, #fff 0%, #ff9aa8 50%, #e6a100 100%); -webkit-background-clip: text;">
+                        <h1 class="main-title"
+                            style="background: linear-gradient(135deg, #fff 0%, #ff9aa8 50%, #e6a100 100%); -webkit-background-clip: text;">
                             QUẢN TRỊ BẢNG XẾP HẠNG & TƯỚNG LĨNH
                         </h1>
                         <div class="main-desc">
@@ -93,10 +102,13 @@
 
                 <div class="header-actions">
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <span class="badge-logged-user" style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;">
+                        <span class="badge-logged-user"
+                            style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; color: #6ee7b7; padding: 6px 14px; border-radius: var(--radius-sm); font-size: 0.85rem; font-weight: 700;">
                             <i class="fa-solid fa-user-check"></i> apex (Quản Trị Viên)
                         </span>
-                        <button class="btn btn-outline" onclick="adminLogout()" style="padding: 6px 12px; font-size: 0.82rem; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;" title="Đăng xuất khỏi hệ thống quản trị">
+                        <button class="btn btn-outline" onclick="adminLogout()"
+                            style="padding: 6px 12px; font-size: 0.82rem; border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;"
+                            title="Đăng xuất khỏi hệ thống quản trị">
                             <i class="fa-solid fa-arrow-right-from-bracket"></i> Đăng Xuất
                         </button>
                     </div>
@@ -138,7 +150,8 @@
                             </div>
                         </div>
                         <div class="stat-value" id="kpi-has-img" style="color: #34d399;">35</div>
-                        <div class="stat-subtext" id="kpi-has-img-pct"><i class="fa-solid fa-circle-check"></i> Tỷ lệ: 85.4%</div>
+                        <div class="stat-subtext" id="kpi-has-img-pct"><i class="fa-solid fa-circle-check"></i> Tỷ lệ:
+                            85.4%</div>
                     </div>
 
                     <!-- KPI 3: Chưa Cập Nhật Đội Hình -->
@@ -172,12 +185,14 @@
         <section class="controls-section" style="padding-top: 0;">
             <div class="container">
                 <div class="admin-toolbar-card">
-                    <div style="display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--gold-200);">
+                    <div
+                        style="display: flex; align-items: center; gap: 12px; font-weight: 700; color: var(--gold-200);">
                         <i class="fa-solid fa-toolbox"></i>
                         <span>Công Cụ Thao Tác Nhanh:</span>
                     </div>
                     <div class="admin-btn-cluster">
-                        <button class="btn btn-gold" id="btn-sync-sheet-admin" onclick="syncFromGoogleSheet({ silent: false })">
+                        <button class="btn btn-gold" id="btn-sync-sheet-admin"
+                            onclick="syncFromGoogleSheet({ silent: false })">
                             <i class="fa-solid fa-arrows-rotate"></i> Đồng Bộ Google Form
                         </button>
                         <button class="btn btn-gold" onclick="autoRankByPower()">
@@ -189,7 +204,8 @@
                         <button class="btn btn-outline" onclick="openModal('modal-import-csv')">
                             <i class="fa-solid fa-file-import"></i> Nhập CSV
                         </button>
-                        <button class="btn btn-outline" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;" onclick="confirmResetDefaultData()">
+                        <button class="btn btn-outline" style="border-color: rgba(239, 68, 68, 0.4); color: #fca5a5;"
+                            onclick="confirmResetDefaultData()">
                             <i class="fa-solid fa-rotate-left"></i> Khôi Phục Gốc (41 Người)
                         </button>
                     </div>
@@ -200,12 +216,14 @@
                     <div class="controls-top-row">
                         <div class="search-box">
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                            <input type="text" id="admin-search-input" class="search-input" placeholder="Tìm kiếm nhanh tướng lĩnh cần quản lý...">
+                            <input type="text" id="admin-search-input" class="search-input"
+                                placeholder="Tìm kiếm nhanh tướng lĩnh cần quản lý...">
                             <button class="clear-search-btn" id="admin-clear-search">&times;</button>
                         </div>
 
                         <div class="filter-dropdown-group">
-                            <select id="admin-filter-scope" class="filter-select" style="border-color: rgba(230, 161, 0, 0.4); font-weight: 700; color: var(--gold-200);">
+                            <select id="admin-filter-scope" class="filter-select"
+                                style="border-color: rgba(230, 161, 0, 0.4); font-weight: 700; color: var(--gold-200);">
                                 <option value="all">🛡️ Toàn Bộ Thành Viên (41)</option>
                                 <option value="top15">⭐ Chỉ Top 15 (Công khai trên BXH)</option>
                                 <option value="internal">🔒 Chỉ Nội Bộ (#16 - #41)</option>
@@ -331,11 +349,13 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label class="form-label">Lực Chiến Bảng Xếp Hạng *</label>
-                            <input type="text" id="admin-form-power" class="form-input" placeholder="VD: >1T2, 800-1T, 200-400B..." required>
+                            <input type="text" id="admin-form-power" class="form-input"
+                                placeholder="VD: >1T2, 800-1T, 200-400B..." required>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Server In-Game (nếu biết)</label>
-                            <input type="text" id="admin-form-server" class="form-input" placeholder="VD: S 645, S 657...">
+                            <input type="text" id="admin-form-server" class="form-input"
+                                placeholder="VD: S 645, S 657...">
                         </div>
                     </div>
 
@@ -370,18 +390,22 @@
                     </div>
 
                     <!-- Upload ảnh đội hình trực tiếp trong form -->
-                    <div class="form-group" style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08);">
+                    <div class="form-group"
+                        style="margin-top: 10px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.08);">
                         <label class="form-label">
                             <i class="fa-solid fa-camera"></i> Ảnh Chụp Đội Hình Tướng
                         </label>
                         <div style="display: flex; align-items: center; gap: 14px;">
-                            <img id="admin-form-img-preview" src="" alt="Preview" style="width: 50px; height: 70px; border-radius: 4px; object-fit: cover; border: 1px solid var(--gold-border); display: none;">
-                            <input type="file" id="admin-form-img-file" accept="image/*" class="form-input" style="flex: 1;" onchange="handleAdminFormImgChange(event)">
+                            <img id="admin-form-img-preview" src="" alt="Preview"
+                                style="width: 50px; height: 70px; border-radius: 4px; object-fit: cover; border: 1px solid var(--gold-border); display: none;">
+                            <input type="file" id="admin-form-img-file" accept="image/*" class="form-input"
+                                style="flex: 1;" onchange="handleAdminFormImgChange(event)">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline" onclick="closeModal('modal-admin-member')">Hủy bỏ</button>
+                    <button type="button" class="btn btn-outline" onclick="closeModal('modal-admin-member')">Hủy
+                        bỏ</button>
                     <button type="submit" class="btn btn-gold">
                         <i class="fa-solid fa-floppy-disk"></i> Lưu Thay Đổi
                     </button>
@@ -400,7 +424,8 @@
                 <button class="modal-close-btn" onclick="closeModal('modal-delete-confirm')">&times;</button>
             </div>
             <div class="modal-body">
-                <p>Bạn có chắc muốn xóa <span id="admin-delete-name" style="color: var(--gold-200); font-weight: bold;"></span> khỏi bang hội?</p>
+                <p>Bạn có chắc muốn xóa <span id="admin-delete-name"
+                        style="color: var(--gold-200); font-weight: bold;"></span> khỏi bang hội?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline" onclick="closeModal('modal-delete-confirm')">Hủy</button>
@@ -423,7 +448,8 @@
                     Chọn file CSV chứa danh sách thành viên bang hội. Cấu trúc file gồm các cột:
                     <br><code style="color: var(--gold-300);">STT, TÊN THÀNH VIÊN, LỰC CHIẾN, DANH HIỆU, GHI CHÚ</code>
                 </p>
-                <input type="file" id="admin-csv-input" accept=".csv,text/csv" class="form-input" onchange="handleCSVFileUpload(event)">
+                <input type="file" id="admin-csv-input" accept=".csv,text/csv" class="form-input"
+                    onchange="handleCSVFileUpload(event)">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline" onclick="closeModal('modal-import-csv')">Đóng</button>
@@ -439,7 +465,8 @@
                 <button class="modal-close-btn" onclick="closeModal('modal-preview-image')">&times;</button>
             </div>
             <div class="modal-body" style="text-align: center; padding: 15px;">
-                <img id="preview-image-large" src="" alt="Đội hình" style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px;">
+                <img id="preview-image-large" src="" alt="Đội hình"
+                    style="max-width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px;">
             </div>
         </div>
     </div>
@@ -448,4 +475,5 @@
     <script src="script.js"></script>
     <script src="admin.js"></script>
 </body>
+
 </html>

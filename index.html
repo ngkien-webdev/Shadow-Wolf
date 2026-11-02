@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIÊU CHỦ TAM QUỐC – BẢNG XẾP HẠNG BANG HỘI</title>
-    
+
     <!-- Game Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="images/favicon.png">
-    
-    <!-- Google Fonts: Cinzel & Be Vietnam Pro -->
+
+    <!-- Google Fonts: Baloo 2, Cinzel, Be Vietnam Pro & Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome 6 Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- Ambient Cyber Glow Mesh Background -->
     <div class="ambient-glow-mesh" aria-hidden="true">
@@ -93,7 +97,7 @@
                             <i class="fa-solid fa-fire-flame-curved"></i>
                         </div>
                     </div>
-                    <div class="stat-value gold" id="stat-total-power">~8.82T+</div>
+                    <div class="stat-value gold" id="stat-total-power">~9.10T+</div>
                     <div class="stat-subtext">
                         <i class="fa-solid fa-bolt"></i> Sức Mạnh Toàn Bang Hội
                     </div>
@@ -107,7 +111,7 @@
                             <i class="fa-solid fa-crown"></i>
                         </div>
                     </div>
-                    <div class="stat-value" id="stat-top-power">1.664T</div>
+                    <div class="stat-value" id="stat-top-power">1.715T</div>
                     <div class="stat-subtext" id="stat-top-name">
                         <i class="fa-solid fa-crown"></i> SW ⚜️ Apex 🇻🇳
                     </div>
@@ -121,11 +125,36 @@
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
                     </div>
-                    <div class="stat-value" id="stat-avg-power">~426B</div>
+                    <div class="stat-value" id="stat-avg-power">~450B</div>
                     <div class="stat-subtext">
                         <i class="fa-solid fa-scale-balanced"></i> Trung Bình Mỗi Tướng
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.5. VINH DANH TỐI CAO TOP 3 (TAM ĐẠI ĐỈNH PHONG BANG HỘI) -->
+    <section class="supreme-top3-section" id="supreme-top3-section">
+        <!-- Radiant light pillars -->
+        <div class="light-beam beam-center"></div>
+        <div class="light-beam beam-left"></div>
+        <div class="light-beam beam-right"></div>
+        <div class="container">
+            <div class="supreme-header">
+                <div class="supreme-badge-pill">
+                    <i class="fa-solid fa-crown"></i> TAM ĐẠI ĐỈNH PHONG BANG HỘI
+                </div>
+                <h2 class="supreme-main-title">
+                    <span class="heading-wing wing-left"></span>
+                    TOP 3 TỐI CAO VINH DANH
+                    <span class="heading-wing wing-right"></span>
+                </h2>
+                <div class="supreme-sub-title">TAM ĐẠI CHIẾN THẦN TRẤN GIỮ ĐỈNH CAO SHADOW WOLF</div>
+            </div>
+
+            <div class="supreme-cards-container" id="supreme-cards-container">
+                <!-- Javascript sẽ tự động render Top 3 Tối Cao vào đây -->
             </div>
         </div>
     </section>
@@ -145,7 +174,7 @@
                     <i class="fa-solid fa-paw"></i> SHADOW WOLF
                 </div>
             </div>
-            
+
             <div class="podium-stage-wrapper">
                 <div class="podium-container top5-layout" id="top-podium-container">
                     <!-- Javascript sẽ render 5 cột Top 1-5 vào đây: Top 4, Top 2, Top 1, Top 3, Top 5 -->
@@ -169,7 +198,8 @@
                     <!-- Ô tìm kiếm -->
                     <div class="search-box">
                         <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                        <input type="text" id="search-input" class="search-input" placeholder="Tìm kiếm theo tên thành viên, biệt danh (VD: Apex, Sỹ, Tùng, Haruki, Xuân Tiền...)...">
+                        <input type="text" id="search-input" class="search-input"
+                            placeholder="Tìm kiếm theo tên thành viên, biệt danh (VD: Apex, Sỹ, Tùng, Haruki, Xuân Tiền...)...">
                         <button class="clear-search-btn" id="btn-clear-search" title="Xóa tìm kiếm">
                             <i class="fa-solid fa-xmark"></i>
                         </button>
@@ -219,7 +249,8 @@
                 <div class="controls-bottom-row">
                     <div class="sort-buttons-wrap">
                         <span class="sort-label"><i class="fa-solid fa-arrow-down-wide-short"></i> Sắp xếp:</span>
-                        <button class="sort-btn active" data-col="stt" data-dir="asc" onclick="setSorting('stt', 'asc')">
+                        <button class="sort-btn active" data-col="stt" data-dir="asc"
+                            onclick="setSorting('stt', 'asc')">
                             <i class="fa-solid fa-ranking-star"></i> Thứ hạng (STT)
                         </button>
                         <button class="sort-btn" data-col="power" data-dir="desc" onclick="setSorting('power', 'desc')">
@@ -276,7 +307,8 @@
                 <div class="table-empty-state" id="table-empty-state" style="display: none;">
                     <div class="empty-icon"><i class="fa-solid fa-paw"></i></div>
                     <h4 class="empty-title">Không tìm thấy thành viên phù hợp</h4>
-                    <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh sách.</p>
+                    <p class="empty-desc">Thử tìm kiếm với từ khóa khác hoặc bấm "Đặt lại bộ lọc" để xem toàn bộ danh
+                        sách.</p>
                 </div>
             </div>
         </div>
@@ -307,9 +339,12 @@
                         <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
                         <div class="fm-tags">
                             <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
-                            <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i> Ải 12.500</span>
-                            <span class="fm-tower-pill" id="formation-member-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 2.850</span>
-                            <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần Vương</span>
+                            <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i>
+                                Ải 12.500</span>
+                            <span class="fm-tower-pill" id="formation-member-tower"><i
+                                    class="fa-solid fa-chess-rook"></i> Tháp 2.850</span>
+                            <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần
+                                Vương</span>
                             <span class="member-note-badge note-bang-chu" id="formation-member-note">Bang Chủ</span>
                         </div>
                     </div>
@@ -329,14 +364,16 @@
                         </div>
                     </div>
 
-                    <img id="formation-screenshot-preview" class="screenshot-preview-img" alt="Ảnh chụp màn hình đội hình">
-                    
+                    <img id="formation-screenshot-preview" class="screenshot-preview-img"
+                        alt="Ảnh chụp màn hình đội hình">
+
                     <!-- BANNER KHI CHƯA CÓ ẢNH -->
                     <div id="formation-screenshot-placeholder" class="formation-empty-banner">
                         <i class="fa-solid fa-triangle-exclamation empty-dh-icon"></i>
                         <div class="empty-dh-title">Chưa cập nhật đội hình</div>
                         <div class="empty-dh-desc">
-                            Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Chỉ Quản Trị Viên mới có quyền tải lên hoặc cập nhật ảnh trong Trang Quản Trị.
+                            Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Chỉ Quản Trị Viên mới có quyền
+                            tải lên hoặc cập nhật ảnh trong Trang Quản Trị.
                         </div>
                     </div>
                 </div>
@@ -350,4 +387,5 @@
     <!-- Scripts -->
     <script src="script.js"></script>
 </body>
+
 </html>
