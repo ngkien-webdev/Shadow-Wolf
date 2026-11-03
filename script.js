@@ -45,8 +45,8 @@ const DEFAULT_MEMBERS = [
     { stt: 38, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
-// Khóa LocalStorage (Bản v26: Cập nhật sĩ số bang chuẩn 38 thành viên)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v26';
+// Khóa LocalStorage (Bản v27: Cập nhật Danh hiệu Yudai Chiến Đế, ALyaL Bá Khí & Bộ Avatar Đa Dạng)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v27';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -100,6 +100,34 @@ const NOTE_CLASSES = {
     'Thành Viên': 'note-thanh-vien'
 };
 
+// Bộ sưu tập 10 Avatar Thần Thú & Chiến Tướng đa dạng chuẩn ShadowWolf Clan
+const MEMBER_AVATARS = {
+    1: 'images/avatars/avatar-1-apex.png',      // Lôi Lang Thần Điện (Blue Lightning Wolf)
+    2: 'images/avatars/avatar-2-yudai.png',     // Nhẫn Giả Nguyệt Ảnh (Red Moon Ninja Samurai)
+    3: 'images/avatars/avatar-3-ayva.png',      // Hoàng Kim Cuồng Lang (Bronze Roaring Wolf)
+    4: 'images/avatars/avatar-4-alinx.png',     // Xích Viêm Hỏa Long (Red Fire Dragon)
+    5: 'images/avatars/avatar-5-ltd.png',       // Hoàng Kim Bạch Hổ (Golden Tiger)
+    6: 'images/avatars/avatar-6-stom.png',      // Chu Tước Hỏa Phượng (Flame Phoenix)
+    7: 'images/avatars/avatar-7-bitien.png',    // Băng Sương Ma Lang (Frost Ice Wolf)
+    8: 'images/avatars/avatar-8-nttp.png',      // Kim Long Tôn Giả (Golden Dragon)
+    9: 'images/avatars/avatar-9-haruki.png',    // Bạch Ngân Cô Lang (Silver White Wolf)
+    10: 'images/avatars/avatar-10-dolivi.png'   // Thanh Long Hải Thần (Azure Sea Dragon)
+};
+
+/**
+ * Lấy ảnh avatar sinh động theo từng thành viên
+ * Top 1-10 dùng avatar tương ứng theo bảng vinh danh của Bang
+ * Các thứ hạng sau tự động phân bổ xoay vòng 10 thần thú để toàn bộ danh sách luôn đa dạng, rực rỡ
+ */
+function getMemberAvatarImg(m) {
+    if (!m) return 'images/avatars/avatar-1-apex.png';
+    if (m.avatarImg) return m.avatarImg;
+    const stt = Number(m.stt) || 1;
+    if (MEMBER_AVATARS[stt]) return MEMBER_AVATARS[stt];
+    const cycle = ((stt - 1) % 10) + 1;
+    return MEMBER_AVATARS[cycle] || 'images/avatars/avatar-1-apex.png';
+}
+
 // Khởi chạy ứng dụng
 document.addEventListener('DOMContentLoaded', () => {
     initApp();
@@ -120,6 +148,11 @@ function initApp() {
     setTimeout(() => {
         syncFromGoogleSheet({ silent: true });
     }, 1200);
+
+    // Tự động quét và đồng bộ ngầm định kỳ mỗi 60 giây (Live Real-time Watcher)
+    setInterval(() => {
+        syncFromGoogleSheet({ silent: true });
+    }, 60000);
 
     // Hỗ trợ mở nhanh modal qua URL (VD: ?modal=2)
     const urlParams = new URLSearchParams(window.location.search);
@@ -632,14 +665,14 @@ function renderBaChuKieuHungSvg() {
         <circle cx="0" cy="-4" r="2.5" fill="#38bdf8"/>
       </g>
 
-      <!-- 4. Typography: Bá Chủ Kiêu Hùng -->
-      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="21.5" 
-            letter-spacing="0.5" stroke="#01060e" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p2-text)">Bá Chủ Kiêu Hùng</text>
+      <!-- 4. Typography: Yudai Chiến Đế -->
+      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="22" 
+            letter-spacing="0.5" stroke="#01060e" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p2-text)">Yudai Chiến Đế</text>
     </svg>`;
 }
 
 /**
- * Render Danh Hiệu Tối Cao eSports: Chiến Lang Thần Tam (Top 3 - ÂyYa)
+ * Render Danh Hiệu Tối Cao eSports: ALyaL Bá Khí (Top 3 - ÂyYa)
  * Thiết kế phong cách 3D Solar Bronze-Gold, Cánh Lửa Đồng ôm cong hướng lên (Upward Swept Wings)
  * Cartouche Hổ Phách viền kim loại 3D đính ngọc Hồng Ngọc & Song Kiếm Lang Vương.
  */
@@ -717,9 +750,9 @@ function renderChienLangThanTamSvg() {
         <circle cx="0" cy="-4" r="2.5" fill="#ea580c"/>
       </g>
 
-      <!-- 4. Typography: Chiến Lang Thần Tam -->
-      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="20.5" 
-            letter-spacing="0.5" stroke="#120401" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p3-text)">Chiến Lang Thần Tam</text>
+      <!-- 4. Typography: ALyaL Bá Khí -->
+      <text x="140" y="55" text-anchor="middle" font-family="'Baloo 2', 'Be Vietnam Pro', cursive, sans-serif" font-weight="800" font-size="22" 
+            letter-spacing="0.5" stroke="#120401" stroke-width="5" stroke-linejoin="round" paint-order="stroke fill" fill="url(#p3-text)">ALyaL Bá Khí</text>
     </svg>`;
 }
 
@@ -756,7 +789,7 @@ function renderSupremeTop3() {
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="images/logo.png" alt="${escapeHtml(top2.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top2)}" alt="${escapeHtml(top2.name)}" class="supreme-avatar-core">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top2.name)}">${escapeHtml(top2.name)}</h3>
@@ -797,7 +830,7 @@ function renderSupremeTop3() {
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="images/logo.png" alt="${escapeHtml(top1.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top1)}" alt="${escapeHtml(top1.name)}" class="supreme-avatar-core">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top1.name)}">${escapeHtml(top1.name)}</h3>
@@ -838,7 +871,7 @@ function renderSupremeTop3() {
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="images/logo.png" alt="${escapeHtml(top3.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top3)}" alt="${escapeHtml(top3.name)}" class="supreme-avatar-core">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top3.name)}">${escapeHtml(top3.name)}</h3>
@@ -896,7 +929,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar silver-glow wolf-podium-silver">
                         <div class="wolf-aura-burst aura-silver"></div>
-                        <img src="images/logo.png" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver">
+                        <img src="${getMemberAvatarImg(top4)}" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-silver"><i class="fa-solid fa-medal"></i> TOP 4</div>
@@ -935,7 +968,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar darkgold-glow wolf-podium-darkgold">
                         <div class="wolf-aura-burst aura-darkgold"></div>
-                        <img src="images/logo.png" alt="Hắc Đế Thượng Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-darkgold">
+                        <img src="${getMemberAvatarImg(top2)}" alt="Hắc Đế Thượng Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-darkgold">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-darkgold"><i class="fa-solid fa-shield-halved"></i> TOP 2</div>
@@ -976,7 +1009,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar platinum-glow wolf-podium-platinum">
                         <div class="wolf-aura-burst aura-platinum"></div>
-                        <img src="images/logo.png" alt="Bạch Thánh Kim Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-platinum">
+                        <img src="${getMemberAvatarImg(top1)}" alt="Bạch Thánh Kim Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-platinum">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-platinum"><i class="fa-solid fa-crown"></i> TOP 1</div>
@@ -1014,7 +1047,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar gold-glow wolf-podium-gold">
                         <div class="wolf-aura-burst aura-gold"></div>
-                        <img src="images/logo.png" alt="Hoàng Kim Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
+                        <img src="${getMemberAvatarImg(top3)}" alt="Hoàng Kim Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-gold"><i class="fa-solid fa-award"></i> TOP 3</div>
@@ -1053,7 +1086,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar bronze-glow wolf-podium-bronze">
                         <div class="wolf-aura-burst aura-bronze"></div>
-                        <img src="images/logo.png" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
+                        <img src="${getMemberAvatarImg(top5)}" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-bronze"><i class="fa-solid fa-star"></i> TOP 5</div>
@@ -1153,7 +1186,7 @@ function generateEliteCardHtml(m) {
 
     const titleClass = TITLE_CLASSES[m.title] || 'title-default';
     const noteClass = NOTE_CLASSES[m.note] || 'note-default';
-    const avatarImg = 'images/logo.png';
+    const avatarImg = getMemberAvatarImg(m);
     const stageDisplay = m.stage || '14.500';
     const towerDisplay = m.tower || '3.200';
     const rankStr = m.stt < 10 ? '0' + m.stt : m.stt;
@@ -1939,6 +1972,9 @@ function handleCSVFileUpload(e) {
                 renderPodium();
                 applyFilterAndSort();
                 updateLastUpdatedTime();
+        if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
+            renderLowerRanksGrid();
+        }
                 showToast(`Đã nhập thành công ${parsedMembers.length} thành viên!`, "success");
             }
         } catch (err) {
@@ -1992,6 +2028,9 @@ function confirmResetDefaultData() {
         renderPodium();
         applyFilterAndSort();
         updateLastUpdatedTime();
+        if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
+            renderLowerRanksGrid();
+        }
         showToast("Đã khôi phục dữ liệu gốc 41 thành viên thành công!", "success");
     }
 }
@@ -2228,6 +2267,9 @@ async function syncFromGoogleSheet(options = { silent: false }) {
         applyFilterAndSort();
         preloadMemberImages();
         updateLastUpdatedTime();
+        if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
+            renderLowerRanksGrid();
+        }
 
         if (!options.silent) {
             showToast(`Đồng bộ thành công! Đã cập nhật ${updatedCount} thành viên, thêm mới ${addedCount} tướng!`, "success");

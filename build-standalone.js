@@ -14,6 +14,20 @@ const adminJs = fs.readFileSync(path.join(dir, 'admin.js'), 'utf-8');
 const faviconBase64 = 'data:image/png;base64,' + fs.readFileSync(path.join(dir, 'images/favicon.png')).toString('base64');
 const logoBase64 = 'data:image/png;base64,' + fs.readFileSync(path.join(dir, 'images/logo.png')).toString('base64');
 
+// Base64 avatars for 100% portable display
+const avatarsDir = path.join(dir, 'images/avatars');
+const avatarBase64List = [];
+if (fs.existsSync(avatarsDir)) {
+    const avatarFiles = fs.readdirSync(avatarsDir).filter(f => f.endsWith('.png'));
+    avatarFiles.forEach(f => {
+        const b64 = 'data:image/png;base64,' + fs.readFileSync(path.join(avatarsDir, f)).toString('base64');
+        avatarBase64List.push({
+            pattern: new RegExp(`images/avatars/${f.replace(/\./g, '\\.')}`, 'g'),
+            b64: b64
+        });
+    });
+}
+
 // 1. Build standalone.html (Public Leaderboard)
 // IMPORTANT: Use function replacers (() => content) so JavaScript does NOT treat $& as special pattern
 let standalone = html.replace('<link rel="stylesheet" href="style.css">', () => `<style>\n${css}\n</style>`);
@@ -22,6 +36,9 @@ standalone = standalone.replace(/href="images\/favicon\.png"/g, () => `href="${f
 standalone = standalone.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="images\/favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/images\/logo\.png/g, () => logoBase64);
+avatarBase64List.forEach(({ pattern, b64 }) => {
+    standalone = standalone.replace(pattern, () => b64);
+});
 
 fs.writeFileSync(path.join(dir, 'standalone.html'), standalone, 'utf-8');
 console.log('standalone.html successfully built! Size:', fs.statSync(path.join(dir, 'standalone.html')).size, 'bytes');
@@ -34,6 +51,9 @@ standaloneAdmin = standaloneAdmin.replace(/href="images\/favicon\.png"/g, () => 
 standaloneAdmin = standaloneAdmin.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standaloneAdmin = standaloneAdmin.replace(/href="images\/favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standaloneAdmin = standaloneAdmin.replace(/images\/logo\.png/g, () => logoBase64);
+avatarBase64List.forEach(({ pattern, b64 }) => {
+    standaloneAdmin = standaloneAdmin.replace(pattern, () => b64);
+});
 
 fs.writeFileSync(path.join(dir, 'standalone-admin.html'), standaloneAdmin, 'utf-8');
 console.log('standalone-admin.html successfully built! Size:', fs.statSync(path.join(dir, 'standalone-admin.html')).size, 'bytes');

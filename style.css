@@ -1042,7 +1042,7 @@ body {
     box-shadow: 0 0 35px rgba(56, 189, 248, 0.75), inset 0 0 18px rgba(224, 242, 254, 0.5) !important;
 }
 .wolf-img-platinum {
-    filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #e0f2fe) !important;
+    filter: brightness(1.1) drop-shadow(0 0 12px rgba(56, 189, 248, 0.7)) drop-shadow(0 0 24px rgba(224, 242, 254, 0.5)) !important;
 }
 
 /* 2. Hắc Kim (Top 2): Obsidian Dark Gold */
@@ -1052,7 +1052,7 @@ body {
     box-shadow: 0 0 30px rgba(202, 138, 4, 0.7), inset 0 0 16px rgba(254, 240, 138, 0.4) !important;
 }
 .wolf-img-darkgold {
-    filter: brightness(1.15) contrast(1.25) sepia(0.6) hue-rotate(10deg) drop-shadow(0 0 10px #eab308) drop-shadow(0 0 20px #713f12) !important;
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(234, 179, 8, 0.7)) drop-shadow(0 0 20px rgba(113, 63, 18, 0.5)) !important;
 }
 
 /* 3. Hoàng Kim (Top 3): Imperial Gold */
@@ -1062,7 +1062,7 @@ body {
     box-shadow: 0 0 30px rgba(255, 215, 0, 0.7), inset 0 0 16px rgba(255, 215, 0, 0.45) !important;
 }
 .wolf-img-gold {
-    filter: brightness(1.22) contrast(1.15) drop-shadow(0 0 10px #ffd700) drop-shadow(0 0 22px #f59e0b) !important;
+    filter: brightness(1.12) drop-shadow(0 0 10px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 22px rgba(245, 158, 11, 0.5)) !important;
 }
 
 /* 4. Bạch Ngân (Top 4): Pure Silver / Metallic Steel */
@@ -1072,7 +1072,7 @@ body {
     box-shadow: 0 0 25px rgba(203, 213, 225, 0.6), inset 0 0 14px rgba(248, 250, 252, 0.35) !important;
 }
 .wolf-img-silver {
-    filter: brightness(1.25) contrast(1.2) drop-shadow(0 0 10px #94a3b8) drop-shadow(0 0 20px #e2e8f0) !important;
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(148, 163, 184, 0.6)) drop-shadow(0 0 20px rgba(226, 232, 240, 0.4)) !important;
 }
 
 /* 5. Xích Đồng (Top 5): Molten Copper Bronze */
@@ -1082,7 +1082,7 @@ body {
     box-shadow: 0 0 25px rgba(249, 115, 22, 0.65), inset 0 0 14px rgba(254, 215, 170, 0.4) !important;
 }
 .wolf-img-bronze {
-    filter: brightness(1.15) sepia(0.7) saturate(2.3) hue-rotate(-22deg) drop-shadow(0 0 10px #f97316) drop-shadow(0 0 20px #dc2626) !important;
+    filter: brightness(1.1) drop-shadow(0 0 10px rgba(249, 115, 22, 0.7)) drop-shadow(0 0 20px rgba(220, 38, 38, 0.5)) !important;
 }
 
 /* AURA BURST PULSE */
@@ -3600,10 +3600,11 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: contain;
+    object-fit: cover;
     background: radial-gradient(circle at center, #1e293b, #090d16);
     border: 3px solid #facc15;
-    padding: 6px;
+    padding: 0;
+    display: block;
 }
 .rank-2-supreme .supreme-avatar-core,
 .rank-2-supreme .supreme-avatar-img { border-color: #38bdf8; }
