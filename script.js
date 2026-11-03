@@ -100,32 +100,57 @@ const NOTE_CLASSES = {
     'Thành Viên': 'note-thanh-vien'
 };
 
-// Bộ sưu tập 10 Avatar Thần Thú & Chiến Tướng đa dạng chuẩn ShadowWolf Clan
+// Bộ sưu tập 38 Avatar Thần Thú & Chiến Tướng độc bản – Mỗi người 1 Avatar riêng, 100% không trùng lặp!
 const MEMBER_AVATARS = {
-    1: 'images/avatars/avatar-1-apex.png',      // Lôi Lang Thần Điện (Blue Lightning Wolf)
-    2: 'images/avatars/avatar-2-yudai.png',     // Nhẫn Giả Nguyệt Ảnh (Red Moon Ninja Samurai)
-    3: 'images/avatars/avatar-3-ayva.png',      // Hoàng Kim Cuồng Lang (Bronze Roaring Wolf)
-    4: 'images/avatars/avatar-4-alinx.png',     // Xích Viêm Hỏa Long (Red Fire Dragon)
-    5: 'images/avatars/avatar-5-ltd.png',       // Hoàng Kim Bạch Hổ (Golden Tiger)
-    6: 'images/avatars/avatar-6-stom.png',      // Chu Tước Hỏa Phượng (Flame Phoenix)
-    7: 'images/avatars/avatar-7-bitien.png',    // Băng Sương Ma Lang (Frost Ice Wolf)
-    8: 'images/avatars/avatar-8-nttp.png',      // Kim Long Tôn Giả (Golden Dragon)
-    9: 'images/avatars/avatar-9-haruki.png',    // Bạch Ngân Cô Lang (Silver White Wolf)
-    10: 'images/avatars/avatar-10-dolivi.png'   // Thanh Long Hải Thần (Azure Sea Dragon)
+    1: 'images/avatars/avatar-1-apex.png',          // SW ⚜️ Apex 🇻🇳 - Lôi Lang Thần Điện (Blue Lightning Wolf)
+    2: 'images/avatars/avatar-2-yudai.png',         // SW • YUDAI - Nhẫn Giả Nguyệt Ảnh (Red Moon Ninja Samurai)
+    3: 'images/avatars/avatar-3-ayva.png',          // SW ⚜️ ÂyYa 🇻🇳 - Hoàng Kim Cuồng Lang (Bronze Roaring Wolf)
+    4: 'images/avatars/avatar-4-alinx.png',         // SW • Alinx • - Xích Viêm Hỏa Long (Red Fire Dragon)
+    5: 'images/avatars/avatar-5-ltd.png',           // SW ⚜️ LTD 🇻🇳 - Hoàng Kim Bạch Hổ (Golden War Tiger)
+    6: 'images/avatars/avatar-6-stom.png',          // SW ⚜️ Stom 🇻🇳 - Chu Tước Hỏa Phượng (Flame Phoenix)
+    7: 'images/avatars/avatar-7-bitien.png',        // SW ⚜️ Bi Tiên - Băng Sương Ma Lang (Frost Ice Wolf)
+    8: 'images/avatars/avatar-8-nttp.png',          // SW ⚜️ NTTP 🇻🇳 - Kim Long Tôn Giả (Imperial Golden Dragon)
+    9: 'images/avatars/avatar-9-haruki.png',        // SW ⭐️ Haruki - Bạch Ngân Cô Lang (Silver Dire Wolf)
+    10: 'images/avatars/avatar-10-dolivi.png',      // SW • ĐỘLiVi - Thanh Long Hải Thần (Azure Sea Dragon)
+    11: 'images/avatars/avatar-11-rain.png',        // SW ⚜️ Rain 🇻🇳 - Lôi Vũ Cuồng Lang (Storm Thunder Wolf)
+    12: 'images/avatars/avatar-12-rinn.png',        // SW ⚜️ Rinn 🇻🇳 - Nguyệt Ảnh Linh Miêu (Moonlight Shadow Cat)
+    13: 'images/avatars/avatar-13-ryo.png',         // SW ⚜️ Ryo 🇻🇳 - Hắc Diễm Chiến Ưng (Obsidian Flame Eagle)
+    14: 'images/avatars/avatar-14-neko.png',        // SW ⚜️ Neko - Cửu Vĩ Linh Miêu (Mystic Kitsune Spirit)
+    15: 'images/avatars/avatar-15-furies.png',      // SW ⚜️ Furies - Huyết Sát Ma Lang (Blood Berserker Wolf)
+    16: 'images/avatars/avatar-16-klein.png',       // SW ⚜️ Klein ★ - Tinh Túc Ma Pháp Sư (Astral Arcane Mage)
+    17: 'images/avatars/avatar-17-0379318347.png',  // 0379318347 - Hắc Giáp Thiết Kỵ (Ironclad Dark Knight)
+    18: 'images/avatars/avatar-18-baoo.png',        // SW • Bãoo - Cuồng Phong Thần Thú (Tempest Storm Griffin)
+    19: 'images/avatars/avatar-19-bear.png',        // SW • Bear - Bắc Cực Cuồng Hùng (Arctic War Bear)
+    20: 'images/avatars/avatar-20-pandaxmun.png',   // SW • PandaxMun - Trúc Lâm Chiến Hùng (Yin-Yang Bamboo Master)
+    21: 'images/avatars/avatar-21-minhthanh.png',   // SW • Minh Thành - Kỳ Lân Thánh Thú (Sacred Golden Qilin)
+    22: 'images/avatars/avatar-22-poision.png',     // SW • Poision - Độc Mãng Tôn Giả (Emerald Viper King)
+    23: 'images/avatars/avatar-23-wolf.png',        // SW • WOLF - Ảnh Lang Thần Quân (Void Shadow Alpha Wolf)
+    24: 'images/avatars/avatar-24-kaneki.png',      // SW • Kaneki - Bạch Phát Độc Nhãn (One-Eyed Ghoul Demon)
+    25: 'images/avatars/avatar-25-cana.png',        // SW • Cà Na - Huyền Vũ Thần Quy (Ancient Black Tortoise)
+    26: 'images/avatars/avatar-26-moda.png',        // SW • MODA - Thiên Bằng Chiến Thần (Golden Roc Falcon)
+    27: 'images/avatars/avatar-27-t.png',           // SW • T - Lôi Kích Thần Ưng (Lightning Falcon)
+    28: 'images/avatars/avatar-28-lukita.png',      // SW • lukita - Tử Lôi Ma Báo (Violet Thunder Panther)
+    29: 'images/avatars/avatar-29-lubu.png',        // SW • lubu - Vô Song Chiến Thần (Warlord Lu Bu)
+    30: 'images/avatars/avatar-30-yuta.png',        // SW • Yuta - Nguyền Chú Kiếm Tôn (Cursed Swordmaster)
+    31: 'images/avatars/avatar-31-next.png',        // SW • Next - Hư Không Dạ Lang (Void Cosmic Wolf)
+    32: 'images/avatars/avatar-32-poitwo.png',      // SW • Poitwo - Băng Phách Bạch Hổ (Frost White Tiger)
+    33: 'images/avatars/avatar-33-xoai.png',        // SW • Xoài - Kim Quang Thần Lộc (Solar Celestial Stag)
+    34: 'images/avatars/avatar-34-thien.png',       // SW • THIEN - Thiên Lôi Thần Tướng (Celestial Sky Guardian)
+    35: 'images/avatars/avatar-35-ha.png',          // SW • Hạ - Hạ Nhật Hỏa Long (Summer Solar Fire Dragon)
+    36: 'images/avatars/avatar-36-sai.png',         // SW • Sai - Mặc Họa Chiến Thần (Ink Wash Wolf Beast)
+    37: 'images/avatars/avatar-37-lang.png',        // SW • Lang - Hoang Dã Ngân Lang (Wild Mountain Wolf)
+    38: 'images/avatars/avatar-38-thu.png'          // SW • Thu - Thu Phong Hồng Diệp (Autumn Vermilion Hawk)
 };
 
 /**
- * Lấy ảnh avatar sinh động theo từng thành viên
- * Top 1-10 dùng avatar tương ứng theo bảng vinh danh của Bang
- * Các thứ hạng sau tự động phân bổ xoay vòng 10 thần thú để toàn bộ danh sách luôn đa dạng, rực rỡ
+ * Lấy ảnh avatar độc bản theo từng thành viên – 100% riêng biệt cho toàn bộ 38 thành viên
  */
 function getMemberAvatarImg(m) {
     if (!m) return 'images/avatars/avatar-1-apex.png';
     if (m.avatarImg) return m.avatarImg;
     const stt = Number(m.stt) || 1;
     if (MEMBER_AVATARS[stt]) return MEMBER_AVATARS[stt];
-    const cycle = ((stt - 1) % 10) + 1;
-    return MEMBER_AVATARS[cycle] || 'images/avatars/avatar-1-apex.png';
+    return 'images/avatars/avatar-1-apex.png';
 }
 
 // Khởi chạy ứng dụng
@@ -134,15 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initApp() {
+    initMysticStarfield();
     loadMembersData();
     setupEventListeners();
     updateGuildInfo();
     updateStats();
     renderPodium();
+    renderSupremeTop3();
     applyFilterAndSort();
     initLastUpdated();
     preloadMemberImages();
     initMemberLookup();
+    initHistoryTracker();
 
     // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền
     setTimeout(() => {
@@ -280,14 +308,26 @@ function calculateNumericPower(powerStr) {
 }
 
 /**
- * Tính toán & cập nhật 4 thẻ thống kê
+ * Hiệu ứng đếm số mượt mà (Animated CountUp) cho thẻ thống kê
+ */
+function animateCounter(el, target, isDecimal = false, suffix = '', prefix = '', duration = 1000) {
+    if (!el) return;
+    const startTime = performance.now();
+    function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const current = target * ease;
+        el.textContent = `${prefix}${isDecimal ? current.toFixed(2) : Math.round(current)}${suffix}`;
+        if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+}
+
+/**
+ * Tính toán & cập nhật 4 thẻ thống kê toàn diện dựa trên dữ liệu thật 38 thành viên
  */
 function updateStats() {
-    const isPublicPage = !document.querySelector('.admin-page-body');
-    const statsPool = isPublicPage ? members.filter(m => (Number(m.stt) || 999) <= 15) : members;
-    const totalCount = statsPool.length;
-
-    // TÍNH TỔNG CHIẾN LỰC TOÀN BANG HỘI (Toàn bộ 41 thành viên -> 8T+ / ~8.81T+)
     let totalGuildPower = 0;
     let maxPowerMember = null;
     let maxPowerVal = -1;
@@ -301,12 +341,8 @@ function updateStats() {
         }
     });
 
-    // Lực chiến trung bình Top 15 cao thủ
-    let top15Power = 0;
-    statsPool.forEach(m => {
-        top15Power += (m.powerVal || calculateNumericPower(m.power));
-    });
-    const avgPower = totalCount > 0 ? Math.round(top15Power / totalCount) : 0;
+    const totalCount = members.length;
+    const avgPower = totalCount > 0 ? Math.round(totalGuildPower / totalCount) : 0;
 
     let totalPowerFormatted = '';
     if (totalGuildPower >= 1000) {
@@ -322,14 +358,26 @@ function updateStats() {
     const elTopName = document.getElementById('stat-top-name');
     const elAvgPower = document.getElementById('stat-avg-power');
 
-    if (elTotalMembers) elTotalMembers.textContent = isPublicPage ? 'TOP 15' : `${members.length} Tướng`;
-    if (elTotalPower) elTotalPower.textContent = totalPowerFormatted;
-    if (elTopPower) elTopPower.textContent = maxPowerMember ? maxPowerMember.power : '---';
+    if (elTotalMembers) {
+        animateCounter(elTotalMembers, totalCount, false, ' Tướng');
+    }
+    if (elTotalPower) {
+        if (totalGuildPower >= 1000) {
+            animateCounter(elTotalPower, totalGuildPower / 1000, true, 'T+', '~');
+        } else {
+            animateCounter(elTotalPower, Math.round(totalGuildPower), false, 'B', '~');
+        }
+    }
+    if (elTopPower) {
+        elTopPower.textContent = maxPowerMember ? maxPowerMember.power : '---';
+    }
     if (elTopName) {
         const topHeroName = maxPowerMember ? (maxPowerMember.ingameName || maxPowerMember.name) : '---';
         elTopName.innerHTML = `<i class="fa-solid fa-crown" style="color: #ffd43b;"></i> ${escapeHtml(topHeroName)}`;
     }
-    if (elAvgPower) elAvgPower.textContent = `~${avgPower}B`;
+    if (elAvgPower) {
+        animateCounter(elAvgPower, avgPower, false, 'B', '~');
+    }
 }
 
 /**
@@ -1154,8 +1202,8 @@ function renderEliteCards() {
         if (searchResultsWrap) searchResultsWrap.style.display = 'none';
         if (emptyState) emptyState.style.display = 'none';
 
-        const sortedTop15 = [...members].filter(m => (Number(m.stt) || 999) <= 15).sort((a, b) => (a.stt || 0) - (b.stt || 0));
-        const eliteMembers = sortedTop15.filter(m => m.stt >= 6 && m.stt <= 15);
+        const sortedAll = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
+        const eliteMembers = sortedAll.filter(m => m.stt >= 1 && m.stt <= 10);
 
         row1Container.innerHTML = eliteMembers.map(m => generateEliteCardHtml(m)).join('');
     }
@@ -1167,21 +1215,36 @@ function renderEliteCards() {
 function generateEliteCardHtml(m) {
     let shieldClass = 'rank-shield-silver';
     let shieldIcon = '<i class="fa-solid fa-shield"></i>';
-    if (m.stt <= 8) {
+    if (m.stt === 1) {
+        shieldClass = 'rank-shield-crown';
+        shieldIcon = '<i class="fa-solid fa-crown"></i>';
+    } else if (m.stt === 2) {
+        shieldClass = 'rank-shield-diamond';
+        shieldIcon = '<i class="fa-solid fa-shield-halved"></i>';
+    } else if (m.stt === 3) {
+        shieldClass = 'rank-shield-gold';
+        shieldIcon = '<i class="fa-solid fa-award"></i>';
+    } else if (m.stt === 4) {
+        shieldClass = 'rank-shield-ruby';
+        shieldIcon = '<i class="fa-solid fa-shield-cat"></i>';
+    } else if (m.stt === 5) {
+        shieldClass = 'rank-shield-tiger';
+        shieldIcon = '<i class="fa-solid fa-star"></i>';
+    } else if (m.stt <= 8) {
         shieldClass = 'rank-shield-diamond';
         shieldIcon = '<i class="fa-solid fa-crown"></i>';
     } else if (m.stt <= 10) {
         shieldClass = 'rank-shield-gold';
-        shieldIcon = '<i class="fa-solid fa-star"></i>';
+        shieldIcon = '<i class="fa-solid fa-shield"></i>';
     } else if (m.stt <= 15) {
         shieldClass = 'rank-shield-silver';
-        shieldIcon = '<i class="fa-solid fa-shield"></i>';
+        shieldIcon = '<i class="fa-solid fa-shield-halved"></i>';
     } else if (m.stt <= 25) {
         shieldClass = 'rank-shield-bronze';
         shieldIcon = '<i class="fa-solid fa-shield-halved"></i>';
     } else {
         shieldClass = 'rank-shield-steel';
-        shieldIcon = '<i class="fa-solid fa-shield-cat"></i>';
+        shieldIcon = '<i class="fa-solid fa-shield"></i>';
     }
 
     const titleClass = TITLE_CLASSES[m.title] || 'title-default';
@@ -1243,8 +1306,8 @@ function applyFilterAndSort() {
     const noteFilter = document.getElementById('filter-note')?.value || 'all';
     const powerTierFilter = document.getElementById('filter-power-tier')?.value || 'all';
 
-    // Trang công khai (index.html): CHỈ HIỂN THỊ TOP 15 CAO THỦ!
-    const pool = isPublicPage ? members.filter(m => (Number(m.stt) || 999) <= 15) : members;
+    // Toàn bộ danh sách 38 thành viên trên Bảng Xếp Hạng
+    const pool = members;
 
     filteredMembers = pool.filter(m => {
         // Tìm kiếm tên thành viên in-game
@@ -1272,6 +1335,10 @@ function applyFilterAndSort() {
         if (powerTierFilter !== 'all') {
             const val = m.powerVal || calculateNumericPower(m.power);
             if (powerTierFilter === 'tier-1t' && val < 1000) return false;
+            if (powerTierFilter === 'tier-high' && (val < 200 || val >= 1000)) return false;
+            if (powerTierFilter === 'tier-mid' && (val < 100 || val >= 200)) return false;
+            if (powerTierFilter === 'tier-standard' && val >= 100) return false;
+            // Tương thích các tùy chọn cũ
             if (powerTierFilter === 'tier-400-1t' && (val < 400 || val >= 1000)) return false;
             if (powerTierFilter === 'tier-100-400' && (val < 100 || val >= 400)) return false;
             if (powerTierFilter === 'tier-60-100' && (val < 60 || val >= 100)) return false;
@@ -1394,38 +1461,11 @@ function renderTable() {
         const titleClass = TITLE_CLASSES[m.title] || 'title-default';
         const noteClass = NOTE_CLASSES[m.note] || 'note-default';
 
-        let avatarBlock = '';
-        if (rank === 1) {
-            avatarBlock = `
-                <div class="member-avatar avatar-rank-1" title="Top 1: Hoàng Kim Lang Vương">
-                    <span class="rank-mini-crown gold"><i class="fa-solid fa-crown"></i></span>
-                    <span class="wolf-avatar-icon wolf-icon-gold">🐺</span>
-                    <span class="avatar-ring-glow ring-gold"></span>
-                </div>
-            `;
-        } else if (rank === 2) {
-            avatarBlock = `
-                <div class="member-avatar avatar-rank-2" title="Top 2: Bạch Ngân Lang Tướng">
-                    <span class="rank-mini-crown silver"><i class="fa-solid fa-shield-halved"></i></span>
-                    <span class="wolf-avatar-icon wolf-icon-silver">🐺</span>
-                    <span class="avatar-ring-glow ring-silver"></span>
-                </div>
-            `;
-        } else if (rank === 3) {
-            avatarBlock = `
-                <div class="member-avatar avatar-rank-3" title="Top 3: Xích Đồng Lang Tướng">
-                    <span class="rank-mini-crown bronze"><i class="fa-solid fa-award"></i></span>
-                    <span class="wolf-avatar-icon wolf-icon-bronze">🐺</span>
-                    <span class="avatar-ring-glow ring-bronze"></span>
-                </div>
-            `;
-        } else {
-            avatarBlock = `
-                <div class="member-avatar avatar-normal">
-                    <span class="wolf-avatar-icon">🐺</span>
-                </div>
-            `;
-        }
+        const avatarBlock = `
+            <div class="member-table-avatar-wrap" title="${escapeHtml(m.name)}">
+                <img src="${getMemberAvatarImg(m)}" alt="${escapeHtml(m.name)}" class="member-table-avatar-img">
+            </div>
+        `;
 
         html += `
             <tr class="${rowClass}" style="--row-idx: ${idx};" data-stt="${m.stt}" onclick="handleRowClick(event, ${m.stt})">
@@ -1474,7 +1514,15 @@ function renderTable() {
                     </span>
                 </td>
 
-                <!-- CỘT 6: CHI TIẾT & THAO TÁC -->
+                <!-- CỘT 6: ẢI & THÁP -->
+                <td class="col-milestone">
+                    <div class="table-milestones-cell">
+                        <span class="milestone-mini stage-mini" title="Vượt Ải"><i class="fa-solid fa-mountain"></i> Ải ${m.stage || '14.500'}</span>
+                        <span class="milestone-mini tower-mini" title="Leo Tháp"><i class="fa-solid fa-chess-rook"></i> Tháp ${m.tower || '3.200'}</span>
+                    </div>
+                </td>
+
+                <!-- CỘT 7: CHI TIẾT & THAO TÁC -->
                 <td class="col-actions">
                     <div class="action-btn-group">
                         <button class="btn-action btn-view ${m.image ? 'has-image-btn' : ''}" title="Xem chi tiết trận hình" onclick="event.stopPropagation(); openFormationModal(${m.stt})">
@@ -1541,11 +1589,7 @@ function renderPagination() {
     const endIdx = pageSize === 9999 ? total : Math.min(currentPage * pageSize, total);
 
     if (paginationInfo) {
-        if (isPublicTable) {
-            paginationInfo.innerHTML = `Hiển thị <strong>${startIdx} - ${endIdx}</strong> trên <strong>${total}</strong> cao thủ bang hội (Top 15)`;
-        } else {
-            paginationInfo.innerHTML = `Hiển thị <strong>${startIdx} - ${endIdx}</strong> trên tổng <strong>${total}</strong> thành viên`;
-        }
+        paginationInfo.innerHTML = `Hiển thị <strong>${startIdx} - ${endIdx}</strong> trên <strong>${total}</strong> chiến tướng bang hội`;
     }
 
     if (totalPages <= 1) {
@@ -1594,36 +1638,53 @@ function changePage(newPage) {
 }
 
 function updateFilterCounts() {
-    const countBadge = document.getElementById('filtered-count-badge');
-    const isPublicPage = !document.querySelector('.admin-page-body');
-    const poolTotal = isPublicPage ? 15 : members.length;
+    const countBadge = document.getElementById('filter-result-count') || document.getElementById('filtered-count-badge');
     if (countBadge) {
-        countBadge.textContent = `${filteredMembers.length}/${poolTotal}`;
+        countBadge.textContent = `${filteredMembers.length}/${members.length}`;
     }
 }
 
 function setupEventListeners() {
     const searchInput = document.getElementById('search-input');
+    const searchClearBtn = document.getElementById('btn-search-clear') || document.getElementById('btn-clear-search');
+    
     if (searchInput) {
         searchInput.addEventListener('input', debounce(() => {
+            if (searchClearBtn) {
+                searchClearBtn.style.display = searchInput.value.trim() ? 'block' : 'none';
+            }
             applyFilterAndSort();
-        }, 200));
+        }, 150));
     }
 
-    const clearSearchBtn = document.getElementById('btn-clear-search');
-    if (clearSearchBtn) {
-        clearSearchBtn.addEventListener('click', () => {
+    if (searchClearBtn) {
+        searchClearBtn.addEventListener('click', () => {
             if (searchInput) {
                 searchInput.value = '';
+                searchClearBtn.style.display = 'none';
                 applyFilterAndSort();
                 searchInput.focus();
             }
         });
     }
 
+    // Các bộ lọc select
     ['filter-title', 'filter-note', 'filter-power-tier', 'filter-formation'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.addEventListener('change', () => applyFilterAndSort());
+    });
+
+    // Các nút bấm sắp xếp nhanh dạng Chip
+    document.querySelectorAll('.sort-chip').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.sort-chip').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const col = btn.getAttribute('data-sort');
+            const dir = btn.getAttribute('data-dir');
+            currentSort = { column: col, direction: dir };
+            currentPage = 1;
+            applyFilterAndSort();
+        });
     });
 
     const pageSizeSelect = document.getElementById('page-size-select');
@@ -1696,6 +1757,9 @@ function resetFilters() {
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.value = '';
 
+    const searchClearBtn = document.getElementById('btn-search-clear') || document.getElementById('btn-clear-search');
+    if (searchClearBtn) searchClearBtn.style.display = 'none';
+
     ['filter-title', 'filter-note', 'filter-power-tier', 'filter-formation'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.value = 'all';
@@ -1704,6 +1768,9 @@ function resetFilters() {
     currentSort = { column: 'stt', direction: 'asc' };
     document.querySelectorAll('.sort-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelector('.sort-btn[data-col="stt"]')?.classList.add('active');
+
+    document.querySelectorAll('.sort-chip').forEach(btn => btn.classList.remove('active'));
+    document.querySelector('.sort-chip[data-sort="stt"]')?.classList.add('active');
 
     applyFilterAndSort();
     showToast("Đã thiết lập lại toàn bộ bộ lọc!", "info");
@@ -2064,16 +2131,20 @@ function updateGuildInfo() {
 
 function initLastUpdated() {
     const lastUpdatedEl = document.getElementById('last-updated-text');
-    if (!lastUpdatedEl) return;
+    const heroDateEl = document.getElementById('hero-date-display');
     const now = new Date();
-    lastUpdatedEl.textContent = `Hôm nay, ${formatDateTime(now)}`;
+    const str = `Hôm nay, ${formatDateTime(now)}`;
+    if (lastUpdatedEl) lastUpdatedEl.textContent = str;
+    if (heroDateEl) heroDateEl.textContent = `Cập nhật: ${formatDateTime(now)}`;
 }
 
 function updateLastUpdatedTime() {
     const lastUpdatedEl = document.getElementById('last-updated-text');
-    if (!lastUpdatedEl) return;
+    const heroDateEl = document.getElementById('hero-date-display');
     const now = new Date();
-    lastUpdatedEl.textContent = `Vừa xong, ${formatDateTime(now)}`;
+    const str = `Vừa xong, ${formatDateTime(now)}`;
+    if (lastUpdatedEl) lastUpdatedEl.textContent = str;
+    if (heroDateEl) heroDateEl.textContent = `Cập nhật: ${formatDateTime(now)}`;
 }
 
 function formatDateTime(d) {
@@ -2267,6 +2338,8 @@ async function syncFromGoogleSheet(options = { silent: false }) {
         applyFilterAndSort();
         preloadMemberImages();
         updateLastUpdatedTime();
+        if (typeof initAnalyticsCharts === 'function') initAnalyticsCharts();
+        if (typeof recordHistorySnapshot === 'function') recordHistorySnapshot(`Đồng bộ Google Sheet: Cập nhật ${updatedCount} thành viên`);
         if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
             renderLowerRanksGrid();
         }
@@ -2307,6 +2380,13 @@ function openFormationModal(stt) {
     if (modalName) modalName.textContent = member.name;
     if (modalRank) modalRank.textContent = `Hạng #${member.stt}`;
     if (modalPower) modalPower.textContent = member.power;
+    
+    const modalAvatar = document.getElementById('formation-member-avatar');
+    if (modalAvatar) {
+        modalAvatar.src = getMemberAvatarImg(member);
+        modalAvatar.alt = member.name;
+    }
+
     if (modalStage) {
         modalStage.innerHTML = `<i class="fa-solid fa-mountain"></i> Ải ${member.stage || '14.500'}`;
     }
@@ -2379,6 +2459,23 @@ function openFormationModal(stt) {
     }
 
     openModal('modal-formation-view');
+}
+
+/**
+ * Sao chép liên kết chia sẻ trận hình thành viên
+ */
+function copyFormationShareLink() {
+    if (!activeFormationMember) return;
+    const cleanUrl = `${window.location.origin}${window.location.pathname}?modal=${activeFormationMember.stt}`;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cleanUrl).then(() => {
+            showToast(`Đã sao chép liên kết chia sẻ của ${activeFormationMember.name}!`, "success");
+        }).catch(() => {
+            prompt("Sao chép liên kết chia sẻ:", cleanUrl);
+        });
+    } else {
+        prompt("Sao chép liên kết chia sẻ:", cleanUrl);
+    }
 }
 
 /**
@@ -2562,6 +2659,7 @@ function handleLookupInput(keyword) {
     const clearBtn = document.getElementById('btn-lookup-clear');
     const initialWrap = document.getElementById('lookup-initial-state');
     const cardsGrid = document.getElementById('lookup-grid-cards');
+    const featuredWrap = document.getElementById('lookup-featured-card-wrap');
     const emptyWrap = document.getElementById('lookup-empty-state');
     const queryEcho = document.getElementById('lookup-query-term');
     const counterText = document.getElementById('lookup-counter-text');
@@ -2575,6 +2673,7 @@ function handleLookupInput(keyword) {
         // Nếu ô tìm kiếm rỗng
         const total = members.length;
         const maxStt = members[members.length - 1]?.stt || total;
+        if (featuredWrap) featuredWrap.style.display = 'none';
         if (isLowerRanksExpanded) {
             renderLowerRanksGrid();
         } else {
@@ -2612,14 +2711,26 @@ function handleLookupInput(keyword) {
     if (initialWrap) initialWrap.style.display = 'none';
 
     if (matches.length === 0) {
+        if (featuredWrap) featuredWrap.style.display = 'none';
         if (cardsGrid) cardsGrid.style.display = 'none';
         if (emptyWrap) emptyWrap.style.display = 'block';
         if (queryEcho) queryEcho.textContent = query;
         if (counterText) {
             counterText.innerHTML = `<i class="fa-solid fa-triangle-exclamation" style="color: #f87171;"></i> Không tìm thấy thành viên nào khớp với "${escapeHtml(query)}"`;
         }
+    } else if (matches.length === 1) {
+        if (emptyWrap) emptyWrap.style.display = 'none';
+        if (cardsGrid) cardsGrid.style.display = 'none';
+        if (featuredWrap) {
+            featuredWrap.style.display = 'block';
+            featuredWrap.innerHTML = generateFeaturedCharacterCardHtml(matches[0]);
+        }
+        if (counterText) {
+            counterText.innerHTML = `<i class="fa-solid fa-circle-check" style="color: #4ade80;"></i> Tìm thấy chiến tướng <strong>${escapeHtml(matches[0].name)}</strong> (Hạng #${matches[0].stt})`;
+        }
     } else {
         if (emptyWrap) emptyWrap.style.display = 'none';
+        if (featuredWrap) featuredWrap.style.display = 'none';
         if (cardsGrid) {
             cardsGrid.style.display = 'grid';
             cardsGrid.innerHTML = matches.map(m => generateEliteCardHtml(m)).join('');
@@ -2634,6 +2745,8 @@ function toggleLowerRanksView() {
     isLowerRanksExpanded = !isLowerRanksExpanded;
     const lookupInput = document.getElementById('member-lookup-input');
     const toggleText = document.getElementById('toggle-lower-text');
+    const featuredWrap = document.getElementById('lookup-featured-card-wrap');
+    if (featuredWrap) featuredWrap.style.display = 'none';
     const total = members.length;
     const maxStt = members[members.length - 1]?.stt || total;
 
@@ -2692,5 +2805,247 @@ function quickLookupMember(name) {
     const section = document.getElementById('member-lookup-section');
     if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+
+/**
+ * ==========================================================================
+ * NÂNG CẤP CAO CẤP: FEATURED IDENTITY CARD, ANALYTICS & HISTORY TRACKER
+ * ==========================================================================
+ */
+
+/**
+ * Tạo HTML thẻ căn cước chiến tướng cao cấp (Featured Identity Card khi tìm thấy 1 người)
+ */
+function generateFeaturedCharacterCardHtml(m) {
+    const avatar = getMemberAvatarImg(m);
+    const titleClass = TITLE_CLASSES[m.title] || 'title-default';
+    const noteClass = NOTE_CLASSES[m.note] || 'note-default';
+    return `
+        <div class="featured-identity-card" onclick="openFormationModal(${m.stt})">
+            <div class="featured-card-header">
+                <span class="featured-rank-shield">
+                    <i class="fa-solid fa-ranking-star"></i> Thứ Hạng #${m.stt}
+                </span>
+                <span class="member-note-badge ${noteClass}">${escapeHtml(m.note)}</span>
+            </div>
+            <div class="featured-avatar-wrap">
+                <img src="${avatar}" alt="${escapeHtml(m.name)}" class="featured-avatar-img">
+            </div>
+            <h3 class="featured-name">${escapeHtml(m.name)}</h3>
+            <div class="featured-power-badge">
+                <i class="fa-solid fa-bolt"></i> ${escapeHtml(m.power)}
+            </div>
+            <div class="featured-milestones">
+                <span class="milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${m.stage || '14.500'}</span>
+                <span class="milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${m.tower || '3.200'}</span>
+                <span class="member-title-badge ${titleClass}">${escapeHtml(m.title)}</span>
+            </div>
+            <button class="btn btn-hero-gold featured-cta-btn" onclick="event.stopPropagation(); openFormationModal(${m.stt})">
+                <i class="fa-solid fa-paw"></i> Xem Đội Hình &amp; Trận Hình
+            </button>
+        </div>
+    `;
+}
+
+/**
+ * MYSTIC GALAXY STARFIELD & CELESTIAL CANVAS ENGINE
+ * Hardware-accelerated static starfield (zero continuous JS loops, 0% CPU overhead, 120 FPS silky-smooth scroll)
+ */
+function initMysticStarfield() {
+    const canvas = document.getElementById('mystic-stars-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    function renderStaticStars() {
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
+        ctx.clearRect(0, 0, width, height);
+
+        const starColors = ['#E9E2F5', '#A68AE0', '#7896C8', '#B99A62', '#ffffff'];
+        const starCount = Math.min(85, Math.floor((width * height) / 12000));
+
+        for (let i = 0; i < starCount; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const radius = Math.random() * 1.5 + 0.5;
+            const color = starColors[Math.floor(Math.random() * starColors.length)];
+            const alpha = Math.random() * 0.65 + 0.25;
+
+            ctx.beginPath();
+            ctx.arc(x, y, radius, 0, Math.PI * 2);
+            ctx.fillStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.fill();
+
+            if (radius > 1.2) {
+                ctx.beginPath();
+                ctx.arc(x, y, radius * 2.2, 0, Math.PI * 2);
+                ctx.fillStyle = color;
+                ctx.globalAlpha = 0.16;
+                ctx.fill();
+            }
+        }
+        ctx.globalAlpha = 1.0;
+    }
+
+    renderStaticStars();
+    window.addEventListener('resize', debounce(renderStaticStars, 250), { passive: true });
+}
+
+/**
+ * HỆ THỐNG CHUYỂN BẬC VINH DANH (TIER SWITCHER NAVIGATION)
+ * Top 3 Vương Giả • Ngũ Đại Thống Lĩnh • Thập Đại Cao Thủ • Xem Toàn Cảnh
+ */
+function selectRankingTier(tier, autoScroll = false) {
+    const secTop3 = document.getElementById('supreme-top3-section');
+    const secTop5 = document.getElementById('podium-top5-section');
+    const secTop10 = document.getElementById('elite-top10-section');
+
+    document.querySelectorAll('.tier-tab-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById('tab-' + tier);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    if (tier === 'top3') {
+        if (secTop3) secTop3.style.display = 'block';
+        if (secTop5) secTop5.style.display = 'none';
+        if (secTop10) secTop10.style.display = 'none';
+    } else if (tier === 'top5') {
+        if (secTop3) secTop3.style.display = 'none';
+        if (secTop5) secTop5.style.display = 'block';
+        if (secTop10) secTop10.style.display = 'none';
+    } else if (tier === 'top10') {
+        if (secTop3) secTop3.style.display = 'none';
+        if (secTop5) secTop5.style.display = 'none';
+        if (secTop10) secTop10.style.display = 'block';
+    } else { // 'all'
+        if (secTop3) secTop3.style.display = 'block';
+        if (secTop5) secTop5.style.display = 'block';
+        if (secTop10) secTop10.style.display = 'block';
+    }
+
+    if (autoScroll) {
+        const hall = document.getElementById('hall-of-glory');
+        if (hall) {
+            hall.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }
+}
+window.selectRankingTier = selectRankingTier;
+window.switchRankingTier = selectRankingTier;
+
+/**
+ * HÀNH TRÌNH CHIẾN THẦN (HISTORY & TRAJECTORY TRACKER)
+ */
+const HISTORY_KEY = 'mieu_chu_tam_quoc_history_log_v2';
+const SNAPSHOT_KEY = 'mieu_chu_tam_quoc_last_snapshot_v2';
+
+function initHistoryTracker() {
+    const logBody = document.getElementById('history-log-body');
+    if (!logBody) return;
+
+    let historyLog = [];
+    try {
+        const storedLog = localStorage.getItem(HISTORY_KEY);
+        if (storedLog) historyLog = JSON.parse(storedLog);
+    } catch (e) {
+        historyLog = [];
+    }
+
+    // Baseline snapshot
+    try {
+        const lastSnapshot = localStorage.getItem(SNAPSHOT_KEY);
+        if (!lastSnapshot) {
+            const currentSnapshot = members.map(m => ({
+                stt: m.stt,
+                name: m.name,
+                power: m.power,
+                powerVal: m.powerVal || calculateNumericPower(m.power)
+            }));
+            localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(currentSnapshot));
+        }
+    } catch (e) {
+        console.warn('Lỗi ghi snapshot history:', e);
+    }
+
+    if (historyLog.length === 0) {
+        logBody.innerHTML = `
+            <div class="history-item-row" style="background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.3);">
+                <div class="hist-time-tag"><i class="fa-solid fa-shield-halved text-gold"></i> Thiết lập mốc chuẩn</div>
+                <div style="color: #e2e8f0;">Đã ghi nhận mốc chiến lực chuẩn <strong>38 thành viên</strong> Shadow Wolf. Hệ thống tự động ghi nhật ký khi có thay đổi lực chiến hoặc thứ hạng từ Google Form / Quản trị.</div>
+                <div class="hist-change-tag neutral">Chuẩn hóa</div>
+            </div>
+        `;
+    } else {
+        logBody.innerHTML = historyLog.slice(0, 10).map(entry => `
+            <div class="history-item-row">
+                <div class="hist-time-tag"><i class="fa-regular fa-clock"></i> ${escapeHtml(entry.time || 'Hôm nay')}</div>
+                <div style="color: #f1f5f9;">${escapeHtml(entry.description || 'Cập nhật chỉ số')}</div>
+                <div class="hist-change-tag ${entry.isPositive ? 'positive' : 'neutral'}">${escapeHtml(entry.tag || 'Cập nhật')}</div>
+            </div>
+        `).join('');
+    }
+}
+
+function recordHistorySnapshot(reason = 'Cập nhật chỉ số') {
+    try {
+        const storedSnapshot = localStorage.getItem(SNAPSHOT_KEY);
+        const currentSnapshot = members.map(m => ({
+            stt: m.stt,
+            name: m.name,
+            power: m.power,
+            powerVal: m.powerVal || calculateNumericPower(m.power)
+        }));
+
+        if (storedSnapshot) {
+            const oldSnapshot = JSON.parse(storedSnapshot);
+            let changes = [];
+            currentSnapshot.forEach(cur => {
+                const old = oldSnapshot.find(o => o.name === cur.name);
+                if (old) {
+                    const powerDiff = cur.powerVal - old.powerVal;
+                    const rankDiff = old.stt - cur.stt;
+                    if (Math.abs(powerDiff) > 0.5 || rankDiff !== 0) {
+                        changes.push({
+                            name: cur.name,
+                            oldPower: old.power,
+                            newPower: cur.power,
+                            powerDiff,
+                            rankDiff
+                        });
+                    }
+                }
+            });
+
+            if (changes.length > 0) {
+                let historyLog = [];
+                try {
+                    const storedLog = localStorage.getItem(HISTORY_KEY);
+                    if (storedLog) historyLog = JSON.parse(storedLog);
+                } catch (e) {}
+
+                const now = new Date();
+                const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} - ${now.getDate()}/${now.getMonth() + 1}`;
+
+                changes.forEach(ch => {
+                    let desc = `${ch.name}: Chiến lực ${ch.oldPower} → ${ch.newPower}`;
+                    if (ch.rankDiff > 0) desc += ` (Thăng ${ch.rankDiff} bậc)`;
+                    historyLog.unshift({
+                        time: timeStr,
+                        description: desc,
+                        tag: ch.powerDiff > 0 ? `+${Math.round(ch.powerDiff)}B` : 'Biến động',
+                        isPositive: ch.powerDiff > 0
+                    });
+                });
+
+                localStorage.setItem(HISTORY_KEY, JSON.stringify(historyLog.slice(0, 30)));
+                initHistoryTracker();
+            }
+        }
+
+        localStorage.setItem(SNAPSHOT_KEY, JSON.stringify(currentSnapshot));
+    } catch (e) {
+        console.warn('Lỗi ghi history snapshot:', e);
     }
 }

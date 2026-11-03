@@ -9,6 +9,7 @@ const adminHtml = fs.readFileSync(path.join(dir, 'admin.html'), 'utf-8');
 const css = fs.readFileSync(path.join(dir, 'style.css'), 'utf-8');
 const js = fs.readFileSync(path.join(dir, 'script.js'), 'utf-8');
 const adminJs = fs.readFileSync(path.join(dir, 'admin.js'), 'utf-8');
+const chartJs = fs.existsSync(path.join(dir, 'chart.min.js')) ? fs.readFileSync(path.join(dir, 'chart.min.js'), 'utf-8') : '';
 
 // Base64 favicon & logo for 100% portable display in browser tab
 const faviconBase64 = 'data:image/png;base64,' + fs.readFileSync(path.join(dir, 'images/favicon.png')).toString('base64');
@@ -31,6 +32,9 @@ if (fs.existsSync(avatarsDir)) {
 // 1. Build standalone.html (Public Leaderboard)
 // IMPORTANT: Use function replacers (() => content) so JavaScript does NOT treat $& as special pattern
 let standalone = html.replace('<link rel="stylesheet" href="style.css">', () => `<style>\n${css}\n</style>`);
+if (chartJs) {
+    standalone = standalone.replace('<script src="chart.min.js"></script>', () => `<script>\n${chartJs}\n</script>`);
+}
 standalone = standalone.replace('<script src="script.js"></script>', () => `<script>\n${js}\n</script>`);
 standalone = standalone.replace(/href="images\/favicon\.png"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MIÊU CHỦ TAM QUỐC – BẢNG XẾP HẠNG BANG HỘI</title>
+    <title>SHADOW WOLF – MYSTIC GALAXY | MIÊU CHỦ TAM QUỐC</title>
 
     <!-- Game Favicon -->
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -23,43 +23,81 @@
 
     <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-    <!-- Ambient Cyber Glow Mesh Background -->
-    <div class="ambient-glow-mesh" aria-hidden="true">
-        <div class="ambient-orb orb-gold"></div>
-        <div class="ambient-orb orb-blue"></div>
-        <div class="ambient-orb orb-purple"></div>
+    <!-- MYSTIC GALAXY AMBIENT COSMOS -->
+    <!-- 1. Real-time Twinkling Stars, Floating Stardust & Shooting Stars Canvas -->
+    <canvas id="mystic-stars-canvas" class="mystic-stars-canvas" aria-hidden="true"></canvas>
+
+    <!-- 2. Ambient Ethereal Nebula Clouds -->
+    <div class="mystic-nebula-mesh" aria-hidden="true">
+        <div class="nebula-cloud cloud-abyss"></div>
+        <div class="nebula-cloud cloud-mystic-purple"></div>
+        <div class="nebula-cloud cloud-dark-violet"></div>
+        <div class="nebula-cloud cloud-arcane-glow"></div>
+        <div class="nebula-cloud cloud-moonlight"></div>
     </div>
 
-    <!-- 1. HEADER CHÍNH -->
-    <header class="site-header">
+    <!-- 3. Ancient Astrological Wheel / Celestial Astrolabe -->
+    <div class="celestial-wheel-bg" aria-hidden="true">
+        <svg viewBox="0 0 800 800" class="celestial-astrolabe-svg">
+            <circle cx="400" cy="400" r="380" fill="none" stroke="rgba(166, 138, 224, 0.12)" stroke-width="1.5" stroke-dasharray="6,4"/>
+            <circle cx="400" cy="400" r="350" fill="none" stroke="rgba(185, 154, 98, 0.22)" stroke-width="2"/>
+            <circle cx="400" cy="400" r="320" fill="none" stroke="rgba(112, 70, 160, 0.2)" stroke-width="1"/>
+            <circle cx="400" cy="400" r="260" fill="none" stroke="rgba(166, 138, 224, 0.16)" stroke-width="1.5" stroke-dasharray="14,7"/>
+            <circle cx="400" cy="400" r="200" fill="none" stroke="rgba(185, 154, 98, 0.25)" stroke-width="2"/>
+            <circle cx="400" cy="400" r="140" fill="none" stroke="rgba(120, 150, 200, 0.22)" stroke-width="1"/>
+            <polygon points="400,50 420,380 750,400 420,420 400,750 380,420 50,400 380,380" fill="none" stroke="rgba(166, 138, 224, 0.18)" stroke-width="1.2"/>
+            <polygon points="400,90 415,385 710,400 415,415 400,710 385,415 90,400 385,385" fill="none" stroke="rgba(185, 154, 98, 0.15)" stroke-width="1" transform="rotate(45 400 400)"/>
+            <g stroke="rgba(233, 226, 245, 0.18)" stroke-width="1">
+                <line x1="400" y1="20" x2="400" y2="780"/>
+                <line x1="20" y1="400" x2="780" y2="400"/>
+                <line x1="131" y1="131" x2="669" y2="669"/>
+                <line x1="131" y1="669" x2="669" y2="131"/>
+            </g>
+            <circle cx="400" cy="80" r="4.5" fill="rgba(185, 154, 98, 0.7)"/>
+            <circle cx="720" cy="400" r="4.5" fill="rgba(185, 154, 98, 0.7)"/>
+            <circle cx="400" cy="720" r="4.5" fill="rgba(185, 154, 98, 0.7)"/>
+            <circle cx="80" cy="400" r="4.5" fill="rgba(185, 154, 98, 0.7)"/>
+            <circle cx="626" cy="174" r="3.5" fill="rgba(166, 138, 224, 0.6)"/>
+            <circle cx="626" cy="626" r="3.5" fill="rgba(166, 138, 224, 0.6)"/>
+            <circle cx="174" cy="626" r="3.5" fill="rgba(166, 138, 224, 0.6)"/>
+            <circle cx="174" cy="174" r="3.5" fill="rgba(166, 138, 224, 0.6)"/>
+        </svg>
+    </div>
+
+    <!-- 1. STICKY TOP NAVIGATION BAR -->
+    <header class="site-header" id="site-header">
         <div class="container header-content">
             <!-- Brand & Game Logo -->
             <div class="header-brand">
-                <div class="game-crest-wrapper" title="Miêu Chủ Tam Quốc – Bang Hội Shadow Wolf">
+                <a href="#hero-section" class="game-crest-wrapper" title="Miêu Chủ Tam Quốc – Bang Hội Shadow Wolf">
                     <img src="images/logo.png" alt="Logo Miêu Chủ Tam Quốc" class="game-logo-img">
-                </div>
+                </a>
                 <div class="title-tagline">
                     <div class="game-subheading">
-                        <i class="fa-solid fa-paw"></i>
-                        <span>CHIẾN TRƯỜNG TRANH BÁ</span>
+                        <i class="fa-solid fa-meteor"></i>
+                        <span>MYSTIC GALAXY • MIÊU CHỦ TAM QUỐC</span>
                         <span class="badge-server">SERVER BANG HỘI</span>
                     </div>
-                    <h1 class="main-title">BẢNG XẾP HẠNG TOP 15 CAO THỦ</h1>
+                    <h1 class="main-title">SHADOW WOLF – MIÊU CHỦ TAM QUỐC</h1>
                     <div class="main-desc">
-                        <span>THỐNG KÊ CHIẾN LỰC CHUẨN XÁC – VINH DANH TƯỚNG TÀI</span>
-                        <span>•</span>
-                        <span class="guild-indicator">
-                            <i class="fa-solid fa-paw"></i> <span id="guild-name-display">BANG HỘI SHADOW WOLF</span>
-                        </span>
+                        <span>HỆ THỐNG XẾP HẠNG &amp; VINH DANH CHIẾN TƯỚNG TỐI CAO</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Header Action Controls -->
+            <!-- Header Quick Nav & Actions -->
             <div class="header-actions-right">
+                <nav class="header-nav-links">
+                    <a href="#supreme-top3-section" class="nav-link"><i class="fa-solid fa-crown"></i> Top 3</a>
+                    <a href="#podium-top5-section" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Ngũ Đại</a>
+                    <a href="#elite-top10-section" class="nav-link"><i class="fa-solid fa-dragon"></i> Thập Đại</a>
+                    <a href="#member-lookup-section" class="nav-link"><i class="fa-solid fa-magnifying-glass"></i> Tra Cứu</a>
+                    <a href="#history-tracker-section" class="nav-link"><i class="fa-solid fa-timeline"></i> Hành Trình</a>
+                </nav>
                 <a href="admin.html" class="btn btn-admin-header" title="Đăng nhập Trang Quản Trị Bang Hội">
                     <i class="fa-solid fa-user-shield"></i> Trang Quản Trị
                 </a>
@@ -71,25 +109,68 @@
         </div>
     </header>
 
-    <!-- 2. THỐNG KÊ TỔNG QUAN (4 THẺ STATS GỌN ĐẸP) -->
-    <section class="stats-section">
+    <!-- 2. HERO SECTION – MYSTIC GALAXY -->
+    <section class="hero-section" id="hero-section">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge-pill">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> ✦ MYSTIC GALAXY • MIÊU CHỦ TAM QUỐC ✦
+            </div>
+            <h1 class="hero-main-title">
+                SHADOW WOLF
+            </h1>
+            <h2 class="hero-sub-heading">
+                MYSTIC GALAXY – MIÊU CHỦ TAM QUỐC
+            </h2>
+            <p class="hero-tagline">
+                THE LEGEND BEYOND THE STARS.
+            </p>
+
+            <!-- Metadata info strip -->
+            <div class="hero-meta-strip">
+                <div class="meta-pill"><i class="fa-solid fa-shield-cat text-gold"></i> <strong>Bang Hội:</strong> SHADOW WOLF</div>
+                <div class="meta-pill"><i class="fa-solid fa-users text-lavender"></i> <strong>Quân Đoàn:</strong> 38 Tinh Tú</div>
+                <div class="meta-pill"><i class="fa-solid fa-bolt text-gold"></i> <strong>Tổng Chiến Lực:</strong> ~9.10T+</div>
+                <div class="meta-pill"><i class="fa-regular fa-calendar-check text-moonlight"></i> <span id="hero-date-display">Cập nhật: Mới nhất</span></div>
+            </div>
+
+            <!-- Quick CTA navigation buttons -->
+            <div class="hero-cta-group">
+                <a href="#supreme-top3-section" class="btn btn-hero btn-hero-gold">
+                    <i class="fa-solid fa-crown"></i> Top 3 Vương Giả
+                </a>
+                <a href="#podium-top5-section" class="btn btn-hero btn-hero-purple">
+                    <i class="fa-solid fa-shield-halved"></i> Ngũ Đại Thống Lĩnh
+                </a>
+                <a href="#elite-top10-section" class="btn btn-hero btn-hero-purple">
+                    <i class="fa-solid fa-dragon"></i> Thập Đại Cao Thủ
+                </a>
+                <a href="#member-lookup-section" class="btn btn-hero btn-hero-blue">
+                    <i class="fa-solid fa-magnifying-glass"></i> Tra Cứu Tinh Tú
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. TỔNG QUAN SỨC MẠNH BANG HỘI (4 THẺ STATS VỚI HIỆU ỨNG ĐẾM SỐ COUNTUP) -->
+    <section class="stats-section" id="guild-stats-overview">
         <div class="container">
             <div class="stats-grid">
-                <!-- Thẻ 1: Quy mô bảng đấu -->
+                <!-- Thẻ 1: Tổng số thành viên -->
                 <div class="stat-card card-members">
                     <div class="stat-card-header">
-                        <span class="stat-label">BẢNG CAO THỦ</span>
+                        <span class="stat-label">QUY MÔ BANG HỘI</span>
                         <div class="stat-icon-wrapper">
                             <i class="fa-solid fa-users"></i>
                         </div>
                     </div>
-                    <div class="stat-value" id="stat-total-members">TOP 15</div>
+                    <div class="stat-value" id="stat-total-members" data-target="38">38 Tướng</div>
                     <div class="stat-subtext">
-                        <i class="fa-solid fa-shield-halved"></i> 15 Cao Thủ Đỉnh Phong
+                        <i class="fa-solid fa-shield-halved"></i> 38 Chiến Tướng Hoạt Động
                     </div>
                 </div>
 
-                <!-- Thẻ 2: Tổng chiến lực toàn bang hội (8T+) -->
+                <!-- Thẻ 2: Tổng chiến lực toàn bang -->
                 <div class="stat-card card-total-power">
                     <div class="stat-card-header">
                         <span class="stat-label">TỔNG CHIẾN LỰC BANG</span>
@@ -97,13 +178,13 @@
                             <i class="fa-solid fa-fire-flame-curved"></i>
                         </div>
                     </div>
-                    <div class="stat-value gold" id="stat-total-power">~9.10T+</div>
+                    <div class="stat-value gold" id="stat-total-power" data-target="9.10">~9.10T+</div>
                     <div class="stat-subtext">
                         <i class="fa-solid fa-bolt"></i> Sức Mạnh Toàn Bang Hội
                     </div>
                 </div>
 
-                <!-- Thẻ 3: Chúa công đứng đầu (Top 1) -->
+                <!-- Thẻ 3: Chúa công đứng đầu (Quán quân Top 1) -->
                 <div class="stat-card card-top-power">
                     <div class="stat-card-header">
                         <span class="stat-label">QUÁN QUÂN TOP 1</span>
@@ -113,7 +194,7 @@
                     </div>
                     <div class="stat-value" id="stat-top-power">1.715T</div>
                     <div class="stat-subtext" id="stat-top-name">
-                        <i class="fa-solid fa-crown"></i> SW ⚜️ Apex 🇻🇳
+                        <i class="fa-solid fa-crown" style="color: #ffd43b;"></i> SW ⚜️ Apex 🇻🇳
                     </div>
                 </div>
 
@@ -125,96 +206,110 @@
                             <i class="fa-solid fa-chart-line"></i>
                         </div>
                     </div>
-                    <div class="stat-value" id="stat-avg-power">~450B</div>
+                    <div class="stat-value" id="stat-avg-power" data-target="239">~239B</div>
                     <div class="stat-subtext">
-                        <i class="fa-solid fa-scale-balanced"></i> Trung Bình Mỗi Tướng
+                        <i class="fa-solid fa-scale-balanced"></i> Trung Bình Toàn Bang
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 2.5. VINH DANH TỐI CAO TOP 3 (TAM ĐẠI ĐỈNH PHONG BANG HỘI) -->
-    <section class="supreme-top3-section" id="supreme-top3-section">
-        <!-- Radiant light pillars -->
-        <div class="light-beam beam-center"></div>
-        <div class="light-beam beam-left"></div>
-        <div class="light-beam beam-right"></div>
-        <div class="container">
-            <div class="supreme-header">
-                <div class="supreme-badge-pill">
-                    <i class="fa-solid fa-crown"></i> TAM ĐẠI ĐỈNH PHONG BANG HỘI
+    <!-- ==========================================================================
+         4. ĐIỂN TƯỚNG ĐÀI VINH DANH (HALL OF GLORY & RANKING TIERS)
+         Hỗ trợ chuyển đổi mượt mà: Top 3 Vương Giả • Ngũ Đại Thống Lĩnh • Thập Đại Cao Thủ • Toàn Cảnh
+         ========================================================================== -->
+    <div class="hall-of-glory-wrapper" id="hall-of-glory">
+        <!-- 4. TOP 3 VƯƠNG GIẢ (TAM ĐẠI VƯƠNG GIẢ) -->
+        <section class="supreme-top3-section" id="supreme-top3-section">
+            <!-- Radiant light pillars -->
+            <div class="light-beam beam-center"></div>
+            <div class="light-beam beam-left"></div>
+            <div class="light-beam beam-right"></div>
+            <div class="container">
+                <div class="supreme-header">
+                    <div class="supreme-badge-pill">
+                        <i class="fa-solid fa-crown"></i> TAM ĐẠI VƯƠNG GIẢ
+                    </div>
+                    <h2 class="supreme-main-title">
+                        <span class="heading-wing wing-left"></span>
+                        TOP 3 VƯƠNG GIẢ
+                        <span class="heading-wing wing-right"></span>
+                    </h2>
+                    <div class="supreme-sub-title">TAM ĐẠI CHIẾN THẦN TRẤN GIỮ ĐỈNH CAO SHADOW WOLF</div>
                 </div>
-                <h2 class="supreme-main-title">
-                    <span class="heading-wing wing-left"></span>
-                    TOP 3 TỐI CAO VINH DANH
-                    <span class="heading-wing wing-right"></span>
-                </h2>
-                <div class="supreme-sub-title">TAM ĐẠI CHIẾN THẦN TRẤN GIỮ ĐỈNH CAO SHADOW WOLF</div>
-            </div>
 
-            <div class="supreme-cards-container" id="supreme-cards-container">
-                <!-- Javascript sẽ tự động render Top 3 Tối Cao vào đây -->
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. VINH DANH TOP 5 CAO THỦ (BỤC NGŨ ĐẠI CHIẾN TƯỚNG) -->
-    <section class="podium-section">
-        <div class="container">
-            <div class="podium-header-banner">
-                <span class="podium-badge-pill"><i class="fa-solid fa-trophy"></i> BẢNG VÀNG DANH VỌNG</span>
-                <h2 class="podium-main-heading">
-                    <span class="heading-wing wing-left"></span>
-                    TOP 5 VINH DANH
-                    <span class="heading-wing wing-right"></span>
-                </h2>
-                <div class="podium-sub-heading">NGŨ ĐẠI THỐNG LĨNH BANG HỘI</div>
-                <div class="podium-watermark-crest">
-                    <i class="fa-solid fa-paw"></i> SHADOW WOLF
+                <!-- Bục vinh danh Top 3: Top 2 (Bạc, Trái), Top 1 (Vàng Kim, Giữa), Top 3 (Đồng, Phải) -->
+                <div class="supreme-cards-container" id="supreme-cards-container">
+                    <!-- Javascript sẽ tự động render Top 3 Vương GiẢ vào đây -->
                 </div>
             </div>
+        </section>
 
-            <div class="podium-stage-wrapper">
-                <div class="podium-container top5-layout" id="top-podium-container">
-                    <!-- Javascript sẽ render 5 cột Top 1-5 vào đây: Top 4, Top 2, Top 1, Top 3, Top 5 -->
+        <!-- 5. NGŨ ĐẠI THỐNG LĨNH (TÍNH CẢ TOP 3) -->
+        <section class="podium-section" id="podium-top5-section">
+            <div class="container">
+                <div class="podium-header-banner">
+                    <div class="podium-badge-pill">
+                        <i class="fa-solid fa-shield-halved"></i> NGŨ ĐẠI THỐNG LĨNH (TÍNH CẢ TOP 3)
+                    </div>
+                    <h2 class="podium-main-heading">
+                        <span class="heading-wing wing-left"></span>
+                        NGŨ ĐẠI THỐNG LĨNH
+                        <span class="heading-wing wing-right"></span>
+                    </h2>
+                    <div class="podium-sub-heading">NGŨ ĐẠI THỐNG LĨNH TIÊN PHONG – ĐIỀU HÀNH &amp; CHỈ HUY QUÂN ĐOÀN</div>
                 </div>
-                <!-- Bệ bậc tam cấp hoàng kim phát sáng phía dưới -->
-                <div class="podium-stage-pedestal-base">
-                    <div class="pedestal-layer layer-top"></div>
-                    <div class="pedestal-layer layer-mid"></div>
-                    <div class="pedestal-layer layer-bottom"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- 4. DANH SÁCH THẬP ĐẠI TINH ANH (THẺ TÊN TOP 6 - TOP 15) -->
-    <section class="elite-grid-section">
-        <div class="container">
-            <!-- Tiêu đề phân khu -->
-            <div class="section-title-wrap">
-                <span class="section-badge"><i class="fa-solid fa-shield-halved"></i> THẬP ĐẠI TINH ANH</span>
-                <h2 class="section-title">THẬP ĐẠI CAO THỦ BANG HỘI</h2>
-            </div>
-
-            <!-- DANH SÁCH THẺ TÊN TINH ANH TOP 6 - TOP 15 -->
-            <div class="elite-row-container" id="container-row-1">
-                <div class="elite-cards-grid grid-elite-top10" id="elite-cards-row-1">
-                    <!-- Javascript sẽ render Top 6 đến Top 15 vào đây -->
+                <!-- Bục vinh danh Top 5: Top 4 (Trái ngoài), Top 2 (Trái trong), Top 1 (Giữa), Top 3 (Phải trong), Top 5 (Phải ngoài) -->
+                <div class="podium-stage-wrapper">
+                    <div class="podium-container top5-layout" id="top-podium-container">
+                        <!-- Javascript sẽ render bục vinh danh 5 Đại Thống Lĩnh vào đây -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 5. TRA CỨU THỨ HẠNG THÀNH VIÊN TOÀN BANG (DÀNH CHO ANH EM TOP DƯỚI) -->
+        <!-- 6. THẬP ĐẠI CAO THỦ (TOP 1 ĐẾN TOP 10) - CHUẨN CLAN POSTER -->
+        <section class="elite-grid-section" id="elite-top10-section">
+            <div class="container">
+                <!-- Tiêu đề phân khu chuẩn Poster Bang Hội -->
+                <div class="section-title-wrap poster-style-header">
+                    <div class="poster-crest-line">
+                        <img src="images/logo.png" alt="Shadow Wolf" class="poster-mini-logo">
+                        <div class="poster-titles-col">
+                            <div class="poster-clan-tag">SHADOWWOLF CLAN</div>
+                            <h2 class="section-title poster-main-title">TOP 10 VINH DANH</h2>
+                            <div class="poster-motto">ĐOÀN KẾT • CHIẾN ĐẤU • VƯƠN XA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Danh sách thẻ Thập Đại Cao Thủ (Top 1 - Top 10: 2 hàng x 5 thẻ cân đối) -->
+                <div class="elite-row-container" id="container-row-1">
+                    <div class="elite-cards-grid grid-elite-top10" id="elite-cards-row-1">
+                        <!-- Javascript sẽ render đầy đủ Top 1 đến Top 10 vào đây -->
+                    </div>
+                </div>
+
+                <!-- Câu khẩu hiệu biểu tượng Clan Poster -->
+                <div class="poster-footer-slogan">
+                    <i class="fa-solid fa-paw text-gold"></i>
+                    <span>Cùng nhau tạo nên sức mạnh <em>ShadowWolf Clan</em></span>
+                    <i class="fa-solid fa-paw text-gold"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. KHU VỰC TRA CỨU TINH TÚ QUÂN ĐOÀN (MEMBER LOOKUP SECTION) -->
     <section class="member-lookup-section" id="member-lookup-section">
         <div class="container">
             <div class="lookup-card-wrapper">
                 <div class="lookup-header">
                     <span class="section-badge"><i class="fa-solid fa-magnifying-glass"></i> TRA CỨU THỨ HẠNG</span>
-                    <h3 class="lookup-title">TRA CỨU THỨ HẠNG THÀNH VIÊN</h3>
-                    <p class="lookup-subtitle">Dành cho anh em top dưới xem ngay thứ hạng hiện tại, chiến lực, ải &amp; tháp</p>
+                    <h3 class="lookup-title">TRA CỨU TINH TÚ QUÂN ĐOÀN</h3>
+                    <p class="lookup-subtitle">Dành cho anh em tra cứu nhanh vị trí xếp hạng hiện tại, lực chiến, ải &amp; tháp</p>
                 </div>
 
                 <!-- THANH TÌM KIẾM TRỰC TIẾP & NÚT XEM TẤT CẢ -->
@@ -222,7 +317,7 @@
                     <div class="lookup-search-box">
                         <i class="fa-solid fa-magnifying-glass lookup-icon"></i>
                         <input type="text" id="member-lookup-input" class="lookup-input"
-                            placeholder="Nhập tên nhân vật hoặc số thứ hạng (VD: Klein, Baoo, PandaxMun, Bear, T, 18, 25...)..."
+                            placeholder="Nhập tên nhân vật hoặc số thứ hạng (VD: Klein, Baoo, PandaxMun, Bear, T, 16, 25...)..."
                             autocomplete="off" spellcheck="false">
                         <button class="lookup-clear-btn" id="btn-lookup-clear" title="Xóa tìm kiếm" style="display: none;">
                             <i class="fa-solid fa-xmark"></i>
@@ -245,18 +340,25 @@
                         <button class="quick-tag-chip" onclick="quickLookupMember('Bear')">#19 Bear</button>
                         <button class="quick-tag-chip" onclick="quickLookupMember('PandaxMun')">#20 PandaxMun</button>
                         <button class="quick-tag-chip" onclick="quickLookupMember('Kaneki')">#24 Kaneki</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('T')">#27 T</button>
+                        <button class="quick-tag-chip" onclick="quickLookupMember('Yuta')">#30 Yuta</button>
                     </div>
                 </div>
 
-                <!-- KHU VỰC HIỂN THỊ THẺ THÀNH VIÊN TRA CỨU -->
+                <!-- KHU VỰC HIỂN THỊ KẾT QUẢ TRA CỨU -->
                 <div class="lookup-results-area" id="lookup-results-area">
                     <!-- Trạng thái gợi ý ban đầu -->
                     <div class="lookup-initial-state" id="lookup-initial-state">
                         <div class="initial-icon"><i class="fa-solid fa-shield-halved"></i></div>
-                        <p class="initial-text">Nhập tên nhân vật ở ô trên để tra cứu ngay <strong>Thứ Hạng Hiện Tại</strong>, hoặc bấm <strong>"Xem tất cả Top 16 - 38"</strong> để xem danh sách toàn bộ anh em top dưới.</p>
+                        <p class="initial-text">Nhập tên nhân vật ở ô trên để tra cứu ngay <strong>Thứ Hạng Hiện Tại</strong>, hoặc bấm <strong>"Xem tất cả Top 16 - 38"</strong> để duyệt toàn bộ danh sách anh em.</p>
                     </div>
 
-                    <!-- Lưới thẻ thành viên khi tìm kiếm hoặc mở rộng Top 16-38 -->
+                    <!-- Thẻ Kết Quả Nổi Bật (Featured Identity Card khi tìm thấy 1 người) -->
+                    <div class="lookup-featured-card-wrap" id="lookup-featured-card-wrap" style="display: none;">
+                        <!-- Javascript render thẻ nhân vật nổi bật vào đây -->
+                    </div>
+
+                    <!-- Lưới thẻ thành viên khi tìm kiếm nhiều người hoặc xem Top 16-38 -->
                     <div class="elite-cards-grid grid-elite-top10 lookup-grid" id="lookup-grid-cards" style="display: none;">
                         <!-- Javascript render các thẻ thành viên vào đây -->
                     </div>
@@ -272,43 +374,124 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- 7. HÀNH TRÌNH CHIẾN THẦN (HỆ THỐNG LỊCH SỬ & BIẾN ĐỘNG CHIẾN LỰC) -->
+    <section class="history-tracker-section" id="history-tracker-section">
+        <div class="container">
+            <div class="section-title-wrap">
+                <span class="section-badge"><i class="fa-solid fa-timeline"></i> HÀNH TRÌNH CHIẾN THẦN</span>
+                <h2 class="section-title">THEO DÕI BIẾN ĐỘNG &amp; THĂNG HẠNG</h2>
+                <p class="section-subtext">Hệ thống tự động ghi nhận các mốc tăng trưởng chiến lực và thăng tiến thứ hạng thực tế</p>
+            </div>
+
+            <!-- Thống kê nổi bật về biến động -->
+            <div class="history-highlights-grid">
+                <div class="history-stat-card">
+                    <div class="hist-icon-box"><i class="fa-solid fa-arrow-trend-up"></i></div>
+                    <div class="hist-info">
+                        <div class="hist-label">BỨT PHÁ CHIẾN LỰC</div>
+                        <div class="hist-val" id="hist-top-gainer-name">SW ⚜️ Apex 🇻🇳</div>
+                        <div class="hist-desc" id="hist-top-gainer-desc">Đạt mốc đỉnh phong 1.715T</div>
+                    </div>
+                </div>
+
+                <div class="history-stat-card">
+                    <div class="hist-icon-box"><i class="fa-solid fa-ranking-star"></i></div>
+                    <div class="hist-info">
+                        <div class="hist-label">TIẾN BỘ THỨ HẠNG</div>
+                        <div class="hist-val" id="hist-top-climber-name">SW ⚜️ ÂyYa 🇻🇳</div>
+                        <div class="hist-desc" id="hist-top-climber-desc">Vững chắc Top 3 với 710B</div>
+                    </div>
+                </div>
+
+                <div class="history-stat-card">
+                    <div class="hist-icon-box"><i class="fa-solid fa-shield-cat"></i></div>
+                    <div class="hist-info">
+                        <div class="hist-label">TRẤN THỦ TOP 10</div>
+                        <div class="hist-val">10 Chiến Tướng</div>
+                        <div class="hist-desc">Duy trì ngưỡng trên 230B+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bảng nhật ký biến động thực tế -->
+            <div class="history-log-box">
+                <div class="history-log-header">
+                    <h4><i class="fa-solid fa-clock-rotate-left"></i> Nhật Ký Cập Nhật Bang Hội</h4>
+                    <span class="live-sync-badge"><i class="fa-solid fa-circle-dot fa-fade"></i> Giám sát thời gian thực</span>
+                </div>
+                <div class="history-log-body" id="history-log-body">
+                    <!-- Javascript render nhật ký các lần cập nhật -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER CHÍNH -->
     <footer class="site-footer">
         <div class="container footer-content">
-            <div class="footer-logo-text">MIÊU CHỦ TAM QUỐC – BANG HỘI TRANH BÁ</div>
-            <p>Sáng tạo và phát triển bởi Ngọc Kiên</p>
+            <div class="footer-brand-wrap">
+                <img src="images/logo.png" alt="Logo Shadow Wolf" class="footer-logo-img">
+                <div class="footer-brand-info">
+                    <div class="footer-logo-text">SHADOW WOLF – MIÊU CHỦ TAM QUỐC</div>
+                    <p class="footer-tagline">NƠI VINH DANH NHỮNG CHIẾN THẦN ĐỈNH PHONG</p>
+                </div>
+            </div>
+            <div class="footer-quick-links">
+                <a href="#hero-section">Đầu trang</a>
+                <span>•</span>
+                <a href="#supreme-top3-section">Top 3 Vương Giả</a>
+                <span>•</span>
+                <a href="#podium-top5-section">Ngũ Đại Thống Lĩnh</a>
+                <span>•</span>
+                <a href="#elite-top10-section">Thập Đại Cao Thủ</a>
+                <span>•</span>
+                <a href="#member-lookup-section">Tra Cứu</a>
+                <span>•</span>
+                <a href="#history-tracker-section">Hành Trình</a>
+                <span>•</span>
+                <a href="admin.html">Trang Quản Trị</a>
+            </div>
+            <p class="footer-copyright">
+                Bản quyền thuộc Bang Hội <strong>SHADOW WOLF</strong>. Phát triển bởi Ngọc Kiên.
+            </p>
         </div>
     </footer>
 
     <!-- ==========================================================================
-         6. MODAL XEM CHI TIẾT ĐỘI HÌNH (DÀNH CHO NGƯỜI XEM)
+         MODAL XEM CHI TIẾT ĐỘI HÌNH & HỒ SƠ TƯỚNG LĨNH (CHARACTER SHEET GAMING)
          ========================================================================== -->
     <div class="modal-backdrop" id="modal-formation-view">
         <div class="modal-container modal-formation-wide">
             <div class="modal-header">
                 <h3 class="modal-title">
-                    <i class="fa-solid fa-paw"></i> Trận Hình & Đội Hình Tướng Lĩnh
+                    <i class="fa-solid fa-paw"></i> Hồ Sơ Tướng Lĩnh &amp; Trận Hình
                 </h3>
                 <button class="modal-close-btn" onclick="closeModal('modal-formation-view')">&times;</button>
             </div>
             <div class="modal-body">
+                <!-- THÔNG TIN HỒ SƠ TƯỚNG LĨNH (CHARACTER SHEET HEADER) -->
                 <div class="formation-member-header">
                     <div class="fm-header-left">
-                        <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
-                        <div class="fm-tags">
-                            <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
-                            <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i>
-                                Ải 12.500</span>
-                            <span class="fm-tower-pill" id="formation-member-tower"><i
-                                    class="fa-solid fa-chess-rook"></i> Tháp 2.850</span>
-                            <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần
-                                Vương</span>
-                            <span class="member-note-badge note-bang-chu" id="formation-member-note">Bang Chủ</span>
+                        <div class="fm-avatar-box">
+                            <img id="formation-member-avatar" src="images/avatars/avatar-1-apex.png" alt="Avatar" class="fm-avatar-img">
+                        </div>
+                        <div class="fm-info-col">
+                            <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
+                            <div class="fm-tags">
+                                <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
+                                <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i> Ải 17.830</span>
+                                <span class="fm-tower-pill" id="formation-member-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 4.794</span>
+                                <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần Vương</span>
+                                <span class="member-note-badge note-bang-chu" id="formation-member-note">Bang Chủ</span>
+                            </div>
                         </div>
                     </div>
                     <div class="fm-power-large">
-                        <i class="fa-solid fa-bolt"></i>
-                        <span id="formation-member-power">1.664T</span>
+                        <span class="power-label">CHIẾN LỰC</span>
+                        <div class="power-num">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span id="formation-member-power">1.715T</span>
+                        </div>
                     </div>
                 </div>
 
@@ -330,17 +513,24 @@
                         <i class="fa-solid fa-triangle-exclamation empty-dh-icon"></i>
                         <div class="empty-dh-title">Chưa cập nhật đội hình</div>
                         <div class="empty-dh-desc">
-                            Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Chỉ Quản Trị Viên mới có quyền
-                            tải lên hoặc cập nhật ảnh trong Trang Quản Trị.
+                            Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Quản Trị Viên có thể tải lên ảnh trong Trang Quản Trị.
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-gold" onclick="closeModal('modal-formation-view')">Đóng</button>
+                <button type="button" class="btn btn-outline" id="btn-share-formation" onclick="copyFormationShareLink()">
+                    <i class="fa-solid fa-share-nodes"></i> Chia sẻ liên kết
+                </button>
+                <button type="button" class="btn btn-gold" onclick="closeModal('modal-formation-view')">
+                    <i class="fa-solid fa-check"></i> Đóng
+                </button>
             </div>
         </div>
     </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
 
     <!-- Scripts -->
     <script src="script.js"></script>

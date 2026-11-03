@@ -1,0 +1,429 @@
+﻿<USER_REQUEST>
+# UPGRADE PROJECT: SHADOW WOLF â€“ MIÃŠU CHá»¦ TAM QUá»C
+
+Báº¡n lÃ  má»™t Senior Full-stack Developer, UI/UX Designer vÃ  chuyÃªn gia thiáº¿t káº¿ Gaming Dashboard. Nhiá»‡m vá»¥ cá»§a báº¡n lÃ  nÃ¢ng cáº¥p toÃ n diá»‡n website hiá»‡n táº¡i:
+
+https://shadow-wolf.vercel.app/
+
+TÃªn dá»± Ã¡n: **SHADOW WOLF â€“ MIÃŠU CHá»¦ TAM QUá»C**
+
+ÄÃ¢y lÃ  há»‡ thá»‘ng báº£ng xáº¿p háº¡ng, vinh danh, tra cá»©u vÃ  quáº£n lÃ½ thÃ nh viÃªn cá»§a bang há»™i Shadow Wolf trong game MiÃªu Chá»§ Tam Quá»‘c.
+
+TÃ´i muá»‘n biáº¿n website hiá»‡n táº¡i thÃ nh má»™t sáº£n pháº©m cÃ³ cháº¥t lÆ°á»£ng giao diá»‡n nhÆ° má»™t há»‡ thá»‘ng xáº¿p háº¡ng cá»§a game chiáº¿n thuáº­t cao cáº¥p, hiá»‡n Ä‘áº¡i, chuyÃªn nghiá»‡p, sang trá»ng vÃ  cÃ³ báº£n sáº¯c riÃªng.
+
+## I. NGUYÃŠN Táº®C QUAN TRá»ŒNG NHáº¤T
+
+KhÃ´ng xÃ¢y dá»±ng láº¡i website tá»« Ä‘áº§u má»™t cÃ¡ch tÃ¹y tiá»‡n.
+
+TrÆ°á»›c khi chá»‰nh sá»­a, hÃ£y:
+
+1. Äá»c toÃ n bá»™ source code hiá»‡n táº¡i.
+2. PhÃ¢n tÃ­ch cáº¥u trÃºc thÆ° má»¥c vÃ  cÃ´ng nghá»‡ Ä‘ang sá»­ dá»¥ng.
+3. Kiá»ƒm tra toÃ n bá»™ chá»©c nÄƒng hiá»‡n cÃ³.
+4. Kiá»ƒm tra nguá»“n dá»¯ liá»‡u, cÃ¡ch lÆ°u trá»¯ vÃ  cÃ¡ch cáº­p nháº­t dá»¯ liá»‡u.
+5. Kiá»ƒm tra trang quáº£n trá»‹ vÃ  cÃ¡c thÃ nh pháº§n liÃªn quan.
+6. XÃ¡c Ä‘á»‹nh nhá»¯ng pháº§n cÃ³ thá»ƒ tÃ¡i sá»­ dá»¥ng vÃ  nhá»¯ng pháº§n cáº§n nÃ¢ng cáº¥p.
+
+**Báº¯t buá»™c giá»¯ nguyÃªn:**
+- TÃªn bang há»™i SHADOW WOLF.
+- ThÆ°Æ¡ng hiá»‡u MiÃªu Chá»§ Tam Quá»‘c.
+- Logo hiá»‡n táº¡i.
+- Dá»¯ liá»‡u thÃ nh viÃªn.
+- Thá»© háº¡ng vÃ  lá»±c chiáº¿n.
+- CÃ¡c danh hiá»‡u, chá»©c vá»¥.
+- Dá»¯ liá»‡u áº£i vÃ  thÃ¡p.
+- Chá»©c nÄƒng tra cá»©u.
+- Chá»©c nÄƒng quáº£n trá»‹ hiá»‡n táº¡i.
+- CÃ¡c liÃªn káº¿t vÃ  tÃ­ch há»£p Ä‘ang hoáº¡t Ä‘á»™ng.
+
+KhÃ´ng tá»± Ã½ xÃ³a dá»¯ liá»‡u, thay Ä‘á»•i thÃ´ng tin thÃ nh viÃªn hoáº·c táº¡o dá»¯ liá»‡u giáº£.
+
+KhÃ´ng lÃ m há»ng cÃ¡c chá»©c nÄƒng hiá»‡n cÃ³ trong quÃ¡ trÃ¬nh nÃ¢ng cáº¥p.
+
+## II. Äá»ŠNH HÆ¯á»šNG THIáº¾T Káº¾ Má»šI
+
+HÃ£y thiáº¿t káº¿ theo phong cÃ¡ch:
+
+**DARK IMPERIAL â€“ SHADOW WOLF**
+
+Má»™t tháº¿ giá»›i Tam Quá»‘c huyá»n bÃ­, quyá»n lá»±c vÃ  Ä‘áº­m cháº¥t chiáº¿n thuáº­t.
+
+### Báº£ng mÃ u chá»§ Ä‘áº¡o
+
+- Background: Ä‘en than, Ä‘en huyá»n bÃ­.
+- Primary: vÃ ng kim hoÃ ng gia.
+- Secondary: Ä‘á» Ä‘Ã´.
+- Accent: vÃ ng Ä‘á»“ng.
+- Text: tráº¯ng ngÃ , xÃ¡m báº¡c.
+- Highlight: Ã¡nh sÃ¡ng vÃ ng kim.
+
+### YÃªu cáº§u thiáº¿t káº¿
+
+- Giao diá»‡n Dark Mode cao cáº¥p.
+- Card cÃ³ chiá»u sÃ¢u, hiá»‡u á»©ng kÃ­nh má» vá»«a pháº£i.
+- Viá»n vÃ ng kim tinh táº¿.
+- Background cÃ³ chiá»u sÃ¢u vá»›i há»a tiáº¿t cá»• phong.
+- Typography hiá»‡n Ä‘áº¡i, dá»… Ä‘á»c.
+- Icon Ä‘á»“ng bá»™.
+- Hiá»‡u á»©ng chuyá»ƒn Ä‘á»™ng mÆ°á»£t.
+- KhÃ´ng láº¡m dá»¥ng gradient, glow hoáº·c animation.
+- KhÃ´ng sá»­ dá»¥ng phong cÃ¡ch dashboard quáº£n trá»‹ doanh nghiá»‡p nhÃ m chÃ¡n.
+
+Website cáº§n cÃ³ báº£n sáº¯c riÃªng, nhÃ¬n vÃ o lÃ  nháº­n ra SHADOW WOLF.
+
+## III. NÃ‚NG Cáº¤P TRANG CHá»¦
+
+### 1. Hero Section â€“ Chiáº¿n trÆ°á»ng Shadow Wolf
+
+Thiáº¿t káº¿ láº¡i khu vá»±c Ä‘áº§u trang tháº­t áº¥n tÆ°á»£ng.
+
+Bao gá»“m:
+
+- Logo SHADOW WOLF.
+- DÃ²ng chá»¯ MIÃŠU CHá»¦ TAM QUá»C.
+- TiÃªu Ä‘á» lá»›n: CHIáº¾N TRÆ¯á»œNG TRANH BÃ.
+- Subtitle: NÆ I VINH DANH NHá»®NG CHIáº¾N THáº¦N Äá»ˆNH PHONG.
+- TÃªn bang há»™i: SHADOW WOLF.
+- NgÃ y cáº­p nháº­t dá»¯ liá»‡u.
+- NÃºt khÃ¡m phÃ¡ báº£ng xáº¿p háº¡ng.
+- NÃºt tra cá»©u thÃ nh viÃªn.
+
+CÃ³ thá»ƒ sá»­ dá»¥ng hÃ¬nh ná»n chiáº¿n trÆ°á»ng Tam Quá»‘c, kiáº¿n trÃºc cá»• Ä‘áº¡i, Ã¡nh sÃ¡ng vÃ ng vÃ  hiá»‡u á»©ng khÃ³i nháº¹.
+
+KhÃ´ng Ä‘á»ƒ hÃ¬nh ná»n lÃ m áº£nh hÆ°á»Ÿng Ä‘áº¿n kháº£ nÄƒng Ä‘á»c ná»™i dung.
+
+### 2. Tá»•ng quan sá»©c máº¡nh bang há»™i
+
+Thiáº¿t káº¿ láº¡i 4 tháº» thá»‘ng kÃª:
+
+- Tá»•ng sá»‘ thÃ nh viÃªn.
+- Tá»•ng chiáº¿n lá»±c toÃ n bang.
+- Chiáº¿n lá»±c quÃ¡n quÃ¢n.
+- Chiáº¿n lá»±c trung bÃ¬nh.
+
+Má»—i tháº» cáº§n:
+- Icon riÃªng.
+- Con sá»‘ ná»•i báº­t.
+- Hiá»‡u á»©ng hover.
+- MÃ´ táº£ ngáº¯n.
+- Hiá»‡u á»©ng Ä‘áº¿m sá»‘ khi xuáº¥t hiá»‡n.
+
+Sá»‘ liá»‡u pháº£i Ä‘Æ°á»£c tÃ­nh trá»±c tiáº¿p tá»« nguá»“n dá»¯ liá»‡u tháº­t.
+
+### 3. Báº£ng vinh danh Top 3
+
+ÄÃ¢y lÃ  má»™t trong nhá»¯ng Ä‘iá»ƒm nháº¥n quan trá»ng nháº¥t.
+
+Thiáº¿t káº¿ Top 3 theo bá»‘ cá»¥c bá»¥c vinh danh:
+
+- Top 1 á»Ÿ chÃ­nh giá»¯a, ná»•i báº­t nháº¥t.
+- Top 2 bÃªn trÃ¡i.
+- Top 3 bÃªn pháº£i.
+
+Má»—i thÃ nh viÃªn cÃ³:
+- Thá»© háº¡ng.
+- TÃªn nhÃ¢n váº­t.
+- Lá»±c chiáº¿n.
+- Danh hiá»‡u.
+- Chá»©c vá»¥.
+- áº¢i vÃ  thÃ¡p náº¿u cÃ³ dá»¯ liá»‡u.
+- HÃ¬nh Ä‘áº¡i diá»‡n náº¿u há»‡ thá»‘ng Ä‘Ã£ cÃ³ áº£nh.
+
+Top 1 sá»­ dá»¥ng mÃ u vÃ ng kim.
+Top 2 sá»­ dá»¥ng mÃ u báº¡c.
+Top 3 sá»­ dá»¥ng mÃ u Ä‘á»“ng.
+
+Thiáº¿t káº¿ theo phong cÃ¡ch vinh danh tÆ°á»›ng lÄ©nh Tam Quá»‘c, khÃ´ng sá»­ dá»¥ng nhá»¯ng card thÃ´ng thÆ°á»ng.
+
+### 4. Tháº­p Ä‘áº¡i tinh anh
+
+Hiá»ƒn thá»‹ Top 4 Ä‘áº¿n Top 10 dÆ°á»›i dáº¡ng danh sÃ¡ch hoáº·c cÃ¡c tháº» thÃ nh viÃªn.
+
+YÃªu cáº§u:
+- Thá»© háº¡ng rÃµ rÃ ng.
+- TÃªn thÃ nh viÃªn.
+- Chiáº¿n lá»±c.
+- Danh hiá»‡u.
+- Chá»©c vá»¥.
+- CÃ³ nÃºt xem chi tiáº¿t.
+
+Thiáº¿t káº¿ Ä‘á»“ng nháº¥t vá»›i Top 3 nhÆ°ng khÃ´ng láº¥n Ã¡t khu vá»±c vinh danh cao nháº¥t.
+
+### 5. Báº£ng xáº¿p háº¡ng toÃ n bang
+
+NÃ¢ng cáº¥p báº£ng xáº¿p háº¡ng hiá»‡n táº¡i vá»›i cÃ¡c cá»™t:
+
+| Háº¡ng | ThÃ nh viÃªn | Lá»±c chiáº¿n | Danh hiá»‡u | Chá»©c vá»¥ | Thao tÃ¡c |
+|---|---|---|---|---|---|
+
+TÃ­nh nÄƒng:
+- Tá»± Ä‘á»™ng sáº¯p xáº¿p theo chiáº¿n lá»±c.
+- TÃ¬m kiáº¿m tÃªn thÃ nh viÃªn.
+- Lá»c danh hiá»‡u.
+- Lá»c chá»©c vá»¥.
+- Sáº¯p xáº¿p tÄƒng dáº§n vÃ  giáº£m dáº§n.
+- PhÃ¢n trang.
+- Xem chi tiáº¿t thÃ nh viÃªn.
+
+CÃ³ thá»ƒ Ä‘Ã¡nh dáº¥u sá»± thay Ä‘á»•i thá»© háº¡ng báº±ng biá»ƒu tÆ°á»£ng tÄƒng, giáº£m hoáº·c khÃ´ng thay Ä‘á»•i khi cÃ³ dá»¯ liá»‡u lá»‹ch sá»­ Ä‘á»‘i chiáº¿u.
+
+## IV. NÃ‚NG Cáº¤P TRA Cá»¨U THÃ€NH VIÃŠN
+
+ÄÃ¢y lÃ  chá»©c nÄƒng ráº¥t quan trá»ng vÃ¬ thÃ nh viÃªn cáº§n dá»… dÃ ng tÃ¬m tháº¥y thá»© háº¡ng cá»§a mÃ¬nh.
+
+Thiáº¿t káº¿ má»™t khu vá»±c tra cá»©u riÃªng biá»‡t, Ä‘áº¹p vÃ  dá»… sá»­ dá»¥ng.
+
+### Chá»©c nÄƒng:
+
+- TÃ¬m kiáº¿m theo tÃªn nhÃ¢n váº­t.
+- TÃ¬m kiáº¿m theo thá»© háº¡ng.
+- Gá»£i Ã½ tÃªn khi nháº­p.
+- TÃ¬m kiáº¿m khÃ´ng phÃ¢n biá»‡t chá»¯ hoa, chá»¯ thÆ°á»ng.
+- Há»— trá»£ xá»­ lÃ½ khoáº£ng tráº¯ng.
+- Hiá»ƒn thá»‹ thÃ´ng bÃ¡o khi khÃ´ng tÃ¬m tháº¥y.
+
+Sau khi tÃ¬m kiáº¿m, hiá»ƒn thá»‹ má»™t tháº» káº¿t quáº£ cao cáº¥p gá»“m:
+
+- Háº¡ng hiá»‡n táº¡i.
+- TÃªn nhÃ¢n váº­t.
+- Chiáº¿n lá»±c.
+- Danh hiá»‡u.
+- Chá»©c vá»¥.
+- ThÃ´ng tin áº£i.
+- ThÃ´ng tin thÃ¡p.
+
+CÃ³ hiá»‡u á»©ng xuáº¥t hiá»‡n khi tÃ¬m tháº¥y thÃ nh viÃªn.
+
+KhÃ´ng báº¯t buá»™c ngÆ°á»i dÃ¹ng pháº£i má»Ÿ má»™t trang má»›i Ä‘á»ƒ xem káº¿t quáº£.
+
+## V. Há»† THá»NG Há»’ SÆ  THÃ€NH VIÃŠN
+
+Táº¡o giao diá»‡n há»“ sÆ¡ chi tiáº¿t cho tá»«ng thÃ nh viÃªn.
+
+Khi nháº¥n vÃ o má»™t thÃ nh viÃªn, má»Ÿ Modal hoáº·c trang chi tiáº¿t.
+
+ThÃ´ng tin gá»“m:
+
+1. TÃªn nhÃ¢n váº­t.
+2. Thá»© háº¡ng hiá»‡n táº¡i.
+3. Lá»±c chiáº¿n.
+4. Danh hiá»‡u.
+5. Chá»©c vá»¥.
+6. áº¢i hiá»‡n táº¡i.
+7. ThÃ¡p hiá»‡n táº¡i.
+8. NgÃ y cáº­p nháº­t gáº§n nháº¥t.
+
+Náº¿u dá»¯ liá»‡u lá»‹ch sá»­ Ä‘Ã£ cÃ³, bá»• sung biá»ƒu Ä‘á»“ tÄƒng trÆ°á»Ÿng chiáº¿n lá»±c vÃ  lá»‹ch sá»­ thay Ä‘á»•i thá»© háº¡ng.
+
+Thiáº¿t káº¿ há»“ sÆ¡ theo phong cÃ¡ch tháº» nhÃ¢n váº­t trong game chiáº¿n thuáº­t.
+
+## VI. Bá»” SUNG TRUNG TÃ‚M THá»NG KÃŠ
+
+Táº¡o má»™t khu vá»±c má»›i mang tÃªn:
+
+**SHADOW WOLF ANALYTICS**
+
+CÃ¡c ná»™i dung:
+
+- Biá»ƒu Ä‘á»“ phÃ¢n bá»‘ chiáº¿n lá»±c thÃ nh viÃªn.
+- Biá»ƒu Ä‘á»“ chiáº¿n lá»±c theo tá»«ng nhÃ³m.
+- Top thÃ nh viÃªn cÃ³ chiáº¿n lá»±c cao nháº¥t.
+- Thá»‘ng kÃª sá»‘ lÆ°á»£ng thÃ nh viÃªn theo danh hiá»‡u.
+- Thá»‘ng kÃª chá»©c vá»¥ trong bang.
+- So sÃ¡nh chiáº¿n lá»±c Top 3 vÃ  Top 10.
+- Lá»‹ch sá»­ biáº¿n Ä‘á»™ng chiáº¿n lá»±c theo thá»i gian.
+
+Sá»­ dá»¥ng biá»ƒu Ä‘á»“ trá»±c quan, cÃ³ tooltip vÃ  responsive.
+
+Chá»‰ hiá»ƒn thá»‹ biá»ƒu Ä‘á»“ lá»‹ch sá»­ khi thá»±c sá»± cÃ³ dá»¯ liá»‡u lá»‹ch sá»­. KhÃ´ng tá»± táº¡o dá»¯ liá»‡u Ä‘á»ƒ lÃ m Ä‘áº¹p biá»ƒu Ä‘á»“.
+
+## VII. NÃ‚NG Cáº¤P Há»† THá»NG TRáº¬N HÃŒNH VÃ€ Äá»˜I HÃŒNH TÆ¯á»šNG LÄ¨NH
+
+Giá»¯ láº¡i chá»©c nÄƒng xem tráº­n hÃ¬nh hiá»‡n táº¡i nhÆ°ng thiáº¿t káº¿ láº¡i toÃ n diá»‡n.
+
+Khi má»Ÿ há»“ sÆ¡ má»™t thÃ nh viÃªn, cÃ³ thá»ƒ xem:
+
+- TÃªn nhÃ¢n váº­t.
+- Háº¡ng hiá»‡n táº¡i.
+- Lá»±c chiáº¿n.
+- áº¢i.
+- ThÃ¡p.
+- Danh hiá»‡u.
+- Äá»™i hÃ¬nh tÆ°á»›ng lÄ©nh.
+
+Khu vá»±c Ä‘á»™i hÃ¬nh cáº§n Ä‘Æ°á»£c trÃ¬nh bÃ y trá»±c quan, cÃ³ vá»‹ trÃ­ tá»«ng tÆ°á»›ng vÃ  hÃ¬nh áº£nh náº¿u dá»¯ liá»‡u hiá»‡n táº¡i cÃ³ sáºµn.
+
+Náº¿u chÆ°a cÃ³ hÃ¬nh áº£nh hoáº·c dá»¯ liá»‡u Ä‘á»™i hÃ¬nh thÃ¬ hiá»ƒn thá»‹ tráº¡ng thÃ¡i chÆ°a cáº­p nháº­t, khÃ´ng tá»± táº¡o thÃ´ng tin.
+
+## VIII. NÃ‚NG Cáº¤P TRANG QUáº¢N TRá»Š
+
+Giá»¯ nguyÃªn há»‡ thá»‘ng quáº£n trá»‹ hiá»‡n táº¡i vÃ  nÃ¢ng cáº¥p giao diá»‡n theo phong cÃ¡ch Admin Dashboard chuyÃªn nghiá»‡p.
+
+CÃ¡c chá»©c nÄƒng:
+
+### Quáº£n lÃ½ thÃ nh viÃªn
+
+- ThÃªm thÃ nh viÃªn.
+- Chá»‰nh sá»­a thÃ´ng tin.
+- XÃ³a thÃ nh viÃªn.
+- Cáº­p nháº­t chiáº¿n lá»±c.
+- Cáº­p nháº­t danh hiá»‡u.
+- Cáº­p nháº­t chá»©c vá»¥.
+- Cáº­p nháº­t áº£i vÃ  thÃ¡p.
+- Cáº­p nháº­t Ä‘á»™i hÃ¬nh.
+- TÃ¬m kiáº¿m thÃ nh viÃªn.
+
+### Quáº£n lÃ½ thá»© háº¡ng
+
+- Tá»± Ä‘á»™ng tÃ­nh thá»© háº¡ng.
+- Cáº­p nháº­t thá»© háº¡ng khi chiáº¿n lá»±c thay Ä‘á»•i.
+- PhÃ¡t hiá»‡n dá»¯ liá»‡u trÃ¹ng láº·p.
+- Kiá»ƒm tra dá»¯ liá»‡u khÃ´ng há»£p lá»‡.
+
+### Quáº£n lÃ½ dá»¯ liá»‡u
+
+- Nháº­p dá»¯ liá»‡u CSV.
+- Xuáº¥t dá»¯ liá»‡u CSV hoáº·c Excel.
+- Sao lÆ°u dá»¯ liá»‡u.
+- KhÃ´i phá»¥c dá»¯ liá»‡u.
+- XÃ¡c nháº­n trÆ°á»›c khi xÃ³a.
+- CÃ³ nháº­t kÃ½ hoáº¡t Ä‘á»™ng quáº£n trá»‹.
+
+Náº¿u há»‡ thá»‘ng Ä‘ang cÃ³ backend hoáº·c cÆ¡ cháº¿ xÃ¡c thá»±c, pháº£i giá»¯ nguyÃªn vÃ  cáº£i thiá»‡n trÃªn ná»n táº£ng Ä‘Ã³. KhÃ´ng thay tháº¿ xÃ¡c thá»±c thá»±c táº¿ báº±ng má»™t nÃºt Ä‘Äƒng nháº­p giáº£ hoáº·c máº­t kháº©u lÆ°u trá»±c tiáº¿p trong JavaScript phÃ­a trÃ¬nh duyá»‡t.
+
+## IX. Há»† THá»NG Lá»ŠCH Sá»¬ VÃ€ BIáº¾N Äá»˜NG
+
+ÄÃ¢y lÃ  tÃ­nh nÄƒng cáº§n Æ°u tiÃªn bá»• sung.
+
+Táº¡o má»¥c:
+
+**HÃ€NH TRÃŒNH CHIáº¾N THáº¦N**
+
+LÆ°u láº¡i cÃ¡c láº§n cáº­p nháº­t:
+- Chiáº¿n lá»±c cÅ©.
+- Chiáº¿n lá»±c má»›i.
+- Thá»© háº¡ng cÅ©.
+- Thá»© háº¡ng má»›i.
+- Thá»i gian cáº­p nháº­t.
+
+Tá»« Ä‘Ã³ táº¡o cÃ¡c báº£ng:
+
+- ThÃ nh viÃªn tÄƒng chiáº¿n lá»±c nhiá»u nháº¥t.
+- ThÃ nh viÃªn thÄƒng háº¡ng nhiá»u nháº¥t.
+- ThÃ nh viÃªn giá»¯ vá»¯ng Top 10.
+- Nhá»¯ng thay Ä‘á»•i thá»© háº¡ng Ä‘Ã¡ng chÃº Ã½.
+
+KhÃ´ng suy Ä‘oÃ¡n lá»‹ch sá»­ tá»« dá»¯ liá»‡u hiá»‡n táº¡i. Chá»‰ ghi nháº­n tá»« nhá»¯ng láº§n cáº­p nháº­t thá»±c táº¿.
+
+## X. TRáº¢I NGHIá»†M ÄA THIáº¾T Bá»Š
+
+Website pháº£i hoáº¡t Ä‘á»™ng hoÃ n háº£o trÃªn:
+
+- Desktop.
+- Laptop.
+- Tablet.
+- Äiá»‡n thoáº¡i Android.
+- iPhone.
+
+Äáº·c biá»‡t chÃº Ã½ giao diá»‡n mobile:
+
+- KhÃ´ng bá»‹ trÃ n ngang.
+- KhÃ´ng bá»‹ vá»¡ báº£ng.
+- CÃ¡c nÃºt dá»… thao tÃ¡c.
+- Font chá»¯ Ä‘á»§ lá»›n.
+- CÃ¡c tháº» thá»‘ng kÃª tá»± Ä‘á»™ng chuyá»ƒn thÃ nh bá»‘ cá»¥c phÃ¹ há»£p.
+- Báº£ng xáº¿p háº¡ng cÃ³ thá»ƒ chuyá»ƒn thÃ nh danh sÃ¡ch card trÃªn mÃ n hÃ¬nh nhá».
+
+## XI. HIá»†U á»¨NG VÃ€ CHI TIáº¾T CAO Cáº¤P
+
+Bá»• sung cÃ¡c hiá»‡u á»©ng tinh táº¿:
+
+- Loading animation.
+- Skeleton loading.
+- Smooth scrolling.
+- Hover animation.
+- Modal animation.
+- Chuyá»ƒn cáº£nh nháº¹ nhÃ ng.
+- Hiá»‡u á»©ng highlight Top 1.
+- Hiá»‡u á»©ng Ã¡nh kim trÃªn cÃ¡c danh hiá»‡u.
+- Toast notification khi cáº­p nháº­t thÃ nh cÃ´ng hoáº·c tháº¥t báº¡i.
+
+CÃ³ thá»ƒ thÃªm hiá»‡u á»©ng ná»n háº¡t sÃ¡ng hoáº·c há»a tiáº¿t cá»• phong nhÆ°ng pháº£i tá»‘i Æ°u hiá»‡u nÄƒng.
+
+KhÃ´ng sá»­ dá»¥ng hiá»‡u á»©ng quÃ¡ náº·ng khiáº¿n website cháº­m.
+
+## XII. KIá»‚M TRA VÃ€ Äá»’NG Bá»˜ Dá»® LIá»†U
+
+ÄÃ¢y lÃ  yÃªu cáº§u báº¯t buá»™c.
+
+Kiá»ƒm tra toÃ n bá»™ nguá»“n dá»¯ liá»‡u vÃ  báº£o Ä‘áº£m:
+
+- Má»—i thÃ nh viÃªn cÃ³ má»™t Ä‘á»‹nh danh duy nháº¥t.
+- Lá»±c chiáº¿n hiá»ƒn thá»‹ thá»‘ng nháº¥t trÃªn toÃ n website.
+- Thá»© háº¡ng Ä‘Æ°á»£c tÃ­nh tá»« cÃ¹ng má»™t nguá»“n dá»¯ liá»‡u.
+- Thá»‘ng kÃª tá»•ng chiáº¿n lá»±c khÃ´ng bá»‹ sai lá»‡ch.
+- Chiáº¿n lá»±c bÃ¬nh quÃ¢n Ä‘Æ°á»£c tÃ­nh chÃ­nh xÃ¡c.
+- ThÃ´ng tin trong há»“ sÆ¡ thÃ nh viÃªn khá»›p vá»›i báº£ng xáº¿p háº¡ng.
+- ThÃ´ng tin trong trang quáº£n trá»‹ khá»›p vá»›i trang chá»§.
+
+Äáº·c biá»‡t kiá»ƒm tra sá»± khÃ¡c biá»‡t giá»¯a chiáº¿n lá»±c Top 1 Ä‘ang hiá»ƒn thá»‹ táº¡i khu vá»±c thá»‘ng kÃª vÃ  chiáº¿n lá»±c trong cá»­a sá»• tráº­n hÃ¬nh hiá»‡n táº¡i.
+
+Xá»­ lÃ½ triá»‡t Ä‘á»ƒ tÃ¬nh tráº¡ng dá»¯ liá»‡u khÃ´ng Ä‘á»“ng nháº¥t.
+
+Äá»‘i vá»›i lá»±c chiáº¿n cÃ³ Ä‘Æ¡n vá»‹ B, T hoáº·c dáº¡ng khoáº£ng, cáº§n xÃ¢y dá»±ng quy táº¯c chuyá»ƒn Ä‘á»•i vÃ  so sÃ¡nh thá»‘ng nháº¥t, khÃ´ng Ä‘Æ°á»£c sáº¯p xáº¿p báº±ng cÃ¡ch so sÃ¡nh chuá»—i vÄƒn báº£n Ä‘Æ¡n thuáº§n.
+
+## XIII. YÃŠU Cáº¦U Ká»¸ THUáº¬T
+
+- Æ¯u tiÃªn giá»¯ nguyÃªn cÃ´ng nghá»‡ hiá»‡n táº¡i.
+- KhÃ´ng tá»± Ã½ thay Ä‘á»•i framework.
+- KhÃ´ng phÃ¡ vá»¡ cáº¥u trÃºc triá»ƒn khai Vercel.
+- KhÃ´ng lÃ m máº¥t dá»¯ liá»‡u hiá»‡n táº¡i.
+- KhÃ´ng hardcode dá»¯ liá»‡u trÃ¹ng láº·p á»Ÿ nhiá»u vá»‹ trÃ­.
+- Sá»­ dá»¥ng má»™t nguá»“n dá»¯ liá»‡u thá»‘ng nháº¥t.
+- Tá»‘i Æ°u tá»‘c Ä‘á»™ táº£i trang.
+- Tá»‘i Æ°u SEO cÆ¡ báº£n.
+- Tá»‘i Æ°u accessibility.
+- Kiá»ƒm tra Console.
+- Kiá»ƒm tra cÃ¡c API vÃ  luá»“ng dá»¯ liá»‡u.
+- Kiá»ƒm tra táº¥t cáº£ nÃºt báº¥m vÃ  chá»©c nÄƒng.
+
+Náº¿u cáº§n thay Ä‘á»•i cáº¥u trÃºc dá»¯ liá»‡u, hÃ£y xÃ¢y dá»±ng phÆ°Æ¡ng Ã¡n tÆ°Æ¡ng thÃ­ch vÃ  sao lÆ°u trÆ°á»›c khi thá»±c hiá»‡n.
+
+## XIV. Káº¾T QUáº¢ MONG MUá»N
+
+TÃ´i muá»‘n nháº­n Ä‘Æ°á»£c má»™t website cÃ³ cháº¥t lÆ°á»£ng thá»±c táº¿, khÃ´ng pháº£i báº£n thiáº¿t káº¿ demo.
+
+Website cáº§n Ä‘áº¡t Ä‘Æ°á»£c:
+
+1. Giao diá»‡n Ä‘áº¹p vÃ  hiá»‡n Ä‘áº¡i hÆ¡n Ä‘Ã¡ng ká»ƒ so vá»›i phiÃªn báº£n hiá»‡n táº¡i.
+2. CÃ³ báº£n sáº¯c riÃªng cá»§a SHADOW WOLF.
+3. Báº£ng xáº¿p háº¡ng trá»±c quan vÃ  dá»… tra cá»©u.
+4. Top 3 Ä‘Æ°á»£c vinh danh tháº­t ná»•i báº­t.
+5. CÃ³ há»“ sÆ¡ thÃ nh viÃªn chuyÃªn nghiá»‡p.
+6. CÃ³ há»‡ thá»‘ng thá»‘ng kÃª dá»¯ liá»‡u.
+7. CÃ³ trang quáº£n trá»‹ hoÃ n chá»‰nh.
+8. TÆ°Æ¡ng thÃ­ch Ä‘iá»‡n thoáº¡i vÃ  mÃ¡y tÃ­nh.
+9. KhÃ´ng máº¥t dá»¯ liá»‡u cÅ©.
+10. Táº¥t cáº£ chá»©c nÄƒng hiá»‡n táº¡i tiáº¿p tá»¥c hoáº¡t Ä‘á»™ng.
+
+**YÃŠU Cáº¦U THá»°C HIá»†N:**
+
+KhÃ´ng chá»‰ Ä‘Æ°a ra Ä‘á» xuáº¥t hoáº·c mÃ´ táº£ thiáº¿t káº¿. HÃ£y trá»±c tiáº¿p chá»‰nh sá»­a source code hiá»‡n táº¡i, triá»ƒn khai cÃ¡c tÃ­nh nÄƒng vÃ  kiá»ƒm tra káº¿t quáº£.
+
+HÃ£y Æ°u tiÃªn cháº¥t lÆ°á»£ng giao diá»‡n, tráº£i nghiá»‡m ngÆ°á»i dÃ¹ng vÃ  tÃ­nh á»•n Ä‘á»‹nh cá»§a há»‡ thá»‘ng.
+
+Sáº£n pháº©m cuá»‘i cÃ¹ng pháº£i táº¡o Ä‘Æ°á»£c cáº£m giÃ¡c Ä‘Ã¢y lÃ  cá»•ng thÃ´ng tin chÃ­nh thá»©c cá»§a má»™t bang há»™i hÃ ng Ä‘áº§u trong tháº¿ giá»›i MiÃªu Chá»§ Tam Quá»‘c.
+
+**SHADOW WOLF â€“ KHÃ”NG CHá»ˆ LÃ€ Má»˜T Báº¢NG Xáº¾P Háº NG, MÃ€ LÃ€ NÆ I VINH DANH NHá»®NG CHIáº¾N THáº¦N.**
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-03T20:04:08+07:00.
+
+The user's current state is as follows:
+Active Document: d:\BXH MDTQ\index.html (LANGUAGE_UNSPECIFIED)
+Cursor is on line: 37
+Other open documents:
+- d:\BXH MDTQ\style.css (LANGUAGE_UNSPECIFIED)
+- d:\BXH MDTQ\script.js (LANGUAGE_UNSPECIFIED)
+- d:\BXH MDTQ\admin.html (LANGUAGE_UNSPECIFIED)
+</ADDITIONAL_METADATA>
