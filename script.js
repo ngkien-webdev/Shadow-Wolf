@@ -831,8 +831,8 @@ function renderSupremeTop3() {
                 <i class="fa-solid fa-shield-halved"></i>
             </div>
             
-            <div class="supreme-title-wrap">
-                ${renderBaChuKieuHungSvg()}
+            <div class="supreme-title-wrap title-wrap-yudai">
+                <img src="images/title-yudai-chien-de.png" alt="Yudai Chiến Đế" class="supreme-ingame-title-img img-title-yudai" title="Danh Hiệu In-game: Yudai Chiến Đế">
             </div>
 
             <div class="supreme-avatar-container">
@@ -872,8 +872,8 @@ function renderSupremeTop3() {
                 <i class="fa-solid fa-crown"></i>
             </div>
 
-            <div class="supreme-title-wrap">
-                ${renderApexVuongGiaSvg()}
+            <div class="supreme-title-wrap title-wrap-apex">
+                <img src="images/title-apex-vuong-gia.png" alt="APEX Vương Giả" class="supreme-ingame-title-img img-title-apex" title="Danh Hiệu In-game: APEX Vương Giả">
             </div>
 
             <div class="supreme-avatar-container">
@@ -913,8 +913,8 @@ function renderSupremeTop3() {
                 <i class="fa-solid fa-award"></i>
             </div>
 
-            <div class="supreme-title-wrap">
-                ${renderChienLangThanTamSvg()}
+            <div class="supreme-title-wrap title-wrap-ayya">
+                <img src="images/title-alyal-ba-khi.png" alt="ALyaL Bá Khí" class="supreme-ingame-title-img img-title-ayya" title="Danh Hiệu In-game: ALyaL Bá Khí">
             </div>
 
             <div class="supreme-avatar-container">
@@ -1203,7 +1203,7 @@ function renderEliteCards() {
         if (emptyState) emptyState.style.display = 'none';
 
         const sortedAll = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
-        const eliteMembers = sortedAll.filter(m => m.stt >= 1 && m.stt <= 10);
+        const eliteMembers = sortedAll.filter(m => m.stt >= 6 && m.stt <= 15);
 
         row1Container.innerHTML = eliteMembers.map(m => generateEliteCardHtml(m)).join('');
     }

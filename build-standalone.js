@@ -29,6 +29,16 @@ if (fs.existsSync(avatarsDir)) {
     });
 }
 
+// Base64 In-game title badges
+const titleBadges = [
+    { file: 'images/title-apex-vuong-gia.png', regex: /images\/title-apex-vuong-gia\.png/g },
+    { file: 'images/title-yudai-chien-de.png', regex: /images\/title-yudai-chien-de\.png/g },
+    { file: 'images/title-alyal-ba-khi.png', regex: /images\/title-alyal-ba-khi\.png/g }
+].map(t => ({
+    regex: t.regex,
+    b64: fs.existsSync(path.join(dir, t.file)) ? 'data:image/png;base64,' + fs.readFileSync(path.join(dir, t.file)).toString('base64') : ''
+}));
+
 // 1. Build standalone.html (Public Leaderboard)
 // IMPORTANT: Use function replacers (() => content) so JavaScript does NOT treat $& as special pattern
 let standalone = html.replace('<link rel="stylesheet" href="style.css">', () => `<style>\n${css}\n</style>`);
@@ -42,6 +52,9 @@ standalone = standalone.replace(/href="images\/favicon\.ico"/g, () => `href="${f
 standalone = standalone.replace(/images\/logo\.png/g, () => logoBase64);
 avatarBase64List.forEach(({ pattern, b64 }) => {
     standalone = standalone.replace(pattern, () => b64);
+});
+titleBadges.forEach(({ regex, b64 }) => {
+    if (b64) standalone = standalone.replace(regex, () => b64);
 });
 
 fs.writeFileSync(path.join(dir, 'standalone.html'), standalone, 'utf-8');
@@ -57,6 +70,9 @@ standaloneAdmin = standaloneAdmin.replace(/href="images\/favicon\.ico"/g, () => 
 standaloneAdmin = standaloneAdmin.replace(/images\/logo\.png/g, () => logoBase64);
 avatarBase64List.forEach(({ pattern, b64 }) => {
     standaloneAdmin = standaloneAdmin.replace(pattern, () => b64);
+});
+titleBadges.forEach(({ regex, b64 }) => {
+    if (b64) standaloneAdmin = standaloneAdmin.replace(regex, () => b64);
 });
 
 fs.writeFileSync(path.join(dir, 'standalone-admin.html'), standaloneAdmin, 'utf-8');
