@@ -3418,7 +3418,10 @@ body {
     align-items: center;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(16px);
+    background: linear-gradient(180deg, rgba(32, 21, 50, 0.96) 0%, rgba(18, 11, 28, 0.98) 100%) !important;
+    contain: layout style;
+    transform: translateZ(0);
+    will-change: transform;
     box-sizing: border-box;
 }
 
@@ -3617,7 +3620,9 @@ body {
     inset: -6px;
     border-radius: 50%;
     border: 2px dashed rgba(255, 215, 0, 0.6);
-    animation: rotateAuraRing 20s linear infinite;
+    /* Optimized: Loại bỏ vòng quay dash shadow liên tục gây tốn GPU */
+    transform: translateZ(0);
+    will-change: transform;
 }
 @keyframes rotateAuraRing {
     from { transform: rotate(0deg); }
@@ -5233,9 +5238,10 @@ body {
 }
 
 .analytics-card {
-    background: rgba(33, 20, 50, 0.78) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
+    background: rgba(24, 16, 38, 0.95) !important;
+    contain: layout style;
+    transform: translateZ(0);
+    will-change: transform;
     border: 1px solid rgba(166, 138, 224, 0.25) !important;
     border-radius: 14px;
     padding: 22px;
@@ -6124,7 +6130,7 @@ body.modal-open {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: skewX(-20deg);
-    animation: buttonGleam 4s infinite ease-in-out;
+    /* Optimized: Chạy vệt sáng khi rê chuột, không chạy vòng lặp vô tận gây nóng máy */
 }
 
 @keyframes buttonGleam {
@@ -6520,6 +6526,43 @@ body.modal-open {
     box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important;
     transform: scale(1.03) !important;
     transition: all 0.25s ease !important;
+}
+
+.btn-hero:hover::after { animation: buttonGleam 0.75s ease-in-out forwards; }
+
+
+/* ==========================================================================
+   TỐI ƯU HÓA HIỆU NĂNG TỐI THƯỢNG 120 FPS (PERFORMANCE BOOST - SIÊU MƯỢT)
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tự động bỏ qua render các phần khu vực chưa cuộn tới giúp load siêu nhanh và cuộn 120 FPS */
+.podium-section,
+.elite-grid-section,
+.member-lookup-section,
+.history-tracker-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+}
+
+/* Ép thẻ bài dùng bộ tăng tốc phần cứng GPU riêng biệt (Zero repaint lag) */
+.supreme-champ-card,
+.elite-member-card,
+.featured-identity-card,
+.podium-card,
+.stat-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 </style>
@@ -7205,10 +7248,10 @@ function initApp() {
     initMemberLookup();
     initHistoryTracker();
 
-    // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền
+    // Tự động kiểm tra và đồng bộ dữ liệu mới nhất từ Google Sheet trong nền (chạy sau khi trang đã render ổn định)
     setTimeout(() => {
         syncFromGoogleSheet({ silent: true });
-    }, 1200);
+    }, 6000);
 
     // Tự động quét và đồng bộ ngầm định kỳ mỗi 60 giây (Live Real-time Watcher)
     setInterval(() => {
@@ -7227,27 +7270,41 @@ function initApp() {
  * Tải trước (Preload) toàn bộ ảnh trận hình vào bộ nhớ RAM trình duyệt
  * Giúp người dùng click xem đội hình là hiện NGAY LẬP TỨC 0ms không phải chờ load
  */
+/**
+ * Tải trước thông minh (Smart Lazy Loading & Memory Optimization)
+ * Chỉ nạp trước Top 3 vương giả để tiết kiệm RAM & CPU, giúp trang mở NGAY LẬP TỨC 120 FPS
+ */
 function preloadMemberImages() {
     if (!members || !members.length) return;
     
-    // Tải trước Top 15 cao thủ ngay lập tức với mức ưu tiên cao nhất
-    const priorityMembers = members.slice(0, 15);
-    priorityMembers.forEach(m => {
+    // Chỉ nạp Top 3 tướng tối cao
+    const top3 = members.slice(0, 3);
+    top3.forEach(m => {
         if (m.image) {
-            const preImg = new Image();
-            preImg.src = m.image;
+            const img = new Image();
+            img.src = m.image;
         }
     });
+}
 
-    // Tải nền các thành viên còn lại khi trình duyệt rảnh rỗi (idle)
-    const idleRun = window.requestIdleCallback || ((cb) => setTimeout(cb, 1000));
-    idleRun(() => {
-        members.slice(15).forEach(m => {
-            if (m.image) {
-                const preImg = new Image();
-                preImg.src = m.image;
-            }
-        });
+/**
+ * Nạp trước ảnh tướng kế tiếp & tướng trước đó khi người dùng đang xem modal
+ */
+function preloadAdjacentMemberImages(stt) {
+    if (!members || !members.length) return;
+    const sorted = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
+    const idx = sorted.findIndex(m => m.stt === stt);
+    if (idx === -1) return;
+
+    const nextIdx = (idx + 1) % sorted.length;
+    const prevIdx = (idx - 1 + sorted.length) % sorted.length;
+
+    [sorted[nextIdx], sorted[prevIdx]].forEach(m => {
+        if (m && m.image && !m._isPreloaded) {
+            m._isPreloaded = true;
+            const img = new Image();
+            img.src = m.image;
+        }
     });
 }
 
@@ -9401,6 +9458,14 @@ async function syncFromGoogleSheet(options = { silent: false }) {
             }
         });
 
+        // Nếu không có thay đổi nào mới, kết thúc ngay để KHÔNG giật lag giao diện
+        if (updatedCount === 0 && addedCount === 0) {
+            if (!options.silent) {
+                showToast("Dữ liệu bang hội hiện tại đã là mới nhất!", "info");
+            }
+            return;
+        }
+
         // Tự động sắp xếp lại toàn bộ theo lực chiến giảm dần
         members.sort((a, b) => (b.powerVal || 0) - (a.powerVal || 0));
         members.forEach((m, idx) => { m.stt = idx + 1; });
@@ -9547,6 +9612,7 @@ function openFormationModal(stt) {
     }
 
     openModal('modal-formation-view');
+    preloadAdjacentMemberImages(member.stt);
 
     // CUỘN LÊN ĐẦU MODAL BODY MỖI KHI MỞ / CHUYỂN TƯỚNG (ĐẢM BẢO KHÔNG BỊ KẸT DƯỚI)
     requestAnimationFrame(() => {
@@ -9711,10 +9777,6 @@ function triggerShareBtnSuccess() {
             btn.innerHTML = origHtml;
             btn.classList.remove('btn-copied-success');
         }, 2500);
-    }
-});
-    } else {
-        prompt("Sao chép liên kết chia sẻ:", cleanUrl);
     }
 }
 

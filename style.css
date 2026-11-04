@@ -3393,7 +3393,10 @@ body {
     align-items: center;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    backdrop-filter: blur(16px);
+    background: linear-gradient(180deg, rgba(32, 21, 50, 0.96) 0%, rgba(18, 11, 28, 0.98) 100%) !important;
+    contain: layout style;
+    transform: translateZ(0);
+    will-change: transform;
     box-sizing: border-box;
 }
 
@@ -3592,7 +3595,9 @@ body {
     inset: -6px;
     border-radius: 50%;
     border: 2px dashed rgba(255, 215, 0, 0.6);
-    animation: rotateAuraRing 20s linear infinite;
+    /* Optimized: Loại bỏ vòng quay dash shadow liên tục gây tốn GPU */
+    transform: translateZ(0);
+    will-change: transform;
 }
 @keyframes rotateAuraRing {
     from { transform: rotate(0deg); }
@@ -5208,9 +5213,10 @@ body {
 }
 
 .analytics-card {
-    background: rgba(33, 20, 50, 0.78) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
+    background: rgba(24, 16, 38, 0.95) !important;
+    contain: layout style;
+    transform: translateZ(0);
+    will-change: transform;
     border: 1px solid rgba(166, 138, 224, 0.25) !important;
     border-radius: 14px;
     padding: 22px;
@@ -6099,7 +6105,7 @@ body.modal-open {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
     transform: skewX(-20deg);
-    animation: buttonGleam 4s infinite ease-in-out;
+    /* Optimized: Chạy vệt sáng khi rê chuột, không chạy vòng lặp vô tận gây nóng máy */
 }
 
 @keyframes buttonGleam {
@@ -6495,4 +6501,41 @@ body.modal-open {
     box-shadow: 0 0 15px rgba(16, 185, 129, 0.4) !important;
     transform: scale(1.03) !important;
     transition: all 0.25s ease !important;
+}
+
+.btn-hero:hover::after { animation: buttonGleam 0.75s ease-in-out forwards; }
+
+
+/* ==========================================================================
+   TỐI ƯU HÓA HIỆU NĂNG TỐI THƯỢNG 120 FPS (PERFORMANCE BOOST - SIÊU MƯỢT)
+   ========================================================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tự động bỏ qua render các phần khu vực chưa cuộn tới giúp load siêu nhanh và cuộn 120 FPS */
+.podium-section,
+.elite-grid-section,
+.member-lookup-section,
+.history-tracker-section,
+.site-footer {
+    content-visibility: auto;
+    contain-intrinsic-size: 600px;
+}
+
+/* Ép thẻ bài dùng bộ tăng tốc phần cứng GPU riêng biệt (Zero repaint lag) */
+.supreme-champ-card,
+.elite-member-card,
+.featured-identity-card,
+.podium-card,
+.stat-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
