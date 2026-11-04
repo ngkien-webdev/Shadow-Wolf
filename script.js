@@ -143,49 +143,49 @@ const MEMBER_AVATARS = {
 };
 
 const MEMBER_NAME_AVATARS = {
-    'apex': 'images/avatars/avatar-1-apex.png',
-    'yudai': 'images/avatars/avatar-2-yudai.png',
-    'ayva': 'images/avatars/avatar-3-ayva.png',
-    'ayya': 'images/avatars/avatar-3-ayva.png',
-    'ltd': 'images/avatars/avatar-5-ltd.png',
-    'alinx': 'images/avatars/avatar-4-alinx.png',
-    'nttp': 'images/avatars/avatar-8-nttp.png',
-    'link': 'images/avatars/avatar-7-bitien.png',
-    'cho acc': 'images/avatars/avatar-27-t.png',
-    'stom': 'images/avatars/avatar-6-stom.png',
-    'rain': 'images/avatars/avatar-11-rain.png',
-    'dolivi': 'images/avatars/avatar-10-dolivi.png',
-    'rinn': 'images/avatars/avatar-12-rinn.png',
-    'ryo': 'images/avatars/avatar-13-ryo.png',
-    'furies': 'images/avatars/avatar-15-furies.png',
-    'neko': 'images/avatars/avatar-14-neko.png',
-    'haruki': 'images/avatars/avatar-9-haruki.png',
-    'klein': 'images/avatars/avatar-16-klein.png',
-    'minh thanh': 'images/avatars/avatar-21-minhthanh.png',
-    'bear': 'images/avatars/avatar-19-bear.png',
-    'poision': 'images/avatars/avatar-22-poision.png',
-    'poison': 'images/avatars/avatar-22-poision.png',
-    'wolf': 'images/avatars/avatar-23-wolf.png',
-    'baoo': 'images/avatars/avatar-18-baoo.png',
-    '360': 'images/avatars/avatar-18-baoo.png',
-    'pandaxmun': 'images/avatars/avatar-20-pandaxmun.png',
-    'panda': 'images/avatars/avatar-20-pandaxmun.png',
-    'kaneki': 'images/avatars/avatar-24-kaneki.png',
-    'lukita': 'images/avatars/avatar-28-lukita.png',
-    't': 'images/avatars/avatar-27-t.png',
-    'ca na': 'images/avatars/avatar-25-cana.png',
-    'yuta': 'images/avatars/avatar-30-yuta.png',
-    'moda': 'images/avatars/avatar-26-moda.png',
-    'poitwo': 'images/avatars/avatar-32-poitwo.png',
-    'lubu': 'images/avatars/avatar-29-lubu.png',
-    'next': 'images/avatars/avatar-31-next.png',
-    'lang': 'images/avatars/avatar-37-lang.png',
-    'ha': 'images/avatars/avatar-35-ha.png',
-    'thien': 'images/avatars/avatar-34-thien.png',
-    'sai': 'images/avatars/avatar-36-sai.png',
-    'xoai': 'images/avatars/avatar-33-xoai.png',
-    '0379318347': 'images/avatars/avatar-17-0379318347.png',
-    'thu': 'images/avatars/avatar-38-thu.png'
+    'apex': 1,
+    'yudai': 2,
+    'ayva': 3,
+    'ayya': 3,
+    'ltd': 5,
+    'alinx': 4,
+    'nttp': 8,
+    'link': 7,
+    'cho acc': 27,
+    'stom': 6,
+    'rain': 11,
+    'dolivi': 10,
+    'rinn': 12,
+    'ryo': 13,
+    'furies': 15,
+    'neko': 14,
+    'haruki': 9,
+    'klein': 16,
+    'minh thanh': 21,
+    'bear': 19,
+    'poision': 22,
+    'poison': 22,
+    'wolf': 23,
+    'baoo': 18,
+    '360': 18,
+    'pandaxmun': 20,
+    'panda': 20,
+    'kaneki': 24,
+    'lukita': 28,
+    't': 27,
+    'ca na': 25,
+    'yuta': 30,
+    'moda': 26,
+    'poitwo': 32,
+    'lubu': 29,
+    'next': 31,
+    'lang': 37,
+    'ha': 35,
+    'thien': 34,
+    'sai': 36,
+    'xoai': 33,
+    '0379318347': 17,
+    'thu': 38
 };
 
 /**
@@ -193,22 +193,22 @@ const MEMBER_NAME_AVATARS = {
  * Luôn gắn liền với từng người kể cả khi thứ hạng BXH thay đổi
  */
 function getMemberAvatarImg(m) {
-    if (!m) return 'images/avatars/avatar-1-apex.png';
+    if (!m) return MEMBER_AVATARS[1] || 'images/avatars/avatar-1-apex.png';
     if (m.avatarImg) return m.avatarImg;
     
     // Ưu tiên khớp theo tên thành viên
     if (m.name) {
         const clean = normalizeMemberName(m.name);
-        for (const [key, path] of Object.entries(MEMBER_NAME_AVATARS)) {
+        for (const [key, targetStt] of Object.entries(MEMBER_NAME_AVATARS)) {
             if (clean === key || clean.includes(key) || key.includes(clean)) {
-                return path;
+                return MEMBER_AVATARS[targetStt] || MEMBER_AVATARS[1];
             }
         }
     }
 
     const stt = Number(m.stt) || 1;
     if (MEMBER_AVATARS[stt]) return MEMBER_AVATARS[stt];
-    return 'images/avatars/avatar-1-apex.png';
+    return MEMBER_AVATARS[1] || 'images/avatars/avatar-1-apex.png';
 }
 
 // Khởi chạy ứng dụng

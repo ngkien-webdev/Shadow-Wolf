@@ -45,7 +45,7 @@ let standalone = html.replace('<link rel="stylesheet" href="style.css">', () => 
 if (chartJs) {
     standalone = standalone.replace('<script src="chart.min.js"></script>', () => `<script>\n${chartJs}\n</script>`);
 }
-standalone = standalone.replace('<script src="script.js"></script>', () => `<script>\n${js}\n</script>`);
+standalone = standalone.replace(/<script src="script\.js"[^>]*><\/script>/, () => `<script>\n${js}\n</script>`);
 standalone = standalone.replace(/href="images\/favicon\.png"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="favicon\.ico"/g, () => `href="${faviconBase64}"`);
 standalone = standalone.replace(/href="images\/favicon\.ico"/g, () => `href="${faviconBase64}"`);
