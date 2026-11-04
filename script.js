@@ -6,7 +6,7 @@
 // DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
     { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.75T", powerVal: 1750.0, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.75T", stage: "17.942", tower: "4.794" },
-    { stt: 2, name: "SW • YUDAI", power: "1.034T", powerVal: 1034.0, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.034T", stage: "16.888", tower: "4.527" },
+    { stt: 2, name: "SW ⚜️ xAX 🇻🇳", power: "1.034T", powerVal: 1034.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.034T", stage: "16.888", tower: "4.527" },
     { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "656.2B", powerVal: 656.2, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "656.2B", stage: "16.567", tower: "4.487" },
     { stt: 4, name: "SW • Alinx •", power: "367.3B", powerVal: 367.3, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "367.3B", stage: "15.048", tower: "3.567" },
     { stt: 5, name: "SW ⚜️ NTTP 🇻🇳", power: "356.2B", powerVal: 356.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "356.2B", stage: "15.289", tower: "3.406" },
@@ -46,7 +46,7 @@ const DEFAULT_MEMBERS = [
 ];
 
 // Khóa LocalStorage (Bản v27: Cập nhật Danh hiệu Yudai Chiến Đế, ALyaL Bá Khí & Bộ Avatar Đa Dạng)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v28';
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v30';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -68,6 +68,8 @@ let activeFormationMember = null;
 const TITLE_CLASSES = {
     'Thần Vương': 'title-than-vuong',
     'Đại Tướng Quân': 'title-dai-tuong-quan',
+    'Hữu Thừa Tướng': 'title-dai-tuong-quan',
+    'Hữu thừa tướng': 'title-dai-tuong-quan',
     'Thái Sư': 'title-thai-su',
     'Thái sư': 'title-thai-su',
     'Phiêu Kỵ Tướng Quân': 'title-phieu-ky-tq',
@@ -102,89 +104,90 @@ const NOTE_CLASSES = {
 
 // Bộ sưu tập 38 Avatar Thần Thú & Chiến Tướng độc bản – Mỗi người 1 Avatar riêng, 100% không trùng lặp!
 const MEMBER_AVATARS = {
-    1: 'images/avatars/avatar-1-apex.png',          // SW ⚜️ Apex 🇻🇳 - Lôi Lang Thần Điện (Blue Lightning Wolf)
-    2: 'images/avatars/avatar-2-yudai.png',         // SW • YUDAI - Nhẫn Giả Nguyệt Ảnh (Red Moon Ninja Samurai)
-    3: 'images/avatars/avatar-3-ayva.png',          // SW ⚜️ ÂyYa 🇻🇳 - Hoàng Kim Cuồng Lang (Bronze Roaring Wolf)
-    4: 'images/avatars/avatar-4-alinx.png',         // SW • Alinx • - Xích Viêm Hỏa Long (Red Fire Dragon)
-    5: 'images/avatars/avatar-5-ltd.png',           // SW ⚜️ LTD 🇻🇳 - Hoàng Kim Bạch Hổ (Golden War Tiger)
-    6: 'images/avatars/avatar-6-stom.png',          // SW ⚜️ Stom 🇻🇳 - Chu Tước Hỏa Phượng (Flame Phoenix)
-    7: 'images/avatars/avatar-7-bitien.png',        // SW ⚜️ Bi Tiên - Băng Sương Ma Lang (Frost Ice Wolf)
-    8: 'images/avatars/avatar-8-nttp.png',          // SW ⚜️ NTTP 🇻🇳 - Kim Long Tôn Giả (Imperial Golden Dragon)
-    9: 'images/avatars/avatar-9-haruki.png',        // SW ⭐️ Haruki - Bạch Ngân Cô Lang (Silver Dire Wolf)
-    10: 'images/avatars/avatar-10-dolivi.png',      // SW • ĐỘLiVi - Thanh Long Hải Thần (Azure Sea Dragon)
-    11: 'images/avatars/avatar-11-rain.png',        // SW ⚜️ Rain 🇻🇳 - Lôi Vũ Cuồng Lang (Storm Thunder Wolf)
-    12: 'images/avatars/avatar-12-rinn.png',        // SW ⚜️ Rinn 🇻🇳 - Nguyệt Ảnh Linh Miêu (Moonlight Shadow Cat)
-    13: 'images/avatars/avatar-13-ryo.png',         // SW ⚜️ Ryo 🇻🇳 - Hắc Diễm Chiến Ưng (Obsidian Flame Eagle)
-    14: 'images/avatars/avatar-14-neko.png',        // SW ⚜️ Neko - Cửu Vĩ Linh Miêu (Mystic Kitsune Spirit)
-    15: 'images/avatars/avatar-15-furies.png',      // SW ⚜️ Furies - Huyết Sát Ma Lang (Blood Berserker Wolf)
-    16: 'images/avatars/avatar-16-klein.png',       // SW ⚜️ Klein ★ - Tinh Túc Ma Pháp Sư (Astral Arcane Mage)
-    17: 'images/avatars/avatar-17-0379318347.png',  // 0379318347 - Hắc Giáp Thiết Kỵ (Ironclad Dark Knight)
-    18: 'images/avatars/avatar-18-baoo.png',        // SW • Bãoo - Cuồng Phong Thần Thú (Tempest Storm Griffin)
-    19: 'images/avatars/avatar-19-bear.png',        // SW • Bear - Bắc Cực Cuồng Hùng (Arctic War Bear)
-    20: 'images/avatars/avatar-20-pandaxmun.png',   // SW • PandaxMun - Trúc Lâm Chiến Hùng (Yin-Yang Bamboo Master)
-    21: 'images/avatars/avatar-21-minhthanh.png',   // SW • Minh Thành - Kỳ Lân Thánh Thú (Sacred Golden Qilin)
-    22: 'images/avatars/avatar-22-poision.png',     // SW • Poision - Độc Mãng Tôn Giả (Emerald Viper King)
-    23: 'images/avatars/avatar-23-wolf.png',        // SW • WOLF - Ảnh Lang Thần Quân (Void Shadow Alpha Wolf)
-    24: 'images/avatars/avatar-24-kaneki.png',      // SW • Kaneki - Bạch Phát Độc Nhãn (One-Eyed Ghoul Demon)
-    25: 'images/avatars/avatar-25-cana.png',        // SW • Cà Na - Huyền Vũ Thần Quy (Ancient Black Tortoise)
-    26: 'images/avatars/avatar-26-moda.png',        // SW • MODA - Thiên Bằng Chiến Thần (Golden Roc Falcon)
-    27: 'images/avatars/avatar-27-t.png',           // SW • T - Lôi Kích Thần Ưng (Lightning Falcon)
-    28: 'images/avatars/avatar-28-lukita.png',      // SW • lukita - Tử Lôi Ma Báo (Violet Thunder Panther)
-    29: 'images/avatars/avatar-29-lubu.png',        // SW • lubu - Vô Song Chiến Thần (Warlord Lu Bu)
-    30: 'images/avatars/avatar-30-yuta.png',        // SW • Yuta - Nguyền Chú Kiếm Tôn (Cursed Swordmaster)
-    31: 'images/avatars/avatar-31-next.png',        // SW • Next - Hư Không Dạ Lang (Void Cosmic Wolf)
-    32: 'images/avatars/avatar-32-poitwo.png',      // SW • Poitwo - Băng Phách Bạch Hổ (Frost White Tiger)
-    33: 'images/avatars/avatar-33-xoai.png',        // SW • Xoài - Kim Quang Thần Lộc (Solar Celestial Stag)
-    34: 'images/avatars/avatar-34-thien.png',       // SW • THIEN - Thiên Lôi Thần Tướng (Celestial Sky Guardian)
-    35: 'images/avatars/avatar-35-ha.png',          // SW • Hạ - Hạ Nhật Hỏa Long (Summer Solar Fire Dragon)
-    36: 'images/avatars/avatar-36-sai.png',         // SW • Sai - Mặc Họa Chiến Thần (Ink Wash Wolf Beast)
-    37: 'images/avatars/avatar-37-lang.png',        // SW • Lang - Hoang Dã Ngân Lang (Wild Mountain Wolf)
-    38: 'images/avatars/avatar-38-thu.png'          // SW • Thu - Thu Phong Hồng Diệp (Autumn Vermilion Hawk)
+    1: 'images/avatars/avatar-1-apex.png',          // SW ⚜️ Apex 🇻🇳
+    2: 'images/avatars/avatar-2-yudai.png',         // SW ⚜️ xAX 🇻🇳
+    3: 'images/avatars/avatar-5-ltd.png',           // SW ⚜️ LTD 🇻🇳
+    4: 'images/avatars/avatar-4-alinx.png',         // SW • Alinx •
+    5: 'images/avatars/avatar-8-nttp.png',          // SW ⚜️ NTTP 🇻🇳
+    6: 'images/avatars/avatar-3-ayva.png',          // SW ★ Link (Hoàng Kim Cuồng Lang)
+    7: 'images/avatars/avatar-7-bitien.png',        // sw cho acc (Băng Sương Ma Lang)
+    8: 'images/avatars/avatar-6-stom.png',          // SW ⚜️ Stom 🇻🇳
+    9: 'images/avatars/avatar-11-rain.png',         // SW ⚜️ Rain 🇻🇳
+    10: 'images/avatars/avatar-10-dolivi.png',      // SW • ĐỘLiVi
+    11: 'images/avatars/avatar-12-rinn.png',        // SW ⚜️ Rinn 🇻🇳
+    12: 'images/avatars/avatar-13-ryo.png',         // SW ⚜️ Ryo 🇻🇳
+    13: 'images/avatars/avatar-15-furies.png',      // SW ⚜️ Furies
+    14: 'images/avatars/avatar-14-neko.png',        // SW ⚜️ Neko
+    15: 'images/avatars/avatar-9-haruki.png',        // SW ⭐️ Haruki
+    16: 'images/avatars/avatar-16-klein.png',       // SW ⚜️ Klein ★
+    17: 'images/avatars/avatar-21-minhthanh.png',   // SW • Minh Thành
+    18: 'images/avatars/avatar-19-bear.png',        // SW • Bear
+    19: 'images/avatars/avatar-22-poision.png',     // SW • Poision
+    20: 'images/avatars/avatar-23-wolf.png',        // SW • WOLF
+    21: 'images/avatars/avatar-18-baoo.png',        // SW • Bãoo 360
+    22: 'images/avatars/avatar-20-pandaxmun.png',   // SW • PandaxMun
+    23: 'images/avatars/avatar-24-kaneki.png',      // SW • Kaneki
+    24: 'images/avatars/avatar-28-lukita.png',      // SW • lukita
+    25: 'images/avatars/avatar-27-t.png',           // SW • T
+    26: 'images/avatars/avatar-25-cana.png',        // SW • Cà Na
+    27: 'images/avatars/avatar-30-yuta.png',        // SW • Yuta
+    28: 'images/avatars/avatar-26-moda.png',        // SW • MODA
+    29: 'images/avatars/avatar-32-poitwo.png',      // SW • Poitwo
+    30: 'images/avatars/avatar-29-lubu.png',        // SW • lubu
+    31: 'images/avatars/avatar-31-next.png',        // SW • Next
+    32: 'images/avatars/avatar-37-lang.png',        // SW • Lang
+    33: 'images/avatars/avatar-35-ha.png',          // SW • Hạ
+    34: 'images/avatars/avatar-34-thien.png',       // SW • THIEN
+    35: 'images/avatars/avatar-36-sai.png',         // SW • Sai
+    36: 'images/avatars/avatar-33-xoai.png',        // SW • Xoài
+    37: 'images/avatars/avatar-17-0379318347.png',  // 0379318347
+    38: 'images/avatars/avatar-38-thu.png'          // SW • Thu
 };
 
 const MEMBER_NAME_AVATARS = {
     'apex': 1,
+    'xax': 2,
+    'xaxvn': 2,
     'yudai': 2,
-    'ayva': 3,
-    'ayya': 3,
-    'ltd': 5,
+    'ltd': 3,
     'alinx': 4,
-    'nttp': 8,
-    'link': 7,
-    'cho acc': 27,
-    'stom': 6,
-    'rain': 11,
+    'nttp': 5,
+    'link': 6,
+    'choacc': 7,
+    'stom': 8,
+    'rain': 9,
     'dolivi': 10,
-    'rinn': 12,
-    'ryo': 13,
-    'furies': 15,
+    'rinn': 11,
+    'ryo': 12,
+    'furies': 13,
     'neko': 14,
-    'haruki': 9,
+    'haruki': 15,
     'klein': 16,
-    'minh thanh': 21,
-    'bear': 19,
-    'poision': 22,
-    'poison': 22,
-    'wolf': 23,
-    'baoo': 18,
-    '360': 18,
-    'pandaxmun': 20,
-    'panda': 20,
-    'kaneki': 24,
-    'lukita': 28,
-    't': 27,
-    'ca na': 25,
-    'yuta': 30,
-    'moda': 26,
-    'poitwo': 32,
-    'lubu': 29,
+    'minhthanh': 17,
+    'bear': 18,
+    'poision': 19,
+    'poison': 19,
+    'wolf': 20,
+    'baoo': 21,
+    'baoo360': 21,
+    '360': 21,
+    'pandaxmun': 22,
+    'panda': 22,
+    'kaneki': 23,
+    'lukita': 24,
+    't': 25,
+    'cana': 26,
+    'yuta': 27,
+    'moda': 28,
+    'poitwo': 29,
+    'lubu': 30,
     'next': 31,
-    'lang': 37,
-    'ha': 35,
+    'lang': 32,
+    'ha': 33,
     'thien': 34,
-    'sai': 36,
-    'xoai': 33,
-    '0379318347': 17,
+    'sai': 35,
+    'xoai': 36,
+    '0379318347': 37,
     'thu': 38
 };
 
@@ -196,20 +199,28 @@ function getMemberAvatarImg(m) {
     if (!m) return MEMBER_AVATARS[1] || 'images/avatars/avatar-1-apex.png';
     if (m.avatarImg) return m.avatarImg;
     
-    // Ưu tiên khớp theo tên thành viên
+    // 1. Khớp chính xác theo tên thành viên đã chuẩn hóa
     if (m.name) {
         const clean = normalizeMemberName(m.name);
-        for (const [key, targetStt] of Object.entries(MEMBER_NAME_AVATARS)) {
-            if (clean === key || clean.includes(key) || key.includes(clean)) {
-                return MEMBER_AVATARS[targetStt] || MEMBER_AVATARS[1];
+        if (MEMBER_NAME_AVATARS[clean] && MEMBER_AVATARS[MEMBER_NAME_AVATARS[clean]]) {
+            return MEMBER_AVATARS[MEMBER_NAME_AVATARS[clean]];
+        }
+        // Khớp mờ an toàn (chỉ khi cả 2 từ khóa đều dài >= 4 ký tự để tránh nhầm các tên ngắn như t, ha, sai)
+        if (clean.length >= 4) {
+            for (const [key, targetStt] of Object.entries(MEMBER_NAME_AVATARS)) {
+                if (key.length >= 4 && (clean.includes(key) || key.includes(clean))) {
+                    if (MEMBER_AVATARS[targetStt]) return MEMBER_AVATARS[targetStt];
+                }
             }
         }
     }
 
+    // 2. Khớp theo số thứ tự (STT) mặc định
     const stt = Number(m.stt) || 1;
     if (MEMBER_AVATARS[stt]) return MEMBER_AVATARS[stt];
     return MEMBER_AVATARS[1] || 'images/avatars/avatar-1-apex.png';
 }
+
 
 // Khởi chạy ứng dụng
 document.addEventListener('DOMContentLoaded', () => {
@@ -313,25 +324,31 @@ function loadMembersData() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
             members = JSON.parse(stored);
-            // Đồng bộ dữ liệu chi tiết từ DEFAULT_MEMBERS & Chuẩn hóa không viết tắt TQ / T
-            members.forEach(m => {
-                if (m.title === 'Phiêu kỵ TQ' || m.title === 'Phiêu Kỵ Tướng') m.title = 'Phiêu Kỵ Tướng Quân';
-                if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
-                if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
-                if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
+            if (!Array.isArray(members) || members.length < DEFAULT_MEMBERS.length) {
+                // Tự phục hồi: Nếu bộ nhớ trống hoặc thiếu người, nạp chuẩn từ DEFAULT_MEMBERS
+                members = JSON.parse(JSON.stringify(DEFAULT_MEMBERS));
+                saveMembersData();
+            } else {
+                // Đồng bộ dữ liệu chi tiết từ DEFAULT_MEMBERS & Chuẩn hóa không viết tắt TQ / T
+                members.forEach(m => {
+                    if (m.title === 'Phiêu kỵ TQ' || m.title === 'Phiêu Kỵ Tướng') m.title = 'Phiêu Kỵ Tướng Quân';
+                    if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
+                    if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
+                    if (m.title === 'Trung Lang T') m.title = 'Trung Lang Tướng';
 
-                const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
-                if (defaultItem) {
-                    if (!m.ingameName) m.ingameName = defaultItem.ingameName;
-                    if (!m.ingamePower) m.ingamePower = defaultItem.ingamePower;
-                    if (!m.stage) m.stage = defaultItem.stage;
-                    if (!m.tower) m.tower = defaultItem.tower;
-                    if (m.image === undefined) m.image = defaultItem.image;
-                    if (!m.powerVal) m.powerVal = defaultItem.powerVal || calculateNumericPower(m.power);
-                } else {
-                    if (!m.powerVal) m.powerVal = calculateNumericPower(m.power);
-                }
-            });
+                    const defaultItem = DEFAULT_MEMBERS.find(d => d.stt === m.stt);
+                    if (defaultItem) {
+                        if (!m.ingameName) m.ingameName = defaultItem.ingameName;
+                        if (!m.ingamePower) m.ingamePower = defaultItem.ingamePower;
+                        if (!m.stage) m.stage = defaultItem.stage;
+                        if (!m.tower) m.tower = defaultItem.tower;
+                        if (m.image === undefined) m.image = defaultItem.image;
+                        if (!m.powerVal) m.powerVal = defaultItem.powerVal || calculateNumericPower(m.power);
+                    } else {
+                        if (!m.powerVal) m.powerVal = calculateNumericPower(m.power);
+                    }
+                });
+            }
         } else {
             members = JSON.parse(JSON.stringify(DEFAULT_MEMBERS));
             saveMembersData();
@@ -899,6 +916,10 @@ function renderSupremeTop3() {
     const container = document.getElementById('supreme-cards-container');
     if (!container) return;
 
+    if (!members || members.length < 3) {
+        members = JSON.parse(JSON.stringify(DEFAULT_MEMBERS));
+    }
+
     const sortedForPodium = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
     const top1 = sortedForPodium[0];
     const top2 = sortedForPodium[1];
@@ -1361,7 +1382,7 @@ function generateEliteCardHtml(m) {
 
             <div class="elite-avatar-container">
                 <div class="elite-avatar-ring">
-                    <img src="${avatarImg}" alt="${escapeHtml(m.name)}" class="elite-avatar-img" loading="lazy" decoding="async">
+                    <img src="${avatarImg}" alt="${escapeHtml(m.name)}" class="elite-avatar-img" loading="eager" decoding="async">
                 </div>
             </div>
 

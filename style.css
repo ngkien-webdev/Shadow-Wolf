@@ -2802,6 +2802,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .screenshot-preview-img {
@@ -2814,6 +2817,11 @@ body {
     opacity: 0;
     transform: scale(0.985);
     transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
 }
 
 .screenshot-preview-img.loaded {
@@ -5553,9 +5561,11 @@ body.modal-open {
 /* THÂN MODAL CUỘN MƯỢT MÀ (SCROLLABLE BODY - CUỘN LÊN XUỐNG 100% HOÀN HẢO) */
 .modal-formation-wide .modal-body {
     flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto !important;
     -webkit-overflow-scrolling: touch !important;
-    overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
     padding: 20px 22px;
     max-height: calc(100dvh - 150px);
 }
