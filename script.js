@@ -5,48 +5,48 @@
 
 // DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
-    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.715T", powerVal: 1715, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.715T", stage: "17.830", tower: "4.794" },
-    { stt: 2, name: "SW • YUDAI", power: "1.06T", powerVal: 1060, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.06T", stage: "16.883", tower: "4.527" },
-    { stt: 3, name: "SW ⚜️ ÂyYa 🇻🇳", power: "710B", powerVal: 710, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "710B", stage: "16.487", tower: "4.487" },
-    { stt: 4, name: "SW • Alinx •", power: "358.6B", powerVal: 358.6, title: "Thái phó", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "358.6B", stage: "15.037", tower: "3.567" },
-    { stt: 5, name: "SW ⚜️ LTD 🇻🇳", power: "350.4B", powerVal: 350.4, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "350.4B", stage: "15.136", tower: "3.707" },
-    { stt: 6, name: "SW ⚜️ Stom 🇻🇳", power: "268.1B", powerVal: 268.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "268.1B", stage: "14.354", tower: "3.147" },
-    { stt: 7, name: "SW ⚜️ Bi Tiên", power: "266.9B", powerVal: 266.9, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-bitien.jpg", ingamePower: "266.9B", stage: "14.827", tower: "3.388" },
-    { stt: 8, name: "SW ⚜️ NTTP 🇻🇳", power: "257.8B", powerVal: 257.8, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "257.8B", stage: "14.836", tower: "3.406" },
-    { stt: 9, name: "SW ⭐️ Haruki", power: "237.2B", powerVal: 237.2, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "237.2B", stage: "14.911", tower: "3.484" },
-    { stt: 10, name: "SW • ĐỘLiVi", power: "231.6B", powerVal: 231.6, title: "Thái úy", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "231.6B", stage: "14.759", tower: "3.334" },
-    { stt: 11, name: "SW ⚜️ Rain 🇻🇳", power: "230.5B", powerVal: 230.5, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "230.5B", stage: "14.518", tower: "3.192" },
-    { stt: 12, name: "SW ⚜️ Rinn 🇻🇳", power: "202.8B", powerVal: 202.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "202.8B", stage: "14.650", tower: "3.230" },
-    { stt: 13, name: "SW ⚜️ Ryo 🇻🇳", power: "197.7B", powerVal: 197.7, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "197.7B", stage: "14.600", tower: "3.254" },
-    { stt: 14, name: "SW ⚜️ Neko", power: "188.9B", powerVal: 188.9, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "188.9B", stage: "14.487", tower: "3.218" },
-    { stt: 15, name: "SW ⚜️ Furies", power: "172.9B", powerVal: 172.9, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.9B", stage: "14.482", tower: "3.167" },
-    { stt: 16, name: "SW ⚜️ Klein ★", power: "166.4B", powerVal: 166.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "166.4B", stage: "14.222", tower: "3.138" },
-    { stt: 17, name: "0379318347", power: "160B", powerVal: 160, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-16.jpg", ingamePower: "160B", stage: "14.000", tower: "3.100" },
-    { stt: 18, name: "SW • Bãoo", power: "155B", powerVal: 155, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "155B", stage: "13.800", tower: "3.050" },
-    { stt: 19, name: "SW • Bear", power: "150.2B", powerVal: 150.2, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "150.2B", stage: "13.500", tower: "3.000" },
-    { stt: 20, name: "SW • PandaxMun", power: "111.3B", powerVal: 111.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-18.jpg", ingamePower: "111.3B", stage: "13.200", tower: "2.950" },
-    { stt: 21, name: "SW • Minh Thành", power: "100-200B", powerVal: 156.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "156.7B", stage: "13.000", tower: "2.900" },
-    { stt: 22, name: "SW • Poision", power: "100-200B", powerVal: 130.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "130.3B", stage: "12.800", tower: "2.850" },
-    { stt: 23, name: "SW • WOLF", power: "100-200B", powerVal: 110.8, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "110.8B", stage: "12.500", tower: "2.800" },
-    { stt: 24, name: "SW • Kaneki", power: "80-100B", powerVal: 104.1, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-22.jpg", ingamePower: "104.1B", stage: "12.200", tower: "2.750" },
-    { stt: 25, name: "SW • Cà Na", power: "80-100B", powerVal: 101.3, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-23.jpg", ingamePower: "101.3B", stage: "12.000", tower: "2.700" },
-    { stt: 26, name: "SW • MODA", power: "80-100B", powerVal: 98.74, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-24.jpg", ingamePower: "98.74B", stage: "11.800", tower: "2.650" },
-    { stt: 27, name: "SW • T", power: "80-100B", powerVal: 102.7, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-25.jpg", ingamePower: "102.7B", stage: "11.600", tower: "2.600" },
-    { stt: 28, name: "SW • lukita", power: "60-80B", powerVal: 103.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-26.jpg", ingamePower: "103.5B", stage: "11.400", tower: "2.550" },
-    { stt: 29, name: "SW • lubu", power: "60-80B", powerVal: 97.16, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-27.jpg", ingamePower: "97.16B", stage: "11.200", tower: "2.500" },
-    { stt: 30, name: "SW • Yuta", power: "60-80B", powerVal: 100.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-28.jpg", ingamePower: "100.5B", stage: "11.000", tower: "2.450" },
-    { stt: 31, name: "SW • Next", power: "60-80B", powerVal: 83.54, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-29.jpg", ingamePower: "83.54B", stage: "10.800", tower: "2.400" },
-    { stt: 32, name: "SW • Poitwo", power: "60-80B", powerVal: 98.02, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-30.jpg", ingamePower: "98.02B", stage: "10.600", tower: "2.350" },
-    { stt: 33, name: "SW • Xoài", power: "60-80B", powerVal: 70, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, stage: "10.400", tower: "2.300" },
-    { stt: 34, name: "SW • THIEN", power: "60-80B", powerVal: 73.55, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-32.jpg", ingamePower: "73.55B", stage: "10.200", tower: "2.250" },
-    { stt: 35, name: "SW • Hạ", power: "60-80B", powerVal: 73.61, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-33.jpg", ingamePower: "73.61B", stage: "10.000", tower: "2.200" },
-    { stt: 36, name: "SW • Sai", power: "40-80B", powerVal: 71.25, title: "Tư không", note: "Thành viên", avatar: "🐺", image: "images/dh/member-34.jpg", ingamePower: "71.25B", stage: "9.800", tower: "2.150" },
-    { stt: 37, name: "SW • Lang", power: "40-80B", powerVal: 79.02, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-35.jpg", ingamePower: "79.02B", stage: "9.600", tower: "2.100" },
-    { stt: 38, name: "SW • Thu", power: "40-80B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
+    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.75T", powerVal: 1750.0, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.75T", stage: "17.942", tower: "4.794" },
+    { stt: 2, name: "SW • YUDAI", power: "1.034T", powerVal: 1034.0, title: "Đại Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.034T", stage: "16.888", tower: "4.527" },
+    { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "656.2B", powerVal: 656.2, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "656.2B", stage: "16.567", tower: "4.487" },
+    { stt: 4, name: "SW • Alinx •", power: "367.3B", powerVal: 367.3, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "367.3B", stage: "15.048", tower: "3.567" },
+    { stt: 5, name: "SW ⚜️ NTTP 🇻🇳", power: "356.2B", powerVal: 356.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "356.2B", stage: "15.289", tower: "3.406" },
+    { stt: 6, name: "SW ★ Link", power: "286.8B", powerVal: 286.8, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-link.jpg", ingamePower: "286.8B", stage: "14.929", tower: "3.388" },
+    { stt: 7, name: "sw cho acc", power: "269.5B", powerVal: 269.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-choacc.jpg", ingamePower: "269.5B", stage: "14.949", tower: "3.380" },
+    { stt: 8, name: "SW ⚜️ Stom 🇻🇳", power: "266.6B", powerVal: 266.6, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "266.6B", stage: "14.384", tower: "3.147" },
+    { stt: 9, name: "SW ⚜️ Rain 🇻🇳", power: "235B", powerVal: 235.0, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "235B", stage: "14.523", tower: "3.192" },
+    { stt: 10, name: "SW • ĐỘLiVi", power: "232B", powerVal: 232.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "232B", stage: "14.759", tower: "3.334" },
+    { stt: 11, name: "SW ⚜️ Rinn 🇻🇳", power: "202.2B", powerVal: 202.2, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-rinn.jpg", ingamePower: "202.2B", stage: "14.188", tower: "3.230" },
+    { stt: 12, name: "SW ⚜️ Ryo 🇻🇳", power: "200.5B", powerVal: 200.5, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-ryo.jpg", ingamePower: "200.5B", stage: "14.621", tower: "3.254" },
+    { stt: 13, name: "SW ⚜️ Furies", power: "198.1B", powerVal: 198.1, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "198.1B", stage: "14.483", tower: "3.167" },
+    { stt: 14, name: "SW ⚜️ Neko", power: "196.6B", powerVal: 196.6, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "196.6B", stage: "14.519", tower: "3.218" },
+    { stt: 15, name: "SW ⭐️ Haruki", power: "180.3B", powerVal: 180.3, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "180.3B", stage: "14.930", tower: "3.484" },
+    { stt: 16, name: "SW ⚜️ Klein ★", power: "172.4B", powerVal: 172.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.4B", stage: "14.315", tower: "3.138" },
+    { stt: 17, name: "SW • Minh Thành", power: "170.6B", powerVal: 170.6, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "170.6B", stage: "13.000", tower: "2.900" },
+    { stt: 18, name: "SW • Bear", power: "168.8B", powerVal: 168.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "168.8B", stage: "13.500", tower: "3.000" },
+    { stt: 19, name: "SW • Poision", power: "133.7B", powerVal: 133.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "133.7B", stage: "12.800", tower: "2.850" },
+    { stt: 20, name: "SW • WOLF", power: "120.2B", powerVal: 120.2, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "120.2B", stage: "12.500", tower: "2.800" },
+    { stt: 21, name: "SW • Bãoo 360", power: "119B", powerVal: 119.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "119B", stage: "13.800", tower: "3.050" },
+    { stt: 22, name: "SW • PandaxMun", power: "111.3B", powerVal: 111.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-18.jpg", ingamePower: "111.3B", stage: "13.200", tower: "2.950" },
+    { stt: 23, name: "SW • Kaneki", power: "104.1B", powerVal: 104.1, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-22.jpg", ingamePower: "104.1B", stage: "12.200", tower: "2.750" },
+    { stt: 24, name: "SW • lukita", power: "103.5B", powerVal: 103.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-26.jpg", ingamePower: "103.5B", stage: "11.400", tower: "2.550" },
+    { stt: 25, name: "SW • T", power: "102.7B", powerVal: 102.7, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-25.jpg", ingamePower: "102.7B", stage: "11.600", tower: "2.600" },
+    { stt: 26, name: "SW • Cà Na", power: "101.3B", powerVal: 101.3, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-23.jpg", ingamePower: "101.3B", stage: "12.000", tower: "2.700" },
+    { stt: 27, name: "SW • Yuta", power: "100.5B", powerVal: 100.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-28.jpg", ingamePower: "100.5B", stage: "11.000", tower: "2.450" },
+    { stt: 28, name: "SW • MODA", power: "98.74B", powerVal: 98.74, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-24.jpg", ingamePower: "98.74B", stage: "11.800", tower: "2.650" },
+    { stt: 29, name: "SW • Poitwo", power: "98.02B", powerVal: 98.02, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-30.jpg", ingamePower: "98.02B", stage: "10.600", tower: "2.350" },
+    { stt: 30, name: "SW • lubu", power: "97.16B", powerVal: 97.16, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-27.jpg", ingamePower: "97.16B", stage: "11.200", tower: "2.500" },
+    { stt: 31, name: "SW • Next", power: "83.54B", powerVal: 83.54, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-29.jpg", ingamePower: "83.54B", stage: "10.800", tower: "2.400" },
+    { stt: 32, name: "SW • Lang", power: "79.02B", powerVal: 79.02, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-35.jpg", ingamePower: "79.02B", stage: "9.600", tower: "2.100" },
+    { stt: 33, name: "SW • Hạ", power: "73.61B", powerVal: 73.61, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-33.jpg", ingamePower: "73.61B", stage: "10.000", tower: "2.200" },
+    { stt: 34, name: "SW • THIEN", power: "73.55B", powerVal: 73.55, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-32.jpg", ingamePower: "73.55B", stage: "10.200", tower: "2.250" },
+    { stt: 35, name: "SW • Sai", power: "71.25B", powerVal: 71.25, title: "Tư không", note: "Thành viên", avatar: "🐺", image: "images/dh/member-34.jpg", ingamePower: "71.25B", stage: "9.800", tower: "2.150" },
+    { stt: 36, name: "SW • Xoài", power: "70B", powerVal: 70.0, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: null, ingamePower: null, stage: "10.400", tower: "2.300" },
+    { stt: 37, name: "0379318347", power: "65B", powerVal: 65.0, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-16.jpg", ingamePower: "65B", stage: "14.000", tower: "3.100" },
+    { stt: 38, name: "SW • Thu", power: "58.05B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
 // Khóa LocalStorage (Bản v27: Cập nhật Danh hiệu Yudai Chiến Đế, ALyaL Bá Khí & Bộ Avatar Đa Dạng)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v27';
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v28';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -142,12 +142,70 @@ const MEMBER_AVATARS = {
     38: 'images/avatars/avatar-38-thu.png'          // SW • Thu - Thu Phong Hồng Diệp (Autumn Vermilion Hawk)
 };
 
+const MEMBER_NAME_AVATARS = {
+    'apex': 'images/avatars/avatar-1-apex.png',
+    'yudai': 'images/avatars/avatar-2-yudai.png',
+    'ayva': 'images/avatars/avatar-3-ayva.png',
+    'ayya': 'images/avatars/avatar-3-ayva.png',
+    'ltd': 'images/avatars/avatar-5-ltd.png',
+    'alinx': 'images/avatars/avatar-4-alinx.png',
+    'nttp': 'images/avatars/avatar-8-nttp.png',
+    'link': 'images/avatars/avatar-7-bitien.png',
+    'cho acc': 'images/avatars/avatar-27-t.png',
+    'stom': 'images/avatars/avatar-6-stom.png',
+    'rain': 'images/avatars/avatar-11-rain.png',
+    'dolivi': 'images/avatars/avatar-10-dolivi.png',
+    'rinn': 'images/avatars/avatar-12-rinn.png',
+    'ryo': 'images/avatars/avatar-13-ryo.png',
+    'furies': 'images/avatars/avatar-15-furies.png',
+    'neko': 'images/avatars/avatar-14-neko.png',
+    'haruki': 'images/avatars/avatar-9-haruki.png',
+    'klein': 'images/avatars/avatar-16-klein.png',
+    'minh thanh': 'images/avatars/avatar-21-minhthanh.png',
+    'bear': 'images/avatars/avatar-19-bear.png',
+    'poision': 'images/avatars/avatar-22-poision.png',
+    'poison': 'images/avatars/avatar-22-poision.png',
+    'wolf': 'images/avatars/avatar-23-wolf.png',
+    'baoo': 'images/avatars/avatar-18-baoo.png',
+    '360': 'images/avatars/avatar-18-baoo.png',
+    'pandaxmun': 'images/avatars/avatar-20-pandaxmun.png',
+    'panda': 'images/avatars/avatar-20-pandaxmun.png',
+    'kaneki': 'images/avatars/avatar-24-kaneki.png',
+    'lukita': 'images/avatars/avatar-28-lukita.png',
+    't': 'images/avatars/avatar-27-t.png',
+    'ca na': 'images/avatars/avatar-25-cana.png',
+    'yuta': 'images/avatars/avatar-30-yuta.png',
+    'moda': 'images/avatars/avatar-26-moda.png',
+    'poitwo': 'images/avatars/avatar-32-poitwo.png',
+    'lubu': 'images/avatars/avatar-29-lubu.png',
+    'next': 'images/avatars/avatar-31-next.png',
+    'lang': 'images/avatars/avatar-37-lang.png',
+    'ha': 'images/avatars/avatar-35-ha.png',
+    'thien': 'images/avatars/avatar-34-thien.png',
+    'sai': 'images/avatars/avatar-36-sai.png',
+    'xoai': 'images/avatars/avatar-33-xoai.png',
+    '0379318347': 'images/avatars/avatar-17-0379318347.png',
+    'thu': 'images/avatars/avatar-38-thu.png'
+};
+
 /**
  * Lấy ảnh avatar độc bản theo từng thành viên – 100% riêng biệt cho toàn bộ 38 thành viên
+ * Luôn gắn liền với từng người kể cả khi thứ hạng BXH thay đổi
  */
 function getMemberAvatarImg(m) {
     if (!m) return 'images/avatars/avatar-1-apex.png';
     if (m.avatarImg) return m.avatarImg;
+    
+    // Ưu tiên khớp theo tên thành viên
+    if (m.name) {
+        const clean = normalizeMemberName(m.name);
+        for (const [key, path] of Object.entries(MEMBER_NAME_AVATARS)) {
+            if (clean === key || clean.includes(key) || key.includes(clean)) {
+                return path;
+            }
+        }
+    }
+
     const stt = Number(m.stt) || 1;
     if (MEMBER_AVATARS[stt]) return MEMBER_AVATARS[stt];
     return 'images/avatars/avatar-1-apex.png';
@@ -1956,7 +2014,7 @@ function autoRankByPower() {
 function exportToCSV() {
     try {
         let csvContent = '\uFEFF';
-        csvContent += 'STT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ,TRẠNG THÁI ĐỘI HÌNH\r\n';
+        csvContent += 'STT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ,TRẠNG THÁI ĐỘI HÌNH\n';
 
         const sorted = [...members].sort((a, b) => a.stt - b.stt);
 
@@ -1967,7 +2025,7 @@ function exportToCSV() {
             const cleanNote = `"${String(m.note).replace(/"/g, '""')}"`;
             const cleanDH = `"${m.image ? 'Đã có đội hình' : 'Chưa cập nhật'}"`;
 
-            csvContent += `${m.stt},${cleanName},${cleanPower},${cleanTitle},${cleanNote},${cleanDH}\r\n`;
+            csvContent += `${m.stt},${cleanName},${cleanPower},${cleanTitle},${cleanNote},${cleanDH}\n`;
         });
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -2077,7 +2135,7 @@ function parseCSVLine(text) {
 }
 
 function downloadSampleCSV() {
-    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\r\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\r\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\r\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Thái Sư,Tinh anh\r\n';
+    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Thái Sư,Tinh anh\n';
     const blob = new Blob([sample], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
@@ -2184,12 +2242,16 @@ function convertGoogleDriveUrl(url) {
  */
 function normalizeMemberName(str) {
     if (!str) return '';
-    return str.toString()
-        .toLowerCase()
-        .replace(/^sw\s*[:•\-~_⚜️⭐️ღ\s]*/i, '')
-        .replace(/[:•\-~_⚜️⭐️ღ🇻🇳]/g, '')
-        .replace(/\s+/g, '')
-        .trim();
+    let s = str.toString().toLowerCase();
+    // Loại bỏ ký tự đặc biệt, emoji, hoa lá cành thường gặp trong game
+    s = s.replace(/[꧁꧂⚜️🇻🇳ᵛᶰ•\(\)\-\_\:\.\,\~\|\/\\#@!\$\%\^\&\*\+\=★⭐️ღ]/g, ' ');
+    // Loại bỏ tiền tố bang hội SW, BW
+    s = s.replace(/^\s*(sw|bw)\s+/i, '').replace(/^(sw|bw)/i, '');
+    s = removeVietnameseTones(s);
+    s = s.replace(/\s+/g, '').trim();
+    // Xử lý biệt danh đặc biệt (VD: Tê -> T)
+    if (s === 'te') s = 't';
+    return s;
 }
 
 /**
@@ -2198,17 +2260,49 @@ function normalizeMemberName(str) {
 function mapGoogleSheetColumns(headerRow) {
     const colMap = { timestamp: -1, email: -1, name: -1, server: -1, power: -1, title: -1, note: -1, image: -1, stage: -1, tower: -1 };
     headerRow.forEach((val, idx) => {
-        const text = (val || '').toString().toLowerCase().trim();
-        if (text.includes('thời gian') || text.includes('timestamp')) colMap.timestamp = idx;
-        else if (text.includes('email')) colMap.email = idx;
-        else if (text.includes('tên') || text.includes('name') || text.includes('ingame')) colMap.name = idx;
-        else if (text.includes('ải') || text.includes('ai') || text.includes('stage') || text.includes('màn')) colMap.stage = idx;
-        else if (text.includes('tháp') || text.includes('thap') || text.includes('tower') || text.includes('tầng')) colMap.tower = idx;
-        else if (text.includes('server')) colMap.server = idx;
-        else if (text.includes('lực chiến') || text.includes('chiến lực') || text.includes('power')) colMap.power = idx;
-        else if (text.includes('danh hiệu') || text.includes('title')) colMap.title = idx;
-        else if (text.includes('chức vụ') || text.includes('role') || text.includes('ghi chú')) colMap.note = idx;
-        else if (text.includes('ảnh') || text.includes('đội hình') || text.includes('screenshot') || text.includes('image')) colMap.image = idx;
+        const raw = (val || '').toString().toLowerCase().trim();
+        const text = removeVietnameseTones(raw);
+
+        // 1. Ảnh / Đội hình: check trước để tránh 'màn hình' kích hoạt nhầm cột ải
+        if (text.includes('anh') || text.includes('doi hinh') || text.includes('screenshot') || text.includes('image') || text.includes('drive')) {
+            colMap.image = idx;
+        }
+        // 2. Lực chiến
+        else if (text.includes('luc chien') || text.includes('chien luc') || text.includes('power')) {
+            colMap.power = idx;
+        }
+        // 3. Tên nhân vật in-game
+        else if (text.includes('ten') || text.includes('name') || text.includes('ingame') || text.includes('nhan vat')) {
+            colMap.name = idx;
+        }
+        // 4. Server máy chủ
+        else if (text.includes('server') || text.includes('may chu') || text.includes('sv')) {
+            colMap.server = idx;
+        }
+        // 5. Danh hiệu
+        else if (text.includes('danh hieu') || text.includes('title')) {
+            colMap.title = idx;
+        }
+        // 6. Chức vụ / Ghi chú
+        else if (text.includes('chuc vu') || text.includes('role') || text.includes('ghi chu')) {
+            colMap.note = idx;
+        }
+        // 7. Tháp leo
+        else if (text.includes('thap') || text.includes('tower') || text.includes('leo thap')) {
+            colMap.tower = idx;
+        }
+        // 8. Ải vượt
+        else if (text.includes('vuot ai') || text.includes('qua ai') || /\bai\b/.test(text) || text.includes('stage')) {
+            colMap.stage = idx;
+        }
+        // 9. Dấu thời gian
+        else if (text.includes('thoi gian') || text.includes('timestamp')) {
+            colMap.timestamp = idx;
+        }
+        // 10. Email
+        else if (text.includes('email')) {
+            colMap.email = idx;
+        }
     });
     return colMap;
 }
@@ -2230,27 +2324,34 @@ async function syncFromGoogleSheet(options = { silent: false }) {
         if (jsonStart === -1 || jsonEnd === -1) throw new Error('Không đọc được dữ liệu JSON từ Google Sheet');
 
         const parsed = JSON.parse(text.substring(jsonStart, jsonEnd + 1));
+        const cols = parsed.table?.cols || [];
         const rows = parsed.table?.rows || [];
 
-        if (rows.length <= 1) {
+        if (rows.length === 0) {
             if (!options.silent) {
                 showToast("Google Form hiện chưa có câu trả lời nào mới của thành viên!", "info");
             }
             return;
         }
 
-        // Dòng đầu tiên là tiêu đề cột
-        const headerRow = rows[0].c.map(cell => (cell ? cell.v : '') || '');
+        // Lấy tiêu đề cột từ table.cols (chuẩn Google GViz) hoặc rows[0]
+        let headerRow = cols.map(c => c.label || '').filter(Boolean);
+        let startRowIndex = 0;
+        if (headerRow.length === 0 && rows.length > 0) {
+            headerRow = rows[0].c.map(cell => (cell ? cell.v : '') || '');
+            startRowIndex = 1;
+        }
+
         const colMap = mapGoogleSheetColumns(headerRow);
 
         if (colMap.name === -1 || colMap.power === -1) {
             throw new Error("Không tìm thấy cột 'Tên' hoặc 'Lực chiến' trong Google Sheet!");
         }
 
-        // Đọc tất cả các câu trả lời (từ dòng 2 trở đi)
+        // Đọc tất cả các câu trả lời
         // Nếu một người gửi nhiều lần, lấy dòng gửi sau cùng (mới nhất)
         const latestSubmissions = new Map();
-        for (let i = 1; i < rows.length; i++) {
+        for (let i = startRowIndex; i < rows.length; i++) {
             const cells = rows[i].c;
             if (!cells) continue;
 
