@@ -1324,6 +1324,7 @@ function generateEliteCardHtml(m) {
                     ${shieldIcon} #${rankStr}
                 </span>
                 <div class="elite-milestones-plate">
+                    ${m.image ? `<span class="dh-ready-tag" title="Đã có ảnh đội hình thực tế trong game"><i class="fa-solid fa-camera-retro"></i> Đội Hình</span>` : ''}
                     <span class="milestone-pill pill-stage" title="Vượt Ải"><i class="fa-solid fa-mountain"></i> ${stageDisplay}</span>
                     <span class="milestone-pill pill-tower" title="Leo Tháp"><i class="fa-solid fa-chess-rook"></i> ${towerDisplay}</span>
                 </div>
@@ -2506,15 +2507,25 @@ function openFormationModal(stt) {
         modalNote.textContent = member.note;
     }
 
+    // Cập nhật bộ đếm số thứ tự tướng (< Hạng #1 / 38 >)
+    const elCounter = document.getElementById('fm-nav-counter');
+    if (elCounter) {
+        const sorted = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
+        const idx = sorted.findIndex(m => m.stt === member.stt);
+        elCounter.textContent = `${idx !== -1 ? idx + 1 : member.stt} / ${members.length}`;
+    }
+
     // Hiển thị hình ảnh thực tế hoặc thông báo chưa cập nhật
     const screenshotImg = document.getElementById('formation-screenshot-preview');
     const screenshotPlaceholder = document.getElementById('formation-screenshot-placeholder');
     const screenshotContainer = document.getElementById('formation-screenshot-container');
     const screenshotLoader = document.getElementById('formation-screenshot-loader');
+    const zoomHint = document.getElementById('formation-zoom-hint');
 
     if (member.image) {
         if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'none';
         if (screenshotContainer) screenshotContainer.classList.add('has-active-image');
+        if (zoomHint) zoomHint.style.display = 'flex';
 
         if (screenshotImg) {
             screenshotImg.style.display = 'block';
@@ -2534,7 +2545,6 @@ function openFormationModal(stt) {
                     if (screenshotLoader) screenshotLoader.classList.remove('active');
                 };
                 screenshotImg.onerror = function() {
-                    // Fallback thông minh: nếu link thumbnail bị chặn, thử CDN lh3
                     if (member.image && member.image.includes('drive.google.com') && !screenshotImg.dataset.triedFallback) {
                         screenshotImg.dataset.triedFallback = 'true';
                         const fileId = member.image.match(/(?:id=|\/d\/)([a-zA-Z0-9_-]+)/)?.[1];
@@ -2546,6 +2556,7 @@ function openFormationModal(stt) {
                     if (screenshotLoader) screenshotLoader.classList.remove('active');
                     screenshotImg.style.display = 'none';
                     if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
+                    if (zoomHint) zoomHint.style.display = 'none';
                 };
             }
         }
@@ -2557,23 +2568,176 @@ function openFormationModal(stt) {
         }
         if (screenshotPlaceholder) screenshotPlaceholder.style.display = 'flex';
         if (screenshotContainer) screenshotContainer.classList.remove('has-active-image');
+        if (zoomHint) zoomHint.style.display = 'none';
     }
 
     openModal('modal-formation-view');
+
+    // CUỘN LÊN ĐẦU MODAL BODY MỖI KHI MỞ / CHUYỂN TƯỚNG (ĐẢM BẢO KHÔNG BỊ KẸT DƯỚI)
+    requestAnimationFrame(() => {
+        const modalBody = document.querySelector('.modal-formation-wide .modal-body');
+        if (modalBody) modalBody.scrollTop = 0;
+        const modalBackdrop = document.getElementById('modal-formation-view');
+        if (modalBackdrop) modalBackdrop.scrollTop = 0;
+    });
 }
 
 /**
- * Sao chép liên kết chia sẻ trận hình thành viên
+ * Chuyển đổi xem đội hình giữa các tướng trong bang (< Tướng Trước / Tướng Sau >)
  */
-function copyFormationShareLink() {
+function navigateFormation(direction) {
+    if (!activeFormationMember || !members || !members.length) return;
+    const sorted = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
+    const currentIndex = sorted.findIndex(m => m.stt === activeFormationMember.stt);
+    if (currentIndex === -1) return;
+    let nextIndex = currentIndex + direction;
+    if (nextIndex < 0) nextIndex = sorted.length - 1;
+    if (nextIndex >= sorted.length) nextIndex = 0;
+    openFormationModal(sorted[nextIndex].stt);
+}
+
+/**
+ * Mở / Đóng Lightbox phóng to ảnh đội hình toàn màn hình
+ */
+function toggleFormationLightbox() {
+    if (!activeFormationMember || !activeFormationMember.image) return;
+    const lb = document.getElementById('formation-lightbox');
+    const lbImg = document.getElementById('lightbox-image');
+    const lbTitle = document.getElementById('lightbox-title');
+    if (lb && lbImg) {
+        lbImg.src = activeFormationMember.image;
+        if (lbTitle) lbTitle.textContent = `${activeFormationMember.name} (#${activeFormationMember.stt}) - Đội Hình Thực Tế`;
+        lb.classList.add('active');
+        document.body.classList.add('modal-open');
+    }
+}
+
+function closeFormationLightbox() {
+    const lb = document.getElementById('formation-lightbox');
+    if (lb) lb.classList.remove('active');
+    const mainModal = document.getElementById('modal-formation-view');
+    if (!mainModal || !mainModal.classList.contains('active')) {
+        document.body.classList.remove('modal-open');
+    }
+}
+
+/**
+ * Tải ảnh chụp trận hình về máy
+ */
+function downloadFormationImage() {
+    if (!activeFormationMember || !activeFormationMember.image) {
+        showToast("Tướng này chưa cập nhật ảnh đội hình!", "warning");
+        return;
+    }
+    const cleanName = (activeFormationMember.name || 'Member').replace(/[^a-zA-Z0-9]/g, '_');
+    const filename = `DoiHinh_SW_${activeFormationMember.stt}_${cleanName}.jpg`;
+    const link = document.createElement('a');
+    link.href = activeFormationMember.image;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    showToast(`Đang tải ảnh trận hình của ${activeFormationMember.name}...`, "success");
+}
+
+/**
+ * /**
+ * Sao chép văn bản vào bộ nhớ tạm (Clipboard) an toàn tuyệt đối trên mọi giao thức (HTTPS, HTTP, file://)
+ */
+function copyTextToClipboard(text) {
+    return new Promise((resolve, reject) => {
+        // Cách 1: Clipboard API hiện đại nếu trong secure context (HTTPS / localhost)
+        if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(resolve).catch(() => {
+                fallbackExecCopy(text, resolve, reject);
+            });
+            return;
+        }
+        // Cách 2: Fallback textarea execCommand (chạy 100% thành công trên file:// và thiết bị di động)
+        fallbackExecCopy(text, resolve, reject);
+    });
+}
+
+function fallbackExecCopy(text, resolve, reject) {
+    try {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.top = "-9999px";
+        textArea.style.left = "-9999px";
+        textArea.style.opacity = "0";
+        textArea.style.pointerEvents = "none";
+        textArea.setAttribute("readonly", "");
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        textArea.setSelectionRange(0, 99999);
+        const successful = document.execCommand('copy');
+        document.body.removeChild(textArea);
+        if (successful) {
+            resolve();
+        } else {
+            reject(new Error('execCommand copy failed'));
+        }
+    } catch (err) {
+        reject(err);
+    }
+}
+
+/**
+ * Sao chép / Chia sẻ liên kết đội hình thành viên (Tương thích Zalo, Messenger, Mobile & Desktop)
+ */
+async function copyFormationShareLink() {
     if (!activeFormationMember) return;
-    const cleanUrl = `${window.location.origin}${window.location.pathname}?modal=${activeFormationMember.stt}`;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(cleanUrl).then(() => {
-            showToast(`Đã sao chép liên kết chia sẻ của ${activeFormationMember.name}!`, "success");
-        }).catch(() => {
-            prompt("Sao chép liên kết chia sẻ:", cleanUrl);
-        });
+
+    // Chuẩn hóa đường dẫn sạch (không bao giờ bị dính chữ 'null' của file://)
+    const baseHref = window.location.href.split('#')[0].split('?')[0];
+    const cleanUrl = `${baseHref}?modal=${activeFormationMember.stt}`;
+    const shareTitle = `Đội Hình ${activeFormationMember.name} (Hạng #${activeFormationMember.stt}) - Miêu Chủ Tam Quốc`;
+    const shareText = `Xem đội hình và chiến lực của ${activeFormationMember.name} (${activeFormationMember.power}) trong Bang Hội Shadow Wolf:`;
+
+    // 1. Nếu trên điện thoại hỗ trợ Web Share API (Zalo, Messenger, Copy link native)
+    if (navigator.share && /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        try {
+            await navigator.share({
+                title: shareTitle,
+                text: shareText,
+                url: cleanUrl
+            });
+            showToast("Đã mở chia sẻ thành công!", "success");
+            triggerShareBtnSuccess();
+            return;
+        } catch (err) {
+            if (err.name === 'AbortError') return; // Người dùng tự hủy menu share
+        }
+    }
+
+    // 2. Tự động sao chép vào Clipboard trên Desktop và Web
+    try {
+        await copyTextToClipboard(cleanUrl);
+        showToast(`Đã sao chép liên kết đội hình của ${activeFormationMember.name}!`, "success");
+        triggerShareBtnSuccess();
+    } catch (err) {
+        // 3. Fallback hiển thị hộp thoại prompt chuẩn
+        const userCopied = prompt("Sao chép liên kết chia sẻ đội hình:", cleanUrl);
+        if (userCopied !== null) {
+            triggerShareBtnSuccess();
+        }
+    }
+}
+
+function triggerShareBtnSuccess() {
+    const btn = document.getElementById('btn-share-formation');
+    if (btn) {
+        const origHtml = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-circle-check text-green-400"></i> Đã sao chép link!';
+        btn.classList.add('btn-copied-success');
+        setTimeout(() => {
+            btn.innerHTML = origHtml;
+            btn.classList.remove('btn-copied-success');
+        }, 2500);
+    }
+});
     } else {
         prompt("Sao chép liên kết chia sẻ:", cleanUrl);
     }
@@ -2928,6 +3092,7 @@ function generateFeaturedCharacterCardHtml(m) {
                 <span class="featured-rank-shield">
                     <i class="fa-solid fa-ranking-star"></i> Thứ Hạng #${m.stt}
                 </span>
+                ${m.image ? `<span class="dh-ready-tag"><i class="fa-solid fa-camera-retro"></i> Đội Hình</span>` : ''}
                 <span class="member-note-badge ${noteClass}">${escapeHtml(m.note)}</span>
             </div>
             <div class="featured-avatar-wrap">
@@ -3150,3 +3315,79 @@ function recordHistorySnapshot(reason = 'Cập nhật chỉ số') {
         console.warn('Lỗi ghi history snapshot:', e);
     }
 }
+
+
+// ==========================================================================
+// HỖ TRỢ ĐIỀU HƯỚNG BẰNG BÀN PHÍM VÀ CẢM ỨNG VUỐT TRÊN MOBILE
+// ==========================================================================
+document.addEventListener('keydown', (e) => {
+    const lb = document.getElementById('formation-lightbox');
+    if (lb && lb.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeFormationLightbox();
+            return;
+        }
+        if (e.key === 'ArrowLeft') {
+            navigateFormation(-1);
+            if (activeFormationMember && activeFormationMember.image) {
+                const lbImg = document.getElementById('lightbox-image');
+                const lbTitle = document.getElementById('lightbox-title');
+                if (lbImg) lbImg.src = activeFormationMember.image;
+                if (lbTitle) lbTitle.textContent = `${activeFormationMember.name} (#${activeFormationMember.stt}) - Đội Hình Thực Tế`;
+            }
+            return;
+        }
+        if (e.key === 'ArrowRight') {
+            navigateFormation(1);
+            if (activeFormationMember && activeFormationMember.image) {
+                const lbImg = document.getElementById('lightbox-image');
+                const lbTitle = document.getElementById('lightbox-title');
+                if (lbImg) lbImg.src = activeFormationMember.image;
+                if (lbTitle) lbTitle.textContent = `${activeFormationMember.name} (#${activeFormationMember.stt}) - Đội Hình Thực Tế`;
+            }
+            return;
+        }
+    }
+
+    const modal = document.getElementById('modal-formation-view');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeModal('modal-formation-view');
+        } else if (e.key === 'ArrowLeft') {
+            navigateFormation(-1);
+        } else if (e.key === 'ArrowRight') {
+            navigateFormation(1);
+        }
+    }
+});
+
+// Vuốt cảm ứng trái/phải trên màn hình điện thoại để đổi đội hình
+let modalTouchStartX = 0;
+let modalTouchStartY = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const modalBackdropEl = document.getElementById('modal-formation-view');
+    if (modalBackdropEl) {
+        modalBackdropEl.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                modalTouchStartX = e.touches[0].clientX;
+                modalTouchStartY = e.touches[0].clientY;
+            }
+        }, { passive: true });
+
+        modalBackdropEl.addEventListener('touchend', (e) => {
+            if (e.changedTouches.length === 1) {
+                const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
+                const dx = touchEndX - modalTouchStartX;
+                const dy = touchEndY - modalTouchStartY;
+                if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+                    if (dx > 0) {
+                        navigateFormation(-1);
+                    } else {
+                        navigateFormation(1);
+                    }
+                }
+            }
+        }, { passive: true });
+    }
+});

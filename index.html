@@ -462,12 +462,38 @@
          ========================================================================== -->
     <div class="modal-backdrop" id="modal-formation-view">
         <div class="modal-container modal-formation-wide">
+            <!-- MODAL HEADER STICKY -->
             <div class="modal-header">
-                <h3 class="modal-title">
-                    <i class="fa-solid fa-paw"></i> Hồ Sơ Tướng Lĩnh &amp; Trận Hình
-                </h3>
-                <button class="modal-close-btn" onclick="closeModal('modal-formation-view')">&times;</button>
+                <div class="modal-header-title-wrap">
+                    <h3 class="modal-title">
+                        <i class="fa-solid fa-shield-cat"></i> Hồ Sơ Tướng Lĩnh &amp; Trận Hình
+                    </h3>
+                </div>
+
+                <!-- BỘ ĐIỀU HƯỚNG TƯỚNG NHANH (< 1 / 38 >) -->
+                <div class="modal-member-nav">
+                    <button type="button" class="btn-nav-arrow" id="btn-modal-prev" onclick="navigateFormation(-1)" title="Chiến tướng trước (Phím Mũi Tên Trái)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <span class="modal-nav-counter" id="fm-nav-counter">1 / 38</span>
+                    <button type="button" class="btn-nav-arrow" id="btn-modal-next" onclick="navigateFormation(1)" title="Chiến tướng sau (Phím Mũi Tên Phải)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- CÁC NÚT THAO TÁC HEADER -->
+                <div class="modal-header-actions">
+                    <button type="button" class="btn-modal-action-icon" onclick="toggleFormationLightbox()" title="Phóng to ảnh toàn màn hình">
+                        <i class="fa-solid fa-expand"></i>
+                    </button>
+                    <button type="button" class="btn-modal-action-icon" onclick="downloadFormationImage()" title="Tải ảnh trận hình về máy">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                    <button type="button" class="modal-close-btn" onclick="closeModal('modal-formation-view')" title="Đóng (Phím Esc)">&times;</button>
+                </div>
             </div>
+
+            <!-- MODAL BODY SCROLLABLE (CUỘN MƯỢT MÀ KHÔNG BỊ KHÓA) -->
             <div class="modal-body">
                 <!-- THÔNG TIN HỒ SƠ TƯỚNG LĨNH (CHARACTER SHEET HEADER) -->
                 <div class="formation-member-header">
@@ -479,7 +505,7 @@
                             <div class="fm-name" id="formation-member-name">SW ⚜️ Apex 🇻🇳</div>
                             <div class="fm-tags">
                                 <span class="fm-rank-pill" id="formation-member-rank">Hạng #1</span>
-                                <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i> Ải 17.830</span>
+                                <span class="fm-stage-pill" id="formation-member-stage"><i class="fa-solid fa-mountain"></i> Ải 17.942</span>
                                 <span class="fm-tower-pill" id="formation-member-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 4.794</span>
                                 <span class="member-title-badge title-than-vuong" id="formation-member-title">Thần Vương</span>
                                 <span class="member-note-badge note-bang-chu" id="formation-member-note">Bang Chủ</span>
@@ -487,7 +513,7 @@
                         </div>
                     </div>
                     <div class="fm-power-large">
-                        <span class="power-label">CHIẾN LỰC</span>
+                        <span class="power-label">CHIẾN LỰC HIỆN TẠI</span>
                         <div class="power-num">
                             <i class="fa-solid fa-bolt"></i>
                             <span id="formation-member-power">1.75T</span>
@@ -496,7 +522,13 @@
                 </div>
 
                 <!-- KHU VỰC HIỂN THỊ ẢNH CHỤP MÀN HÌNH GAME THỰC TẾ (FOCUSED GAME CARD) -->
-                <div class="formation-screenshot-box" id="formation-screenshot-container">
+                <div class="formation-screenshot-box" id="formation-screenshot-container" onclick="toggleFormationLightbox()" title="Nhấp vào để phóng to ảnh toàn màn hình">
+                    <!-- Góc viền trang trí 3D Gaming -->
+                    <span class="box-corner corner-tl"></span>
+                    <span class="box-corner corner-tr"></span>
+                    <span class="box-corner corner-bl"></span>
+                    <span class="box-corner corner-br"></span>
+
                     <!-- LOADING OVERLAY KHI ĐANG TẢI ẢNH -->
                     <div id="formation-screenshot-loader" class="formation-loader-overlay">
                         <div class="gaming-spinner"></div>
@@ -508,26 +540,61 @@
                     <img id="formation-screenshot-preview" class="screenshot-preview-img"
                         alt="Ảnh chụp màn hình đội hình">
 
+                    <!-- HINT CLICK TO ZOOM -->
+                    <div class="formation-zoom-hint" id="formation-zoom-hint">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Nhấn để phóng to toàn màn hình
+                    </div>
+
                     <!-- BANNER KHI CHƯA CÓ ẢNH -->
                     <div id="formation-screenshot-placeholder" class="formation-empty-banner">
-                        <i class="fa-solid fa-triangle-exclamation empty-dh-icon"></i>
-                        <div class="empty-dh-title">Chưa cập nhật đội hình</div>
+                        <i class="fa-solid fa-shield-cat empty-dh-icon"></i>
+                        <div class="empty-dh-title">Chưa cập nhật ảnh đội hình</div>
                         <div class="empty-dh-desc">
-                            Thành viên này hiện chưa nộp ảnh chụp trận hình trong game. Quản Trị Viên có thể tải lên ảnh trong Trang Quản Trị.
+                            Thành viên này hiện chưa cập nhật ảnh chụp trận hình in-game. Quản Trị Viên có thể tải lên ảnh trong Trang Quản Trị.
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- MODAL FOOTER STICKY -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline" id="btn-share-formation" onclick="copyFormationShareLink()">
-                    <i class="fa-solid fa-share-nodes"></i> Chia sẻ liên kết
+                <button type="button" class="btn btn-modal-nav" onclick="navigateFormation(-1)">
+                    <i class="fa-solid fa-chevron-left"></i> Tướng Trước
                 </button>
-                <button type="button" class="btn btn-gold" onclick="closeModal('modal-formation-view')">
-                    <i class="fa-solid fa-check"></i> Đóng
+                <div class="modal-footer-mid">
+                    <button type="button" class="btn btn-outline" id="btn-share-formation" onclick="copyFormationShareLink()">
+                        <i class="fa-solid fa-share-nodes"></i> Chia sẻ liên kết
+                    </button>
+                    <button type="button" class="btn btn-outline" onclick="downloadFormationImage()">
+                        <i class="fa-solid fa-download"></i> Tải ảnh về máy
+                    </button>
+                </div>
+                <button type="button" class="btn btn-modal-nav" onclick="navigateFormation(1)">
+                    Tướng Sau <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <button type="button" class="btn btn-gold btn-close-modal" onclick="closeModal('modal-formation-view')">
+                    <i class="fa-solid fa-xmark"></i> Đóng
                 </button>
             </div>
         </div>
     </div>
+
+    <!-- FULLSCREEN LIGHTBOX CHO ẢNH ĐỘI HÌNH -->
+    <div id="formation-lightbox" class="formation-lightbox-backdrop" onclick="closeFormationLightbox()">
+        <div class="lightbox-toolbar" onclick="event.stopPropagation()">
+            <span class="lightbox-title" id="lightbox-title">Ảnh Trận Hình Game</span>
+            <div class="lightbox-actions">
+                <button type="button" class="btn-lb-action" onclick="downloadFormationImage()" title="Tải ảnh về máy">
+                    <i class="fa-solid fa-download"></i> Tải Về
+                </button>
+                <button type="button" class="btn-lb-close" onclick="closeFormationLightbox()" title="Đóng (Phím Esc)">&times;</button>
+            </div>
+        </div>
+        <div class="lightbox-img-wrap" onclick="event.stopPropagation()">
+            <img id="lightbox-image" src="" alt="Ảnh Đội Hình Chi Tiết" class="lightbox-img">
+        </div>
+    </div>
+
 
     <!-- Toast Notification Container -->
     <div id="toast-container" class="toast-container"></div>
