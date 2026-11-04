@@ -161,8 +161,7 @@ body {
     position: relative;
     padding: 24px 0 20px 0;
     border-bottom: 2px solid rgba(255, 212, 59, 0.35);
-    background: linear-gradient(180deg, rgba(22, 32, 54, 0.96) 0%, rgba(14, 20, 36, 0.9) 100%);
-    backdrop-filter: blur(16px);
+    background: linear-gradient(180deg, rgba(22, 32, 54, 0.98) 0%, rgba(14, 20, 36, 0.98) 100%);
     box-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
     z-index: 50;
 }
@@ -489,17 +488,7 @@ body {
     gap: 16px;
 }
 
-.stat-card {
-    position: relative;
-    background: linear-gradient(145deg, rgba(22, 28, 48, 0.85) 0%, rgba(13, 16, 28, 0.95) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-top: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 14px;
-    padding: 16px 18px 14px 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    backdrop-filter: blur(16px);
+/* zero-lag */
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
     overflow: hidden;
     transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1736,12 +1725,7 @@ body {
     padding: 15px 0 20px 0;
 }
 
-.controls-card {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--radius-lg);
-    padding: 20px 24px;
-    backdrop-filter: blur(14px);
+/* zero-lag */
     box-shadow: var(--card-shadow);
 }
 
@@ -1927,13 +1911,7 @@ body {
     padding: 10px 0 30px 0;
 }
 
-.table-card-wrapper {
-    background: var(--bg-card);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--card-shadow);
-    backdrop-filter: blur(14px);
+/* zero-lag */
 }
 
 .table-responsive {
@@ -3303,9 +3281,8 @@ body {
     top: 0;
     width: 180px;
     height: 100%;
-    background: linear-gradient(180deg, rgba(255, 215, 0, 0.12) 0%, transparent 80%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.15) 0%, transparent 75%);
     pointer-events: none;
-    filter: blur(20px);
 }
 .beam-center { left: 50%; transform: translateX(-50%); width: 260px; background: linear-gradient(180deg, rgba(253, 224, 71, 0.18) 0%, transparent 80%); }
 .beam-left { left: 20%; background: linear-gradient(180deg, rgba(56, 189, 248, 0.12) 0%, transparent 80%); }
@@ -4119,9 +4096,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgba(8, 6, 17, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    background: rgba(10, 7, 20, 0.98);
     border-bottom: 1px solid rgba(166, 138, 224, 0.22);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
     padding: 10px 0;
@@ -4296,22 +4271,7 @@ body {
     margin: 0 auto;
 }
 
-.hero-badge-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 22px;
-    background: rgba(53, 32, 82, 0.65);
-    border: 1px solid rgba(166, 138, 224, 0.45);
-    border-radius: 9999px;
-    font-size: 0.82rem;
-    font-weight: 800;
-    color: var(--color-starlight);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    box-shadow: 0 0 22px rgba(112, 70, 160, 0.3);
-    margin-bottom: 22px;
-    backdrop-filter: blur(8px);
+/* zero-lag */
 }
 
 .hero-main-title {
@@ -4357,17 +4317,7 @@ body {
     margin-bottom: 36px;
 }
 
-.hero-meta-strip .meta-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 9px 18px;
-    background: rgba(33, 20, 50, 0.75);
-    border: 1px solid rgba(166, 138, 224, 0.25);
-    border-radius: 10px;
-    font-size: 0.88rem;
-    color: var(--color-starlight);
-    backdrop-filter: blur(10px);
+/* zero-lag */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
@@ -6525,8 +6475,7 @@ body {
 .member-lookup-section,
 .history-tracker-section,
 .site-footer {
-    content-visibility: auto;
-    contain-intrinsic-size: 600px;
+    transform: translateZ(0);
 }
 
 /* Ép thẻ bài dùng bộ tăng tốc phần cứng GPU riêng biệt (Zero repaint lag) */
@@ -6538,4 +6487,137 @@ body {
     transform: translateZ(0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+}
+
+
+/* ==========================================================================
+   DYNAMIC GALAXY COSMOS & BREATHING NEBULA CLOUDS (120 FPS GPU ACCELERATED)
+   ========================================================================== */
+.mystic-nebula-mesh {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+    background: #06040e;
+    transform: translateZ(0);
+}
+
+.nebula-cloud {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.65;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Đám mây tinh vân tím huyền ảo (Mystic Purple Nebula) */
+.cloud-mystic-purple {
+    top: -15%;
+    left: 20%;
+    width: 65vw;
+    height: 65vw;
+    background: radial-gradient(circle, rgba(147, 51, 234, 0.22) 0%, rgba(107, 33, 168, 0.12) 45%, transparent 70%);
+    animation: nebulaBreathe1 22s ease-in-out infinite alternate;
+}
+
+/* Đám mây tinh vân lam ngọc (Deep Cosmos Sapphire) */
+.cloud-dark-violet {
+    top: 40%;
+    right: -10%;
+    width: 55vw;
+    height: 55vw;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(30, 58, 138, 0.10) 45%, transparent 70%);
+    animation: nebulaBreathe2 28s ease-in-out infinite alternate;
+}
+
+/* Đám mây tinh vân hổ phách hoàng kim (Solar Astral Glow) */
+.cloud-arcane-glow {
+    bottom: -10%;
+    left: 10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(180, 83, 9, 0.06) 45%, transparent 70%);
+    animation: nebulaBreathe3 25s ease-in-out infinite alternate;
+}
+
+/* Vệt sáng ánh trăng cực quang (Moonlight Aurora Dust) */
+.cloud-moonlight {
+    top: 25%;
+    left: -5%;
+    width: 45vw;
+    height: 45vw;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.12) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+    animation: nebulaBreathe1 30s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes nebulaBreathe1 {
+    0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+    50% { transform: translate3d(4vw, 3vh, 0) scale(1.08); opacity: 0.75; }
+    100% { transform: translate3d(-3vw, -2vh, 0) scale(0.96); opacity: 0.6; }
+}
+
+@keyframes nebulaBreathe2 {
+    0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
+    50% { transform: translate3d(-4vw, -3vh, 0) scale(1.1); opacity: 0.8; }
+    100% { transform: translate3d(3vw, 2vh, 0) scale(0.95); opacity: 0.55; }
+}
+
+@keyframes nebulaBreathe3 {
+    0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+    50% { transform: translate3d(3vw, -4vh, 0) scale(1.12); opacity: 0.75; }
+    100% { transform: translate3d(-2vw, 3vh, 0) scale(0.98); opacity: 0.55; }
+}
+
+/* NÚT CUỘN LÊN ĐẦU TRANG PHONG CÁCH GAMING */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.45), 0 0 15px rgba(245, 158, 11, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.85);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.btn-back-to-top:hover {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    transform: translateY(-4px) scale(1.1);
+    box-shadow: 0 12px 35px rgba(245, 158, 11, 0.65), 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* ĐÈN TÍN HIỆU LIVE BEACON PHÁT SÁNG TRÊN HEADER */
+.live-beacon-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10b981;
+    box-shadow: 0 0 10px #10b981, 0 0 18px rgba(16, 185, 129, 0.8);
+    margin-right: 6px;
+    animation: beaconPulse 2s ease-in-out infinite;
+}
+
+@keyframes beaconPulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.35); opacity: 0.6; }
 }

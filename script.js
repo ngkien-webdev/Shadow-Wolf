@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function initApp() {
     initMysticStarfield();
+    initBackToTopButton();
     loadMembersData();
     setupEventListeners();
     updateGuildInfo();
@@ -259,11 +260,25 @@ function initApp() {
 function preloadMemberImages() {
     if (!members || !members.length) return;
     
-    // Chỉ nạp Top 3 tướng tối cao
-    const top3 = members.slice(0, 3);
-    top3.forEach(m => {
+    // Nạp toàn bộ avatar vào RAM cache trong thời gian rỗi (Zero latency khi cuộn & tìm kiếm)
+    const idleRunner = window.requestIdleCallback || ((fn) => setTimeout(fn, 120));
+    idleRunner(() => {
+        members.forEach(m => {
+            const avatarUrl = getMemberAvatarImg(m);
+            if (avatarUrl) {
+                const img = new Image();
+                img.decoding = 'async';
+                img.src = avatarUrl;
+            }
+        });
+    });
+
+    // Nạp trước ảnh trận hình Top 5
+    const top5 = members.slice(0, 5);
+    top5.forEach(m => {
         if (m.image) {
             const img = new Image();
+            img.decoding = 'async';
             img.src = m.image;
         }
     });
@@ -904,12 +919,12 @@ function renderSupremeTop3() {
             </div>
             
             <div class="supreme-title-wrap title-wrap-yudai">
-                <img src="images/title-yudai-chien-de.png" alt="Yudai Chiến Đế" class="supreme-ingame-title-img img-title-yudai" title="Danh Hiệu In-game: Yudai Chiến Đế">
+                <img src="images/title-yudai-chien-de.png" alt="Yudai Chiến Đế" class="supreme-ingame-title-img img-title-yudai" title="Danh Hiệu In-game: Yudai Chiến Đế" loading="eager" decoding="async">
             </div>
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="${getMemberAvatarImg(top2)}" alt="${escapeHtml(top2.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top2)}" alt="${escapeHtml(top2.name)}" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top2.name)}">${escapeHtml(top2.name)}</h3>
@@ -945,12 +960,12 @@ function renderSupremeTop3() {
             </div>
 
             <div class="supreme-title-wrap title-wrap-apex">
-                <img src="images/title-apex-vuong-gia.png" alt="APEX Vương Giả" class="supreme-ingame-title-img img-title-apex" title="Danh Hiệu In-game: APEX Vương Giả">
+                <img src="images/title-apex-vuong-gia.png" alt="APEX Vương Giả" class="supreme-ingame-title-img img-title-apex" title="Danh Hiệu In-game: APEX Vương Giả" loading="eager" decoding="async">
             </div>
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="${getMemberAvatarImg(top1)}" alt="${escapeHtml(top1.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top1)}" alt="${escapeHtml(top1.name)}" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top1.name)}">${escapeHtml(top1.name)}</h3>
@@ -986,12 +1001,12 @@ function renderSupremeTop3() {
             </div>
 
             <div class="supreme-title-wrap title-wrap-ayya">
-                <img src="images/title-alyal-ba-khi.png" alt="ALyaL Bá Khí" class="supreme-ingame-title-img img-title-ayya" title="Danh Hiệu In-game: ALyaL Bá Khí">
+                <img src="images/title-alyal-ba-khi.png" alt="ALyaL Bá Khí" class="supreme-ingame-title-img img-title-ayya" title="Danh Hiệu In-game: ALyaL Bá Khí" loading="eager" decoding="async">
             </div>
 
             <div class="supreme-avatar-container">
                 <div class="supreme-avatar-ring"></div>
-                <img src="${getMemberAvatarImg(top3)}" alt="${escapeHtml(top3.name)}" class="supreme-avatar-core">
+                <img src="${getMemberAvatarImg(top3)}" alt="${escapeHtml(top3.name)}" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
             </div>
 
             <h3 class="supreme-member-name" title="${escapeHtml(top3.name)}">${escapeHtml(top3.name)}</h3>
@@ -1049,7 +1064,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar silver-glow wolf-podium-silver">
                         <div class="wolf-aura-burst aura-silver"></div>
-                        <img src="${getMemberAvatarImg(top4)}" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver">
+                        <img src="${getMemberAvatarImg(top4)}" alt="Bạch Ngân Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-silver" loading="eager" decoding="async">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-silver"><i class="fa-solid fa-medal"></i> TOP 4</div>
@@ -1088,7 +1103,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar darkgold-glow wolf-podium-darkgold">
                         <div class="wolf-aura-burst aura-darkgold"></div>
-                        <img src="${getMemberAvatarImg(top2)}" alt="Hắc Đế Thượng Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-darkgold">
+                        <img src="${getMemberAvatarImg(top2)}" alt="Hắc Đế Thượng Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-darkgold" loading="eager" decoding="async">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-darkgold"><i class="fa-solid fa-shield-halved"></i> TOP 2</div>
@@ -1129,7 +1144,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar platinum-glow wolf-podium-platinum">
                         <div class="wolf-aura-burst aura-platinum"></div>
-                        <img src="${getMemberAvatarImg(top1)}" alt="Bạch Thánh Kim Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-platinum">
+                        <img src="${getMemberAvatarImg(top1)}" alt="Bạch Thánh Kim Tôn" class="podium-avatar-img wolf-avatar-emblem wolf-img-platinum" loading="eager" decoding="async">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-platinum"><i class="fa-solid fa-crown"></i> TOP 1</div>
@@ -1167,7 +1182,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar gold-glow wolf-podium-gold">
                         <div class="wolf-aura-burst aura-gold"></div>
-                        <img src="${getMemberAvatarImg(top3)}" alt="Hoàng Kim Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold">
+                        <img src="${getMemberAvatarImg(top3)}" alt="Hoàng Kim Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-gold" loading="eager" decoding="async">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-gold"><i class="fa-solid fa-award"></i> TOP 3</div>
@@ -1206,7 +1221,7 @@ function renderPodium() {
                     </div>
                     <div class="podium-avatar bronze-glow wolf-podium-bronze">
                         <div class="wolf-aura-burst aura-bronze"></div>
-                        <img src="${getMemberAvatarImg(top5)}" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze">
+                        <img src="${getMemberAvatarImg(top5)}" alt="Xích Đồng Lang Tướng" class="podium-avatar-img wolf-avatar-emblem wolf-img-bronze" loading="eager" decoding="async">
                     </div>
                 </div>
                 <div class="podium-rank-tag tag-bronze"><i class="fa-solid fa-star"></i> TOP 5</div>
@@ -1346,7 +1361,7 @@ function generateEliteCardHtml(m) {
 
             <div class="elite-avatar-container">
                 <div class="elite-avatar-ring">
-                    <img src="${avatarImg}" alt="${escapeHtml(m.name)}" class="elite-avatar-img">
+                    <img src="${avatarImg}" alt="${escapeHtml(m.name)}" class="elite-avatar-img" loading="lazy" decoding="async">
                 </div>
             </div>
 
@@ -1536,7 +1551,7 @@ function renderTable() {
 
         const avatarBlock = `
             <div class="member-table-avatar-wrap" title="${escapeHtml(m.name)}">
-                <img src="${getMemberAvatarImg(m)}" alt="${escapeHtml(m.name)}" class="member-table-avatar-img">
+                <img src="${getMemberAvatarImg(m)}" alt="${escapeHtml(m.name)}" class="member-table-avatar-img" loading="lazy" decoding="async">
             </div>
         `;
 
@@ -2507,6 +2522,7 @@ function openFormationModal(stt) {
     
     const modalAvatar = document.getElementById('formation-member-avatar');
     if (modalAvatar) {
+        modalAvatar.decoding = 'async';
         modalAvatar.src = getMemberAvatarImg(member);
         modalAvatar.alt = member.name;
     }
@@ -2550,6 +2566,7 @@ function openFormationModal(stt) {
         if (zoomHint) zoomHint.style.display = 'flex';
 
         if (screenshotImg) {
+            screenshotImg.decoding = 'async';
             screenshotImg.style.display = 'block';
             delete screenshotImg.dataset.triedFallback;
             screenshotImg.src = member.image;
@@ -3115,7 +3132,7 @@ function generateFeaturedCharacterCardHtml(m) {
                 <span class="member-note-badge ${noteClass}">${escapeHtml(m.note)}</span>
             </div>
             <div class="featured-avatar-wrap">
-                <img src="${avatar}" alt="${escapeHtml(m.name)}" class="featured-avatar-img">
+                <img src="${avatar}" alt="${escapeHtml(m.name)}" class="featured-avatar-img" loading="lazy" decoding="async">
             </div>
             <h3 class="featured-name">${escapeHtml(m.name)}</h3>
             <div class="featured-power-badge">
@@ -3137,47 +3154,214 @@ function generateFeaturedCharacterCardHtml(m) {
  * MYSTIC GALAXY STARFIELD & CELESTIAL CANVAS ENGINE
  * Hardware-accelerated static starfield (zero continuous JS loops, 0% CPU overhead, 120 FPS silky-smooth scroll)
  */
+/**
+ * DYNAMIC GALAXY CELESTIAL ENGINE (120 FPS NATIVE - ZERO LAG)
+ * Động cơ vũ trụ ngân hà động: Các vì sao nhấp nháy đa tầng, bụi sao bồng bềnh,
+ * sao băng (Shooting Stars) lướt ngang bầu trời, tự động tối ưu hóa pin & 0% CPU khi ẩn tab
+ */
 function initMysticStarfield() {
     const canvas = document.getElementById('mystic-stars-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d', { alpha: true });
     if (!ctx) return;
 
-    function renderStaticStars() {
-        const width = canvas.width = window.innerWidth;
-        const height = canvas.height = window.innerHeight;
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    let isMobile = width < 768;
+
+    const starColors = ['#ffffff', '#fef08a', '#7dd3fc', '#c084fc', '#f472b6', '#e2e8f0'];
+    const count = isMobile ? 32 : 65;
+    const stars = [];
+
+    for (let i = 0; i < count; i++) {
+        stars.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            radius: Math.random() * (isMobile ? 1.3 : 1.7) + 0.4,
+            color: starColors[Math.floor(Math.random() * starColors.length)],
+            baseAlpha: Math.random() * 0.55 + 0.25,
+            alpha: 0.5,
+            twinkleSpeed: Math.random() * 0.025 + 0.008,
+            twinklePhase: Math.random() * Math.PI * 2,
+            speedY: Math.random() * 0.20 + 0.06, // Bay nhẹ bồng bềnh hướng lên
+            speedX: (Math.random() - 0.5) * 0.08,
+            hasGlow: Math.random() > 0.75
+        });
+    }
+
+    // Sao Băng Thiên Hà (Shooting Stars)
+    let shootingStar = null;
+    let nextShootingStarTime = Date.now() + Math.random() * 3000 + 2000;
+
+    function spawnShootingStar() {
+        const startX = Math.random() * (width * 0.7) + (width * 0.15);
+        const startY = Math.random() * (height * 0.35);
+        const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.25; // ~45 độ
+        const speed = Math.random() * 8 + 10;
+        const length = Math.random() * 70 + 90;
+        shootingStar = {
+            x: startX,
+            y: startY,
+            dx: Math.cos(angle) * speed,
+            dy: Math.sin(angle) * speed,
+            length: length,
+            life: 1.0,
+            decay: Math.random() * 0.018 + 0.022
+        };
+    }
+
+    // Tương tác chuột nhẹ nhàng (Interactive Dust Attraction trên Desktop)
+    let mouseX = -9999;
+    let mouseY = -9999;
+    if (!isMobile) {
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        }, { passive: true });
+        window.addEventListener('mouseleave', () => {
+            mouseX = -9999;
+            mouseY = -9999;
+        }, { passive: true });
+    }
+
+    let isRunning = true;
+    let lastTime = performance.now();
+    let isScrolling = false;
+    let scrollStopTimer = null;
+    window.addEventListener('scroll', () => {
+        isScrolling = true;
+        if (scrollStopTimer) clearTimeout(scrollStopTimer);
+        scrollStopTimer = setTimeout(() => {
+            isScrolling = false;
+            lastTime = performance.now();
+        }, 90);
+    }, { passive: true });
+
+    function animateGalaxy(currentTime) {
+        if (!isRunning) return;
+        if (isScrolling) {
+            requestAnimationFrame(animateGalaxy);
+            return;
+        }
+
+        // Giới hạn delta-time để khi chuyển tab quay lại không bị giật lag
+        const dt = Math.min((currentTime - lastTime) / 16.67, 2.0);
+        lastTime = currentTime;
+
         ctx.clearRect(0, 0, width, height);
 
-        const starColors = ['#E9E2F5', '#A68AE0', '#7896C8', '#B99A62', '#ffffff'];
-        const starCount = Math.min(85, Math.floor((width * height) / 12000));
+        // 1. Vẽ & di chuyển các vì sao ngân hà
+        for (let i = 0; i < stars.length; i++) {
+            const s = stars[i];
 
-        for (let i = 0; i < starCount; i++) {
-            const x = Math.random() * width;
-            const y = Math.random() * height;
-            const radius = Math.random() * 1.5 + 0.5;
-            const color = starColors[Math.floor(Math.random() * starColors.length)];
-            const alpha = Math.random() * 0.65 + 0.25;
+            // Tự động nhấp nháy êm dịu
+            s.twinklePhase += s.twinkleSpeed * dt;
+            s.alpha = s.baseAlpha + Math.sin(s.twinklePhase) * 0.28;
+            if (s.alpha < 0.1) s.alpha = 0.1;
+            if (s.alpha > 0.95) s.alpha = 0.95;
+
+            // Di chuyển bồng bềnh
+            s.y -= s.speedY * dt;
+            s.x += s.speedX * dt;
+
+            // Phản ứng nhẹ với con trỏ chuột
+            if (!isMobile && mouseX > 0) {
+                const distDx = s.x - mouseX;
+                const distDy = s.y - mouseY;
+                const dist = Math.sqrt(distDx * distDx + distDy * distDy);
+                if (dist < 90) {
+                    const force = (1 - dist / 90) * 0.5;
+                    s.x += (distDx / dist) * force;
+                    s.y += (distDy / dist) * force;
+                }
+            }
+
+            // Quấn quanh màn hình mượt mà
+            if (s.y < -5) s.y = height + 5;
+            if (s.x < -5) s.x = width + 5;
+            if (s.x > width + 5) s.x = -5;
 
             ctx.beginPath();
-            ctx.arc(x, y, radius, 0, Math.PI * 2);
-            ctx.fillStyle = color;
-            ctx.globalAlpha = alpha;
+            ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
+            ctx.fillStyle = s.color;
+            ctx.globalAlpha = s.alpha;
             ctx.fill();
 
-            if (radius > 1.2) {
+            // Vầng hào quang cho các sao lớn
+            if (s.hasGlow && s.radius > 1.1) {
                 ctx.beginPath();
-                ctx.arc(x, y, radius * 2.2, 0, Math.PI * 2);
-                ctx.fillStyle = color;
-                ctx.globalAlpha = 0.16;
+                ctx.arc(s.x, s.y, s.radius * 2.2, 0, Math.PI * 2);
+                ctx.fillStyle = s.color;
+                ctx.globalAlpha = s.alpha * 0.20;
                 ctx.fill();
             }
         }
+
+        // 2. Vẽ Sao Băng Thiên Hà (Shooting Star)
+        const now = Date.now();
+        if (!shootingStar && now > nextShootingStarTime) {
+            spawnShootingStar();
+            nextShootingStarTime = now + Math.random() * 5000 + 4000;
+        }
+
+        if (shootingStar) {
+            shootingStar.x += shootingStar.dx * dt;
+            shootingStar.y += shootingStar.dy * dt;
+            shootingStar.life -= shootingStar.decay * dt;
+
+            if (shootingStar.life > 0) {
+                const tailX = shootingStar.x - (shootingStar.dx / 10) * shootingStar.length;
+                const tailY = shootingStar.y - (shootingStar.dy / 10) * shootingStar.length;
+
+                const grad = ctx.createLinearGradient(tailX, tailY, shootingStar.x, shootingStar.y);
+                grad.addColorStop(0, 'rgba(166, 138, 224, 0)');
+                grad.addColorStop(0.6, `rgba(255, 215, 0, ${shootingStar.life * 0.45})`);
+                grad.addColorStop(1, `rgba(255, 255, 255, ${shootingStar.life * 0.95})`);
+
+                ctx.beginPath();
+                ctx.moveTo(tailX, tailY);
+                ctx.lineTo(shootingStar.x, shootingStar.y);
+                ctx.strokeStyle = grad;
+                ctx.lineWidth = 1.8;
+                ctx.lineCap = 'round';
+                ctx.globalAlpha = 1.0;
+                ctx.stroke();
+
+                // Đầu sao băng sáng lấp lánh
+                ctx.beginPath();
+                ctx.arc(shootingStar.x, shootingStar.y, 2.0, 0, Math.PI * 2);
+                ctx.fillStyle = '#ffffff';
+                ctx.globalAlpha = shootingStar.life;
+                ctx.fill();
+            } else {
+                shootingStar = null;
+            }
+        }
+
         ctx.globalAlpha = 1.0;
+        requestAnimationFrame(animateGalaxy);
     }
 
-    renderStaticStars();
-    window.addEventListener('resize', debounce(renderStaticStars, 250), { passive: true });
+    requestAnimationFrame(animateGalaxy);
+
+    // Tự động tạm dừng khi chuyển tab ẩn để 0% CPU
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            isRunning = false;
+        } else {
+            isRunning = true;
+            lastTime = performance.now();
+            requestAnimationFrame(animateGalaxy);
+        }
+    });
+
+    window.addEventListener('resize', debounce(() => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        isMobile = width < 768;
+    }, 200), { passive: true });
 }
+
 
 /**
  * HỆ THỐNG CHUYỂN BẬC VINH DANH (TIER SWITCHER NAVIGATION)
@@ -3410,3 +3594,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 });
+
+
+/**
+ * Nút cuộn lên đầu trang nhanh (Back to Top Controller)
+ */
+function initBackToTopButton() {
+    const btn = document.getElementById('btn-back-to-top');
+    if (!btn) return;
+    window.addEventListener('scroll', debounce(() => {
+        if (window.scrollY > 350) {
+            btn.classList.add('visible');
+        } else {
+            btn.classList.remove('visible');
+        }
+    }, 40), { passive: true });
+}
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
