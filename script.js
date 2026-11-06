@@ -5,27 +5,27 @@
 
 // DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
-    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.75T", powerVal: 1750.0, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.75T", stage: "17.942", tower: "4.794" },
-    { stt: 2, name: "SW ⚜️ xAX 🇻🇳", power: "1.034T", powerVal: 1034.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.034T", stage: "16.888", tower: "4.527" },
-    { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "656.2B", powerVal: 656.2, title: "Thái Sư", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "656.2B", stage: "16.567", tower: "4.487" },
-    { stt: 4, name: "SW • Alinx •", power: "367.3B", powerVal: 367.3, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "367.3B", stage: "15.048", tower: "3.567" },
-    { stt: 5, name: "SW ⚜️ NTTP 🇻🇳", power: "356.2B", powerVal: 356.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-nttp.jpg", ingamePower: "356.2B", stage: "15.289", tower: "3.406" },
-    { stt: 6, name: "SW ★ Link", power: "286.8B", powerVal: 286.8, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-link.jpg", ingamePower: "286.8B", stage: "14.929", tower: "3.388" },
-    { stt: 7, name: "sw cho acc", power: "269.5B", powerVal: 269.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-choacc.jpg", ingamePower: "269.5B", stage: "14.949", tower: "3.380" },
-    { stt: 8, name: "SW ⚜️ Stom 🇻🇳", power: "266.6B", powerVal: 266.6, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "266.6B", stage: "14.384", tower: "3.147" },
-    { stt: 9, name: "SW ⚜️ Rain 🇻🇳", power: "235B", powerVal: 235.0, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "235B", stage: "14.523", tower: "3.192" },
-    { stt: 10, name: "SW • ĐỘLiVi", power: "232B", powerVal: 232.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "232B", stage: "14.759", tower: "3.334" },
-    { stt: 11, name: "SW ⚜️ Rinn 🇻🇳", power: "202.2B", powerVal: 202.2, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-rinn.jpg", ingamePower: "202.2B", stage: "14.188", tower: "3.230" },
-    { stt: 12, name: "SW ⚜️ Ryo 🇻🇳", power: "200.5B", powerVal: 200.5, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-ryo.jpg", ingamePower: "200.5B", stage: "14.621", tower: "3.254" },
-    { stt: 13, name: "SW ⚜️ Furies", power: "198.1B", powerVal: 198.1, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "198.1B", stage: "14.483", tower: "3.167" },
-    { stt: 14, name: "SW ⚜️ Neko", power: "196.6B", powerVal: 196.6, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "196.6B", stage: "14.519", tower: "3.218" },
-    { stt: 15, name: "SW ⭐️ Haruki", power: "180.3B", powerVal: 180.3, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "180.3B", stage: "14.930", tower: "3.484" },
-    { stt: 16, name: "SW ⚜️ Klein ★", power: "172.4B", powerVal: 172.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.4B", stage: "14.315", tower: "3.138" },
-    { stt: 17, name: "SW • Minh Thành", power: "170.6B", powerVal: 170.6, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "170.6B", stage: "13.000", tower: "2.900" },
-    { stt: 18, name: "SW • Bear", power: "168.8B", powerVal: 168.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "168.8B", stage: "13.500", tower: "3.000" },
-    { stt: 19, name: "SW • Poision", power: "133.7B", powerVal: 133.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "133.7B", stage: "12.800", tower: "2.850" },
-    { stt: 20, name: "SW • WOLF", power: "120.2B", powerVal: 120.2, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "120.2B", stage: "12.500", tower: "2.800" },
-    { stt: 21, name: "SW • Bãoo 360", power: "119B", powerVal: 119.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "119B", stage: "13.800", tower: "3.050" },
+    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.765T", powerVal: 1765.0, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.765T", stage: "18024", tower: "4.794" },
+    { stt: 2, name: "SW ⚜️ AlyaL 🇻🇳", power: "1.157T", powerVal: 1157.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.157T", stage: "17003", tower: "4.527" },
+    { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "735.7B", powerVal: 735.7, title: "Đại Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "735.7B", stage: "16672", tower: "4.487" },
+    { stt: 4, name: "SW ⚜️ NTTP 🇻🇳", power: "393.2B", powerVal: 393.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "393.2B", stage: "15289", tower: "3.406" },
+    { stt: 5, name: "SW • Alinx •", power: "367.3B", powerVal: 367.3, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "367.3B", stage: "15047", tower: "3.567" },
+    { stt: 6, name: "SW ★ Link", power: "287.5B", powerVal: 287.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "287.5B", stage: "14929", tower: "3.388" },
+    { stt: 7, name: "sw Newbie?", power: "273B", powerVal: 273.0, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-7.jpg", ingamePower: "273B", stage: "14949", tower: "3.380" },
+    { stt: 8, name: "SW ⚜️ Bãoo 🇻🇳", power: "240.1B", powerVal: 240.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "240.1B", stage: "14428", tower: "3.050" },
+    { stt: 9, name: "SW ⭐️ Haruki", power: "238.3B", powerVal: 238.3, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "238.3B", stage: "14950", tower: "3.484" },
+    { stt: 10, name: "SW ⚜️ howl 🇻🇳", power: "236.7B", powerVal: 236.7, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "236.7B", stage: "14804", tower: "3.147" },
+    { stt: 11, name: "SW ⚜️ Rain 🇻🇳", power: "226.4B", powerVal: 226.4, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "226.4B", stage: "14527", tower: "3.192" },
+    { stt: 12, name: "SW ⚜️ Ryo 🇻🇳", power: "204.4B", powerVal: 204.4, title: "Phiêu Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-12.jpg", ingamePower: "204.4B", stage: "14670", tower: "3.254" },
+    { stt: 13, name: "SW ⚜️ Rinn 🇻🇳", power: "202.8B", powerVal: 202.8, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-13.jpg", ingamePower: "202.8B", stage: "14229", tower: "3.230" },
+    { stt: 14, name: "SW ⚜️ Furies", power: "198.1B", powerVal: 198.1, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "198.1B", stage: "14483", tower: "3.167" },
+    { stt: 15, name: "SW ⚜️ Neko 🇻🇳", power: "196.3B", powerVal: 196.3, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-15.jpg", ingamePower: "196.3B", stage: "14567", tower: "3.218" },
+    { stt: 16, name: "SW • ĐỘLiVi", power: "195B", powerVal: 195.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "195B", stage: "14.759", tower: "3.334" },
+    { stt: 17, name: "SW ⚜️ Klein ★", power: "172.4B", powerVal: 172.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.4B", stage: "14.315", tower: "3.138" },
+    { stt: 18, name: "SW • Minh Thành", power: "170.6B", powerVal: 170.6, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "170.6B", stage: "13.000", tower: "2.900" },
+    { stt: 19, name: "SW • Bear", power: "168.8B", powerVal: 168.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "168.8B", stage: "13.500", tower: "3.000" },
+    { stt: 20, name: "SW • Poision", power: "133.7B", powerVal: 133.7, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-20.jpg", ingamePower: "133.7B", stage: "12.800", tower: "2.850" },
+    { stt: 21, name: "SW • WOLF", power: "120.2B", powerVal: 120.2, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-21.jpg", ingamePower: "120.2B", stage: "12.500", tower: "2.800" },
     { stt: 22, name: "SW • PandaxMun", power: "111.3B", powerVal: 111.3, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-18.jpg", ingamePower: "111.3B", stage: "13.200", tower: "2.950" },
     { stt: 23, name: "SW • Kaneki", power: "104.1B", powerVal: 104.1, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-22.jpg", ingamePower: "104.1B", stage: "12.200", tower: "2.750" },
     { stt: 24, name: "SW • lukita", power: "103.5B", powerVal: 103.5, title: "Trung Lang Tướng", note: "Thành viên", avatar: "🐺", image: "images/dh/member-26.jpg", ingamePower: "103.5B", stage: "11.400", tower: "2.550" },
@@ -45,8 +45,8 @@ const DEFAULT_MEMBERS = [
     { stt: 38, name: "SW • Thu", power: "58.05B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
-// Khóa LocalStorage (Bản v27: Cập nhật Danh hiệu Yudai Chiến Đế, ALyaL Bá Khí & Bộ Avatar Đa Dạng)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v30';
+// Khóa LocalStorage (Bản v31: Cập nhật BXH In-game, Top 15 Trận Hình & Tên Mới)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v31';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -149,18 +149,31 @@ const MEMBER_NAME_AVATARS = {
     'xax': 2,
     'xaxvn': 2,
     'yudai': 2,
+    'alyal': 2,
+    'alyalvn': 2,
     'ltd': 3,
+    'ltdvn': 3,
     'alinx': 4,
     'nttp': 5,
+    'nttpvn': 5,
     'link': 6,
+    'swlink': 6,
     'choacc': 7,
+    'newbie': 7,
+    'swnewbie': 7,
     'stom': 8,
+    'howl': 8,
+    'howlvn': 8,
     'rain': 9,
+    'rainvn': 9,
     'dolivi': 10,
     'rinn': 11,
+    'rinnvn': 11,
     'ryo': 12,
+    'ryovn': 12,
     'furies': 13,
     'neko': 14,
+    'nekovn': 14,
     'haruki': 15,
     'klein': 16,
     'minhthanh': 17,
@@ -920,10 +933,10 @@ function renderSupremeTop3() {
         members = JSON.parse(JSON.stringify(DEFAULT_MEMBERS));
     }
 
-    const sortedForPodium = [...members].sort((a, b) => (a.stt || 0) - (b.stt || 0));
-    const top1 = sortedForPodium[0];
-    const top2 = sortedForPodium[1];
-    const top3 = sortedForPodium[2];
+    const sortedForPodium = [...members].sort((a, b) => (Number(a.stt) || 999) - (Number(b.stt) || 999));
+    const top1 = sortedForPodium[0] || DEFAULT_MEMBERS[0];
+    const top2 = sortedForPodium[1] || DEFAULT_MEMBERS[1];
+    const top3 = sortedForPodium[2] || DEFAULT_MEMBERS[2];
 
     if (!top1 || !top2 || !top3) return;
 
@@ -955,7 +968,7 @@ function renderSupremeTop3() {
             </div>
 
             <div class="supreme-milestones">
-                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '16.883'}</span>
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '17003'}</span>
                 <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top2.tower || '4.527'}</span>
             </div>
 
@@ -996,7 +1009,7 @@ function renderSupremeTop3() {
             </div>
 
             <div class="supreme-milestones">
-                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '17.830'}</span>
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '18024'}</span>
                 <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top1.tower || '4.794'}</span>
             </div>
 
@@ -1037,7 +1050,7 @@ function renderSupremeTop3() {
             </div>
 
             <div class="supreme-milestones">
-                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16.487'}</span>
+                <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16672'}</span>
                 <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp ${top3.tower || '4.487'}</span>
             </div>
 
@@ -1097,8 +1110,8 @@ function renderPodium() {
 
                 <div class="podium-info">
                     <div class="podium-stage-tower">
-                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top4.stage || '15.037'}</span>
-                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top4.tower || '3.567'}</span>
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top4.stage || '15289'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top4.tower || '3.406'}</span>
                     </div>
                     <h3 class="podium-name" title="${escapeHtml(top4.name)}">${escapeHtml(top4.name)}</h3>
                     <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top4.power)}</div>
@@ -1136,7 +1149,7 @@ function renderPodium() {
 
                 <div class="podium-info">
                     <div class="podium-stage-tower">
-                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '16.883'}</span>
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top2.stage || '17003'}</span>
                         <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top2.tower || '4.527'}</span>
                     </div>
                     <h3 class="podium-name" title="${escapeHtml(top2.name)}">${escapeHtml(top2.name)}</h3>
@@ -1177,7 +1190,7 @@ function renderPodium() {
 
                 <div class="podium-info">
                     <div class="podium-stage-tower">
-                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '17.830'}</span>
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top1.stage || '18024'}</span>
                         <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top1.tower || '4.794'}</span>
                     </div>
                     <h3 class="podium-name main-champion" title="${escapeHtml(top1.name)}">${escapeHtml(top1.name)}</h3>
@@ -1215,7 +1228,7 @@ function renderPodium() {
 
                 <div class="podium-info">
                     <div class="podium-stage-tower">
-                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16.487'}</span>
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top3.stage || '16672'}</span>
                         <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top3.tower || '4.487'}</span>
                     </div>
                     <h3 class="podium-name" title="${escapeHtml(top3.name)}">${escapeHtml(top3.name)}</h3>
@@ -1254,8 +1267,8 @@ function renderPodium() {
 
                 <div class="podium-info">
                     <div class="podium-stage-tower">
-                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top5.stage || '15.136'}</span>
-                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top5.tower || '3.707'}</span>
+                        <span class="stage-tag"><i class="fa-solid fa-mountain"></i> Ải ${top5.stage || '15047'}</span>
+                        <span class="tower-tag"><i class="fa-solid fa-chess-rook"></i> Tháp ${top5.tower || '3.567'}</span>
                     </div>
                     <h3 class="podium-name" title="${escapeHtml(top5.name)}">${escapeHtml(top5.name)}</h3>
                     <div class="podium-power"><i class="fa-solid fa-bolt"></i> ${escapeHtml(top5.power)}</div>

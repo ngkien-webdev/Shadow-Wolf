@@ -242,7 +242,128 @@
 
                 <!-- Bục vinh danh Top 3: Top 2 (Bạc, Trái), Top 1 (Vàng Kim, Giữa), Top 3 (Đồng, Phải) -->
                 <div class="supreme-cards-container" id="supreme-cards-container">
-                    <!-- Javascript sẽ tự động render Top 3 Vương GiẢ vào đây -->
+                    <!-- TOP 2: Á QUÂN (BÊN TRÁI TOP 1) -->
+                    <div class="supreme-champ-card rank-2-supreme animate-fade-in" onclick="openFormationModal(2)">
+                        <span class="card-corner corner-tl"></span>
+                        <span class="card-corner corner-tr"></span>
+                        <span class="card-corner corner-bl"></span>
+                        <span class="card-corner corner-br"></span>
+
+                        <div class="supreme-floating-crest">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        
+                        <div class="supreme-title-wrap title-wrap-yudai">
+                            <img src="images/title-yudai-chien-de.png" alt="Yudai Chiến Đế" class="supreme-ingame-title-img img-title-yudai" title="Danh Hiệu In-game: Yudai Chiến Đế" loading="eager" decoding="async">
+                        </div>
+
+                        <div class="supreme-avatar-container">
+                            <div class="supreme-avatar-ring"></div>
+                            <img src="images/avatars/avatar-2-yudai.png" alt="SW ⚜️ AlyaL 🇻🇳" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
+                        </div>
+
+                        <h3 class="supreme-member-name" title="SW ⚜️ AlyaL 🇻🇳">SW ⚜️ AlyaL 🇻🇳</h3>
+                        
+                        <div class="supreme-power-badge">
+                            <i class="fa-solid fa-bolt"></i> 1.157T
+                        </div>
+
+                        <div class="supreme-milestones">
+                            <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải 17003</span>
+                            <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 4.527</span>
+                        </div>
+
+                        <div class="supreme-roles-row">
+                            <span class="member-title-badge title-dai-tuong-quan">Hữu Thừa Tướng</span>
+                            <span class="member-note-badge note-bang-pho">Bang phó</span>
+                        </div>
+
+                        <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(2)">
+                            <i class="fa-solid fa-paw"></i> Xem Đội Hình
+                        </button>
+                    </div>
+
+                    <!-- TOP 1: QUÁN QUÂN CHÍ TÔN (CHÍNH GIỮA, NỔI BẬT NHẤT) -->
+                    <div class="supreme-champ-card rank-1-supreme animate-fade-in" onclick="openFormationModal(1)">
+                        <span class="card-corner corner-tl"></span>
+                        <span class="card-corner corner-tr"></span>
+                        <span class="card-corner corner-bl"></span>
+                        <span class="card-corner corner-br"></span>
+
+                        <div class="supreme-floating-crest">
+                            <i class="fa-solid fa-crown"></i>
+                        </div>
+
+                        <div class="supreme-title-wrap title-wrap-apex">
+                            <img src="images/title-apex-vuong-gia.png" alt="APEX Vương Giả" class="supreme-ingame-title-img img-title-apex" title="Danh Hiệu In-game: APEX Vương Giả" loading="eager" decoding="async">
+                        </div>
+
+                        <div class="supreme-avatar-container">
+                            <div class="supreme-avatar-ring"></div>
+                            <img src="images/avatars/avatar-1-apex.png" alt="SW ⚜️ Apex 🇻🇳" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
+                        </div>
+
+                        <h3 class="supreme-member-name" title="SW ⚜️ Apex 🇻🇳">SW ⚜️ Apex 🇻🇳</h3>
+                        
+                        <div class="supreme-power-badge">
+                            <i class="fa-solid fa-fire-flame-curved"></i> 1.765T
+                        </div>
+
+                        <div class="supreme-milestones">
+                            <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải 18024</span>
+                            <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 4.794</span>
+                        </div>
+
+                        <div class="supreme-roles-row">
+                            <span class="member-title-badge title-than-vuong">Thần Vương</span>
+                            <span class="member-note-badge note-bang-chu">Bang Chủ</span>
+                        </div>
+
+                        <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(1)">
+                            <i class="fa-solid fa-paw"></i> Chi Tiết Đội Hình
+                        </button>
+                    </div>
+
+                    <!-- TOP 3: QUÝ QUÂN (BÊN PHẢI TOP 1) -->
+                    <div class="supreme-champ-card rank-3-supreme animate-fade-in" onclick="openFormationModal(3)">
+                        <span class="card-corner corner-tl"></span>
+                        <span class="card-corner corner-tr"></span>
+                        <span class="card-corner corner-bl"></span>
+                        <span class="card-corner corner-br"></span>
+
+                        <div class="supreme-floating-crest">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+
+                        <div class="supreme-title-wrap title-wrap-ayya">
+                            <img src="images/title-alyal-ba-khi.png" alt="ALyaL Bá Khí" class="supreme-ingame-title-img img-title-ayya" title="Danh Hiệu In-game: ALyaL Bá Khí" loading="eager" decoding="async">
+                        </div>
+
+                        <div class="supreme-avatar-container">
+                            <div class="supreme-avatar-ring"></div>
+                            <img src="images/avatars/avatar-5-ltd.png" alt="SW ⚜️ LTD 🇻🇳" class="supreme-avatar-core" loading="eager" decoding="async" fetchpriority="high">
+                        </div>
+
+                        <h3 class="supreme-member-name" title="SW ⚜️ LTD 🇻🇳">SW ⚜️ LTD 🇻🇳</h3>
+                        
+                        <div class="supreme-power-badge">
+                            <i class="fa-solid fa-award"></i> 735.7B
+                        </div>
+
+                        <div class="supreme-milestones">
+                            <span class="supreme-milestone-pill pill-stage"><i class="fa-solid fa-mountain"></i> Ải 16672</span>
+                            <span class="supreme-milestone-pill pill-tower"><i class="fa-solid fa-chess-rook"></i> Tháp 4.487</span>
+                        </div>
+
+                        <div class="supreme-roles-row">
+                            <span class="member-title-badge title-dai-tuong-quan">Đại Tướng Quân</span>
+                            <span class="member-note-badge note-tinh-anh">Tinh anh</span>
+                        </div>
+
+                        <button class="supreme-action-btn" onclick="event.stopPropagation(); openFormationModal(3)">
+                            <i class="fa-solid fa-paw"></i> Xem Đội Hình
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
