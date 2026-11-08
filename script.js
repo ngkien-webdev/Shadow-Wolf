@@ -218,7 +218,7 @@ const MEMBER_NAME_AVATARS = {
 function getMemberAvatarImg(m) {
     if (!m) return MEMBER_AVATARS[1] || 'images/avatars/avatar-1-apex.png';
     if (m.avatarImg) return m.avatarImg;
-    
+
     // 1. Khớp chính xác theo tên thành viên đã chuẩn hóa
     if (m.name) {
         const clean = normalizeMemberName(m.name);
@@ -290,7 +290,7 @@ function initApp() {
  */
 function preloadMemberImages() {
     if (!members || !members.length) return;
-    
+
     // Nạp toàn bộ avatar vào RAM cache trong thời gian rỗi (Zero latency khi cuộn & tìm kiếm)
     const idleRunner = window.requestIdleCallback || ((fn) => setTimeout(fn, 120));
     idleRunner(() => {
@@ -1445,7 +1445,7 @@ function applyFilterAndSort() {
             const normalizedSearch = removeVietnameseTones(searchVal.toLowerCase());
             const normalizedName = removeVietnameseTones(m.name.toLowerCase());
             const normalizedTitle = removeVietnameseTones(m.title.toLowerCase());
-            if (!normalizedName.includes(normalizedSearch) && 
+            if (!normalizedName.includes(normalizedSearch) &&
                 !normalizedTitle.includes(normalizedSearch)) {
                 return false;
             }
@@ -1515,7 +1515,7 @@ function sortMembersData() {
 function setSorting(column, direction) {
     currentSort.column = column;
     currentSort.direction = direction;
-    
+
     document.querySelectorAll('.sort-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.dataset.col === column && btn.dataset.dir === direction) {
@@ -1777,7 +1777,7 @@ function updateFilterCounts() {
 function setupEventListeners() {
     const searchInput = document.getElementById('search-input');
     const searchClearBtn = document.getElementById('btn-search-clear') || document.getElementById('btn-clear-search');
-    
+
     if (searchInput) {
         searchInput.addEventListener('input', debounce(() => {
             if (searchClearBtn) {
@@ -2123,7 +2123,7 @@ function handleCSVFileUpload(e) {
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = function(event) {
+    reader.onload = function (event) {
         try {
             const content = event.target.result;
             const lines = content.split(/\r?\n/).filter(line => line.trim().length > 0);
@@ -2169,9 +2169,9 @@ function handleCSVFileUpload(e) {
                 renderPodium();
                 applyFilterAndSort();
                 updateLastUpdatedTime();
-        if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
-            renderLowerRanksGrid();
-        }
+                if (typeof isLowerRanksExpanded !== 'undefined' && isLowerRanksExpanded) {
+                    renderLowerRanksGrid();
+                }
                 showToast(`Đã nhập thành công ${parsedMembers.length} thành viên!`, "success");
             }
         } catch (err) {
@@ -2561,7 +2561,7 @@ function openFormationModal(stt) {
     if (modalName) modalName.textContent = member.name;
     if (modalRank) modalRank.textContent = `Hạng #${member.stt}`;
     if (modalPower) modalPower.textContent = member.power;
-    
+
     const modalAvatar = document.getElementById('formation-member-avatar');
     if (modalAvatar) {
         modalAvatar.decoding = 'async';
@@ -2621,11 +2621,11 @@ function openFormationModal(stt) {
                 screenshotImg.classList.remove('loaded');
                 if (screenshotLoader) screenshotLoader.classList.add('active');
 
-                screenshotImg.onload = function() {
+                screenshotImg.onload = function () {
                     screenshotImg.classList.add('loaded');
                     if (screenshotLoader) screenshotLoader.classList.remove('active');
                 };
-                screenshotImg.onerror = function() {
+                screenshotImg.onerror = function () {
                     if (member.image && member.image.includes('drive.google.com') && !screenshotImg.dataset.triedFallback) {
                         screenshotImg.dataset.triedFallback = 'true';
                         const fileId = member.image.match(/(?:id=|\/d\/)([a-zA-Z0-9_-]+)/)?.[1];
@@ -2834,7 +2834,7 @@ function handleScreenshotUpload(event) {
     }
 
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = function (e) {
         const base64Data = e.target.result;
         activeFormationMember.image = base64Data;
         saveMembersData();
@@ -2926,7 +2926,7 @@ function showToast(message, type = 'info') {
 
 function debounce(func, wait) {
     let timeout;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timeout);
         timeout = setTimeout(() => func.apply(this, args), wait);
     };
@@ -3044,8 +3044,8 @@ function handleLookupInput(keyword) {
         const normalizedNote = removeVietnameseTones((m.note || '').toLowerCase());
 
         return normalizedName.includes(normalizedQuery) ||
-               normalizedTitle.includes(normalizedQuery) ||
-               normalizedNote.includes(normalizedQuery);
+            normalizedTitle.includes(normalizedQuery) ||
+            normalizedNote.includes(normalizedQuery);
     });
 
     // Sắp xếp theo thứ hạng tăng dần
@@ -3534,7 +3534,7 @@ function recordHistorySnapshot(reason = 'Cập nhật chỉ số') {
                 try {
                     const storedLog = localStorage.getItem(HISTORY_KEY);
                     if (storedLog) historyLog = JSON.parse(storedLog);
-                } catch (e) {}
+                } catch (e) { }
 
                 const now = new Date();
                 const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')} - ${now.getDate()}/${now.getMonth() + 1}`;
