@@ -5,7 +5,7 @@
 
 // DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
-    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.765T", powerVal: 1765.0, title: "Thần Vương", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.765T", stage: "18024", tower: "4.794" },
+    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.765T", powerVal: 1765.0, title: "Hoàng Đế", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.765T", stage: "18024", tower: "4.794" },
     { stt: 2, name: "SW ⚜️ AlyaL 🇻🇳", power: "1.157T", powerVal: 1157.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.157T", stage: "17003", tower: "4.527" },
     { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "735.7B", powerVal: 735.7, title: "Đại Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "735.7B", stage: "16672", tower: "4.487" },
     { stt: 4, name: "SW ⚜️ NTTP 🇻🇳", power: "393.2B", powerVal: 393.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "393.2B", stage: "15289", tower: "3.406" },
@@ -66,6 +66,8 @@ let activeFormationMember = null;
 
 // Khởi tạo danh sách danh hiệu chuẩn & màu sắc
 const TITLE_CLASSES = {
+    'Hoàng Đế': 'title-hoang-de',
+    'Hoàng đế': 'title-hoang-de',
     'Thần Vương': 'title-than-vuong',
     'Đại Tướng Quân': 'title-dai-tuong-quan',
     'Hữu Thừa Tướng': 'title-dai-tuong-quan',
@@ -344,6 +346,7 @@ function loadMembersData() {
             } else {
                 // Đồng bộ dữ liệu chi tiết từ DEFAULT_MEMBERS & Chuẩn hóa không viết tắt TQ / T
                 members.forEach(m => {
+                    if (m.stt === 1 && (m.title === 'Thần Vương' || !m.title)) m.title = 'Hoàng Đế';
                     if (m.title === 'Phiêu kỵ TQ' || m.title === 'Phiêu Kỵ Tướng') m.title = 'Phiêu Kỵ Tướng Quân';
                     if (m.title === 'Xa kỵ TQ' || m.title === 'Xa Kỵ Tướng') m.title = 'Xa Kỵ Tướng Quân';
                     if (m.title === 'Vệ TQ' || m.title === 'Vệ Quốc') m.title = 'Vệ Tướng Quân';
@@ -2199,7 +2202,7 @@ function parseCSVLine(text) {
 }
 
 function downloadSampleCSV() {
-    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\n1,SW ⚜️ Apex 🇻🇳,1.664T,Thần Vương,Bang Chủ\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Thái Sư,Tinh anh\n';
+    const sample = '\uFEFFSTT,TÊN THÀNH VIÊN,LỰC CHIẾN,DANH HIỆU,GHI CHÚ\n1,SW ⚜️ Apex 🇻🇳,1.664T,Hoàng Đế,Bang Chủ\n2,SW • YUDAI,1.062T,Đại Tướng Quân,Bang phó\n3,SW ⚜️ Ây Ya 🇻🇳,680B,Thái Sư,Tinh anh\n';
     const blob = new Blob([sample], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');

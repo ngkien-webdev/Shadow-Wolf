@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'd:/BXH MDTQ';
+const dir = __dirname;
 
 // Load assets
 const html = fs.readFileSync(path.join(dir, 'index.html'), 'utf-8');
