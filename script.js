@@ -9,7 +9,7 @@ const DEFAULT_MEMBERS = [
     { stt: 2, name: "SW ⚜️ AlyaL 🇻🇳", power: "1.161T", powerVal: 1161.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.161T", stage: "17147", tower: "4.527" },
     { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "747.5B", powerVal: 747.5, title: "Đại Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "747.5B", stage: "16807", tower: "4.487" },
     { stt: 4, name: "SW ⚜️ NTTP 🇻🇳", power: "395.9B", powerVal: 395.9, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "395.9B", stage: "15289", tower: "3.406" },
-    { stt: 5, name: "SW ⚜️ ⓐⓛⓘⓝ", power: "360.2B", powerVal: 360.2, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "360.2B", stage: "15047", tower: "3.567" },
+    { stt: 5, name: "SW ⚜️ ⓄⓁⒾⓃ", power: "360.2B", powerVal: 360.2, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "360.2B", stage: "15047", tower: "3.567" },
     { stt: 6, name: "SW ⚜️ Link 🇻🇳", power: "287.2B", powerVal: 287.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "287.2B", stage: "14929", tower: "3.388" },
     { stt: 7, name: "SW ⚜️ Newbie", power: "276.2B", powerVal: 276.2, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-7.jpg", ingamePower: "276.2B", stage: "15029", tower: "3.380" },
     { stt: 8, name: "SW ⚜️ howl 🇻🇳", power: "239.2B", powerVal: 239.2, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "239.2B", stage: "14810", tower: "3.147" },
@@ -45,8 +45,8 @@ const DEFAULT_MEMBERS = [
     { stt: 38, name: "SW • Thu", power: "58.05B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
-// Khóa LocalStorage (Bản v32: Cập nhật BXH Lực Chiến, Danh Hiệu & 14 Đội Hình Mới)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v32';
+// Khóa LocalStorage (Bản v33: Đồng bộ Top 4 NTTP & Top 5 ⓄⓁⒾⓃ Alin Chuẩn Xác)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v33';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -110,8 +110,8 @@ const MEMBER_AVATARS = {
     1: 'images/avatars/avatar-1-apex.png',          // SW ⚜️ Apex 🇻🇳
     2: 'images/avatars/avatar-2-yudai.png',         // SW ⚜️ xAX 🇻🇳
     3: 'images/avatars/avatar-5-ltd.png',           // SW ⚜️ LTD 🇻🇳
-    4: 'images/avatars/avatar-4-alinx.png',         // SW • Alinx •
-    5: 'images/avatars/avatar-8-nttp.png',          // SW ⚜️ NTTP 🇻🇳
+    4: 'images/avatars/avatar-8-nttp.png',          // SW ⚜️ NTTP 🇻🇳 (Top 4)
+    5: 'images/avatars/avatar-4-alinx.png',         // SW ⚜️ ⓄⓁⒾⓃ (Top 5)
     6: 'images/avatars/avatar-3-ayva.png',          // SW ★ Link (Hoàng Kim Cuồng Lang)
     7: 'images/avatars/avatar-7-bitien.png',        // sw cho acc (Băng Sương Ma Lang)
     8: 'images/avatars/avatar-6-stom.png',          // SW ⚜️ Stom 🇻🇳
@@ -156,12 +156,12 @@ const MEMBER_NAME_AVATARS = {
     'alyalvn': 2,
     'ltd': 3,
     'ltdvn': 3,
-    'alin': 4,
-    'alinx': 4,
-    'olin': 4,
-    'olinx': 4,
-    'nttp': 5,
-    'nttpvn': 5,
+    'alin': 5,
+    'alinx': 5,
+    'olin': 5,
+    'olinx': 5,
+    'nttp': 4,
+    'nttpvn': 4,
     'link': 6,
     'swlink': 6,
     'choacc': 7,
