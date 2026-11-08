@@ -5,22 +5,22 @@
 
 // DỮ LIỆU GỐC 41 THÀNH VIÊN VÀ MAPPING ẢNH ĐỘI HÌNH CHUẨN XÁC THEO GAME (KÈM ẢI & THÁP)
 const DEFAULT_MEMBERS = [
-    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.765T", powerVal: 1765.0, title: "Hoàng Đế", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.765T", stage: "18024", tower: "4.794" },
-    { stt: 2, name: "SW ⚜️ AlyaL 🇻🇳", power: "1.157T", powerVal: 1157.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.157T", stage: "17003", tower: "4.527" },
-    { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "735.7B", powerVal: 735.7, title: "Đại Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "735.7B", stage: "16672", tower: "4.487" },
-    { stt: 4, name: "SW ⚜️ NTTP 🇻🇳", power: "393.2B", powerVal: 393.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "393.2B", stage: "15289", tower: "3.406" },
-    { stt: 5, name: "SW • Alinx •", power: "367.3B", powerVal: 367.3, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "367.3B", stage: "15047", tower: "3.567" },
-    { stt: 6, name: "SW ★ Link", power: "287.5B", powerVal: 287.5, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "287.5B", stage: "14929", tower: "3.388" },
-    { stt: 7, name: "sw Newbie?", power: "273B", powerVal: 273.0, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-7.jpg", ingamePower: "273B", stage: "14949", tower: "3.380" },
-    { stt: 8, name: "SW ⚜️ Bãoo 🇻🇳", power: "240.1B", powerVal: 240.1, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "240.1B", stage: "14428", tower: "3.050" },
+    { stt: 1, name: "SW ⚜️ Apex 🇻🇳", power: "1.919T", powerVal: 1919.0, title: "Hoàng Đế", note: "Bang Chủ", avatar: "🐺", image: "images/dh/member-1.jpg", ingamePower: "1.919T", stage: "18069", tower: "4.794" },
+    { stt: 2, name: "SW ⚜️ AlyaL 🇻🇳", power: "1.161T", powerVal: 1161.0, title: "Hữu Thừa Tướng", note: "Bang phó", avatar: "🐺", image: "images/dh/member-2.jpg", ingamePower: "1.161T", stage: "17147", tower: "4.527" },
+    { stt: 3, name: "SW ⚜️ LTD 🇻🇳", power: "747.5B", powerVal: 747.5, title: "Đại Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-3.jpg", ingamePower: "747.5B", stage: "16807", tower: "4.487" },
+    { stt: 4, name: "SW ⚜️ NTTP 🇻🇳", power: "395.9B", powerVal: 395.9, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-4.jpg", ingamePower: "395.9B", stage: "15289", tower: "3.406" },
+    { stt: 5, name: "SW ⚜️ ⓐⓛⓘⓝ", power: "360.2B", powerVal: 360.2, title: "Phiêu Kỵ Tướng Quân", note: "Bang phó", avatar: "🐺", image: "images/dh/member-5.jpg", ingamePower: "360.2B", stage: "15047", tower: "3.567" },
+    { stt: 6, name: "SW ⚜️ Link 🇻🇳", power: "287.2B", powerVal: 287.2, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-6.jpg", ingamePower: "287.2B", stage: "14929", tower: "3.388" },
+    { stt: 7, name: "SW ⚜️ Newbie", power: "276.2B", powerVal: 276.2, title: "Phiêu Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-7.jpg", ingamePower: "276.2B", stage: "15029", tower: "3.380" },
+    { stt: 8, name: "SW ⚜️ howl 🇻🇳", power: "239.2B", powerVal: 239.2, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-8.jpg", ingamePower: "239.2B", stage: "14810", tower: "3.147" },
     { stt: 9, name: "SW ⭐️ Haruki", power: "238.3B", powerVal: 238.3, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-9.jpg", ingamePower: "238.3B", stage: "14950", tower: "3.484" },
-    { stt: 10, name: "SW ⚜️ howl 🇻🇳", power: "236.7B", powerVal: 236.7, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "236.7B", stage: "14804", tower: "3.147" },
-    { stt: 11, name: "SW ⚜️ Rain 🇻🇳", power: "226.4B", powerVal: 226.4, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "226.4B", stage: "14527", tower: "3.192" },
-    { stt: 12, name: "SW ⚜️ Ryo 🇻🇳", power: "204.4B", powerVal: 204.4, title: "Phiêu Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-12.jpg", ingamePower: "204.4B", stage: "14670", tower: "3.254" },
-    { stt: 13, name: "SW ⚜️ Rinn 🇻🇳", power: "202.8B", powerVal: 202.8, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-13.jpg", ingamePower: "202.8B", stage: "14229", tower: "3.230" },
+    { stt: 10, name: "SW ⚜️ Baoe 🇻🇳", power: "229.4B", powerVal: 229.4, title: "Thái phó", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "229.4B", stage: "14492", tower: "3.050" },
+    { stt: 11, name: "SW ⚜️ Rain 🇻🇳", power: "228B", powerVal: 228.0, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-11.jpg", ingamePower: "228B", stage: "14535", tower: "3.192" },
+    { stt: 12, name: "SW ⚜️ Ryo 🇻🇳", power: "211.5B", powerVal: 211.5, title: "Phiêu Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-12.jpg", ingamePower: "211.5B", stage: "14769", tower: "3.254" },
+    { stt: 13, name: "SW ⚜️ Rinn 🇻🇳", power: "208.6B", powerVal: 208.6, title: "Thái phó", note: "Thành viên", avatar: "🐺", image: "images/dh/member-13.jpg", ingamePower: "208.6B", stage: "14302", tower: "3.230" },
     { stt: 14, name: "SW ⚜️ Furies", power: "198.1B", powerVal: 198.1, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-14.jpg", ingamePower: "198.1B", stage: "14483", tower: "3.167" },
-    { stt: 15, name: "SW ⚜️ Neko 🇻🇳", power: "196.3B", powerVal: 196.3, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-15.jpg", ingamePower: "196.3B", stage: "14567", tower: "3.218" },
-    { stt: 16, name: "SW • ĐỘLiVi", power: "195B", powerVal: 195.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: "images/dh/member-10.jpg", ingamePower: "195B", stage: "14.759", tower: "3.334" },
+    { stt: 15, name: "SW ⚜️ Neko 🇻🇳", power: "198B", powerVal: 198.0, title: "Xa Kỵ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-15.jpg", ingamePower: "198B", stage: "14569", tower: "3.218" },
+    { stt: 16, name: "SW • ĐỘLiVi", power: "195B", powerVal: 195.0, title: "Xa Kỵ Tướng Quân", note: "Tinh anh", avatar: "🐺", image: null, ingamePower: "195B", stage: "14.759", tower: "3.334" },
     { stt: 17, name: "SW ⚜️ Klein ★", power: "172.4B", powerVal: 172.4, title: "Thái úy", note: "Thành viên", avatar: "🐺", image: null, ingamePower: "172.4B", stage: "14.315", tower: "3.138" },
     { stt: 18, name: "SW • Minh Thành", power: "170.6B", powerVal: 170.6, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-19.jpg", ingamePower: "170.6B", stage: "13.000", tower: "2.900" },
     { stt: 19, name: "SW • Bear", power: "168.8B", powerVal: 168.8, title: "Vệ Tướng Quân", note: "Thành viên", avatar: "🐺", image: "images/dh/member-17.jpg", ingamePower: "168.8B", stage: "13.500", tower: "3.000" },
@@ -45,8 +45,8 @@ const DEFAULT_MEMBERS = [
     { stt: 38, name: "SW • Thu", power: "58.05B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
-// Khóa LocalStorage (Bản v31: Cập nhật BXH In-game, Top 15 Trận Hình & Tên Mới)
-const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v31';
+// Khóa LocalStorage (Bản v32: Cập nhật BXH Lực Chiến, Danh Hiệu & 14 Đội Hình Mới)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v32';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
 
 // Cấu hình Google Sheet kết nối tự động từ Google Form
@@ -78,6 +78,7 @@ const TITLE_CLASSES = {
     'Phiêu kỵ TQ': 'title-phieu-ky-tq',
     'Phiêu Kỵ Tướng': 'title-phieu-ky-tq',
     'Thái phó': 'title-thai-pho',
+    'Thái Phó': 'title-thai-pho',
     'Thái úy': 'title-thai-uy',
     'Xa Kỵ Tướng Quân': 'title-xa-ky-tq',
     'Xa kỵ TQ': 'title-xa-ky-tq',
@@ -155,7 +156,10 @@ const MEMBER_NAME_AVATARS = {
     'alyalvn': 2,
     'ltd': 3,
     'ltdvn': 3,
+    'alin': 4,
     'alinx': 4,
+    'olin': 4,
+    'olinx': 4,
     'nttp': 5,
     'nttpvn': 5,
     'link': 6,
@@ -183,6 +187,7 @@ const MEMBER_NAME_AVATARS = {
     'poision': 19,
     'poison': 19,
     'wolf': 20,
+    'baoe': 21,
     'baoo': 21,
     'baoo360': 21,
     '360': 21,
@@ -2309,7 +2314,7 @@ function convertGoogleDriveUrl(url) {
  */
 function normalizeMemberName(str) {
     if (!str) return '';
-    let s = str.toString().toLowerCase();
+    let s = str.toString().normalize('NFKD').toLowerCase();
     // Loại bỏ ký tự đặc biệt, emoji, hoa lá cành thường gặp trong game
     s = s.replace(/[꧁꧂⚜️🇻🇳ᵛᶰ•\(\)\-\_\:\.\,\~\|\/\\#@!\$\%\^\&\*\+\=★⭐️ღ]/g, ' ');
     // Loại bỏ tiền tố bang hội SW, BW
