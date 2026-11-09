@@ -45,6 +45,8 @@ const DEFAULT_MEMBERS = [
     { stt: 38, name: "SW • Thu", power: "58.05B", powerVal: 58.05, title: "Tư đồ", note: "Thành viên", avatar: "🐺", image: "images/dh/member-36.jpg", ingamePower: "58.05B", stage: "9.400", tower: "2.050" }
 ];
 
+// Khóa LocalStorage (Bản v33: Đồng bộ Top 4 NTTP & Top 5 ⓄⓁⒾⓃ Alin Chuẩn Xác)
+const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v33';
 // Khóa LocalStorage (Bản v35: Khắc phục triệt để trùng lặp Top 4 NTTP & Top 5 ⓄⓁⒾⓃ Alin)
 const STORAGE_KEY = 'mieu_chu_tam_quoc_members_v35';
 const GUILD_CONFIG_KEY = 'mieu_chu_tam_quoc_guild_v1';
@@ -349,6 +351,8 @@ function loadMembersData() {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (stored) {
             members = JSON.parse(stored);
+            if (!Array.isArray(members) || members.length < DEFAULT_MEMBERS.length) {
+                // Tự phục hồi: Nếu bộ nhớ trống hoặc thiếu người, nạp chuẩn từ DEFAULT_MEMBERS
 
             // Kiểm tra an toàn: phát hiện nếu danh sách có thành viên trùng lặp hoặc Top 4-5 bị trùng NTTP
             const seenNorms = new Set();
@@ -2332,9 +2336,12 @@ function convertGoogleDriveUrl(url) {
  */
 function normalizeMemberName(str) {
     if (!str) return '';
+    let s = str.toString().normalize('NFKD').toLowerCase();
+    // Loại bỏ ký tự đặc biệt, emoji, hoa lá cành thường gặp trong game
     let s = str.toString();
     // 1. Loại bỏ các ký tự đặc biệt, emoji, hoa lá cành, cờ, cánh chim trước khi chuẩn hóa Unicode
     s = s.replace(/[꧁꧂⚜️🇻🇳ᵛᶰ•\(\)\-\_\:\.\,\~\|\/\\#@!\$\%\^\&\*\+\=★⭐️ღ]/g, ' ');
+    // Loại bỏ tiền tố bang hội SW, BW
     // 2. Chuẩn hóa NFKD & chữ thường (để chuyển ⓄⓁⒾⓃ -> olin, ⓐⓛⓘⓝ -> alin)
     s = s.normalize('NFKD').toLowerCase();
     // 3. Loại bỏ modifier / small capital sau NFKD (như ɴ từ ᶰ, v từ ᵛ)
@@ -2345,6 +2352,7 @@ function normalizeMemberName(str) {
     s = s.replace(/^\s*(sw|bw)\s+/i, '').replace(/^(sw|bw)/i, '');
     s = removeVietnameseTones(s);
     s = s.replace(/\s+/g, '').trim();
+    // Xử lý biệt danh đặc biệt (VD: Tê -> T)
     // 6. Loại bỏ hậu tố vn do cờ hoặc chữ vn viết liền ở đuôi
     s = s.replace(/vn$/i, '');
     // 7. Xử lý biệt danh đặc biệt (VD: Tê -> T, Olin -> Alin)
@@ -2362,6 +2370,8 @@ function mapGoogleSheetColumns(headerRow) {
         const raw = (val || '').toString().toLowerCase().trim();
         const text = removeVietnameseTones(raw);
 
+        // 1. Ảnh / Đội hình: check trước để tránh 'màn hình' kích hoạt nhầm cột ải
+        if (text.includes('anh') || text.includes('doi hinh') || text.includes('screenshot') || text.includes('image') || text.includes('drive')) {
         // 1. Danh hiệu: ưu tiên kiểm tra trước để tránh 'danh' kích hoạt nhầm 'anh'
         if (text.includes('danh hieu') || text.includes('title')) {
             colMap.title = idx;
@@ -2370,17 +2380,24 @@ function mapGoogleSheetColumns(headerRow) {
         else if (/\banh\b/.test(text) || text.includes('hinh anh') || text.includes('anh chup') || text.includes('doi hinh') || text.includes('screenshot') || text.includes('image') || text.includes('drive')) {
             colMap.image = idx;
         }
+        // 2. Lực chiến
         // 3. Lực chiến
         else if (text.includes('luc chien') || text.includes('chien luc') || text.includes('power')) {
             colMap.power = idx;
         }
+        // 3. Tên nhân vật in-game
         // 4. Tên nhân vật in-game
         else if (text.includes('ten') || text.includes('name') || text.includes('ingame') || text.includes('nhan vat')) {
             colMap.name = idx;
         }
+        // 4. Server máy chủ
         // 5. Server máy chủ
         else if (text.includes('server') || text.includes('may chu') || text.includes('sv')) {
             colMap.server = idx;
+        }
+        // 5. Danh hiệu
+        else if (text.includes('danh hieu') || text.includes('title')) {
+            colMap.title = idx;
         }
         // 6. Chức vụ / Ghi chú
         else if (text.includes('chuc vu') || text.includes('role') || text.includes('ghi chu')) {
@@ -2493,15 +2510,24 @@ async function syncFromGoogleSheet(options = { silent: false }) {
         latestSubmissions.forEach((sub, normKey) => {
             const existing = members.find(m => normalizeMemberName(m.name) === normKey);
             if (existing) {
+                if (sub.power) {
                 const newPowerVal = calculateNumericPower(sub.power);
                 // CHỈ cập nhật lực chiến nếu lực chiến mới từ Google Form LỚN HƠN lực chiến hiện tại
                 // Ngăn chặn form cũ hoặc số liệu thấp hơn ghi đè hạ cấp lực chiến đã cập nhật trong game
                 if (sub.power && newPowerVal > (existing.powerVal || 0)) {
                     existing.power = sub.power;
+                    existing.powerVal = calculateNumericPower(sub.power);
                     existing.powerVal = newPowerVal;
                     existing.ingamePower = sub.power;
                     updatedCount++;
                 }
+                if (sub.stage) existing.stage = sub.stage;
+                if (sub.tower) existing.tower = sub.tower;
+                if (sub.server) existing.server = sub.server;
+                if (sub.title) existing.title = sub.title;
+                if (sub.note) existing.note = sub.note;
+                if (sub.image) existing.image = sub.image;
+                updatedCount++;
                 if (sub.stage) { existing.stage = sub.stage; updatedCount++; }
                 if (sub.tower) { existing.tower = sub.tower; updatedCount++; }
                 if (sub.server) { existing.server = sub.server; updatedCount++; }
